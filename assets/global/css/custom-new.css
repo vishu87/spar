@@ -1,0 +1,25 @@
+.banner-col12{
+   border:3px solid #f7f7f9; 
+   padding:15px; 
+   margin-top:5px;
+}
+.img-banner{
+ max-width: 350px;
+}
+.add-new{
+  text-align:right;
+}
+.del{
+  margin-left:2px;
+}
+.sub-center{
+text-align:center;
+}
+.pro-table{
+  overflow-x:auto;
+}
+.img-brand
+{
+ width:100%; 
+}
+
