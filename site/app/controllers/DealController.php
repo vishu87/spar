@@ -22,23 +22,23 @@ class DealController extends BaseController {
     }
 
     public function getDeal($deal_id){
-        $this->layout->title = 'Admin | Deal';
-        $this->layout->top_active = 6;
+        $this->layout->title = 'Spar | Deal';
+        $this->layout->top_active = 7;
         $products = DB::table('products')->lists('product_name','id');         
         $deal = DB::table('deals')->where('id',$deal_id)->first();
         $this->layout->main = View::make("admin.deals.edit",array("deal"=>$deal,'products' =>$products));
     }
 
     public function getDeals(){
-        $this->layout->title = 'All Deals | Admin';
-        $this->layout->top_active = 6;
+        $this->layout->title = 'All Deals | Spar';
+        $this->layout->top_active = 7;
         $deals = DB::table('deals')->get();
         $this->layout->main = View::make("admin.deals.index",array("deals"=>$deals));
     }
 
     public function getadd(){
         $this->layout->title = 'Add | Deal';
-        $this->layout->top_active = 6;
+        $this->layout->top_active = 7;
         $products = DB::table('products')->lists('product_name','id');  
         $this->layout->main = View::make("admin.deals.add",array('products' =>$products));
     }

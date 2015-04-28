@@ -29,22 +29,22 @@ class KidsController extends BaseController {
     }
 
     public function getkids($kids_id){
-        $this->layout->title = 'Admin | kids';
-        $this->layout->top_active = 4;
+        $this->layout->title = 'Spar | kids';
+        $this->layout->top_active = 5;
         $kids = DB::table('kids')->where('id',$kids_id)->first();
         $this->layout->main = View::make("admin.kids-corner.edit",array("kids"=>$kids));
     }
 
     public function getkidscorner(){
-        $this->layout->title = 'All kids | Admin';
-        $this->layout->top_active = 4;
+        $this->layout->title = 'All kids | Spar';
+        $this->layout->top_active = 5;
         $kids = DB::table('kids')->get();
         $this->layout->main = View::make("admin.kids-corner.index",array("kids"=>$kids));
     }
 
     public function getadd(){
         $this->layout->title = 'Add | kids';
-        $this->layout->top_active = 4;
+        $this->layout->top_active = 5;
         $this->layout->main = View::make("admin.kids-corner.add");
     }
 

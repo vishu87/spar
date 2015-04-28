@@ -30,13 +30,15 @@
 @endif
 <!-- END PAGE HEADER-->
 <div class="row">
-  @foreach($banners as $banner)
-    <div class="col-md-12 banner-col12">     
-     <div class="col-md-3"><input type="checkbox" name="order[]">{{$banner->banner_name}} </div>
-     <div class="col-md-7">{{HTML::image('/images/'.$banner->banner_image,'',["class"=>"img-banner"])}} </div>
-     <a href="{{url('/admin/banners/edit/'.$banner->id)}}"><span class="btn yellow">Edit </span></a>
-     <a href="{{url('/admin/banners/delete/'.$banner->id)}}" class="del"><span class="btn btn-danger">Delete </span></a>
+  <div id="sortable1" class="banner-image">
+    @foreach($banners as $banner)
+      <div class="col-md-12 banner-image banner-col12">     
+         <div class="col-md-3"><input type="checkbox" name="order[]" checked>{{$banner->banner_name}} </div>
+         <div class="col-md-7">{{HTML::image('/images/'.$banner->banner_image,'',["class"=>"img-banner"])}} </div>
+         <a href="{{url('/admin/banners/edit/'.$banner->id)}}"><span class="btn yellow">Edit </span></a>
+         <a href="{{url('/admin/banners/delete/'.$banner->id)}}" class="del"><span class="btn btn-danger">Delete </span></a>
+      </div>
+      @endforeach  
     </div>
-  @endforeach  
 </div>
 <!-- BEGIN PAGE CONTENT-->

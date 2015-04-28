@@ -5,6 +5,7 @@ Route::get('/admin', function(){
 });
 
 Route::group(['prefix' => 'admin'], function () {
+	Route::get('/','RecipeController@getMain');
 
 	Route::group(['prefix' => 'recipes'], function () {
 		Route::get('/','RecipeController@getRecipes');
@@ -76,6 +77,23 @@ Route::group(['prefix' => 'admin'], function () {
 	    Route::get('/delete/{banner_id}', 'BannerController@getdelete');
 
 	});
+
+	  Route::group(['prefix' => 'side-banners'], function () {
+		Route::get('/','SideBannerController@getbanners');
+		Route::get('/add','SideBannerController@getAdd');
+		Route::post('/store','SideBannerController@postAdd');
+	    Route::get('/delete/{side_banner_id}', 'SideBannerController@getdelete');
+
+	});
+
+	   Route::group(['prefix' => 'mid-banners'], function () {
+		Route::get('/','MidBannerController@getbanners');
+		Route::get('/add','MidBannerController@getAdd');
+		Route::post('/store','MidBannerController@postAdd');
+	    Route::get('/delete/{mid_banner_id}', 'MidBannerController@getdelete');
+
+	});
+
     
 });
 

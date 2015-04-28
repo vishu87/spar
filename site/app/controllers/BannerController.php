@@ -28,22 +28,22 @@ class BannerController extends BaseController {
     }
 
     public function getbanner($banner_id){
-        $this->layout->title = 'Admin | Banner';
-        $this->layout->top_active = 7;
+        $this->layout->title = 'Spar | Banner';
+        $this->layout->top_active = 8;
         $banner = DB::table('banner')->where('id',$banner_id)->first();
         $this->layout->main = View::make("admin.banners.edit",array("banner"=>$banner));
     }
 
     public function getbanners(){
-        $this->layout->title = 'All Banners | Admin';
-        $this->layout->top_active = 7;
+        $this->layout->title = 'All Banners | Spar';
+        $this->layout->top_active = 8;
         $banners = DB::table('banner')->get();
         $this->layout->main = View::make("admin.banners.index",array("banners"=>$banners));
     }
 
     public function getadd(){
         $this->layout->title = 'Add | Banner';
-        $this->layout->top_active = 7;
+        $this->layout->top_active = 8;
         $this->layout->main = View::make("admin.banners.add");
     }
 

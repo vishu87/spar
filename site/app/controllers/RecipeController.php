@@ -3,6 +3,12 @@
 class RecipeController extends BaseController {
     protected $layout = 'admin.layout';
 
+     public function getMain(){
+        $this->layout->title = 'Dashboard | Spar';
+        $this->layout->top_active = 1;
+        $this->layout->main = View::make("admin.main");
+    }
+
     public function postAdd(){
         $cre = [
         'recipe_name' => Input::get('recipe_name'),
@@ -35,8 +41,8 @@ class RecipeController extends BaseController {
     }
 
      public function getRecipe($recipe_id){
-        $this->layout->title = 'Admin | Recipe';
-        $this->layout->top_active = 1;
+        $this->layout->title = 'Spar | Recipe';
+        $this->layout->top_active = 2;
         $categories = DB::table('recipe_categories')->lists('recipe_category','id');  
         $all_recipes = DB::table('recipe')->lists('recipe_name','id');  
         $all_products = DB::table('products')->lists('product_name','id');  
@@ -48,15 +54,17 @@ class RecipeController extends BaseController {
     }
 
     public function getRecipes(){
-        $this->layout->title = 'All Recipes | Admin';
-        $this->layout->top_active = 1;
+        $this->layout->title = 'All Recipes | Spar';
+        $this->layout->top_active = 2;
         $recipes = DB::table('recipe')->join('recipe_categories','recipe.category_id','=','recipe_categories.id')->select('recipe.*','recipe_categories.recipe_category')->get();
         $this->layout->main = View::make("admin.recipes.index",array("recipes"=>$recipes));
     }
 
+    
+
     public function getadd(){
         $this->layout->title = 'Add | Recipe';
-        $this->layout->top_active = 1;
+        $this->layout->top_active = 2;
         $categories = DB::table('recipe_categories')->lists('recipe_category','id');
         $this->layout->main = View::make("admin.recipes.add",array('categories' =>$categories));
     }

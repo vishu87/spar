@@ -28,22 +28,22 @@ class BrandController extends BaseController {
     }
 
     public function getbrand($brand_id){
-        $this->layout->title = 'Admin | Brand';
-        $this->layout->top_active = 3;
+        $this->layout->title = 'Spar | Brand';
+        $this->layout->top_active = 4;
         $brand = DB::table('brands')->where('id',$brand_id)->first();
         $this->layout->main = View::make("admin.brands.edit",array("brand"=>$brand));
     }
 
     public function getbrands(){
-        $this->layout->title = 'All Brands | Admin';
-        $this->layout->top_active = 3;
+        $this->layout->title = 'All Brands | Spar';
+        $this->layout->top_active = 4;
         $brands = DB::table('brands')->get();
         $this->layout->main = View::make("admin.brands.index",array("brands"=>$brands));
     }
 
     public function getadd(){
         $this->layout->title = 'Add | Brand';
-        $this->layout->top_active = 3;
+        $this->layout->top_active = 4;
         $this->layout->main = View::make("admin.brands.add");
     }
 

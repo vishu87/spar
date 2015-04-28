@@ -31,8 +31,8 @@ class ProductController extends BaseController {
     }
 
     public function getproduct($product_id){
-        $this->layout->title = 'Admin | Product';
-        $this->layout->top_active = 5;
+        $this->layout->title = 'Spar | Product';
+        $this->layout->top_active = 6;
         $brands = DB::table('brands')->lists('brand_name','id'); 
         $all_products = DB::table('products')->lists('product_name','id');
         $related_products = DB::table('related_products')->join('products','related_products.related_product_id','=','products.id')->select('related_products.*','products.product_name')->get();
@@ -42,15 +42,15 @@ class ProductController extends BaseController {
     }
 
     public function getproducts(){
-        $this->layout->title = 'All Products | Admin';
-        $this->layout->top_active = 5;
+        $this->layout->title = 'All Products | Spar';
+        $this->layout->top_active = 6;
         $products = DB::table('products')->join('brands','products.brand_id','=','brands.id')->select('products.*','brands.brand_name')->get();
         $this->layout->main = View::make("admin.products.index",array("products"=>$products));
     }
 
     public function getadd(){
         $this->layout->title = 'Add | Product';
-        $this->layout->top_active = 5;
+        $this->layout->top_active = 6;
         $brands = DB::table('brands')->lists('brand_name','id');
         $this->layout->main = View::make("admin.products.add",array('brands' =>$brands));
     }

@@ -58,3 +58,19 @@ Change Quick Sidebar Width
   margin-left: -370px;
 }
 */
+.dropdown-submenu .dropdown-menu i{
+  color: #fff !important;
+}
+.dropdown-submenu .dropdown-menu .active{
+  background: #1C675C;
+  border-top-color: transparent;
+  color: #ffffff;
+}
+.dropdown-submenu .dropdown-menu .title{
+  color: #fff !important;
+  font-size: 12px;
+  font-weight: 100;
+}
+.dropdown-submenu .dropdown-menu{
+  background-color: #364150;
+}

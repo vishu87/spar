@@ -23,21 +23,21 @@ class PageController extends BaseController {
 
     public function getPage($page_id){
         $this->layout->title = 'Admin | Page';
-        $this->layout->top_active = 2;
+        $this->layout->top_active = 3;
         $page = DB::table('pages')->where('id',$page_id)->first();
         $this->layout->main = View::make("admin.pages.edit",array("page"=>$page));
     }
 
     public function getPages(){
         $this->layout->title = 'All Pages | Admin';
-        $this->layout->top_active = 2;
+        $this->layout->top_active = 3;
         $pages = DB::table('pages')->get();
         $this->layout->main = View::make("admin.pages.index",array("pages"=>$pages));
     }
 
     public function getadd(){
         $this->layout->title = 'Add | Page';
-        $this->layout->top_active = 2;
+        $this->layout->top_active = 3;
         $this->layout->main = View::make("admin.pages.add");
     }
 
