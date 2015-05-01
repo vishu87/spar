@@ -22,11 +22,13 @@
 {{HTML::style("assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css")}}
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN THEME STYLES -->
+{{HTML::style("assets/global/css/lock2.css")}}
 {{HTML::style("assets/global/css/components.css")}}
 {{HTML::style("assets/admin/css/layout.css")}}
 {{HTML::style("assets/admin/css/themes/darkblue.css")}}
 {{HTML::style("assets/admin/css/custom.css")}}
 {{HTML::style("assets/global/css/custom-new.css")}}
+{{HTML::style("assets/global/css/login.css")}}
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
 </head>
@@ -65,7 +67,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-default">
             <li>
-              <a href="login.html">
+              <a href="{{url('/login')}}">
               <i class="icon-key"></i> Log Out </a>
             </li>
           </ul>
@@ -142,14 +144,19 @@
 {{HTML::script("assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js")}}
 {{HTML::script("assets/global/plugins/jquery.blockui.min.js")}}
 {{HTML::script("assets/global/plugins/jquery.cokie.min.js")}}
-{{HTML::script("assets/global/plugins/uniform/jquery.uniform.min.js")}}
+
 <!-- END CORE PLUGINS -->
+
+{{HTML::script("assets/global/scripts/lock.js")}}
+{{HTML::script("assets/global/scripts/jquery.backstretch.min.js")}}
 {{HTML::script("assets/global/scripts/metronic.js")}}
+{{HTML::script("assets/global/scripts/jquery-ui.js")}}
 {{HTML::script("assets/admin/scripts/layout.js")}}
 {{HTML::script("assets/admin/scripts/quick-sidebar.js")}}
 {{HTML::script("assets/admin/scripts/jquery.tablesorter.js")}}
 {{HTML::script("assets/admin/scripts/jquery.tablesorter.pager.js")}}
 {{HTML::script("assets/admin/scripts/jquery.tablesorter.widgets.js")}}
+{{HTML::script("assets/global/scripts/login.js")}}
 {{HTML::script("assets/admin/scripts/custom.js")}}
 <script>
 jQuery(document).ready(function() {   

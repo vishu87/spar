@@ -2,15 +2,19 @@
    border:3px solid #f7f7f9; 
    padding:15px; 
    margin-top:5px;
+   cursor: pointer;
 }
 .img-banner{
- max-width: 350px;
+ max-width: 100px;
 }
 .add-new{
   text-align:right;
 }
 .del{
   margin-left:2px;
+}
+.banner-del{
+margin-left:20px;
 }
 .sub-center{
 text-align:center;
@@ -22,4 +26,17 @@ text-align:center;
 {
  width:100%; 
 }
+.banner-image{
+	padding:5px;
+}
 
+.banner-image .banner-pro{
+	 border:1px solid #888;
+	  height:200px;
+	   overflow:hidden;
+	    padding:0 30px; 
+	 cursor:pointer;
+}
+.banner-pro input{
+	display:none;
+}

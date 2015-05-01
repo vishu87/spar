@@ -61,7 +61,7 @@
                      <span>{{$errors->first('page_content')}}</span>
                    </div>
                   </div>
-                  <div class="sub-center">
+                  <div class="form-actions sub-center">
                     <button type="submit" class="btn btn-success">Submit</button>
                   </div>   
                 {{Form::close()}}

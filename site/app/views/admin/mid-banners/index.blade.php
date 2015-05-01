@@ -29,13 +29,22 @@
 </div>
 @endif
 <!-- END PAGE HEADER-->
+{{Form::open(array("url"=>"/admin/mid-banners/saveorder","method" => "POST","role"=>"form"))}}
 <div class="row">
-  @foreach($mid_banners as $mid_banner)
-    <div class="col-md-12 banner-col12">     
-     <div class="col-md-3"><input type="checkbox" name="order[]">{{$mid_banner->mid_banner_name}} </div>
-     <div class="col-md-7">{{HTML::image('/images/'.$mid_banner->mid_banner_image,'',["class"=>"img-banner"])}} </div>
-     <a href="{{url('/admin/mid-banners/delete/'.$mid_banner->id)}}" class="del"><span class="btn btn-danger">Delete </span></a>
-    </div>
-  @endforeach  
+   <div id="sortable1">
+    @foreach($mid_banners as $mid_banner)
+      <div class="col-md-4 banner-image">     
+         <div class="banner-pro">
+          <input type="checkbox" name="order[]" value="{{$mid_banner->id}}" checked><h3>{{$mid_banner->mid_banner_name}}</h3>
+          {{HTML::image('/images/'.$mid_banner->mid_banner_image,'',["class"=>"img-banner"])}}
+          @if(Auth::user()->priviledge == 1)
+          <a href="{{url('/admin/mid-banners/delete/'.$mid_banner->id)}}" class="del"><span class="btn btn-danger">Delete </span></a>
+          @endif
+        </div>
+      </div>
+    @endforeach  
+  </div>
 </div>
+<button type="submit" class="btn blue" style="float: right; margin-top: 20px;">Save order</button>
+  {{Form::close()}}
 <!-- BEGIN PAGE CONTENT-->

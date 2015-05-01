@@ -45,11 +45,6 @@
       </thead>
       <tfoot>
         <tr>
-           <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tr>
           <th colspan="8" class="ts-pager form-horizontal">
             <button type="button" class="btn first"><i class="icon-step-backward glyphicon glyphicon-step-backward"></i></button>
             <button type="button" class="btn prev"><i class="icon-arrow-left glyphicon glyphicon-backward"></i></button>
@@ -76,7 +71,9 @@
             </td>
             <td>
               <a href="{{url('/admin/brands/edit/'.$brand->id)}}"><span class="btn yellow">Edit </span></a>
+              @if(Auth::user()->priviledge == 1)
               <a href="{{url('/admin/brands/delete/'.$brand->id)}}" class="del"><span class="btn btn-danger">Delete </span></a>
+              @endif
             </td>
           </tr>
         @endforeach

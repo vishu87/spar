@@ -31,18 +31,22 @@ $(function() {
 });
 
 $(document).ready(function(){
-	var editor =  $('.textarea').wysihtml5({
-		"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
-		"emphasis": true, //Italics, bold, etc. Default true
-		"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
-		"html": true, //Button which allows you to edit the generated HTML. Default false
-		"link": true, //Button to insert a link. Default true
-		"image": false, //Button to insert an image. Default true,
-		"color": false //Button to change color of font  
-	});
+	 $("#sortable1").sortable();
+    $("#sortable1").disableSelection();
+      
 
-	editor.on("load", function() {
-	   editor.focus();
-	   editor.composer.commands.exec("insertHTML", "<a href='#'>asdasd</a>");
-	});
+	// var editor =  $('.textarea').wysihtml5({
+	// 	"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+	// 	"emphasis": true, //Italics, bold, etc. Default true
+	// 	"lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+	// 	"html": true, //Button which allows you to edit the generated HTML. Default false
+	// 	"link": true, //Button to insert a link. Default true
+	// 	"image": false, //Button to insert an image. Default true,
+	// 	"color": false //Button to change color of font  
+	// });
+
+	// editor.on("load", function() {
+	//    editor.focus();
+	//    editor.composer.commands.exec("insertHTML", "<a href='#'>asdasd</a>");
+	// });
 });

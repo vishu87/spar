@@ -2,6 +2,18 @@
 
 class MidBannerController extends BaseController {
     protected $layout = 'admin.layout';
+     
+      public function postOrder(){
+            $count = 1;
+            $order = Input::get('order');
+            if($order){
+                foreach ($order as $mid_banner_id) {
+                    Midbanner::where('id',$mid_banner_id)->update(array('priority'=>$count));
+                    $count++;
+                }
+            }
+            return Redirect::Back();
+    }
 
     public function postAdd(){
         $cre = [
@@ -29,14 +41,16 @@ class MidBannerController extends BaseController {
 
     public function getbanners(){
         $this->layout->title = 'All Banners | Spar';
-        $this->layout->top_active = 10;
-        $mid_banners = DB::table('mid_banner')->get();
+        $this->layout->top_active = 8;
+        $this->layout->sub_active = 3;
+        $mid_banners = DB::table('mid_banner')->orderBy('priority')->get();
         $this->layout->main = View::make("admin.mid-banners.index",array("mid_banners"=>$mid_banners));
     }
 
     public function getadd(){
         $this->layout->title = 'Add | Mid Banner';
-        $this->layout->top_active = 10;
+        $this->layout->top_active = 8;
+        $this->layout->sub_active = 3;
         $this->layout->main = View::make("admin.mid-banners.add");
     }
 

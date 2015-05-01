@@ -43,9 +43,28 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Redirect::to('/');
+			return Redirect::to('/login');
 		}
 	}
+});
+
+Route::filter('authadmin', function()
+{
+	if (Auth::user()->priviledge == 1)
+	{
+		if (Request::ajax())
+		{
+			return Response::make('Unauthorized', 401);
+		}
+		else
+		{
+			return Redirect::to('/login');
+		}
+	}
+	else
+		{
+			return Redirect::to('/login');
+		}
 });
 
 

@@ -1,14 +1,18 @@
 <?php
 
 class RecipeController extends BaseController {
-    protected $layout = 'admin.layout';
+protected $layout = 'admin.layout';
 
-     public function getMain(){
-        $this->layout->title = 'Dashboard | Spar';
-        $this->layout->top_active = 1;
-        $this->layout->main = View::make("admin.main");
-    }
+  public function getRecipesdetail($id){
+    $title = 'Spar | Recipes';
+        $recipes = Recipe::select('recipe.*')->where('recipe.id',$id)->first();
+        // return $recipes;
+          return  View::make('frontend.recipe',array(
+            "recipes" => $recipes
+        ));          
+    }  
 
+    
     public function postAdd(){
         $cre = [
         'recipe_name' => Input::get('recipe_name'),

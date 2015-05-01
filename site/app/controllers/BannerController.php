@@ -3,6 +3,18 @@
 class BannerController extends BaseController {
     protected $layout = 'admin.layout';
 
+        public function postOrder(){
+            $count = 1;
+            $order = Input::get('order');
+            if($order){
+                foreach ($order as $banner_id) {
+                    Banner::where('id',$banner_id)->update(array('priority'=>$count));
+                    $count++;
+                }
+            }
+            return Redirect::Back();
+    }
+
     public function postAdd(){
         $cre = [
         'banner_name' => Input::get('banner_name')   
@@ -30,6 +42,7 @@ class BannerController extends BaseController {
     public function getbanner($banner_id){
         $this->layout->title = 'Spar | Banner';
         $this->layout->top_active = 8;
+        $this->layout->sub_active = 1;
         $banner = DB::table('banner')->where('id',$banner_id)->first();
         $this->layout->main = View::make("admin.banners.edit",array("banner"=>$banner));
     }
@@ -37,13 +50,15 @@ class BannerController extends BaseController {
     public function getbanners(){
         $this->layout->title = 'All Banners | Spar';
         $this->layout->top_active = 8;
-        $banners = DB::table('banner')->get();
+        $this->layout->sub_active = 1;
+        $banners = DB::table('banner')->orderBy('priority')->get();
         $this->layout->main = View::make("admin.banners.index",array("banners"=>$banners));
     }
 
     public function getadd(){
         $this->layout->title = 'Add | Banner';
         $this->layout->top_active = 8;
+        $this->layout->sub_active = 1;
         $this->layout->main = View::make("admin.banners.add");
     }
 

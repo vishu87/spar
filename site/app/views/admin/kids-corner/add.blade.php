@@ -67,7 +67,7 @@
                      {{Form::file('kids_image',array("class"=>"form-control"))}} 
                    </div>
                   </div>   
-                  <div class="sub-center">
+                  <div class="form-actions sub-center">
                     <button type="submit" class="btn btn-success">Submit</button>
                   </div>   
                 {{Form::close()}}

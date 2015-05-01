@@ -1,11 +1,39 @@
 <?php
 
-Route::get('/admin', function(){
-	return View::make('admin.layout',["main"=>View::make('admin.main')]);
+    Route::get('/', function(){
+	return View::make('home');
 });
 
-Route::group(['prefix' => 'admin'], function () {
-	Route::get('/','RecipeController@getMain');
+    Route::get('/recipes/add', function(){
+	return View::make('frontend.addrecipe');
+});
+    Route::get('/brands', function(){
+	return View::make('frontend.brand');
+});
+     Route::get('/brands-groceries', function(){
+	return View::make('frontend.brand_grocery');
+});
+
+   Route::get('/kids-corner', function(){
+	return View::make('frontend.kids');
+});
+    Route::get('/deals', function(){
+	return View::make('frontend.deal');
+});
+
+
+   Route::group(['prefix' => 'recipes'], function () {
+   	Route::get('/','FrontendController@getRecipesdetail');
+   	Route::get('/{id}','FrontendController@getRecipesdetail');	
+   	Route::post('/store','FrontendController@postAdd'); 
+}); 
+
+Route::get('/login','UserController@getMain');
+Route::post('/login', 'UserController@postLogin');
+
+    
+Route::group(['prefix' => 'admin','before' => 'auth'], function () {
+	Route::get('/dashboard','RecipeController@getRecipes');
 
 	Route::group(['prefix' => 'recipes'], function () {
 		Route::get('/','RecipeController@getRecipes');
@@ -15,7 +43,7 @@ Route::group(['prefix' => 'admin'], function () {
 		Route::post('/related-product/save/{product_id}','RecipeController@postAddrelatedpro');
 		Route::get('/edit/{recipe_id}','RecipeController@getrecipe');
 	    Route::put('/update/{recipe_id}', 'RecipeController@putupdate');
-	    Route::get('/delete/{recipe_id}', 'RecipeController@getdelete');
+	    Route::get('/delete/{recipe_id}',array('before'=>'authadmin', 'uses'=>'RecipeController@getdelete'));
 	    Route::get('/related/del/{id}', 'RecipeController@getdel');
 	    Route::get('/related-product/del/{id}', 'RecipeController@getdelpro');
 
@@ -27,7 +55,7 @@ Route::group(['prefix' => 'admin'], function () {
 		Route::post('/store','PageController@postAdd');
 		Route::get('/edit/{page_id}','PageController@getpage');
 	    Route::put('/update/{page_id}', 'PageController@putupdate');
-	    Route::get('/delete/{page_id}', 'PageController@getdelete');
+	    Route::get('/delete/{page_id}',array('before'=>'authadmin', 'uses'=>'PageController@getdelete'));
 
 	});
 	 Route::group(['prefix' => 'brands'], function () {
@@ -36,7 +64,7 @@ Route::group(['prefix' => 'admin'], function () {
 		Route::post('/store','BrandController@postAdd');
 		Route::get('/edit/{brand_id}','BrandController@getbrand');
 	    Route::put('/update/{brand_id}', 'BrandController@putupdate');
-	    Route::get('/delete/{brand_id}', 'BrandController@getdelete');
+	    Route::get('/delete/{brand_id}',array('before'=>'authadmin', 'uses'=>'BrandController@getdelete'));
 
 	});
 	  Route::group(['prefix' => 'kids-corner'], function () {
@@ -45,7 +73,7 @@ Route::group(['prefix' => 'admin'], function () {
 		Route::post('/store','KidsController@postAdd');
 		Route::get('/edit/{kids_id}','KidsController@getkids');
 	    Route::put('/update/{kids_id}', 'KidsController@putupdate');
-	    Route::get('/delete/{kids_id}', 'KidsController@getdelete');
+	    Route::get('/delete/{kids_id}',array('before'=>'authadmin', 'uses'=>'KidsController@getdelete'));
 
 	});
 	   Route::group(['prefix' => 'products'], function () {
@@ -56,7 +84,7 @@ Route::group(['prefix' => 'admin'], function () {
 	    Route::get('/related/del/{id}', 'ProductController@getdelpro');
 		Route::get('/edit/{product_id}','ProductController@getproduct');
 	    Route::put('/update/{product_id}', 'ProductController@putupdate');
-	    Route::get('/delete/{product_id}', 'ProductController@getdelete');
+	    Route::get('/delete/{product_id}',array('before'=>'authadmin', 'uses'=>'ProductController@getdelete'));
 
 	});
 	   Route::group(['prefix' => 'deals'], function () {
@@ -65,16 +93,18 @@ Route::group(['prefix' => 'admin'], function () {
 		Route::post('/store','DealController@postAdd');
 		Route::get('/edit/{deal_id}','DealController@getdeal');
 	    Route::put('/update/{deal_id}', 'DealController@putupdate');
-	    Route::get('/delete/{deal_id}', 'DealController@getdelete');
+	    Route::get('/delete/{deal_id}',array('before'=>'authadmin', 'uses'=>'DealController@getdelete'));
 
 	});
-	   Route::group(['prefix' => 'banners'], function () {
+
+	    Route::group(['prefix' => 'banners'], function () {
 		Route::get('/','BannerController@getbanners');
 		Route::get('/add','BannerController@getAdd');
 		Route::post('/store','BannerController@postAdd');
+		Route::post('/saveorder','BannerController@postOrder');
 		Route::get('/edit/{banner_id}','BannerController@getbanner');
 	    Route::put('/update/{banner_id}', 'BannerController@putupdate');
-	    Route::get('/delete/{banner_id}', 'BannerController@getdelete');
+	    Route::get('/delete/{banner_id}',array('before'=>'authadmin', 'uses'=>'BannerController@getdelete'));
 
 	});
 
@@ -82,7 +112,8 @@ Route::group(['prefix' => 'admin'], function () {
 		Route::get('/','SideBannerController@getbanners');
 		Route::get('/add','SideBannerController@getAdd');
 		Route::post('/store','SideBannerController@postAdd');
-	    Route::get('/delete/{side_banner_id}', 'SideBannerController@getdelete');
+		Route::post('/saveorder','SideBannerController@postOrder');
+	    Route::get('/delete/{side_banner_id}',array('before'=>'authadmin', 'uses'=>'SideBannerController@getdelete'));
 
 	});
 
@@ -90,9 +121,26 @@ Route::group(['prefix' => 'admin'], function () {
 		Route::get('/','MidBannerController@getbanners');
 		Route::get('/add','MidBannerController@getAdd');
 		Route::post('/store','MidBannerController@postAdd');
-	    Route::get('/delete/{mid_banner_id}', 'MidBannerController@getdelete');
+		Route::post('/saveorder','MidBannerController@postOrder');
+	    Route::get('/delete/{mid_banner_id}',array('before'=>'authadmin', 'uses'=>'MidBannerController@getdelete'));
 
 	});
+
+
+	    Route::group(['prefix' => 'members'], function () {
+		Route::get('/','MemberController@getMembers');
+		Route::get('/add','MemberController@getAdd');
+		Route::post('/store','MemberController@postAdd');
+		Route::get('/edit/{page_id}','MemberController@getmember');
+	    Route::put('/update/{page_id}', 'MemberController@putupdate');
+	    Route::get('/delete/{page_id}',array('before'=>'authadmin', 'uses'=>'MemberController@getdelete'));
+
+	});
+
+	    Route::get('/logout', function(){
+	Auth::logout();
+	return Redirect::to('/');
+});
 
     
 });

@@ -83,7 +83,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-md-2 control-label">Cook Time Time</label>
+                    <label class="col-md-2 control-label">Cook Time</label>
                     <div class="col-md-9">
                       {{Form::text('cook_time','',array("class"=>"form-control", "placeholder"=>"Enter Cook Time"))}}
                     </div>
@@ -106,12 +106,11 @@
                      {{Form::file('recipe_image',array("class"=>"form-control"))}} 
                    </div>
                   </div>
-                  <div class="sub-center">
+                  </div>
+                  <div class="form-actions sub-center">
                     <button type="submit" class="btn btn-success">Submit</button>
                   </div>   
                 {{Form::close()}}
-
-            </div>
           </div>
     <!-- END SAMPLE FORM PORTLET-->
   </div>
