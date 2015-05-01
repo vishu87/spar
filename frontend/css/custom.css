@@ -1,0 +1,91 @@
+.page-bar{
+	padding: 0px;
+  background-color: #f7f7f7;
+  margin-bottom: 25px;
+}
+.page-bar .page-breadcrumb {
+  display: inline-block;
+  float: left;
+  padding: 8px;
+  margin: 0;
+  list-style: none;
+  padding-left: 0px;
+}
+.page-bar .page-breadcrumb > li {
+  display: inline-block;
+}
+.summer-recipe{
+	font-weight: 600;
+  color: #00B050;
+}
+.recipe-time{
+	margin-top: 20px;
+}
+.recipe-info{
+	padding-left: 20px;
+}
+ hr{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-top: 2px solid #eee;
+}
+.Ingredients{
+	font-weight: 600;
+  color: #00B050;
+}
+.margin{
+ margin-top: 30px;
+ margin-bottom: 30px;
+}
+.side-bar{
+	padding-left: 30px;
+	padding-right: 50px;
+}
+.other-recipe{
+	width: 300px;
+}
+.top-margin{
+	margin-top: 10px;
+}
+.other-recipe-name{
+	width: 330px;
+}
+.other-name{
+ height: 80px;
+ padding: 30px;
+ background: #DA3632;
+}
+.other-img{
+	height: 80px;
+  width: 100%;
+}
+.other-margin{
+	margin-top: 3px;
+}
+.other-pro{
+	height: 200px;
+  width: 100%;
+}
+.other-name-pro{
+ height: 200px;
+ padding: 60px;
+ background: #DA3632;
+   text-align: center;
+}
+.add-button{
+	float: right; 
+}
+.img-padding{
+	padding: 10px;
+}
+.img-radius{
+	border-radius: 15px;
+}
+.btn.green-stripe {
+  border-right: 3px solid #35aa47;
+  border-top: 1px solid #857F7F;
+  border-bottom: 1px solid #857F7F;
+  }
+  .btn-align{
+  	text-align: center;
+  }

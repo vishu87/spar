@@ -1,8 +1,6 @@
 <?php
 
-    Route::get('/', function(){
-	return View::make('home');
-});
+    Route::get('/', 'FrontendController@index');
 
     Route::get('/recipes/add', function(){
 	return View::make('frontend.addrecipe');

@@ -6,7 +6,6 @@ protected $layout = 'admin.layout';
   public function getRecipesdetail($id){
     $title = 'Spar | Recipes';
         $recipes = Recipe::select('recipe.*')->where('recipe.id',$id)->first();
-        // return $recipes;
           return  View::make('frontend.recipe',array(
             "recipes" => $recipes
         ));          
