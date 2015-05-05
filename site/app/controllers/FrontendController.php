@@ -8,15 +8,37 @@ class FrontendController extends BaseController {
         $this->layout->main = View::make('frontend.home');
    }
 
+ public function brand(){
+        $this->layout->title = 'Brand | SPAR Nigeria';
+        $this->layout->main = View::make('frontend.brand');
+   }
+
+    public function kids(){
+        $this->layout->title = 'Kids Corner | SPAR Nigeria';
+        $this->layout->main = View::make('frontend.kids');
+   }
+
+    public function deal(){
+        $this->layout->title = 'Deals | SPAR Nigeria';
+        $this->layout->main = View::make('frontend.deal');
+   }
+   public function brandgroceries(){
+        $this->layout->title = 'Brand Groceries | SPAR Nigeria';
+        $this->layout->main = View::make('frontend.brand_grocery');
+   }
+   
 
     public function getRecipesdetail($id){
         $this->layout->title = 'All Recipes | Spar';
-
         $recipes = Recipe::select('recipe.*')->where('recipe.id',$id)->first();
         $this->layout->main = View::make('frontend.recipe',array(
             "recipes" => $recipes
         ));          
     }  
+     public function getAddRecipesdetail(){
+        $this->layout->title = 'Add Recipe | SPAR Nigeria';
+        $this->layout->main = View::make('frontend.addrecipe');
+   }
 
 
    public function postAdd(){
@@ -46,5 +68,39 @@ class FrontendController extends BaseController {
         }
     }
 
+    public function getAbout($id){
+        $this->layout->title = 'About Us  | Spar Nigeria';
+        $pages = Page::select('pages.*')->where('pages.id',$id)->first();
+        $this->layout->main = View::make('frontend.pages.aboutus',array(
+            "pages" => $pages
+        ));          
+    }  
 
+    public function aboutproduct(){
+        $this->layout->title = 'About Product Range | SPAR Nigeria';
+        $this->layout->main = View::make('frontend.pages.about_product');
+   }
+   public function abouttrivia(){
+        $this->layout->title = 'About Product Range | SPAR Nigeria';
+        $this->layout->main = View::make('frontend.pages.trivia');
+   }
+
+   public function aboutCustomer_review(){
+        $this->layout->title = 'About Customer Reviews | SPAR Nigeria';
+        $this->layout->main = View::make('frontend.pages.customer_review');
+   }
+   public function aboutCustomer_service(){
+        $this->layout->title = 'About Customer Service | SPAR Nigeria';
+        $this->layout->main = View::make('frontend.pages.customer_service');
+   }   
+
+   public function aboutReward_card(){
+        $this->layout->title = 'About Reward Card | SPAR Nigeria';
+        $this->layout->main = View::make('frontend.pages.reward_card');
+   } 
+    public function aboutGift_card(){
+        $this->layout->title = 'About Gift Card | SPAR Nigeria';
+        $this->layout->main = View::make('frontend.pages.gift_card');
+   } 
+   
 }

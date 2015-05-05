@@ -30,7 +30,7 @@
 @if(Session::has('success'))
   <div class="alert alert-success alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-    <strong>Success!</strong> {{Session::get('success')}} </a>
+    <strong>Success!</strong> {{Session::get('success')}}
   </div>
 @endif
 
@@ -55,9 +55,9 @@
                     </div>
                   </div>                  
                   <div class="form-group">
-                    <label class="col-md-2 control-label">Page Content</label>
+                    <label class="col-md-2 control-label">Page Content</label>                  
                     <div class="col-md-9">
-                     {{Form::textarea('page_content','',array("class"=>"form-control", "placeholder"=>"Page Content"))}} 
+                     {{Form::textarea('page_content','',array("class"=>"ckeditor form-control", "placeholder"=>"Page Content"))}} 
                      <span>{{$errors->first('page_content')}}</span>
                    </div>
                   </div>
@@ -69,4 +69,5 @@
           </div>
     <!-- END SAMPLE FORM PORTLET-->
   </div>
+</div>
 </div>

@@ -18,6 +18,7 @@
     {{HTML::style("frontend/css/responsive.css")}}
     {{HTML::style("frontend/css/animate.css")}}
     {{HTML::style("frontend/css/colors.css")}}
+    {{HTML::style("frontend/css/custom.css")}}
     
 
     <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -38,19 +39,19 @@
                 <i class="fa fa-bars"></i>
               </button>
               
-              <a class="navbar-brand" href="index.php"><img alt="" src="frontend/images/logo.png"></a>
+              <a class="navbar-brand" href="index.php">{{ HTML::image('frontend/images/logo.png') }}</a>
             </div>
             <div class="navbar-collapse collapse">
               
               <ul class="nav navbar-nav navbar-right">
                 <li><a class="active" href="#"><i class="fa fa-home"></i></a></li>
-                <li><a class="" href="#">About SPAR</a></li>
-                <li><a class="" href="#">Store Locator</a></li>
-                <li><a class="" href="#">Loyalty Program</a></li>
-                <li><a class="" href="#">Gift Card</a></li>
-                <li><a class="" href="#">Careers</a></li>
-                <li><a class="" href="#">Deals</a></li>
-                <li><a class="" href="#">Credit Cards</a></li>
+                <li><a class="" href="{{url('/pages/aboutus/5')}}">About SPAR</a></li>
+                <li><a class="" href="{{url('/')}}">Store Locator</a></li>
+                <li><a class="" href="{{url('/')}}">Loyalty Program</a></li>
+                <li><a class="" href="{{url('/pages/gift-card')}}">Gift Card</a></li>
+                <li><a class="" href="{{url('/')}}">Careers</a></li>
+                <li><a class="" href="{{url('/deals')}}">Deals</a></li>
+                <li><a class="" href="{{url('/')}}">Credit Cards</a></li>
               </ul>
               
             </div>
@@ -108,7 +109,7 @@
               </div>               
               <div class="col-md-3">
                   <div class="footer-widget contact-widget">
-                      <h4><img src="frontend/images/footer-logo.png" class="img-responsive" alt="Footer Logo" /></h4>
+                      <h4>{{HTML::image('frontend/images/footer-logo.png','Footer Logo',array("class"=>"img-responsive"))}}</h4>
                       <p>Artee Group is one of Nigeria's leading business houses with multiple businesses spanning across the consumption space. While retail forms the core business activity of Artee Group, group subsidiaries are present in manufacturing, real estate, exports among many others.</p>
                       <ul>
                           <li><span>Phone Number:</span> +234 (0) 805 749 5210 </li>

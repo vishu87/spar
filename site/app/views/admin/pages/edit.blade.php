@@ -64,7 +64,7 @@
           <div class="form-group">
             <label class="col-md-2 control-label">Page Content</label>
             <div class="col-md-9">
-             {{Form::textarea('page_content',$page->page_content,array("class"=>"form-control", "placeholder"=>"Page Content"))}}  
+             {{Form::textarea('page_content',$page->page_content,array("class"=>"ckeditor form-control", "placeholder"=>"Page Content"))}}  
              <span>{{$errors->first('page_content')}}</span>          
            </div>
          </div>          

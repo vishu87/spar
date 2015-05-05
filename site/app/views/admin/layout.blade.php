@@ -22,6 +22,7 @@
 {{HTML::style("assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css")}}
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN THEME STYLES -->
+
 {{HTML::style("assets/global/css/lock2.css")}}
 {{HTML::style("assets/global/css/components.css")}}
 {{HTML::style("assets/admin/css/layout.css")}}
@@ -146,8 +147,7 @@
 {{HTML::script("assets/global/plugins/jquery.cokie.min.js")}}
 
 <!-- END CORE PLUGINS -->
-
-{{HTML::script("assets/global/scripts/lock.js")}}
+{{HTML::script("assets/global/plugins/ckeditor/ckeditor.js")}}
 {{HTML::script("assets/global/scripts/jquery.backstretch.min.js")}}
 {{HTML::script("assets/global/scripts/metronic.js")}}
 {{HTML::script("assets/global/scripts/jquery-ui.js")}}

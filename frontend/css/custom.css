@@ -83,9 +83,42 @@
 }
 .btn.green-stripe {
   border-right: 3px solid #35aa47;
+  border-left: 3px solid #35aa47;
   border-top: 1px solid #857F7F;
   border-bottom: 1px solid #857F7F;
   }
   .btn-align{
   	text-align: center;
+  }
+  .side-nav{
+  border: 1px solid #EC1A23;
+  margin-top: 5px;
+  padding: 5px;
+  text-align: center;
+  }
+  .side-nav a{
+    color: #fff;
+  }
+  .active-nav{
+    color: #EC1A23;
+      font-weight: 600;
+  }
+  .other-nav{
+    color: #fff;
+    background-color: #EC1A23;
+    font-weight: 600; 
+  }
+  .customer{
+   background: #18A848;
+   text-align: center;
+   padding: 5px;
+  }
+  .customer h4{
+    color: #fff;
+  }
+  .cust-date{
+   color: #4F61DA;
+  font-weight: 500;
+  font-size: 12px;
+
   }

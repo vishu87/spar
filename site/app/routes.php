@@ -2,28 +2,27 @@
 
     Route::get('/', 'FrontendController@index');
 
-    Route::get('/recipes/add', function(){
-	return View::make('frontend.addrecipe');
-});
-    Route::get('/brands', function(){
-	return View::make('frontend.brand');
-});
-     Route::get('/brands-groceries', function(){
-	return View::make('frontend.brand_grocery');
-});
-
-   Route::get('/kids-corner', function(){
-	return View::make('frontend.kids');
-});
-    Route::get('/deals', function(){
-	return View::make('frontend.deal');
-});
+    Route::get('/brands', 'FrontendController@brand');
+    Route::get('/brands-groceries', 'FrontendController@brandgroceries');
+    Route::get('/kids-corner', 'FrontendController@kids');
+    Route::get('/deals', 'FrontendController@deal');
 
 
    Route::group(['prefix' => 'recipes'], function () {
    	Route::get('/','FrontendController@getRecipesdetail');
+   	Route::get('/add','FrontendController@getAddRecipesdetail');
    	Route::get('/{id}','FrontendController@getRecipesdetail');	
    	Route::post('/store','FrontendController@postAdd'); 
+}); 
+
+ Route::group(['prefix' => 'pages'], function () {
+   	Route::get('/aboutus/{id}','FrontendController@getAbout');
+   	Route::get('/product-range','FrontendController@aboutproduct');
+   	Route::get('/trivia','FrontendController@abouttrivia');
+   	Route::get('/customer-reviews','FrontendController@aboutCustomer_review');
+   	Route::get('/customer-service','FrontendController@aboutCustomer_service');
+   	Route::get('/reward-card','FrontendController@aboutReward_card');
+   	Route::get('/gift-card','FrontendController@aboutGift_card');
 }); 
 
 Route::get('/login','UserController@getMain');
@@ -121,6 +120,14 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 		Route::post('/store','MidBannerController@postAdd');
 		Route::post('/saveorder','MidBannerController@postOrder');
 	    Route::get('/delete/{mid_banner_id}',array('before'=>'authadmin', 'uses'=>'MidBannerController@getdelete'));
+
+	});
+
+	    Route::group(['prefix' => 'pages-side-banners'], function () {
+		Route::get('/','PageSideBannerController@getbanners');
+		Route::get('/add','PageSideBannerController@getAdd');
+		Route::post('/store','PageSideBannerController@postAdd');
+	    Route::get('/delete/{side_banner_id}',array('before'=>'authadmin', 'uses'=>'PageSideBannerController@getdelete'));
 
 	});
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2015 at 01:40 PM
+-- Generation Time: May 05, 2015 at 01:40 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -23,6 +23,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `addfront_recipes`
+--
+
+CREATE TABLE IF NOT EXISTS `addfront_recipes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `recipe_name` varchar(200) NOT NULL,
+  `ingred` text NOT NULL,
+  `cook_time` varchar(100) NOT NULL,
+  `method` text NOT NULL,
+  `recipe_image` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `addfront_recipes`
+--
+
+INSERT INTO `addfront_recipes` (`id`, `recipe_name`, `ingred`, `cook_time`, `method`, `recipe_image`) VALUES
+(1, 'pizza', ' jdfuefi, dfehwfiu ey8iw, jfweugfi', '56 min', 'a jhgjugu7 ti tggf  hytfyhfrjfykt u\r\nnm hkiyhli rdtfyj', 'b1.jpg'),
+(2, 'new recipe', 'b erbyg, ftguetf87tw, fyusgfuigi', '60 min', 'a  gugfiefieyf ei8fye8wyf ew\r\n djgeudjg wegd\r\ne dhuweh', 'd4.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `banner`
 --
 
@@ -30,18 +54,19 @@ CREATE TABLE IF NOT EXISTS `banner` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `banner_name` varchar(200) NOT NULL,
   `banner_image` varchar(200) NOT NULL,
+  `priority` int(11) NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `banner`
 --
 
-INSERT INTO `banner` (`id`, `banner_name`, `banner_image`, `updated_at`) VALUES
-(1, 'kfhbrifhoer', '980-x-500-B-1.jpeg', '2015-03-20 12:21:15'),
-(2, 'jier jutoero', 'DSC_2006.jpg', '0000-00-00 00:00:00'),
-(3, 'h fighioer', '980X500.png', '0000-00-00 00:00:00');
+INSERT INTO `banner` (`id`, `banner_name`, `banner_image`, `priority`, `updated_at`) VALUES
+(4, 'aa', 'ad.jpg', 3, '2015-04-30 05:39:53'),
+(5, 'fsdf', '980-x-500-B-1.jpg', 2, '2015-04-30 05:39:53'),
+(6, 'gdfg', '980X500.png', 1, '2015-04-30 05:39:53');
 
 -- --------------------------------------------------------
 
@@ -119,6 +144,30 @@ INSERT INTO `kids` (`id`, `title`, `content`, `kids_image`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mid_banner`
+--
+
+CREATE TABLE IF NOT EXISTS `mid_banner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mid_banner_name` varchar(200) NOT NULL,
+  `mid_banner_image` varchar(200) NOT NULL,
+  `priority` int(11) NOT NULL,
+  `updated_at` timestamp NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `mid_banner`
+--
+
+INSERT INTO `mid_banner` (`id`, `mid_banner_name`, `mid_banner_image`, `priority`, `updated_at`) VALUES
+(3, 'dfdsfv', 'DW3-External.jpg', 2, '2015-04-30 10:31:34'),
+(4, 'fgfdge', 'win3.jpg', 1, '2015-04-30 10:31:34'),
+(5, 'tretg4t', 'XMAS-BANNER.jpg', 3, '2015-04-30 10:31:34');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pages`
 --
 
@@ -128,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `page_content` text NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `pages`
@@ -136,7 +185,30 @@ CREATE TABLE IF NOT EXISTS `pages` (
 
 INSERT INTO `pages` (`id`, `page_title`, `page_content`, `updated_at`) VALUES
 (2, 'vtre ', 'ui hiyo up ', '0000-00-00 00:00:00'),
-(4, 'new page1', '111page content', '2015-03-19 17:24:10');
+(4, 'new page1', '111page content', '2015-03-19 17:24:10'),
+(5, 'new page dcbj', '<p><strong>dfe hfueh rh&nbsp;</strong>&nbsp;&nbsp;<u>hri83yr 98i3y9 hd uwehi</u></p>\r\n\r\n<ol>\r\n	<li>Retail forms the core business</li>\r\n</ol>\r\n\r\n<ol>\r\n	<li>activity at Artee Group and most of</li>\r\n	<li>its businesses in the consumption space are built around retail. Artee Group&#39;s retail network touches the lives of millions of Nigerians. The group currently operates around several stores spread over large retail space.</li>\r\n</ol>\r\n\r\n<p>&nbsp;</p>\r\n', '2015-05-02 18:46:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `page_side_banner`
+--
+
+CREATE TABLE IF NOT EXISTS `page_side_banner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `side_banner_name` varchar(200) NOT NULL,
+  `side_banner_image` varchar(200) NOT NULL,
+  `updated_at` timestamp NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `page_side_banner`
+--
+
+INSERT INTO `page_side_banner` (`id`, `side_banner_name`, `side_banner_image`, `updated_at`) VALUES
+(1, 'ftheiurht i8', 'ad.jpg', '0000-00-00 00:00:00'),
+(2, 'ghrgtod', 'b1.jpg', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -185,7 +257,7 @@ CREATE TABLE IF NOT EXISTS `recipe` (
   `updated_at` timestamp NOT NULL,
   `created_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `recipe`
@@ -194,9 +266,7 @@ CREATE TABLE IF NOT EXISTS `recipe` (
 INSERT INTO `recipe` (`id`, `recipe_name`, `category_id`, `preparation_time`, `recipe_image`, `description`, `ingredient`, `cook_time`, `to_serve`, `method`, `updated_at`, `created_at`) VALUES
 (13, ' bvhukfdhi', 0, '54 min', '', ' fhsdkfhowowe ', 'das vjydgasida, hdsiw', '35 min', ' hudcgodwdo', 'cb ucgisucg is', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (14, 'ih jo', 0, ' hiyit', '', 'io houp0', ' juo9u 9ou', 'iojiou', 'uj 9 uioyhil', 'ioh oup9u ', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(15, ' uikhfiud', 1, 'v ukdhvikud', '980-x-500-B-1.jpg', ' gugsdkius', 'kh yfoe', 'iu ftiew', 'gf uieg', 'hui shaid', '2015-03-30 10:30:48', '0000-00-00 00:00:00'),
-(16, 'new recipe', 2, 'oko0', 'DSC_1968.jpg', 'kokopik', 'pkpkp', 'kp', 'kk', 'pkpk', '2015-03-19 13:42:34', '0000-00-00 00:00:00'),
-(17, 'salkdjljsal', 1, 'lkjlkj', '', 'ljl', 'jlj', 'lj', 'ljl', 'lkjlkj', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(18, 'asdasdsad', 1, 'asdasd', 'ad1.jpg', 'kjlkjlkjl', 'jlkjlkjlkj', 'llkjlkjlk', '', '', '2015-04-30 10:24:39', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -265,39 +335,56 @@ INSERT INTO `related_recipes` (`id`, `recipe_id`, `related_recipe_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `side_banner`
+--
+
+CREATE TABLE IF NOT EXISTS `side_banner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `side_banner_name` varchar(200) NOT NULL,
+  `side_banner_image` varchar(200) NOT NULL,
+  `priority` int(11) NOT NULL,
+  `updated_at` timestamp NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `side_banner`
+--
+
+INSERT INTO `side_banner` (`id`, `side_banner_name`, `side_banner_image`, `priority`, `updated_at`) VALUES
+(1, 'grtg', 'b1.jpg', 3, '2015-04-30 10:23:26'),
+(2, 'FGFRG', '980-x-500-b.jpg', 1, '2015-04-30 10:23:26'),
+(3, 'edfwe', 'd7.jpg', 2, '2015-04-30 10:23:26'),
+(4, 'jfhukerh ie', 'ad1.jpg', 0, '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `firstname` varchar(100) NOT NULL,
-  `lastname` varchar(100) NOT NULL,
-  `profilename` varchar(100) NOT NULL,
-  `sex` int(1) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `phone` varchar(20) NOT NULL,
-  `website` varchar(200) NOT NULL,
-  `serv_state` int(11) NOT NULL,
-  `origin_state` int(11) NOT NULL,
-  `state_code` int(11) NOT NULL,
-  `lg` int(11) NOT NULL,
-  `profile_pic` varchar(500) NOT NULL,
+  `phone` int(11) NOT NULL,
+  `priviledge` int(1) NOT NULL,
   `remember_token` varchar(200) NOT NULL,
   `created_at` timestamp NOT NULL,
   `updated_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `profilename`, `sex`, `email`, `phone`, `website`, `serv_state`, `origin_state`, `state_code`, `lg`, `profile_pic`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'abcd@gmail.com', '$2y$10$DwTZctstV9d93gVDeNv2lOEyRVRIPbve88gp2oxd2KIA/LGYwoZOS', 'ABCD', '', '', 0, '', '', '', 0, 0, 0, 0, '', 'fWDoBvBafvUtQNWiEyZTAjo6Dh81ZLqiLUznbICno4w73seUzgHDjqrytzdp', '2015-01-09 12:25:30', '2015-01-17 12:34:30'),
-(2, 'abcd2@gmail.com', '$2y$10$cLaoWaXm9drxfvv.YWqu2.lufyrZbuHJmd27eHBs/yLqXxxHTGwx2', '', '', '', 0, '', '', '', 0, 0, 0, 0, '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'abcd3@gmail.com', '$2y$10$WIPa3WNBd9tifAYqgceBYOzC6FPo5DMfBuim1B/SCvYWFTRNFu6.a', 'vashistha', 'aggarwal', 'vashi', 1, '', '', '', 2, 4, 235252, 2635, 'assets/avatars/20150213185735.jpeg', 'nUNHpBuwPxzTYRoO17T7JcOIgGk7DndxUrPN1r7N3ed5EFYqqZzjXSh0RaFB', '2015-02-09 13:12:35', '2015-03-11 13:01:09');
+INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `phone`, `priviledge`, `remember_token`, `created_at`, `updated_at`) VALUES
+(4, 'drc euwi 121', 'abcd@gmail.com', '$2y$10$Tc0.nU6itR.inQZhKOKmqu.L5fCOPM0IGYGuXTHxyQdv2diD.aJbe', 'abcd@gmail.com', 2147483647, 1, '', '2015-04-29 12:38:16', '2015-04-29 12:38:16'),
+(5, 'arti', 'chauhan', '123456789', 'arti@gmail.com', 356565651, 0, '', '2015-04-29 16:53:56', '2015-04-29 16:53:56'),
+(6, 'f djgeriul', '', '$2y$10$Z.C3FWFggMduFcpeGWaXk.Sjd0oO7UX92tKbsihmu.cWf0riIrTVm', 'abcd@gmail.com', 32564865, 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

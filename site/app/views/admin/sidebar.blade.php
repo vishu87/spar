@@ -55,7 +55,7 @@
         <li @if($top_active == 8) class="active open" @endif>
           <a href="javascript:;">
             <i class="fa fa-file-image-o"></i>
-            <span class="title">Banners</span>
+            <span class="title">Home Banners</span>
             <span class="selected"></span>
             <span class="arrow open"></span>
           </a>
@@ -83,13 +83,20 @@
               </a>
             </li>
           </ul>
-        </li>   
+        </li>  
         <li @if($top_active == 9) class="active" @endif>
+          <a href="{{url('/admin/pages-side-banners')}}">
+            <i class="fa fa-file-image-o"></i>
+            <span class="title">Side Banners</span>
+            <span class="selected"></span>
+          </a>
+        </li> 
+        <li @if($top_active == 10) class="active" @endif>
           <a href="{{url('/admin/members')}}">
             <i class="fa fa-users"></i>
             <span class="title">Members</span>
             <span class="selected"></span>
           </a>
-        </li>   
+        </li>
       </ul>
     </div>
