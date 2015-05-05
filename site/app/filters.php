@@ -50,21 +50,11 @@ Route::filter('auth', function()
 
 Route::filter('authadmin', function()
 {
-	if (Auth::user()->priviledge == 1)
-	{
-		if (Request::ajax())
-		{
-			return Response::make('Unauthorized', 401);
-		}
-		else
-		{
-			return Redirect::to('/login');
-		}
+	if (Auth::user()->priviledge == 1){
 	}
-	else
-		{
+	else {
 			return Redirect::to('/login');
-		}
+	}
 });
 
 
