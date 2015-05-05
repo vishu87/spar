@@ -3,7 +3,7 @@
 .env.php
 etc
 packages
-images/*
+images
 site/*
 !site/app
 site/app/commands
@@ -14,5 +14,3 @@ site/app/lang
 site/app/start
 site/app/storage
 site/app/tests
-
-
