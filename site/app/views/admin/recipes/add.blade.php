@@ -56,7 +56,7 @@
                   </div>
                   <div class="form-group">
                     <label class="col-md-2 control-label">Recipe Category</label>
-                    <div class="col-md-9">
+                    <div class="col-md-5">
                       {{Form::select('category_id',$categories,'',array("class"=>"form-control"))}}
                         <span>{{$errors->first('category_id')}}</span>
                     </div>

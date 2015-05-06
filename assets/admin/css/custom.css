@@ -74,3 +74,12 @@ Change Quick Sidebar Width
 .dropdown-submenu .dropdown-menu{
   background-color: #364150;
 }
+.tablesorter-filter{
+  width: 100%;
+  min-width: 30px;
+  box-shadow: none;
+  border:1px solid #CCC;
+}
+.form-group span{
+  color: #f00;
+}

@@ -4,12 +4,13 @@
             <div class="sidebar-toggler">
           </div>
         </li>
-        <li @if($top_active == 1) class="active" @endif>
+        <li @if($top_active == 1) class="active" @endif style="display:none">
           <a href="{{url('/admin/dashboard')}}">
             <i class="icon-home"></i>
             <span class="title">Dashboard</span>
           </a>
         </li>
+        <li style="height:20px"></li>
         <li @if($top_active == 2) class="active" @endif>
           <a href="{{url('/admin/recipes')}}">
             <i class="fa fa-cutlery"></i>

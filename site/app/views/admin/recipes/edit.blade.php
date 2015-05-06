@@ -43,7 +43,7 @@
 
 <!-- BEGIN PAGE CONTENT-->
 <div class="row">
-  <div class="col-md-12 ">
+  <div class="col-md-8 ">
     <!-- BEGIN SAMPLE FORM PORTLET-->
     <div class="portlet box blue">
       <div class="portlet-title">
@@ -130,11 +130,8 @@
   <!-- END SAMPLE FORM PORTLET-->
 </div>
 </div>
-</div>
 
-<!-- BEGIN PAGE CONTENT-->
-<div class="row">
-  <div class="col-md-12 ">
+  <div class="col-md-4 ">
     <!-- BEGIN SAMPLE FORM PORTLET-->
     <div class="portlet box blue">
       <div class="portlet-title">
@@ -143,20 +140,23 @@
         </div>           
       </div>
       <div class="portlet-body form">
-        {{Form::open(array("url"=>"/admin/recipes/related/save/".$recipe->id,"method" => "POST","role"=>"form","class" => "form-horizontal","files"=>true))}}
+        {{Form::open(array("url"=>"/admin/recipes/related/save/".$recipe->id,"method" => "POST","role"=>"form","class" => "horizontal-form","files"=>true))}}
         <div class="form-body">
           <div class="form-group">
-            <label class="col-md-2 control-label">Related Recipe</label>
-            <div class="col-md-8">
+            <label class="control-label">Select Related Recipe</label>
+            <div class="row">
+              <div class="col-md-8">
                {{Form::select('related_recipe_id',$all_recipes,'',array("class"=>"form-control"))}}
                <span>{{$errors->first('related_recipe_id')}}</span>
-            </div>
-            <div class="col-md-2">
+              </div>
+              <div class="col-md-2">
+        <button type="submit" class="btn btn-success">Add</button>
+                
+              </div>
           </div>
           </div>
          
        <div class="sub-center">
-        <button type="submit" class="btn btn-success">Add</button>
       </div>   
       {{Form::close()}}
       @foreach($related_recipes as $rel)
@@ -170,12 +170,10 @@
   </div>
   <!-- END SAMPLE FORM PORTLET-->
 </div>
-</div>
-</div>
 
-<!-- BEGIN PAGE CONTENT-->
-<div class="row">
-  <div class="col-md-12 ">
+
+
+
     <!-- BEGIN SAMPLE FORM PORTLET-->
     <div class="portlet box blue">
       <div class="portlet-title">

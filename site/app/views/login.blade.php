@@ -42,16 +42,16 @@
     </div>
     <div class="content">
       @if(Session::has('fail'))
-        {{Session::get('fail')}}
+      <div class="alert alert-danger">
+          <span> {{Session::get('fail')}}
+          </span>
+      </div>
       @endif
+
         <!-- BEGIN LOGIN FORM -->
         {{Form::open(array("url"=>"/login","method" => "POST","role"=>"form","class" => "login-form"))}}
-        <h3 class="form-title">Sign Up</h3>
-        <div class="alert alert-danger display-hide">
-          <button class="close" data-close="alert"></button>
-          <span>
-          Enter any username and password. </span>
-        </div>
+        <h3 class="form-title">Login to Your Account</h3>
+        
         <div class="form-group">
           <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
           <label class="control-label visible-ie8 visible-ie9">Username</label>
@@ -62,17 +62,17 @@
           {{Form::password('password', array("class"=>"form-control form-control-solid placeholder-no-fix","type"=>"password","autocomplete"=>"off","placeholder"=>"New Password"))}}
         </div>
         <div class="form-actions">
-          <button type="submit" class="btn blue uppercase">Login</button>          
+          <button type="submit" class="btn blue">Login <i class="fa fa-swap-right"></i></button>          
         </div>
       {{Form::close()}}
     <!-- END LOGIN FORM -->
     </div>
 </div>
 <!-- BEGIN FOOTER -->
-<div class="page-footer" style="text-align:center;">
-  <h3>
+<div class="page-footer" style="text-align:center; color:#CCC">
+  <h4>
      2014 &copy; Naija Go Social.
-  </h3>
+  </h4>
   <div class="scroll-to-top">
     <i class="icon-arrow-up"></i>
   </div>

@@ -23,10 +23,9 @@
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN THEME STYLES -->
 
-{{HTML::style("assets/global/css/lock2.css")}}
 {{HTML::style("assets/global/css/components.css")}}
 {{HTML::style("assets/admin/css/layout.css")}}
-{{HTML::style("assets/admin/css/themes/darkblue.css")}}
+{{HTML::style("assets/admin/css/themes/light.css")}}
 {{HTML::style("assets/admin/css/custom.css")}}
 {{HTML::style("assets/global/css/custom-new.css")}}
 {{HTML::style("assets/global/css/login.css")}}
@@ -61,9 +60,9 @@
         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
         <li class="dropdown dropdown-user">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-          {{HTML::image("assets/admin/img/avatar3_small.jpg","",["class"=>"img-circle"])}}
+          
           <span class="username username-hide-on-mobile">
-          Nick </span>
+          Welcome, {{Auth::user()->name}} </span>
           <i class="fa fa-angle-down"></i>
           </a>
           <ul class="dropdown-menu dropdown-menu-default">

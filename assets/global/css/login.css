@@ -13,14 +13,14 @@ Login page
 }
 
 .content {
-  background-color: rgba(255,255,255,0.4);
+  background-color: rgba(255,255,255,0.2);
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   -ms-border-radius: 7px;
   -o-border-radius: 7px;
   border-radius: 7px;
   width: 400px;
-  margin: 40px auto 10px auto;
+  margin: 80px auto 10px auto;
   padding: 30px;
   padding-top: 10px;
   overflow: hidden;
@@ -36,10 +36,9 @@ Login page
   }
 
 .content h3 {
-  color: #157945;
+  color: #555;
   text-align: center;
   font-size: 28px;
-  font-weight: 600 !important;
 }
 
 .content h4 {
@@ -62,7 +61,7 @@ Login page
   border: none;
   background-color: #dde3ec;
   height: 43px;
-  color: #8290a3;
+  color: #000;
   border: 1px solid #dde3ec;
 }
 .content .form-control:focus, .content .form-control:active {
