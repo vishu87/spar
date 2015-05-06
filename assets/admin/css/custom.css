@@ -80,6 +80,6 @@ Change Quick Sidebar Width
   box-shadow: none;
   border:1px solid #CCC;
 }
-.form-group span{
+.form-group span.error{
   color: #f00;
 }

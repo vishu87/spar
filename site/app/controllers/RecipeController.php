@@ -16,12 +16,14 @@ protected $layout = 'admin.layout';
         $cre = [
         'recipe_name' => Input::get('recipe_name'),
         'preparation_time' => Input::get('preparation_time'),
+        'category_id' => Input::get('category_id'),
         'description' => Input::get('description'),
         'ingredient' => Input::get('ingredient')     
         ];
         $rules = [
         'recipe_name' => 'required',
         'preparation_time' => 'required',
+        'category_id' => 'required',
         'description' => 'required',
         'ingredient' => 'required'
 
@@ -47,12 +49,19 @@ protected $layout = 'admin.layout';
         $this->layout->title = 'Spar | Recipe';
         $this->layout->top_active = 2;
         $categories = DB::table('recipe_categories')->lists('recipe_category','id');  
-        $all_recipes = DB::table('recipe')->lists('recipe_name','id');  
-        $all_products = DB::table('products')->lists('product_name','id');  
+        
+        $all_recipes = DB::table('recipe')->where('id','!=',$recipe_id)->lists('recipe_name','id');  
+        
+        $all_products = DB::table('products')->lists('product_name','id'); 
+
         $category_get = DB::table('recipe_categories')->select('recipe_category','id')->get();    
+        
         $recipe = DB::table('recipe')->where('recipe.id',$recipe_id)->first();
+        
         $related_recipes = DB::table('related_recipes')->join('recipe','related_recipes.related_recipe_id','=','recipe.id')->select('related_recipes.*','recipe.recipe_name')->where('recipe_id',$recipe_id)->get();
+        
         $related_products = DB::table('related_products')->join('products','related_products.related_product_id','=','products.id')->select('related_products.*','products.product_name')->get();
+        
         $this->layout->main = View::make("admin.recipes.edit",array("recipe"=>$recipe,'categories' =>$categories,'category_get'=>$category_get,'all_recipes'=>$all_recipes,'related_recipes'=>$related_recipes,'all_products'=>$all_products,'related_products'=>$related_products));
     }
 
@@ -69,6 +78,8 @@ protected $layout = 'admin.layout';
         $this->layout->title = 'Add | Recipe';
         $this->layout->top_active = 2;
         $categories = DB::table('recipe_categories')->lists('recipe_category','id');
+        $categories[""]= "Select";
+        ksort($categories);
         $this->layout->main = View::make("admin.recipes.add",array('categories' =>$categories));
     }
 
@@ -90,11 +101,18 @@ protected $layout = 'admin.layout';
     public function putupdate($recipe_id){       
         $cre = [
         'recipe_name' => Input::get('recipe_name'),
-        'description' => Input::get('description')
+        'preparation_time' => Input::get('preparation_time'),
+        'category_id' => Input::get('category_id'),
+        'description' => Input::get('description'),
+        'ingredient' => Input::get('ingredient')     
         ];
         $rules = [
         'recipe_name' => 'required',
-        'description' => 'required'
+        'preparation_time' => 'required',
+        'category_id' => 'required',
+        'description' => 'required',
+        'ingredient' => 'required'
+
         ];
         $validator = Validator::make($cre,$rules);
         if($validator->passes()){

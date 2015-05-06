@@ -51,35 +51,35 @@
                     <label class="col-md-2 control-label">Recipe Name</label>
                     <div class="col-md-9">
                       {{Form::text('recipe_name','',array("class"=>"form-control", "placeholder"=>"Enter Recipe Name"))}}
-                        <span>{{$errors->first('recipe_name')}}</span>
+                        <span class="error">{{$errors->first('recipe_name')}}</span>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-2 control-label">Recipe Category</label>
                     <div class="col-md-5">
                       {{Form::select('category_id',$categories,'',array("class"=>"form-control"))}}
-                        <span>{{$errors->first('category_id')}}</span>
+                        <span class="error">{{$errors->first('category_id')}}</span>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-2 control-label">Preparation Time</label>
                     <div class="col-md-9">
                       {{Form::text('preparation_time','',array("class"=>"form-control", "placeholder"=>"Enter Preparation Time"))}}
-                        <span>{{$errors->first('preparation_time')}}</span>
+                        <span class="error">{{$errors->first('preparation_time')}}</span>
                     </div>
                   </div>                 
                   <div class="form-group">
                     <label class="col-md-2 control-label">Description</label>
                     <div class="col-md-9">
-                       {{Form::textarea('description','',array("class"=>"form-control", "placeholder"=>"Description"))}}  
-                       <span>{{$errors->first('description')}}</span>          
+                       {{Form::textarea('description','',array("class"=>"form-control editor1", "placeholder"=>"Description ckeditor"))}}  
+                       <span class="error">{{$errors->first('description')}}</span>          
                     </div>
                   </div>        
                   <div class="form-group">
                     <label class="col-md-2 control-label">Ingredients</label>
                     <div class="col-md-9">
-                     {{Form::textarea('ingredient','',array("class"=>"form-control", "placeholder"=>"Ingredient"))}} 
-                     <span>{{$errors->first('ingredient')}}</span>
+                     {{Form::textarea('ingredient','',array("class"=>"form-control editor1", "placeholder"=>"Ingredient"))}} 
+                     <span class="error">{{$errors->first('ingredient')}}</span>
                     </div>
                   </div>
                   <div class="form-group">
@@ -97,7 +97,7 @@
                   <div class="form-group">
                     <label class="col-md-2 control-label">Method</label>
                     <div class="col-md-9">
-                     {{Form::textarea('method','',array("class"=>"form-control", "placeholder"=>"Method"))}} 
+                     {{Form::textarea('method','',array("class"=>"form-control editor1", "placeholder"=>"Method"))}} 
                    </div>
                   </div>
                   <div class="form-group">

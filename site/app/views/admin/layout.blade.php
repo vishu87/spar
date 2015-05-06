@@ -147,6 +147,7 @@
 
 <!-- END CORE PLUGINS -->
 {{HTML::script("assets/global/plugins/ckeditor/ckeditor.js")}}
+{{HTML::script("assets/global/plugins/ckeditor/adapters/jquery.js")}}
 {{HTML::script("assets/global/scripts/jquery.backstretch.min.js")}}
 {{HTML::script("assets/global/scripts/metronic.js")}}
 {{HTML::script("assets/global/scripts/jquery-ui.js")}}
