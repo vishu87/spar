@@ -17,7 +17,7 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      All Page
+      All Pages
     </li>   
   </ul>
 </div>
@@ -39,10 +39,7 @@
             </th>
             <th>
                Page Title
-            </th>
-            <th>
-               Page Content
-            </th>           
+            </th>          
             <th></th>
         </tr>  
       </thead>
@@ -71,9 +68,6 @@
             <td>{{++$count}}</td>
             <td>
               {{$page->page_title}}                       
-            </td>
-            <td>
-              {{$page->page_content}}                       
             </td>
             <td>
               <a href="{{url('/admin/pages/edit/'.$page->id)}}"><span class="btn yellow">Edit </span></a>

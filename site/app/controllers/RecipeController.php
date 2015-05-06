@@ -50,17 +50,27 @@ protected $layout = 'admin.layout';
         $this->layout->top_active = 2;
         $categories = DB::table('recipe_categories')->lists('recipe_category','id');  
         
-        $all_recipes = DB::table('recipe')->where('id','!=',$recipe_id)->lists('recipe_name','id');  
-        
-        $all_products = DB::table('products')->lists('product_name','id'); 
+
 
         $category_get = DB::table('recipe_categories')->select('recipe_category','id')->get();    
         
         $recipe = DB::table('recipe')->where('recipe.id',$recipe_id)->first();
         
-        $related_recipes = DB::table('related_recipes')->join('recipe','related_recipes.related_recipe_id','=','recipe.id')->select('related_recipes.*','recipe.recipe_name')->where('recipe_id',$recipe_id)->get();
+        $recipes_ignore = array($recipe_id);
+        $related_recipes = DB::table('related_recipes')->join('recipe','related_recipes.related_recipe_id','=','recipe.id')->select('related_recipes.*','recipe.recipe_name')->where('related_recipes.recipe_id',$recipe_id)->get();
+        foreach ($related_recipes as $rel_recipe) {
+            array_push($recipes_ignore, $rel_recipe->related_recipe_id);
+        }
         
+        $all_recipes = DB::table('recipe')->whereNotIn('id',$recipes_ignore)->lists('recipe_name','id');  
+        
+        $products_ignore = array();
         $related_products = DB::table('related_products')->join('products','related_products.related_product_id','=','products.id')->select('related_products.*','products.product_name')->get();
+        foreach ($related_products as $rel_product) {
+            array_push($products_ignore, $rel_product->related_product_id);
+        }
+        $all_products = DB::table('products')->whereNotIn('id',$products_ignore)->lists('product_name','id'); 
+
         
         $this->layout->main = View::make("admin.recipes.edit",array("recipe"=>$recipe,'categories' =>$categories,'category_get'=>$category_get,'all_recipes'=>$all_recipes,'related_recipes'=>$related_recipes,'all_products'=>$all_products,'related_products'=>$related_products));
     }
@@ -149,8 +159,8 @@ protected $layout = 'admin.layout';
         return Redirect::Back()->with('success', 'Related recipe has been successfully added');            
     }
 
-    public function postAddrelatedpro($product_id){
-        $id = DB::table("related_products")->insertGetID(array('product_id'=>$product_id,'related_product_id'=>Input::get("related_product_id")));               
+    public function postAddrelatedpro($recipe_id){
+        $id = DB::table("related_products")->insertGetID(array('recipe_id'=>$recipe_id,'related_product_id'=>Input::get("related_product_id")));               
         return Redirect::Back()->with('success', 'Related product has been successfully added');            
     }
 }

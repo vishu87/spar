@@ -54,15 +54,8 @@
                         <span>{{$errors->first('page_title')}}</span>
                     </div>
                   </div>                  
-                  <div class="form-group">
-                    <label class="col-md-2 control-label">Page Content</label>                  
-                    <div class="col-md-9">
-                     {{Form::textarea('page_content','',array("class"=>"ckeditor form-control", "placeholder"=>"Page Content"))}} 
-                     <span>{{$errors->first('page_content')}}</span>
-                   </div>
-                  </div>
                   <div class="form-actions sub-center">
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-success">Proceed</button>
                   </div>   
                 {{Form::close()}}
             </div>

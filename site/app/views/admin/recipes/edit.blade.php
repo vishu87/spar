@@ -114,7 +114,7 @@
            </div>
            <div class="col-md-4">
              @if($recipe->recipe_image == '')
-              There is image uploaded for this recipe
+              There is no image uploaded for this recipe.
             @else
               {{HTML::image('images/'.$recipe->recipe_image,"",["class"=>"img-brand"])}}
             @endif

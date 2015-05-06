@@ -5,17 +5,15 @@ class PageController extends BaseController {
 
     public function postAdd(){
         $cre = [
-        'page_title' => Input::get('page_title'),
-        'page_content' => Input::get('page_content')
+        'page_title' => Input::get('page_title')
         ];
         $rules = [
-        'page_title' => 'required',
-        'page_content' => 'required'
+        'page_title' => 'required'
         ];
         $validator = Validator::make($cre,$rules);
         if($validator->passes()){
-            $id = DB::table("pages")->insertGetID(array('page_title'=>Input::get("page_title"),'page_content'=>Input::get("page_content")));               
-            return Redirect::Back()->with('success', '<b>'.Input::get('page_title').'</b> has been successfully added');                    
+            $id = DB::table("pages")->insertGetID(array('page_title'=>Input::get("page_title")));
+            return Redirect::to('admin/pages/edit/'.$id)->with('success', '<b>'.Input::get('page_title').'</b> has been successfully added');                    
         }else {
             return Redirect::Back()->withErrors($validator)->withInput();
         }
@@ -25,7 +23,9 @@ class PageController extends BaseController {
         $this->layout->title = 'Admin | Page';
         $this->layout->top_active = 3;
         $page = DB::table('pages')->where('id',$page_id)->first();
-        $this->layout->main = View::make("admin.pages.edit",array("page"=>$page));
+        $all_pages = DB::table('pages')->lists('page_title','id');
+
+        $this->layout->main = View::make("admin.pages.edit",array("page"=>$page, "all_pages"=>$all_pages));
     }
 
     public function getPages(){
@@ -38,6 +38,7 @@ class PageController extends BaseController {
     public function getadd(){
         $this->layout->title = 'Add | Page';
         $this->layout->top_active = 3;
+
         $this->layout->main = View::make("admin.pages.add");
     }
 
@@ -66,6 +67,23 @@ class PageController extends BaseController {
                 return Redirect::Back()->with('success', '<b>'.Input::get('page_title').'</b> has been successfully updated');                    
             }
             return Redirect::Back()->with('failure', '<b>Page not found');
+        } 
+        else {
+            return Redirect::Back()->withErrors($validator)->withInput();
+        }
+    }
+
+    public function postAddLink($page_id){       
+        $cre = [
+        'side_link' => Input::get('side_link')
+        ];
+        $rules = [
+        'side_link' => 'required'
+        ];
+        $validator = Validator::make($cre,$rules);
+        if($validator->passes()){
+            $id = DB::table("page_sidebar_items")->insertGetID(array('page_title'=>Input::get("page_title")));
+            return Redirect::Back()->with('Side link has been successfully added');                    
         } 
         else {
             return Redirect::Back()->withErrors($validator)->withInput();

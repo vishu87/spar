@@ -14,7 +14,7 @@
         <li @if($top_active == 2) class="active" @endif>
           <a href="{{url('/admin/recipes')}}">
             <i class="fa fa-cutlery"></i>
-            <span class="title">Recipe</span>
+            <span class="title">Recipes</span>
             <span class="selected"></span>
           </a>
         </li>

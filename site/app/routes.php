@@ -37,7 +37,7 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 		Route::get('/add','RecipeController@getAdd');
 		Route::post('/store','RecipeController@postAdd');
 		Route::post('/related/save/{recipe_id}','RecipeController@postAddrelated');
-		Route::post('/related-product/save/{product_id}','RecipeController@postAddrelatedpro');
+		Route::post('/related-product/save/{recipe_id}','RecipeController@postAddrelatedpro');
 		Route::get('/edit/{recipe_id}','RecipeController@getrecipe');
 	    Route::put('/update/{recipe_id}', 'RecipeController@putupdate');
 	    Route::get('/delete/{recipe_id}',array('before'=>'authadmin', 'uses'=>'RecipeController@getdelete'));
@@ -53,6 +53,9 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 		Route::get('/edit/{page_id}','PageController@getpage');
 	    Route::put('/update/{page_id}', 'PageController@putupdate');
 	    Route::get('/delete/{page_id}',array('before'=>'authadmin', 'uses'=>'PageController@getdelete'));
+
+	    Route::put('/addlink/{page_id}', 'PageController@postAddLink');
+
 
 	});
 	 Route::group(['prefix' => 'brands'], function () {

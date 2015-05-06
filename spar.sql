@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2015 at 01:40 PM
+-- Generation Time: May 06, 2015 at 07:28 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -64,9 +64,9 @@ CREATE TABLE IF NOT EXISTS `banner` (
 --
 
 INSERT INTO `banner` (`id`, `banner_name`, `banner_image`, `priority`, `updated_at`) VALUES
-(4, 'aa', 'ad.jpg', 3, '2015-04-30 05:39:53'),
-(5, 'fsdf', '980-x-500-B-1.jpg', 2, '2015-04-30 05:39:53'),
-(6, 'gdfg', '980X500.png', 1, '2015-04-30 05:39:53');
+(4, 'aa', 'ad.jpg', 1, '2015-05-06 13:58:57'),
+(5, 'fsdf', '980-x-500-B-1.jpg', 2, '2015-05-06 13:58:57'),
+(6, 'gdfg', '980X500.png', 3, '2015-05-06 13:58:57');
 
 -- --------------------------------------------------------
 
@@ -175,9 +175,9 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `page_title` varchar(200) NOT NULL,
   `page_content` text NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `pages`
@@ -185,8 +185,23 @@ CREATE TABLE IF NOT EXISTS `pages` (
 
 INSERT INTO `pages` (`id`, `page_title`, `page_content`, `updated_at`) VALUES
 (2, 'vtre ', 'ui hiyo up ', '0000-00-00 00:00:00'),
-(4, 'new page1', '111page content', '2015-03-19 17:24:10'),
-(5, 'new page dcbj', '<p><strong>dfe hfueh rh&nbsp;</strong>&nbsp;&nbsp;<u>hri83yr 98i3y9 hd uwehi</u></p>\r\n\r\n<ol>\r\n	<li>Retail forms the core business</li>\r\n</ol>\r\n\r\n<ol>\r\n	<li>activity at Artee Group and most of</li>\r\n	<li>its businesses in the consumption space are built around retail. Artee Group&#39;s retail network touches the lives of millions of Nigerians. The group currently operates around several stores spread over large retail space.</li>\r\n</ol>\r\n\r\n<p>&nbsp;</p>\r\n', '2015-05-02 18:46:39');
+(5, 'new page dcbj', '<p><strong>dfe hfueh rh&nbsp;</strong>&nbsp;&nbsp;<u>hri83yr 98i3y9 hd uwehi</u></p>\r\n\r\n<ol>\r\n	<li>Retail forms the core business</li>\r\n</ol>\r\n\r\n<ol>\r\n	<li>activity at Artee Group and most of</li>\r\n	<li>its businesses in the consumption space are built around retail. Artee Group&#39;s retail network touches the lives of millions of Nigerians. The group currently operates around several stores spread over large retail space.</li>\r\n</ol>\r\n\r\n<p>&nbsp;</p>\r\n', '2015-05-02 18:46:39'),
+(6, 'Artee Industries', '', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `page_sidebar_items`
+--
+
+CREATE TABLE IF NOT EXISTS `page_sidebar_items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `page_id` int(11) NOT NULL,
+  `link_id` int(11) NOT NULL,
+  `image_id` int(11) NOT NULL,
+  `priority` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -257,16 +272,17 @@ CREATE TABLE IF NOT EXISTS `recipe` (
   `updated_at` timestamp NOT NULL,
   `created_at` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `recipe`
 --
 
 INSERT INTO `recipe` (`id`, `recipe_name`, `category_id`, `preparation_time`, `recipe_image`, `description`, `ingredient`, `cook_time`, `to_serve`, `method`, `updated_at`, `created_at`) VALUES
-(13, ' bvhukfdhi', 0, '54 min', '', ' fhsdkfhowowe ', 'das vjydgasida, hdsiw', '35 min', ' hudcgodwdo', 'cb ucgisucg is', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(14, 'ih jo', 0, ' hiyit', '', 'io houp0', ' juo9u 9ou', 'iojiou', 'uj 9 uioyhil', 'ioh oup9u ', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(18, 'asdasdsad', 1, 'asdasd', 'ad1.jpg', 'kjlkjlkjl', 'jlkjlkjlkj', 'llkjlkjlk', '', '', '2015-04-30 10:24:39', '0000-00-00 00:00:00');
+(13, ' bvhukfdhi', 2, '54 min', '', ' fhsdkfhowowe ', 'das vjydgasida, hdsiw', '35 min', ' hudcgodwdo', 'cb ucgisucg is', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 'ih jo', 3, ' hiyit', '', 'io houp0', ' juo9u 9ou', 'iojiou', 'uj 9 uioyhil', 'ioh oup9u ', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(18, 'asdasdsad', 1, 'asdasd', 'ad1.jpg', 'kjlkjlkjl', 'jlkjlkjlkj', 'llkjlkjlk', '', '', '2015-04-30 10:24:39', '0000-00-00 00:00:00'),
+(19, ' Chicken Alfresco', 1, '30 mins', 'chicken-alfresco-big.jpg', '<p>Its a grilled marinated chicken breast in Parmesan cream sauce best served with saute vegetables and meshed potatoes.</p>\r\n', '<ul>\r\n	<li>2 breast pieces&nbsp;Chicken</li>\r\n	<li>1 tbsp Oil</li>\r\n	<li>2 cloves Garlic</li>\r\n	<li>1 tsp Salt</li>\r\n	<li>1 tsp Pepper Powder</li>\r\n	<li>1 pc Lemon</li>\r\n	<li>1 tsp Butter</li>\r\n	<li>2 tbsp Parmesan Cream Sauce</li>\r\n</ul>\r\n', '25 mins', '2 people', '<p>yahooooa sd asd asd</p>\r\n', '2015-05-06 13:40:24', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -296,20 +312,17 @@ INSERT INTO `recipe_categories` (`id`, `recipe_category`) VALUES
 
 CREATE TABLE IF NOT EXISTS `related_products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `product_id` int(11) NOT NULL,
   `recipe_id` int(11) NOT NULL,
   `related_product_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `related_products`
 --
 
-INSERT INTO `related_products` (`id`, `product_id`, `recipe_id`, `related_product_id`) VALUES
-(8, 15, 0, 2),
-(9, 15, 0, 3),
-(10, 3, 0, 1);
+INSERT INTO `related_products` (`id`, `recipe_id`, `related_product_id`) VALUES
+(13, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -322,15 +335,14 @@ CREATE TABLE IF NOT EXISTS `related_recipes` (
   `recipe_id` int(11) NOT NULL,
   `related_recipe_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `related_recipes`
 --
 
 INSERT INTO `related_recipes` (`id`, `recipe_id`, `related_recipe_id`) VALUES
-(2, 15, 17),
-(3, 15, 15);
+(5, 13, 14);
 
 -- --------------------------------------------------------
 
