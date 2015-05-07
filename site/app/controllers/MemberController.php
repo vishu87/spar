@@ -26,22 +26,25 @@ class MemberController extends BaseController {
 
     public function getMember($member_id){
         $this->layout->title = 'Spar | Member';
-        $this->layout->top_active = 9;
+        $this->layout->top_active = 10;
+        $privs = array("0"=>"Editor","1"=>"Admin");
+
         $member = DB::table('users')->where('id',$member_id)->first();
-        $this->layout->main = View::make("admin.members.edit",array("member"=>$member));
+        $this->layout->main = View::make("admin.members.edit",array("member"=>$member,"privs"=>$privs));
     }
 
     public function getMembers(){
         $this->layout->title = 'All Members | Spar';
-        $this->layout->top_active = 9;
+        $this->layout->top_active = 10;
         $members = DB::table('users')->get();
         $this->layout->main = View::make("admin.members.index",array("members"=>$members));
     }
 
     public function getadd(){
         $this->layout->title = 'Add | Member';
-        $this->layout->top_active = 9;
-        $this->layout->main = View::make("admin.members.add");
+        $this->layout->top_active = 10;
+        $privs = array("0"=>"Editor","1"=>"Admin");
+        $this->layout->main = View::make("admin.members.add", ["privs"=>$privs]);
     }
 
      public function getdelete($member_id){

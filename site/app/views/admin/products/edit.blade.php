@@ -89,7 +89,7 @@
            </div>
            <div class="col-md-4">
              @if($product->product_image == '')
-              There is image uploaded for this product
+              There is no image uploaded for this product
             @else
               {{HTML::image('images/'.$product->product_image,"",["class"=>"img-brand"])}}
             @endif
@@ -108,7 +108,7 @@
 </div>
 
 <!-- BEGIN PAGE CONTENT-->
-<div class="row">
+<div class="row" style="display:none">
   <div class="col-md-12 ">
     <!-- BEGIN SAMPLE FORM PORTLET-->
     <div class="portlet box blue">

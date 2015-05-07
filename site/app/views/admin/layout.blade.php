@@ -20,6 +20,7 @@
 {{HTML::style("assets/global/plugins/bootstrap/css/bootstrap.min.css")}}
 {{HTML::style("assets/global/plugins/uniform/css/uniform.default.css")}}
 {{HTML::style("assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css")}}
+{{HTML::style("assets/global/plugins/fancybox/source/jquery.fancybox.css")}}
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN THEME STYLES -->
 
@@ -122,7 +123,7 @@
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
   <div class="page-footer-inner">
-     2014 &copy; Naija Go Social.
+     <!-- 2014 &copy; Naija Go Social. -->
   </div>
   <div class="scroll-to-top">
     <i class="icon-arrow-up"></i>
@@ -143,7 +144,7 @@
 {{HTML::script("assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js")}}
 {{HTML::script("assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js")}}
 {{HTML::script("assets/global/plugins/jquery.blockui.min.js")}}
-{{HTML::script("assets/global/plugins/jquery.cokie.min.js")}}
+{{HTML::script("assets/global/plugins/fancybox/source/jquery.fancybox.js")}}
 
 <!-- END CORE PLUGINS -->
 {{HTML::script("assets/global/plugins/ckeditor/ckeditor.js")}}

@@ -22,6 +22,7 @@ class PageController extends BaseController {
     public function getPage($page_id){
         $this->layout->title = 'Admin | Page';
         $this->layout->top_active = 3;
+        $this->layout->sub_active = 1;
         $page = DB::table('pages')->where('id',$page_id)->first();
         $all_pages = DB::table('pages')->lists('page_title','id');
 
@@ -31,6 +32,7 @@ class PageController extends BaseController {
     public function getPages(){
         $this->layout->title = 'All Pages | Admin';
         $this->layout->top_active = 3;
+        $this->layout->sub_active = 1;
         $pages = DB::table('pages')->get();
         $this->layout->main = View::make("admin.pages.index",array("pages"=>$pages));
     }
@@ -38,6 +40,7 @@ class PageController extends BaseController {
     public function getadd(){
         $this->layout->title = 'Add | Page';
         $this->layout->top_active = 3;
+        $this->layout->sub_active = 1;
 
         $this->layout->main = View::make("admin.pages.add");
     }

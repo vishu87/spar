@@ -14,7 +14,7 @@
   margin-left:2px;
 }
 .banner-del{
-margin-left:20px;
+margin-left:5px;
 }
 .sub-center{
 text-align:center;
@@ -31,12 +31,20 @@ text-align:center;
 }
 
 .banner-image .banner-pro{
-	 border:1px solid #888;
-	  height:200px;
-	   overflow:hidden;
-	    padding:0 30px; 
-	 cursor:pointer;
+	border:1px dashed #CCC;
+	height:200px;
+	overflow:hidden;
+	cursor: move;
+}
+.banner-image h3{
+	padding: 0 20px;
+}
+.banner-image h4{
+	padding: 0 20px;
 }
 .banner-pro input{
 	display:none;
+}
+.banner-pro .btn-danger{
+	
 }

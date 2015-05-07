@@ -2,11 +2,11 @@
 <div class="row">
   <div class="col-md-6">
     <h3 class="page-title">
-      Mid Banners <small></small>
+      All Images <small></small>
     </h3>
   </div>
   <div class="col-md-6 add-new">
-    <a href="{{url('/admin/mid-banners/add')}}" class="btn green">Add New</a>
+    <a href="{{url('/admin/media/add')}}" class="btn green">Add New</a>
   </div>
 </div>
 <div class="page-bar">
@@ -17,7 +17,7 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      All Mid Banner
+      All Images
     </li>   
   </ul>
 </div>
@@ -29,19 +29,17 @@
 </div>
 @endif
 <!-- END PAGE HEADER-->
-{{Form::open(array("url"=>"/admin/mid-banners/saveorder","method" => "POST","role"=>"form"))}}
 <div class="row">
-   <div id="sortable1">
-    @foreach($mid_banners as $mid_banner)
-      <div class="col-md-4 banner-image">     
+    @foreach($media as $image)
+      <div class="col-md-3 banner-image">     
          <div class="banner-pro">
-          <input type="checkbox" name="order[]" value="{{$mid_banner->id}}" checked><h3>{{$mid_banner->mid_banner_name}}</h3>
-           <div style="background:url({{URL("/")}}/images/{{$mid_banner->mid_banner_image}}); width:100%; min-height:150px; background-size:cover;" >
+          <h4>{{$image->caption}}</h4>
+           <div style="background:url({{URL("/")}}/images/{{$image->image}}); width:100%; min-height:150px; background-size:cover;" >
             @if(Auth::user()->priviledge == 1)
-           <a href="{{url('/admin/mid-banners/delete/'.$mid_banner->id)}}" class="banner-del btn btn-danger pull-right">
+            <a href="{{url('/admin/media/delete/'.$image->id)}}" class="banner-del btn btn-danger pull-right">
             <i class="fa fa-remove"></i></a>
            @endif
-           <a class="fancybox btn blue pull-right" href="{{URL("/")}}/images/{{$mid_banner->mid_banner_image}}">
+           <a class="fancybox btn blue pull-right" href="{{URL("/")}}/images/{{$image->image}}">
                   <i class="fa fa-search"></i>
             </a>
           </div>
@@ -50,6 +48,5 @@
     @endforeach  
   </div>
 </div>
-<button type="submit" class="btn blue" style="float: right; margin-top: 20px;">Save order</button>
-  {{Form::close()}}
+{{Form::close()}}
 <!-- BEGIN PAGE CONTENT-->

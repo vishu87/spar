@@ -126,16 +126,23 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 
 	});
 
-	    Route::group(['prefix' => 'pages-side-banners'], function () {
-		Route::get('/','PageSideBannerController@getbanners');
-		Route::get('/add','PageSideBannerController@getAdd');
-		Route::post('/store','PageSideBannerController@postAdd');
-	    Route::get('/delete/{side_banner_id}',array('before'=>'authadmin', 'uses'=>'PageSideBannerController@getdelete'));
+	Route::group(['prefix' => 'media'], function () {
+		Route::get('/','MediaController@getAll');
+		Route::get('/add','MediaController@getAdd');
+		Route::post('/store','MediaController@postAdd');
+	    Route::get('/delete/{side_banner_id}',array('before'=>'authadmin', 'uses'=>'MediaController@getdelete'));
 
 	});
 
+	Route::group(['prefix' => 'sidebars'], function () {
+		Route::get('/','SidebarController@getAll');
+		Route::get('/{sidebar_id}','SidebarController@getEdit');
+		Route::post('/store','SidebarController@postAdd');
+	    Route::get('/delete/{sidebar_id}',array('before'=>'authadmin', 'uses'=>'SidebarController@getdelete'));
 
-	    Route::group(['prefix' => 'members'], function () {
+	});
+
+	Route::group(['prefix' => 'members'], function () {
 		Route::get('/','MemberController@getMembers');
 		Route::get('/add','MemberController@getAdd');
 		Route::post('/store','MemberController@postAdd');

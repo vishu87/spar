@@ -18,12 +18,69 @@
             <span class="selected"></span>
           </a>
         </li>
-        <li @if($top_active == 3) class="active" @endif>
-          <a href="{{url('/admin/pages')}}">
-            <i class="fa fa-file-text-o"></i>
-            <span class="title">Pages</span>
+         <li @if($top_active == 8) class="active open" @endif>
+          <a href="javascript:;">
+            <i class="fa fa-file-image-o"></i>
+            <span class="title">Home Page</span>
             <span class="selected"></span>
+            <span class="arrow open"></span>
           </a>
+          <ul class="sub-menu">
+            <li @if($top_active == 8 && $sub_active == 1) class="active" @endif>
+              <a href="{{url('/admin/banners')}}">
+                <i class="fa fa-file-image-o"></i>
+                <span class="title">Main Banners</span>
+                <span class="selected"></span>
+
+              </a>
+            </li>
+            <li @if($top_active == 8 && $sub_active == 2) class="active" @endif>
+              <a href="{{url('/admin/side-banners')}}">
+                <i class="fa fa-file-image-o"></i>
+                <span class="title">Side Banners</span>
+                <span class="selected"></span>
+              </a>
+            </li>
+            <li @if($top_active == 8 && $sub_active == 3) class="active" @endif>
+              <a href="{{url('/admin/mid-banners')}}">
+                <i class="fa fa-file-image-o"></i>
+                <span class="title">Mid Banners</span>
+                <span class="selected"></span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li @if($top_active == 3) class="active open" @endif>
+          <a href="javascript:;">
+            <i class="fa fa-file-image-o"></i>
+            <span class="title">Inner Pages</span>
+            <span class="selected"></span>
+            <span class="arrow open"></span>
+          </a>
+          <ul class="sub-menu">
+            <li @if($top_active == 3 && $sub_active == 1) class="active" @endif>
+              <a href="{{url('/admin/pages')}}">
+                <i class="fa fa-file-image-o"></i>
+                <span class="title">All Pages</span>
+                <span class="selected"></span>
+
+              </a>
+            </li>
+            <li @if($top_active == 3 && $sub_active == 2) class="active" @endif>
+              <a href="{{url('/admin/sidebars')}}">
+                <i class="fa fa-file-image-o"></i>
+                <span class="title">Sidebars</span>
+                <span class="selected"></span>
+              </a>
+            </li>
+             <li @if($top_active == 3 && $sub_active == 3) class="active" @endif >
+                <a href="{{url('/admin/media')}}" >
+                  <i class="fa fa-file-image-o"></i>
+                  <span class="title">Upload Images</span>
+                  <span class="selected"></span>
+                </a>
+              </li>
+          </ul>
         </li>
         <li @if($top_active == 4) class="active" @endif>
           <a href="{{url('/admin/brands')}}">
@@ -53,45 +110,7 @@
             <span class="selected"></span>
           </a>
         </li>
-        <li @if($top_active == 8) class="active open" @endif>
-          <a href="javascript:;">
-            <i class="fa fa-file-image-o"></i>
-            <span class="title">Home Banners</span>
-            <span class="selected"></span>
-            <span class="arrow open"></span>
-          </a>
-          <ul class="sub-menu">
-            <li @if($top_active == 8 && $sub_active == 1) class="active" @endif>
-              <a href="{{url('/admin/banners')}}">
-                <i class="fa fa-file-image-o"></i>
-                <span class="title">Main Banners</span>
-                <span class="selected"></span>
-
-              </a>
-            </li>
-            <li @if($top_active == 8 && $sub_active == 2) class="active" @endif>
-              <a href="{{url('/admin/side-banners')}}">
-                <i class="fa fa-file-image-o"></i>
-                <span class="title">Side Banners</span>
-                <span class="selected"></span>
-              </a>
-            </li>
-            <li @if($top_active == 8 && $sub_active == 3) class="active" @endif>
-              <a href="{{url('/admin/mid-banners')}}">
-                <i class="fa fa-file-image-o"></i>
-                <span class="title">Mid Banners</span>
-                <span class="selected"></span>
-              </a>
-            </li>
-          </ul>
-        </li>  
-        <li @if($top_active == 9) class="active" @endif>
-          <a href="{{url('/admin/pages-side-banners')}}">
-            <i class="fa fa-file-image-o"></i>
-            <span class="title">Side Banners</span>
-            <span class="selected"></span>
-          </a>
-        </li> 
+        @if(Auth::user()->priviledge == 1)
         <li @if($top_active == 10) class="active" @endif>
           <a href="{{url('/admin/members')}}">
             <i class="fa fa-users"></i>
@@ -99,5 +118,6 @@
             <span class="selected"></span>
           </a>
         </li>
+        @endif
       </ul>
     </div>

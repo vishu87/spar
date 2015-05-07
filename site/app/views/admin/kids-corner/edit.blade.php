@@ -64,7 +64,7 @@
           <div class="form-group">
             <label class="col-md-2 control-label">Content</label>
             <div class="col-md-9">
-              {{Form::text('content',$kids->content,array("class"=>"form-control", "placeholder"=>"Enter Content"))}}
+              {{Form::textarea('content',$kids->content,array("class"=>"form-control editor1", "placeholder"=>"Enter Content"))}}
               <span>{{$errors->first('content')}}</span>
             </div>
           </div>
@@ -75,7 +75,7 @@
            </div>
            <div class="col-md-4">
              @if($kids->kids_image == '')
-              There is image uploaded for this kids corner
+              There is no image uploaded for this kids corner
             @else
               {{HTML::image('images/'.$kids->kids_image,"",["style"=>"width:100%"])}}
             @endif

@@ -78,7 +78,7 @@
                    <div class="form-group">
                     <label class="col-md-2 control-label">Priviledge</label>
                     <div class="col-md-9">
-                     {{Form::text('priviledge','',array("class"=>"form-control", "placeholder"=>"Priviledge"))}} 
+                     {{Form::select('priviledge',$privs,'',array("class"=>"form-control", "placeholder"=>"Priviledge"))}} 
                      <span>{{$errors->first('priviledge')}}</span>
                    </div>
                   </div>

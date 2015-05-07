@@ -34,6 +34,7 @@ $(document).ready(function(){
 	$("#sortable1").sortable();
     $("#sortable1").disableSelection();
     $('textarea.editor1').ckeditor();
+    $('.fancybox').fancybox();
 
 		// var editor =  $('.textarea').wysihtml5({
 		// 	"font-styles": true, //Font styling, e.g. h1, h2, etc. Default true

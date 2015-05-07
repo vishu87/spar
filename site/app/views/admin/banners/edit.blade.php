@@ -68,7 +68,7 @@
            </div>
            <div class="col-md-4">
              @if($banner->banner_image == '')
-              There is image uploaded for this banner
+              There is no image uploaded for this banner
             @else
               {{HTML::image('images/'.$banner->banner_image,"",["class"=>"img-brand"])}}
             @endif

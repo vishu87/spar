@@ -2,11 +2,11 @@
 <div class="row">
   <div class="col-md-6">
     <h3 class="page-title">
-      Members <small></small>
+      Sidebars <small></small>
     </h3>
   </div>
   <div class="col-md-6" style="text-align:right">
-    <a href="{{url('/admin/members/add')}}" class="btn green">Add New</a>
+    <!-- <a href="{{url('/admin/Sidebars/add')}}" class="btn green">Add New</a> -->
   </div>
 </div>
 <div class="page-bar">
@@ -17,7 +17,7 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      All Member
+      All Sidebars
     </li>   
   </ul>
 </div>
@@ -28,9 +28,9 @@
   <strong>Delete!</strong> {{Session::get('success')}} </a>
 </div>
 @endif
-<!-- END Page HEADER-->
+<!-- END PAGE HEADER-->
 <div class="row">
-  <div class="col-md-12" style="overflow-x:auto">
+  <div class="col-md-8" style="overflow-x:auto">
     <table class="table table-stripped tablesorter">
       <thead>
         <tr>
@@ -38,13 +38,8 @@
               #
             </th>
             <th>
-               Name
-            </th>
-            <th>
-               Email
-            </th>           
-            <th>Phone</th>
-            <th>Privilege</th>
+               Sidebar
+            </th>          
             <th></th>
         </tr>  
       </thead>
@@ -68,31 +63,55 @@
       </tfoot>
       <tbody>
         <?php $count = 0; ?>
-        @foreach($members as $member)
+        @foreach($sidebars as $sidebar)
           <tr>
             <td>{{++$count}}</td>
             <td>
-              {{$member->name}}                       
+              {{$sidebar->sidebar}}                       
             </td>
             <td>
-              {{$member->email}}                       
-            </td>
-             <td>
-              {{$member->phone}}                       
-            </td>
-             <td>
-              @if($member->priviledge == 1) Admin @else Editor @endif                      
-            </td>
-            <td>
-              <a href="{{url('/admin/members/edit/'.$member->id)}}"><span class="btn yellow">Edit </span></a>
+              <a href="{{url('/admin/sidebars/'.$sidebar->id)}}"><span class="btn yellow">Edit </span></a>
               @if(Auth::user()->priviledge == 1)
-              <a href="{{url('/admin/members/delete/'.$member->id)}}" style="margin-left:2px;"><span class="btn btn-danger">Delete </span></a>
-              @endif
+              <a href="{{url('/admin/sidebars/delete/'.$sidebar->id)}}" style="margin-left:2px;"><span class="btn btn-danger">Delete </span></a>
+             @endif
             </td>
           </tr>
         @endforeach
       </tbody>
     </table>
   </div>
+  <div class="col-md-4 ">
+    <!-- BEGIN SAMPLE FORM PORTLET-->
+    <div class="portlet box blue">
+      <div class="portlet-title">
+        <div class="caption">
+          Add New Sidebar
+        </div>           
+      </div>
+      <div class="portlet-body form">
+        {{Form::open(array("url"=>"/admin/sidebars/store","method" => "POST","role"=>"form","class" => "horizontal-form",))}}
+        <div class="form-body">
+          <div class="form-group">
+            <label class="control-label">Sidebar Name</label>
+            <div class="row">
+              <div class="col-md-8">
+               {{Form::text('sidebar','',array("class"=>"form-control"))}}
+               <span class="error">{{$errors->first('sidebar')}}</span>
+              </div>
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-success pull-right">Proceed</button>
+                
+              </div>
+          </div>
+          </div>
+         
+       <div class="sub-center">
+      </div>   
+      {{Form::close()}}
+    </div>
+  </div>
+  <!-- END SAMPLE FORM PORTLET-->
+</div>
+</div>
 </div>
 <!-- BEGIN PAGE CONTENT-->

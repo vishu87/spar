@@ -23,9 +23,9 @@
 </div>
 
 @if(Session::has('delete'))
-<div class="alert alert-alert alert-dismissable">
+<div class="alert alert-success alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-  <strong>Delete!</strong> {{Session::get('success')}} </a>
+  <strong>Deleted!</strong> {{Session::get('success')}} </a>
 </div>
 @endif
 <!-- END PAGE HEADER-->
@@ -36,11 +36,17 @@
       <div class="col-md-4 banner-image">     
          <div class="banner-pro">
             <input type="checkbox" name="order[]" value="{{$side_banner->id}}" checked><h3>{{$side_banner->side_banner_name}}</h3>
-           {{HTML::image('/images/'.$side_banner->side_banner_image,'',["class"=>"img-banner"])}}
-           @if(Auth::user()->priviledge == 1)
-           <a href="{{url('/admin/side-banners/delete/'.$side_banner->id)}}" class="banner-del"><span class="btn btn-danger">Delete </span></a>
-         @endif
-        </div>
+       
+        <div style="background:url({{URL("/")}}/images/{{$side_banner->side_banner_image}}); width:100%; min-height:150px; background-size:cover;" >
+            @if(Auth::user()->priviledge == 1)
+           <a href="{{url('/admin/side-banners/delete/'.$side_banner->id)}}" class="banner-del btn btn-danger pull-right">
+            <i class="fa fa-remove"></i></a>
+           @endif
+           <a class="fancybox btn blue pull-right" href="{{URL("/")}}/images/{{$side_banner->side_banner_image}}">
+                  <i class="fa fa-search"></i>
+                </a>
+          </div>
+           </div>
       </div>
     @endforeach  
   </div>

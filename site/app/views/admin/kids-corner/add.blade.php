@@ -57,7 +57,7 @@
                   <div class="form-group">
                     <label class="col-md-2 control-label">Content</label>
                     <div class="col-md-9">
-                      {{Form::textarea('content','',array("class"=>"form-control", "placeholder"=>"Enter Content"))}}
+                      {{Form::textarea('content','',array("class"=>"form-control editor1", "placeholder"=>"Enter Content"))}}
                         <span>{{$errors->first('content')}}</span>
                     </div>
                   </div>

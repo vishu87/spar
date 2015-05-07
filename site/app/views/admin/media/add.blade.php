@@ -2,11 +2,11 @@
 <div class="row">
   <div class="col-md-6">
     <h3 class="page-title">
-     Side Banners <small></small>
+     Images <small></small>
     </h3>
   </div>
   <div class="col-md-6 add-new">
-    <a href="{{url('/admin/pages-side-banners')}}" class="btn green">Go Back</a>
+    <a href="{{url('/admin/media')}}" class="btn green">Go Back</a>
   </div>
 </div>
 <div class="page-bar">
@@ -17,11 +17,11 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-       <a href="{{url('/admin/pages-side-banners')}}">All Side Banner</a>
+       <a href="{{url('/admin/media')}}">All Image</a>
        <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      Add Side Banner
+      Add Image
     </li>   
   </ul>
 </div>
@@ -41,23 +41,23 @@
    <div class="portlet box blue">
             <div class="portlet-title">
               <div class="caption">
-                Add Side Banner
+                Add Image
               </div>           
             </div>
             <div class="portlet-body form">
-              {{Form::open(array("url"=>"/admin/pages-side-banners/store","method" => "POST","role"=>"form","class" => "form-horizontal","files"=>"true"))}}
+              {{Form::open(array("url"=>"/admin/media/store","method" => "POST","role"=>"form","class" => "form-horizontal","files"=>"true"))}}
                 <div class="form-body">
                   <div class="form-group">
-                    <label class="col-md-2 control-label">Side Banner Name</label>
+                    <label class="col-md-2 control-label">Image Caption</label>
                     <div class="col-md-9">
-                      {{Form::text('side_banner_name','',array("class"=>"form-control", "placeholder"=>"Enter Side Banner Name"))}}
-                        <span>{{$errors->first('side_banner_name')}}</span>
+                      {{Form::text('caption','',array("class"=>"form-control", "placeholder"=>"Enter Image Name"))}}
+                        <span>{{$errors->first('caption')}}</span>
                     </div>
                   </div>
                    <div class="form-group">
-                    <label class="col-md-2 control-label">Side Banner Image</label>
+                    <label class="col-md-2 control-label">Image Image</label>
                     <div class="col-md-9">
-                     {{Form::file('side_banner_image',array("class"=>"form-control"))}} 
+                     {{Form::file('image',array("class"=>"form-control"))}} 
                    </div>
                   </div>           
                   <div class="form-actions sub-center">
