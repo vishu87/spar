@@ -19,6 +19,20 @@ class SidebarController extends BaseController {
             return Redirect::Back()->withErrors($validator)->withInput();
         }
     }
+
+    public function postSave($sidebar_id){
+        $count = 1;
+        foreach (Input::get('order') as $item) {
+            if(Input::has('textarea_'.$item)){
+                DB::table('sidebar_items')->where('id',$item)->update(array('priority'=>$count,'custom_html'=>Input::get('textarea_'.$item)));
+            } else {
+                DB::table('sidebar_items')->where('id',$item)->update(array('priority'=>$count));
+            }
+            $count++;
+        }
+        return Redirect::Back()->with('success','Successfully Updated');
+    }
+
     public function getAll(){
         $this->layout->title = 'All Sidebars | Spar';
         $this->layout->top_active = 3;
@@ -36,7 +50,8 @@ class SidebarController extends BaseController {
         $pages[""] = "Select";
         ksort($pages);
 
-        $this->layout->main = View::make("admin.sidebars.edit",["sidebar"=>$sidebar,"pages"=>$pages]);
+        $sidebar_items = DB::table('sidebar_items')->leftJoin('pages','sidebar_items.page_id','=','pages.id')->leftJoin('media','sidebar_items.media_id','=','media.id')->select('sidebar_items.*','pages.page_title','media.image')->orderBy('sidebar_items.priority','asc')->where('sidebar_items.sidebar_id',$sidebar_id)->get();
+        $this->layout->main = View::make("admin.sidebars.edit",["sidebar"=>$sidebar,"pages"=>$pages,"sidebar_items"=>$sidebar_items]);
     }
 
      public function getdelete($sidebar_id){
@@ -73,10 +88,14 @@ class SidebarController extends BaseController {
     public function addHTML($sidebar_id){
         $count = DB::table("sidebar_items")->where('sidebar_id',$sidebar_id)->count();
         $count++;
-        $id = DB::table("sidebar_items")->insertGetID(array('custom_html'=>Input::get("custom_html"), 'sidebar_id'=>$sidebar_id, 'type' => 4, 'priority'=>$count));           
-        return View::make('admin.sidebars.add_html', ['custom_html'=>Input::get("custom_html"), 'id'=>$id]);
+        $id = DB::table("sidebar_items")->insertGetID(array('sidebar_id'=>$sidebar_id, 'type' => 4, 'priority'=>$count));           
+        return View::make('admin.sidebars.add_html', ['id'=>$id]);
     }
 
+    public function removeItem($sidebar_id){
+        $id = DB::table("sidebar_items")->where('id',Input::get('itemid'))->where('sidebar_id',$sidebar_id)->delete();
+        return Redirect::Back()->with('delete', '<b>Success</b> has been successfully deleted');                    
+    }
 
     public function getImages(){
         $images = DB::table("media")->get();

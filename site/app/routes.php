@@ -139,6 +139,7 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 		Route::get('/','SidebarController@getAll');
 		Route::get('/{sidebar_id}','SidebarController@getEdit');
 		Route::post('/store','SidebarController@postAdd');
+		Route::post('/save/{sidebar_id}','SidebarController@postSave');
 	    Route::get('/delete/{sidebar_id}',array('before'=>'authadmin', 'uses'=>'SidebarController@getdelete'));
 
 	    //ajax
@@ -146,6 +147,7 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 	    Route::post('/add_title/{sidebar_id}','SidebarController@addTitle');
 	    Route::post('/add_image/{sidebar_id}','SidebarController@addImage');
 	    Route::post('/add_html/{sidebar_id}','SidebarController@addHTML');
+	    Route::post('/remove/{sidebar_id}','SidebarController@removeItem');
 
 	});
 

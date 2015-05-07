@@ -31,7 +31,7 @@
 {{HTML::style("assets/global/css/custom-new.css")}}
 {{HTML::style("assets/global/css/login.css")}}
 <!-- END THEME STYLES -->
-<link rel="shortcut icon" href="favicon.ico"/>
+<!-- <link rel="shortcut icon" href="favicon.ico"/> -->
 </head>
 <!-- END HEAD -->
 

@@ -24,9 +24,11 @@ class PageController extends BaseController {
         $this->layout->top_active = 3;
         $this->layout->sub_active = 1;
         $page = DB::table('pages')->where('id',$page_id)->first();
-        $all_pages = DB::table('pages')->lists('page_title','id');
+        $sidebars = DB::table('sidebars')->lists('sidebar','id');
+        $sidebars[0] = "None";
+        ksort($sidebars);
 
-        $this->layout->main = View::make("admin.pages.edit",array("page"=>$page, "all_pages"=>$all_pages));
+        $this->layout->main = View::make("admin.pages.edit",array("page"=>$page, "sidebars"=>$sidebars));
     }
 
     public function getPages(){
@@ -66,6 +68,8 @@ class PageController extends BaseController {
             if($page->exists){
                 $page->page_title = Input::get('page_title');
                 $page->page_content = Input::get('page_content');
+                $page->left_sidebar = Input::get('left_sidebar');
+                $page->right_sidebar = Input::get('right_sidebar');
                 $page->save();
                 return Redirect::Back()->with('success', '<b>'.Input::get('page_title').'</b> has been successfully updated');                    
             }

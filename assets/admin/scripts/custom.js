@@ -52,18 +52,13 @@ $(document).ready(function(){
 	$("#add_html").click(function(){
 		var item = $(this);
 		item.find('i').show();
-		if($("textarea[name=custom_html]").val() != ''){
-			$.post(base_url+'/admin/sidebars/add_html/'+sidebar_id,{custom_html:$("textarea[name=custom_html]").val()},function(data){
-	            $("#sidebar-body").append(data);
-				item.find('i').hide();
-        		$("#img-view").html('');
-       			$("textarea[name=custom_html]").val('');
-	        });
-		} else {
-			alert('Please input text');
+		$.post(base_url+'/admin/sidebars/add_html/'+sidebar_id,{},function(data){
+            $("#sidebar-body").append(data);
 			item.find('i').hide();
-		}
-		
+    		$("#img-view").html('');
+   			$("textarea[name=custom_html]").val('');
+   			initialize();
+        });
 	});
 
 	$("#select_image").click(function(){
@@ -75,7 +70,12 @@ $(document).ready(function(){
 	});
 
 	$(document).on("click",".remove", function(){
+		var item = $(this);
+		var id = $(this).attr("data-id");
         $(this).parent().remove();
+        $.post(base_url+'/admin/sidebars/remove/'+sidebar_id,{itemid:id},function(data){
+            $(".modal-body").html(data);
+        });
     });
 
     $(document).on("click",".image-link", function(){
@@ -126,8 +126,7 @@ $(document).ready(function(){
 
     $("#sidebar-body").sortable();
     $("#sidebar-body").disableSelection();
-
-    $('textarea.editor1').ckeditor();
+    initialize();
     $('.fancybox').fancybox();
 
 		// var editor =  $('.textarea').wysihtml5({
@@ -145,3 +144,6 @@ $(document).ready(function(){
 		//    editor.composer.commands.exec("insertHTML", "<a href='#'>asdasd</a>");
 		// });
 });
+function initialize(){
+    $('textarea.editor1').ckeditor();
+}
