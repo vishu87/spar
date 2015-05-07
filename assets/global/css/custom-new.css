@@ -48,3 +48,16 @@ text-align:center;
 .banner-pro .btn-danger{
 	
 }
+#sidebar-body div.prim{
+	cursor: move;
+}
+.body-div{
+	background:#EEE; border:1px dashed #CCC; padding:10px 15px;
+	margin-bottom:20px;
+}
+.fa-hidden{
+	display: none;
+}
+.image-link{
+	max-width:100px; margin:10px; border:1px dashed #CCC; padding:2px; float:left; cursor: pointer;
+}

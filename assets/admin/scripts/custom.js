@@ -1,3 +1,93 @@
+$(document).ready(function(){
+	var sidebar_id = $("#sidebar_id").val();
+
+	$("#add_page").click(function(){
+		var item = $(this);
+		item.find('i').show();
+		if($("select[name=add_link]").val() != ''){
+			$.post(base_url+'/admin/sidebars/add_link/'+sidebar_id,{page_id:$("select[name=add_link]").val()},function(data){
+	            $("#sidebar-body").append(data);
+				item.find('i').hide();
+				$("select[name=add_link]").val('');
+	        });
+		} else {
+			alert('Please select a page');
+			item.find('i').hide();
+
+		}
+	});
+
+	$("#add_title").click(function(){
+		var item = $(this);
+		item.find('i').show();
+		if($("input[name=title]").val() != ''){
+			$.post(base_url+'/admin/sidebars/add_title/'+sidebar_id,{title:$("input[name=title]").val()},function(data){
+	            $("#sidebar-body").append(data);
+				item.find('i').hide();
+				$("input[name=title]").val('');
+	        });
+		} else {
+			alert('Please add title');
+			item.find('i').hide();
+		}
+		
+	});
+
+	$("#add_image").click(function(){
+		var item = $(this);
+		item.find('i').show();
+		if($("input[name=image_id]").val() != ''){
+			$.post(base_url+'/admin/sidebars/add_image/'+sidebar_id,{image_id:$("input[name=image_id]").val()},function(data){
+	            $("#sidebar-body").append(data);
+				item.find('i').hide();
+        		$("#img-view").html('');
+       			$("input[name=image_id]").val('');
+	        });
+		} else {
+			alert('Please select an image');
+			item.find('i').hide();
+		}
+		
+	});
+	$("#add_html").click(function(){
+		var item = $(this);
+		item.find('i').show();
+		if($("textarea[name=custom_html]").val() != ''){
+			$.post(base_url+'/admin/sidebars/add_html/'+sidebar_id,{custom_html:$("textarea[name=custom_html]").val()},function(data){
+	            $("#sidebar-body").append(data);
+				item.find('i').hide();
+        		$("#img-view").html('');
+       			$("textarea[name=custom_html]").val('');
+	        });
+		} else {
+			alert('Please input text');
+			item.find('i').hide();
+		}
+		
+	});
+
+	$("#select_image").click(function(){
+		$('.modal-title').html('All Images');
+		$('.modal-body').html('Loading Images... Please wait');
+		$.post(base_url+'/admin/get_images',{},function(data){
+            $(".modal-body").html(data);
+        });
+	});
+
+	$(document).on("click",".remove", function(){
+        $(this).parent().remove();
+    });
+
+    $(document).on("click",".image-link", function(){
+    	var dataImage = $(this).attr('data-image');
+    	var dataId = $(this).attr('data-id');
+        $("#full").modal('hide');
+        $("#img-view").html('<img src="'+dataImage+'" style="width:100%; height:auto">');
+        $("input[name=image_id]").val(dataId);
+    });
+
+
+});
 $(function() {
 
 	$.extend($.tablesorter.themes.bootstrap, {
@@ -33,6 +123,10 @@ $(function() {
 $(document).ready(function(){
 	$("#sortable1").sortable();
     $("#sortable1").disableSelection();
+
+    $("#sidebar-body").sortable();
+    $("#sidebar-body").disableSelection();
+
     $('textarea.editor1').ckeditor();
     $('.fancybox').fancybox();
 

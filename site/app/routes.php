@@ -31,6 +31,7 @@ Route::post('/login', 'UserController@postLogin');
     
 Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 	Route::get('/dashboard','RecipeController@getRecipes');
+	Route::post('/get_images','SidebarController@getImages');
 
 	Route::group(['prefix' => 'recipes'], function () {
 		Route::get('/','RecipeController@getRecipes');
@@ -130,7 +131,7 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 		Route::get('/','MediaController@getAll');
 		Route::get('/add','MediaController@getAdd');
 		Route::post('/store','MediaController@postAdd');
-	    Route::get('/delete/{side_banner_id}',array('before'=>'authadmin', 'uses'=>'MediaController@getdelete'));
+	    Route::get('/delete/{media_id}',array('before'=>'authadmin', 'uses'=>'MediaController@getdelete'));
 
 	});
 
@@ -140,15 +141,21 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 		Route::post('/store','SidebarController@postAdd');
 	    Route::get('/delete/{sidebar_id}',array('before'=>'authadmin', 'uses'=>'SidebarController@getdelete'));
 
+	    //ajax
+	    Route::post('/add_link/{sidebar_id}','SidebarController@addLink');
+	    Route::post('/add_title/{sidebar_id}','SidebarController@addTitle');
+	    Route::post('/add_image/{sidebar_id}','SidebarController@addImage');
+	    Route::post('/add_html/{sidebar_id}','SidebarController@addHTML');
+
 	});
 
 	Route::group(['prefix' => 'members'], function () {
 		Route::get('/','MemberController@getMembers');
 		Route::get('/add','MemberController@getAdd');
 		Route::post('/store','MemberController@postAdd');
-		Route::get('/edit/{page_id}','MemberController@getmember');
-	    Route::put('/update/{page_id}', 'MemberController@putupdate');
-	    Route::get('/delete/{page_id}',array('before'=>'authadmin', 'uses'=>'MemberController@getdelete'));
+		Route::get('/edit/{member_id}','MemberController@getmember');
+	    Route::put('/update/{member_id}', 'MemberController@putupdate');
+	    Route::get('/delete/{member_id}',array('before'=>'authadmin', 'uses'=>'MemberController@getdelete'));
 
 	});
 

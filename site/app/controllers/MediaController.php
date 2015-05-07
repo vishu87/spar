@@ -4,6 +4,8 @@ class MediaController extends BaseController {
     protected $layout = 'admin.layout';
 
     public function postAdd(){
+        include(app_path().'/libraries/resize_img.inc.php');
+        
         $cre = [
         'caption' => Input::get('caption')
         ];
@@ -18,6 +20,11 @@ class MediaController extends BaseController {
                 $extension = Input::file('image')->getClientOriginalExtension();
                 $image = Input::file('image')->getClientOriginalName();
                 Input::file('image')->move($destinationPath,$image);
+                $resizer=new SimpleImage();
+                $resizer->load(base_path().'/../'.$destinationPath.$image);
+                $resizer->resizeToWidth(250);
+                $resizer->cropImage(250,250,true);
+                $resizer->save(base_path().'/../'.$destinationPath.'tn_'.$image);
             } else return Redirect::Back()->withErrors($validator)->withInput();
             
             $id = DB::table("media")->insertGetID(array('caption'=>Input::get("caption"),'image'=>$image));               
@@ -35,6 +42,7 @@ class MediaController extends BaseController {
     }
 
     public function getAdd(){
+
         $this->layout->title = 'Add | Banner';
         $this->layout->top_active = 3;
         $this->layout->sub_active = 3;
@@ -42,9 +50,9 @@ class MediaController extends BaseController {
         $this->layout->main = View::make("admin.media.add");
     }
 
-     public function delete($media_id){
+     public function getdelete($media_id){
         $id = DB::table("media")->where('id',$media_id)->delete();
-        return Redirect::Back()->with('delete', '<b>'.Input::get('side_banner_name').'</b> has been successfully deleted');                    
+        return Redirect::Back()->with('success', '<b>Image</b> has been successfully deleted');                    
     }
 
 }

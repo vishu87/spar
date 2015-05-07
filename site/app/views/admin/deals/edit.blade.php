@@ -35,7 +35,7 @@
 @endif
 
 @if(Session::has('failure'))
-<div class="alert alert-alert alert-dismissable">
+<div class="alert alert-success alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
   <strong>Error!</strong> {{Session::get('success')}} </a>
 </div>
