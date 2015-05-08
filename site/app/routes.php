@@ -30,8 +30,8 @@ Route::post('/login', 'UserController@postLogin');
 
     
 Route::group(['prefix' => 'admin','before' => 'auth'], function () {
-	Route::get('/dashboard','RecipeController@getRecipes');
-	Route::get('/','RecipeController@getRecipes');
+	Route::get('/dashboard','BannerController@getbanners');
+	Route::get('/','BannerController@getbanners');
 	Route::post('/get_images','SidebarController@getImages');
 
 	Route::group(['prefix' => 'recipes'], function () {

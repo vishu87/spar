@@ -11,13 +11,6 @@
           </a>
         </li>
         <li style="height:20px"></li>
-        <li @if($top_active == 2) class="active" @endif>
-          <a href="{{url('/admin/recipes')}}">
-            <i class="fa fa-cutlery"></i>
-            <span class="title">Recipes</span>
-            <span class="selected"></span>
-          </a>
-        </li>
          <li @if($top_active == 8) class="active open" @endif>
           <a href="javascript:;">
             <i class="fa fa-file-image-o"></i>
@@ -88,6 +81,13 @@
                 </a>
               </li>
           </ul>
+        </li>
+        <li @if($top_active == 2) class="active" @endif>
+          <a href="{{url('/admin/recipes')}}">
+            <i class="fa fa-cutlery"></i>
+            <span class="title">Recipes</span>
+            <span class="selected"></span>
+          </a>
         </li>
         <li @if($top_active == 4) class="active" @endif>
           <a href="{{url('/admin/brands')}}">
