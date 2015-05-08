@@ -14,7 +14,7 @@ class DealController extends BaseController {
         ];
         $validator = Validator::make($cre,$rules);
         if($validator->passes()){           
-            $id = DB::table("deals")->insertGetID(array('deal_name'=>Input::get("deal_name"),'product_id'=>Input::get("product_id"),'deal_content'=>Input::get("deal_content")));               
+            $id = DB::table("deals")->insertGetID(array('deal_name'=>Input::get("deal_name"),'category_id'=>Input::get("category_id"),'deal_content'=>Input::get("deal_content")));               
             return Redirect::Back()->with('success', '<b>'.Input::get('deal_name').'</b> has been successfully added');                    
         }else {
             return Redirect::Back()->withErrors($validator)->withInput();
@@ -24,23 +24,25 @@ class DealController extends BaseController {
     public function getDeal($deal_id){
         $this->layout->title = 'Spar | Deal';
         $this->layout->top_active = 7;
-        $products = DB::table('products')->lists('product_name','id');         
+        
         $deal = DB::table('deals')->where('id',$deal_id)->first();
-        $this->layout->main = View::make("admin.deals.edit",array("deal"=>$deal,'products' =>$products));
+        $categories = DB::table('product_categories')->lists('product_category','id');  
+
+        $this->layout->main = View::make("admin.deals.edit",array("deal"=>$deal,'categories' =>$categories));
     }
 
     public function getDeals(){
         $this->layout->title = 'All Deals | Spar';
         $this->layout->top_active = 7;
-        $deals = DB::table('deals')->get();
+        $deals = DB::table('deals')->join('product_categories','deals.category_id','=','product_categories.id')->select('deals.*','product_categories.product_category')->get();
         $this->layout->main = View::make("admin.deals.index",array("deals"=>$deals));
     }
 
     public function getadd(){
         $this->layout->title = 'Add | Deal';
         $this->layout->top_active = 7;
-        $products = DB::table('products')->lists('product_name','id');  
-        $this->layout->main = View::make("admin.deals.add",array('products' =>$products));
+        $categories = DB::table('product_categories')->lists('product_category','id');  
+        $this->layout->main = View::make("admin.deals.add",array('categories' =>$categories));
     }
 
      public function getdelete($deal_id){
@@ -63,7 +65,7 @@ class DealController extends BaseController {
             $deal = Deal::find($deal_id);
             if($deal->exists){               
                 $deal->deal_name = Input::get('deal_name');
-                $deal->product_id = Input::get('product_id');
+                $deal->category_id = Input::get('category_id');
                 $deal->deal_content = Input::get('deal_content');
                 $deal->save();
                 return Redirect::Back()->with('success', '<b>'.Input::get('deal_name').'</b> has been successfully updated');                    

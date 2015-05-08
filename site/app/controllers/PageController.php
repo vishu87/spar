@@ -49,7 +49,7 @@ class PageController extends BaseController {
 
      public function getdelete($page_id){
         $id = DB::table("pages")->where('id',$page_id)->delete();
-        return Redirect::Back()->with('delete', '<b>'.Input::get('pages_title').'</b> has been successfully deleted');                    
+        return Redirect::Back()->with('success', '<b>'.Input::get('pages_title').'</b> has been successfully deleted');                    
     }
 
     public function putupdate($page_id){       

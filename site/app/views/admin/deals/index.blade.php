@@ -22,10 +22,10 @@
   </ul>
 </div>
 
-@if(Session::has('delete'))
+@if(Session::has('success'))
 <div class="alert alert-success alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-  <strong>Delete!</strong> {{Session::get('success')}} </a>
+  <strong>Success!</strong> {{Session::get('success')}} </a>
 </div>
 @endif
 <!-- END PAGE HEADER-->
@@ -41,7 +41,7 @@
                Deal Name
             </th>
             <th>
-               Deal Content
+               Category
             </th>
            
             <th></th>
@@ -74,7 +74,7 @@
               {{$deal->deal_name}}                       
             </td>
              <td>
-              {{$deal->deal_content}}                       
+              {{$deal->product_category}}                       
             </td>
             <td>
               <a href="{{url('/admin/deals/edit/'.$deal->id)}}"><span class="btn yellow">Edit </span></a>

@@ -55,9 +55,9 @@
                 </div>
               </div>
                <div class="form-group">
-                <label class="col-md-2 control-label">Brand Name</label>
+                <label class="col-md-2 control-label">Category</label>
                 <div class="col-md-9">
-                  {{Form::select('brand_id',$brands,'',array("class"=>"form-control"))}}                 
+                  {{Form::select('category_id',$product_categories,'',array("class"=>"form-control"))}}                 
                 </div>
               </div>
                <div class="form-group">

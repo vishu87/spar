@@ -48,9 +48,9 @@ protected $layout = 'admin.layout';
      public function getRecipe($recipe_id){
         $this->layout->title = 'Spar | Recipe';
         $this->layout->top_active = 2;
-        $categories = DB::table('recipe_categories')->lists('recipe_category','id');  
-        
-
+        $categories = DB::table('recipe_categories')->lists('recipe_category','id');
+        $categories[""]= "Select";
+        ksort($categories);
 
         $category_get = DB::table('recipe_categories')->select('recipe_category','id')->get();    
         

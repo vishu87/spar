@@ -56,7 +56,7 @@ class MidBannerController extends BaseController {
 
      public function getdelete($mid_banner_id){
         $id = DB::table("mid_banner")->where('id',$mid_banner_id)->delete();
-        return Redirect::Back()->with('delete', '<b>'.Input::get('mid_banner_name').'</b> has been successfully deleted');                    
+        return Redirect::Back()->with('success', 'Banner been successfully deleted');                    
     }
 
 }

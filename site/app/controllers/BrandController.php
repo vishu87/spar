@@ -49,7 +49,7 @@ class BrandController extends BaseController {
 
      public function getdelete($brand_id){
         $id = DB::table("brands")->where('id',$brand_id)->delete();
-        return Redirect::Back()->with('delete', '<b>'.Input::get('brand_name').'</b> has been successfully deleted');                    
+        return Redirect::Back()->with('success', '<b>'.Input::get('brand_name').'</b> has been successfully deleted');                    
     }
 
     public function putupdate($brand_id){       

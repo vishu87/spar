@@ -64,7 +64,7 @@ class BannerController extends BaseController {
 
      public function getdelete($banner_id){
         $id = DB::table("banner")->where('id',$banner_id)->delete();
-        return Redirect::Back()->with('delete', '<b>'.Input::get('banner_name').'</b> has been successfully deleted');                    
+        return Redirect::Back()->with('success', 'Banner been successfully deleted');                    
     }
 
     public function putupdate($banner_id){       

@@ -31,6 +31,7 @@ Route::post('/login', 'UserController@postLogin');
     
 Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 	Route::get('/dashboard','RecipeController@getRecipes');
+	Route::get('/','RecipeController@getRecipes');
 	Route::post('/get_images','SidebarController@getImages');
 
 	Route::group(['prefix' => 'recipes'], function () {
@@ -45,6 +46,13 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 	    Route::get('/related/del/{id}', 'RecipeController@getdel');
 	    Route::get('/related-product/del/{id}', 'RecipeController@getdelpro');
 
+	});
+
+	Route::group(['prefix' => 'homepage'], function () {
+		Route::get('/offers','HomepageController@getOffers');
+		Route::post('/offers/add','HomepageController@addOffer');
+		Route::post('/offers/order','HomepageController@orderOffer');
+		Route::get('/offers/delete/{id}','HomepageController@getdelete');
 	});
 
     Route::group(['prefix' => 'pages'], function () {
@@ -87,6 +95,12 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 	    Route::put('/update/{product_id}', 'ProductController@putupdate');
 	    Route::get('/delete/{product_id}',array('before'=>'authadmin', 'uses'=>'ProductController@getdelete'));
 
+	    Route::get('/categories','ProductController@getCategories');
+	    Route::get('/categories/add','ProductController@addCategory');
+	    Route::get('/categories/delete/{id}','ProductController@deleteCategory');
+	    Route::put('/categories/update/{id}', 'ProductController@updateCategory');
+	    Route::get('/categories/edit/{id}','ProductController@editCategory');
+	    Route::post('/categories/store','ProductController@postCategory');
 	});
 	   Route::group(['prefix' => 'deals'], function () {
 		Route::get('/','DealController@getdeals');

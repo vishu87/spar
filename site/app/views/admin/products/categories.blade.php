@@ -2,11 +2,11 @@
 <div class="row">
   <div class="col-md-6">
     <h3 class="page-title">
-      Brands <small></small>
+      Products Categories<small></small>
     </h3>
   </div>
-  <div class="col-md-6 add-new">
-    <a href="{{url('/admin/brands/add')}}" class="btn green">Add New</a>
+  <div class="col-md-6" style="text-align:right">
+    <a href="{{url('/admin/products/categories/add')}}" class="btn green">Add New</a>
   </div>
 </div>
 <div class="page-bar">
@@ -17,7 +17,7 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      All Brand
+      All Product Categories
     </li>   
   </ul>
 </div>
@@ -38,8 +38,8 @@
               #
             </th>
             <th>
-               Brand Name
-            </th>           
+               Product Category Name
+            </th>
             <th></th>
         </tr>  
       </thead>
@@ -63,16 +63,16 @@
       </tfoot>
       <tbody>
         <?php $count = 0; ?>
-        @foreach($brands as $brand)
+        @foreach($categories as $category)
           <tr>
             <td>{{++$count}}</td>
             <td>
-              {{$brand->brand_name}}                       
+              {{$category->product_category}}                       
             </td>
             <td>
-              <a href="{{url('/admin/brands/edit/'.$brand->id)}}"><span class="btn yellow">Edit </span></a>
+              <a href="{{url('/admin/products/categories/edit/'.$category->id)}}"><span class="btn yellow">Edit </span></a>
               @if(Auth::user()->priviledge == 1)
-              <a href="{{url('/admin/brands/delete/'.$brand->id)}}" class="del"><span class="btn btn-danger">Delete </span></a>
+              <a href="{{url('/admin/products/categories/delete/'.$category->id)}}" class="del"><span class="btn btn-danger">Delete</span></a>
               @endif
             </td>
           </tr>

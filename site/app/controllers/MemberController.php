@@ -17,8 +17,8 @@ class MemberController extends BaseController {
         $validator = Validator::make($cre,$rules);
         if($validator->passes()){
             $password = Hash::make(Input::get('password'));
-            $id = DB::table("users")->insertGetID(array('name'=>Input::get("name"),'email'=>Input::get("email"),'phone'=>Input::get("phone"),'priviledge'=>Input::get("priviledge"),'password' => $password));               
-            return Redirect::Back()->with('success', '<b>'.Input::get('member_title').'</b> has been successfully added');                    
+            $id = DB::table("users")->insertGetID(array('name'=>Input::get("name"),'email'=>Input::get("email"),'username'=>Input::get("email"),'phone'=>Input::get("phone"),'priviledge'=>Input::get("priviledge"),'password' => $password));               
+            return Redirect::Back()->with('success', '<b>'.Input::get('name').'</b> has been successfully added');                    
         }else {
             return Redirect::Back()->withErrors($validator)->withInput();
         }
@@ -49,7 +49,7 @@ class MemberController extends BaseController {
 
      public function getdelete($member_id){
         $id = DB::table("users")->where('id',$member_id)->delete();
-        return Redirect::Back()->with('delete', '<b>'.Input::get('members_title').'</b> has been successfully deleted');                    
+        return Redirect::Back()->with('success', 'Successfully deleted');                    
     }
 
     public function putupdate($member_id){       
@@ -64,14 +64,15 @@ class MemberController extends BaseController {
         $validator = Validator::make($cre,$rules);
         if($validator->passes()){
 
-            $member = Member::find($member_id);
+            $member = User::find($member_id);
             if($member->exists){
                 $member->name = Input::get('name');
                 $member->email = Input::get('email');
+                $member->username = Input::get('email');
                 $member->phone = Input::get('phone');
                 $member->priviledge = Input::get('priviledge');
                 $member->save();
-                return Redirect::Back()->with('success', '<b>'.Input::get('member_title').'</b> has been successfully updated');                    
+                return Redirect::Back()->with('success', '<b>'.Input::get('name').'</b> has been successfully updated');                    
             }
             return Redirect::Back()->with('failure', '<b>Member not found');
         } 

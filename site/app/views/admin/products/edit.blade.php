@@ -64,8 +64,8 @@
            <div class="form-group">
             <label class="col-md-2 control-label">Brand Name</label>
             <div class="col-md-9">
-              {{Form::select('brand_id',$brands,$product->brand_id,array("class"=>"form-control", "placeholder"=>"Enter Brand Name"))}}
-              <span>{{$errors->first('brand_id')}}</span>
+              {{Form::select('category_id',$product_categories,$product->category_id,array("class"=>"form-control", "placeholder"=>"Enter Brand Name"))}}
+              <span>{{$errors->first('category_id')}}</span>
             </div>
           </div>
           <div class="form-group">

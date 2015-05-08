@@ -13,7 +13,7 @@
   <ul class="page-breadcrumb">
     <li>
       <i class="fa fa-home"></i>
-      <a href="#">Home Page</a>
+      <a href="{{url('/admin')}}">Home</a>
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
@@ -22,10 +22,10 @@
   </ul>
 </div>
 
-@if(Session::has('delete'))
+@if(Session::has('success'))
 <div class="alert alert-success alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-  <strong>Delete!</strong> {{Session::get('success')}} </a>
+  <strong>Success!</strong> {{Session::get('success')}} </a>
 </div>
 @endif
 <!-- END PAGE HEADER-->

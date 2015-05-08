@@ -55,7 +55,7 @@ class SideBannerController extends BaseController {
 
      public function getdelete($side_banner_id){
         $id = DB::table("side_banner")->where('id',$side_banner_id)->delete();
-        return Redirect::Back()->with('delete', '<b>'.Input::get('side_banner_name').'</b> has been successfully deleted');                    
+        return Redirect::Back()->with('success', 'Banner been successfully deleted');                    
     }
 
 }

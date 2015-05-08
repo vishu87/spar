@@ -55,15 +55,15 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-md-2 control-label">Product Name</label>
+                    <label class="col-md-2 control-label">Category</label>
                     <div class="col-md-9">
-                      {{Form::select('product_id',$products,'',array("class"=>"form-control", "placeholder"=>"Enter Product Name"))}}                        
+                      {{Form::select('category_id',$categories,'',array("class"=>"form-control", "placeholder"=>"Select Category"))}}                        
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-2 control-label">Deal Content</label>
                     <div class="col-md-9">
-                     {{Form::textarea('deal_content','',array("class"=>"form-control", "placeholder"=>"Deal Content"))}}  
+                     {{Form::textarea('deal_content','',array("class"=>"form-control editor1", "placeholder"=>"Deal Content"))}}  
                      <span>{{$errors->first('deal_content')}}</span>          
                   </div>
                   </div>           

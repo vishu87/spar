@@ -48,6 +48,13 @@
                 <span class="selected"></span>
               </a>
             </li>
+            <li @if($top_active == 8 && $sub_active == 4) class="active" @endif>
+              <a href="{{url('/admin/homepage/offers')}}">
+                <i class="fa fa-file-image-o"></i>
+                <span class="title">Offers</span>
+                <span class="selected"></span>
+              </a>
+            </li>
           </ul>
         </li>
         <li @if($top_active == 3) class="active open" @endif>
@@ -96,12 +103,30 @@
             <span class="selected"></span>
           </a>
         </li>
-         <li @if($top_active == 6) class="active" @endif>
-          <a href="{{url('/admin/products')}}">
-            <i class="fa fa-truck"></i>
+         <li @if($top_active == 6) class="active open" @endif>
+          <a href="javascript:;">
+            <i class="fa fa-file-image-o"></i>
             <span class="title">Products</span>
             <span class="selected"></span>
+            <span class="arrow open"></span>
           </a>
+          <ul class="sub-menu">
+            <li @if($top_active == 6 && $sub_active == 1) class="active" @endif>
+              <a href="{{url('/admin/products')}}">
+                <i class="fa fa-file-image-o"></i>
+                <span class="title">All Products</span>
+                <span class="selected"></span>
+
+              </a>
+            </li>
+            <li @if($top_active == 6 && $sub_active == 2) class="active" @endif>
+              <a href="{{url('/admin/products/categories')}}">
+                <i class="fa fa-file-image-o"></i>
+                <span class="title">Categories</span>
+                <span class="selected"></span>
+              </a>
+            </li>
+          </ul>
         </li>
         <li @if($top_active == 7) class="active" @endif>
           <a href="{{url('/admin/deals')}}">

@@ -25,7 +25,7 @@
 @if(Session::has('delete'))
 <div class="alert alert-success alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-  <strong>Delete!</strong> {{Session::get('success')}} </a>
+  <strong>Success!</strong> {{Session::get('success')}} </a>
 </div>
 @endif
 <!-- END PAGE HEADER-->

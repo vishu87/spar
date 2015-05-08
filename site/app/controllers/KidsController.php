@@ -50,7 +50,7 @@ class KidsController extends BaseController {
 
      public function getdelete($kids_id){
         $id = DB::table("kids")->where('id',$kids_id)->delete();
-        return Redirect::Back()->with('delete', '<b>'.Input::get('title').'</b> has been successfully deleted');                    
+        return Redirect::Back()->with('success', '<b>'.Input::get('title').'</b> has been successfully deleted');                    
     }
 
     public function putupdate($kids_id){       
