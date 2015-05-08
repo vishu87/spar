@@ -13,8 +13,20 @@ class DealController extends BaseController {
         'deal_content' => 'required'
         ];
         $validator = Validator::make($cre,$rules);
-        if($validator->passes()){           
-            $id = DB::table("deals")->insertGetID(array('deal_name'=>Input::get("deal_name"),'category_id'=>Input::get("category_id"),'deal_content'=>Input::get("deal_content")));               
+        if($validator->passes()){
+         if (Input::hasFile('image')){
+                $destinationPath = "images/";
+                $extension = Input::file('image')->getClientOriginalExtension();
+                $image = str_replace(' ','-',Input::file('image')->getClientOriginalName());
+                $count = 1;
+                $image_ori = $image;
+                while(File::exists($destinationPath.$image)){
+                    $image = $count.'-'.$image_ori;
+                    $count++;
+                }
+                Input::file('image')->move($destinationPath,$image);
+            } else $image ='';       
+            $id = DB::table("deals")->insertGetID(array('deal_name'=>Input::get("deal_name"),'category_id'=>Input::get("category_id"),'deal_content'=>Input::get("deal_content"), "image"=>$image ));               
             return Redirect::Back()->with('success', '<b>'.Input::get('deal_name').'</b> has been successfully added');                    
         }else {
             return Redirect::Back()->withErrors($validator)->withInput();
@@ -46,7 +58,8 @@ class DealController extends BaseController {
     }
 
      public function getdelete($deal_id){
-        $id = DB::table("deal")->where('id',$deal_id)->delete();
+        $id = DB::table("deals")->where('id',$deal_id)->delete();
+        DB::table('homepage_deals')->where('deal_id',$deal_id)->delete();
         return Redirect::Back()->with('delete', '<b>'.Input::get('deal_name').'</b> has been successfully deleted');                    
     }
 
@@ -63,7 +76,20 @@ class DealController extends BaseController {
         if($validator->passes()){
 
             $deal = Deal::find($deal_id);
-            if($deal->exists){               
+            if($deal->exists){
+                if (Input::hasFile('image')){
+                    $destinationPath = "images/";
+                    $extension = Input::file('image')->getClientOriginalExtension();
+                    $image = str_replace(' ','-',Input::file('image')->getClientOriginalName());
+                    $count = 1;
+                    $image_ori = $image;
+                    while(File::exists($destinationPath.$image)){
+                        $image = $count.'-'.$image_ori;
+                        $count++;
+                    }
+                    Input::file('image')->move($destinationPath,$image);
+                    $deal->image = $image;
+                }       
                 $deal->deal_name = Input::get('deal_name');
                 $deal->category_id = Input::get('category_id');
                 $deal->deal_content = Input::get('deal_content');

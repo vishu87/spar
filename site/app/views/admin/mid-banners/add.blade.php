@@ -17,11 +17,11 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-       <a href="{{url('/admin/mid-banners')}}">All Mid Banner</a>
+       <a href="{{url('/admin/mid-banners')}}">Mid Banners</a>
        <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      Add Mid Banner
+      Add Banner
     </li>   
   </ul>
 </div>
@@ -41,7 +41,7 @@
    <div class="portlet box blue">
             <div class="portlet-title">
               <div class="caption">
-                Add Mid Banner
+                Add Banner
               </div>           
             </div>
             <div class="portlet-body form">

@@ -17,7 +17,7 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-       <a href="{{url('/admin/media')}}">All Image</a>
+       <a href="{{url('/admin/media')}}">Image</a>
        <i class="fa fa-angle-right"></i>
     </li>
     <li>
@@ -48,16 +48,18 @@
               {{Form::open(array("url"=>"/admin/media/store","method" => "POST","role"=>"form","class" => "form-horizontal","files"=>"true"))}}
                 <div class="form-body">
                   <div class="form-group">
-                    <label class="col-md-2 control-label">Image Caption</label>
+                    <label class="col-md-2 control-label">Caption</label>
                     <div class="col-md-9">
-                      {{Form::text('caption','',array("class"=>"form-control", "placeholder"=>"Enter Image Name"))}}
-                        <span>{{$errors->first('caption')}}</span>
+                      {{Form::text('caption','',array("class"=>"form-control", "placeholder"=>"Enter Image Caption"))}}
+                        <span class="error">{{$errors->first('caption')}}</span>
                     </div>
                   </div>
                    <div class="form-group">
-                    <label class="col-md-2 control-label">Image Image</label>
+                    <label class="col-md-2 control-label">Image</label>
                     <div class="col-md-9">
-                     {{Form::file('image',array("class"=>"form-control"))}} 
+                     {{Form::file('image',array("class"=>"form-control"))}}
+                      <span class="error">{{$errors->first('image')}}</span>
+
                    </div>
                   </div>           
                   <div class="form-actions sub-center">

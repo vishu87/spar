@@ -33,7 +33,13 @@ protected $layout = 'admin.layout';
             if (Input::hasFile('recipe_image')){
                 $destinationPath = "images/";
                 $extension = Input::file('recipe_image')->getClientOriginalExtension();
-                $image = Input::file('recipe_image')->getClientOriginalName();
+                $image = str_replace(' ','-',Input::file('recipe_image')->getClientOriginalName());
+                $count = 1;
+                $image_ori = $image;
+                while(File::exists($destinationPath.$image)){
+                    $image = $count.'-'.$image_ori;
+                    $count++;
+                }
                 Input::file('recipe_image')->move($destinationPath,$image);
             } else $image ='';
 
@@ -132,7 +138,13 @@ protected $layout = 'admin.layout';
                 if (Input::hasFile('recipe_image')){
                     $destinationPath = "images/";
                     $extension = Input::file('recipe_image')->getClientOriginalExtension();
-                    $image = Input::file('recipe_image')->getClientOriginalName();
+                    $image = str_replace(' ','-',Input::file('recipe_image')->getClientOriginalName());
+                        $count = 1;
+                        $image_ori = $image;
+                        while(File::exists($destinationPath.$image)){
+                            $image = $count.'-'.$image_ori;
+                            $count++;
+                        }
                     Input::file('recipe_image')->move($destinationPath,$image);
                     $recipe->recipe_image = $image;
                 }

@@ -28,7 +28,13 @@ class BannerController extends BaseController {
             if (Input::hasFile('banner_image')){
                 $destinationPath = "images/";
                 $extension = Input::file('banner_image')->getClientOriginalExtension();
-                $image = Input::file('banner_image')->getClientOriginalName();
+                $image = str_replace(' ','-',Input::file('banner_image')->getClientOriginalName());
+                $count = 1;
+                $image_ori = $image;
+                while(File::exists($destinationPath.$image)){
+                    $image = $count.'-'.$image_ori;
+                    $count++;
+                }
                 Input::file('banner_image')->move($destinationPath,$image);
             } else $image ='';
             

@@ -17,7 +17,7 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      <a href="{{url('/admin/sidebars')}}">All Sidebars</a>
+      <a href="{{url('/admin/sidebars')}}">Sidebars</a>
       <i class="fa fa-angle-right"></i>
     </li>  
     <li>
@@ -60,7 +60,7 @@
         </div>
         <div class="row" style="background:#EEE; margin:10px 0; padding:10px 0">
           <div class="col-md-9">
-            {{Form::select('add_link',$pages,'',["class"=>"form-control"])}}
+            {{Form::select('add_link',$pages,'',["class"=>"form-control","style"=>"width: 90%;"])}}
           </div>
           <div class="col-md-3"><button class="btn green pull-right" id="add_page">Add Link <i class="fa fa-hidden fa-spinner fa-spin"></i></button></div>
 
@@ -68,7 +68,7 @@
         
         <div class="row" style="background:#EEE; margin:10px 0; padding:10px 0">
           <div class="col-md-9">
-            <a class="btn default" id="select_image" data-toggle="modal" href="#full">Select</a>
+            <a class="btn default blue" id="select_image" data-toggle="modal" href="#full">Select</a>
             <div style="width:50px; float:left" id="img-view"></div>
             {{Form::hidden('image_id','',["class"=>"form-control"])}}
           </div>

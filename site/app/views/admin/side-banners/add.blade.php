@@ -17,11 +17,11 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-       <a href="{{url('/admin/side-banners')}}">All Side Banner</a>
+       <a href="{{url('/admin/side-banners')}}">Side Banners</a>
        <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      Add Side Banner
+      Add Banner
     </li>   
   </ul>
 </div>
@@ -41,7 +41,7 @@
    <div class="portlet box blue">
             <div class="portlet-title">
               <div class="caption">
-                Add Side Banner
+                Add Banner
               </div>           
             </div>
             <div class="portlet-body form">

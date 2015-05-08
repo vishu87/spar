@@ -19,7 +19,13 @@ class ProductController extends BaseController {
             if (Input::hasFile('product_image')){
                 $destinationPath = "images/";
                 $extension = Input::file('product_image')->getClientOriginalExtension();
-                $image = Input::file('product_image')->getClientOriginalName();
+                $image = str_replace(' ','-',Input::file('product_image')->getClientOriginalName());
+                $count = 1;
+                $image_ori = $image;
+                while(File::exists($destinationPath.$image)){
+                    $image = $count.'-'.$image_ori;
+                    $count++;
+                }
                 Input::file('product_image')->move($destinationPath,$image);
             } else $image ='';
             
@@ -42,7 +48,13 @@ class ProductController extends BaseController {
             if (Input::hasFile('image')){
                 $destinationPath = "images/";
                 $extension = Input::file('image')->getClientOriginalExtension();
-                $image = Input::file('image')->getClientOriginalName();
+               $image = str_replace(' ','-',Input::file('image')->getClientOriginalName());
+                $count = 1;
+                $image_ori = $image;
+                while(File::exists($destinationPath.$image)){
+                    $image = $count.'-'.$image_ori;
+                    $count++;
+                }
                 Input::file('image')->move($destinationPath,$image);
             } else $image ='';
             
@@ -129,7 +141,13 @@ class ProductController extends BaseController {
                 if (Input::hasFile('product_image')){
                     $destinationPath = "images/";
                     $extension = Input::file('product_image')->getClientOriginalExtension();
-                    $image = Input::file('product_image')->getClientOriginalName();
+                    $image = str_replace(' ','-',Input::file('product_image')->getClientOriginalName());
+                    $count = 1;
+                    $image_ori = $image;
+                    while(File::exists($destinationPath.$image)){
+                        $image = $count.'-'.$image_ori;
+                        $count++;
+                    }
                     Input::file('product_image')->move($destinationPath,$image);
                     $product->product_image = $image;
                 }
@@ -160,7 +178,13 @@ class ProductController extends BaseController {
                 if (Input::hasFile('image')){
                     $destinationPath = "images/";
                     $extension = Input::file('image')->getClientOriginalExtension();
-                    $image = Input::file('image')->getClientOriginalName();
+                    $image = str_replace(' ','-',Input::file('image')->getClientOriginalName());
+                        $count = 1;
+                        $image_ori = $image;
+                        while(File::exists($destinationPath.$image)){
+                            $image = $count.'-'.$image_ori;
+                            $count++;
+                        }
                     Input::file('image')->move($destinationPath,$image);
                     DB::table('product_categories')->where('id',$id)->update(array('image'=>$image));
                 }

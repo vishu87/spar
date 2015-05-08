@@ -17,7 +17,7 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      <a href="{{url('/admin/pages')}}">All Page</a>
+      <a href="{{url('/admin/pages')}}">Page</a>
       <i class="fa fa-angle-right"></i>
     </li>  
     <li>

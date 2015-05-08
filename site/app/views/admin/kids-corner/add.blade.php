@@ -17,7 +17,7 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-       <a href="{{url('/admin/kids-corner')}}">All Recipe</a>
+       <a href="{{url('/admin/kids-corner')}}">Kids Corner</a>
        <i class="fa fa-angle-right"></i>
     </li>
     <li>

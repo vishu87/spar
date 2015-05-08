@@ -62,9 +62,9 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-md-2 control-label">Product Name</label>
+            <label class="col-md-2 control-label">Category Name</label>
             <div class="col-md-9">
-              {{Form::select('category_id',$categories,$deal->category_id,array("class"=>"form-control", "placeholder"=>"Enter Product Name"))}}             
+              {{Form::select('category_id',$categories,$deal->category_id,array("class"=>"form-control", "placeholder"=>"Enter Category Name"))}}             
             </div>
           </div>
           <div class="form-group">
@@ -73,7 +73,21 @@
              {{Form::textarea('deal_content',$deal->deal_content,array("class"=>"form-control editor1", "placeholder"=>"Deal Content"))}}  
              <span>{{$errors->first('deal_content')}}</span>          
             </div>
-          </div>  
+          </div> 
+           <div class="form-group">
+          <label class="col-md-2 control-label">Deal Image</label>
+          <div class="col-md-5">
+           {{Form::file('image',array("class"=>"form-control"))}} 
+           </div>
+           <div class="col-md-4">
+             @if($deal->image == '')
+              There is no image uploaded for this deal
+            @else
+              {{HTML::image('images/'.$deal->image,"",["class"=>"img-brand"])}}
+            @endif
+
+           </div>
+        </div> 
        <div class="sub-center">
         <button type="submit" class="btn btn-success">Update</button>
       </div>   

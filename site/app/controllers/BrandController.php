@@ -16,7 +16,13 @@ class BrandController extends BaseController {
             if (Input::hasFile('brand_image')){
                 $destinationPath = "images/";
                 $extension = Input::file('brand_image')->getClientOriginalExtension();
-                $image = Input::file('brand_image')->getClientOriginalName();
+                   $image = str_replace(' ','-',Input::file('brand_image')->getClientOriginalName());
+                    $count = 1;
+                    $image_ori = $image;
+                    while(File::exists($destinationPath.$image)){
+                        $image = $count.'-'.$image_ori;
+                        $count++;
+                    }
                 Input::file('brand_image')->move($destinationPath,$image);
             } else $image ='';
             
@@ -67,10 +73,16 @@ class BrandController extends BaseController {
                 if (Input::hasFile('brand_image')){
                     $destinationPath = "images/";
                     $extension = Input::file('brand_image')->getClientOriginalExtension();
-                    $image = Input::file('brand_image')->getClientOriginalName();
-                    Input::file('brand_image')->move($destinationPath,$image);
-                    $brand->brand_image = $image;
-                }
+                    $image = str_replace(' ','-',Input::file('brand_image')->getClientOriginalName());
+                    $count = 1;
+                    $image_ori = $image;
+                    while(File::exists($destinationPath.$image)){
+                        $image = $count.'-'.$image_ori;
+                        $count++;
+                    }
+                        Input::file('brand_image')->move($destinationPath,$image);
+                        $brand->brand_image = $image;
+                    }
                 $brand->brand_name = Input::get('brand_name');
                 $brand->save();
                 return Redirect::Back()->with('success', '<b>'.Input::get('brand_name').'</b> has been successfully updated');                    

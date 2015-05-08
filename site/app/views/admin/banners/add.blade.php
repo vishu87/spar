@@ -17,7 +17,7 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-       <a href="{{url('/admin/banners')}}">All Banner</a>
+       <a href="{{url('/admin/banners')}}">Main Banners</a>
        <i class="fa fa-angle-right"></i>
     </li>
     <li>

@@ -18,7 +18,13 @@ class KidsController extends BaseController {
             if (Input::hasFile('kids_image')){
                 $destinationPath = "images/";
                 $extension = Input::file('kids_image')->getClientOriginalExtension();
-                $image = Input::file('kids_image')->getClientOriginalName();
+                $image = str_replace(' ','-',Input::file('kids_image')->getClientOriginalName());
+                $count = 1;
+                $image_ori = $image;
+                while(File::exists($destinationPath.$image)){
+                    $image = $count.'-'.$image_ori;
+                    $count++;
+                }
                 Input::file('kids_image')->move($destinationPath,$image);
             } else $image ='';
             $id = DB::table("kids")->insertGetID(array('title'=>Input::get("title"),'content'=>Input::get("content"),'kids_image'=>$image));               
@@ -70,10 +76,16 @@ class KidsController extends BaseController {
                  if (Input::hasFile('kids_image')){
                     $destinationPath = "images/";
                     $extension = Input::file('kids_image')->getClientOriginalExtension();
-                    $image = Input::file('kids_image')->getClientOriginalName();
-                    Input::file('kids_image')->move($destinationPath,$image);
-                    $kids->kids_image = $image;
-                }
+                    $image = str_replace(' ','-',Input::file('kids_image')->getClientOriginalName());
+                    $count = 1;
+                    $image_ori = $image;
+                    while(File::exists($destinationPath.$image)){
+                        $image = $count.'-'.$image_ori;
+                        $count++;
+                    }
+                        Input::file('kids_image')->move($destinationPath,$image);
+                        $kids->kids_image = $image;
+                    }
                 $kids->title = Input::get('title');
                 $kids->content = Input::get('content');
                 $kids->save();

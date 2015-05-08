@@ -17,7 +17,7 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      All Side Banner
+      Side Banners
     </li>   
   </ul>
 </div>
