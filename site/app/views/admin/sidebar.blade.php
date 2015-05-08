@@ -44,7 +44,7 @@
             <li @if($top_active == 8 && $sub_active == 4) class="active" @endif>
               <a href="{{url('/admin/homepage/offers')}}">
                 <i class="fa fa-file-image-o"></i>
-                <span class="title">Offers</span>
+                <span class="title">Homepage Deals</span>
                 <span class="selected"></span>
               </a>
             </li>
