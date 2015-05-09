@@ -2,11 +2,11 @@
 <div class="row">
   <div class="col-md-6">
     <h3 class="page-title">
-      Products Categories<small></small>
+      Carousels <small></small>
     </h3>
   </div>
   <div class="col-md-6" style="text-align:right">
-    <a href="{{url('/admin/products/categories/add')}}" class="btn green">Add New</a>
+    <!-- <a href="{{url('/admin/Carousels/add')}}" class="btn green">Add New</a> -->
   </div>
 </div>
 <div class="page-bar">
@@ -17,26 +17,20 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      All Product Categories
+      Carousels
     </li>   
   </ul>
 </div>
 
-@if(Session::has('success'))
+@if(Session::has('delete'))
 <div class="alert alert-success alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
   <strong>Success!</strong> {{Session::get('success')}} </a>
 </div>
 @endif
-@if(Session::has('failure'))
-<div class="alert alert-danger alert-dismissable">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-  <strong>Error!</strong> {{Session::get('failure')}} </a>
-</div>
-@endif
 <!-- END PAGE HEADER-->
 <div class="row">
-  <div class="col-md-12 pro-table">
+  <div class="col-md-8" style="overflow-x:auto">
     <table class="table table-stripped tablesorter">
       <thead>
         <tr>
@@ -44,8 +38,8 @@
               #
             </th>
             <th>
-               Product Category Name
-            </th>
+               Carousel Name
+            </th>          
             <th></th>
         </tr>  
       </thead>
@@ -69,22 +63,55 @@
       </tfoot>
       <tbody>
         <?php $count = 0; ?>
-        @foreach($categories as $category)
+        @foreach($carousels as $carousel)
           <tr>
             <td>{{++$count}}</td>
             <td>
-              {{$category->product_category}}                       
+              {{$carousel->name}}                       
             </td>
             <td>
-              <a href="{{url('/admin/products/categories/edit/'.$category->id)}}"><span class="btn yellow">Edit </span></a>
+              <a href="{{url('/admin/carousels/'.$carousel->id)}}"><span class="btn yellow">Edit </span></a>
               @if(Auth::user()->priviledge == 1)
-              <a href="{{url('/admin/products/categories/delete/'.$category->id)}}" class="del"><span class="btn btn-danger">Delete</span></a>
-              @endif
+              <a href="{{url('/admin/carousels/delete/'.$carousel->id)}}" style="margin-left:2px;"><span class="btn btn-danger">Delete </span></a>
+             @endif
             </td>
           </tr>
         @endforeach
       </tbody>
     </table>
   </div>
+  <div class="col-md-4 ">
+    <!-- BEGIN SAMPLE FORM PORTLET-->
+    <div class="portlet box blue">
+      <div class="portlet-title">
+        <div class="caption">
+          Add New carousel
+        </div>           
+      </div>
+      <div class="portlet-body form">
+        {{Form::open(array("url"=>"/admin/carousels/store","method" => "POST","role"=>"form","class" => "horizontal-form",))}}
+        <div class="form-body">
+          <div class="form-group">
+            <label class="control-label">Carousel Name</label>
+            <div class="row">
+              <div class="col-md-8">
+               {{Form::text('name','',array("class"=>"form-control"))}}
+               <span class="error">{{$errors->first('name')}}</span>
+              </div>
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-success pull-right">Proceed</button>
+                
+              </div>
+          </div>
+          </div>
+         
+       <div class="sub-center">
+      </div>   
+      {{Form::close()}}
+    </div>
+  </div>
+  <!-- END SAMPLE FORM PORTLET-->
+</div>
+</div>
 </div>
 <!-- BEGIN PAGE CONTENT-->

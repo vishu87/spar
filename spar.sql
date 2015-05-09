@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 08, 2015 at 12:25 PM
+-- Generation Time: May 09, 2015 at 12:15 PM
 -- Server version: 5.1.46
 -- PHP Version: 5.4.36
 
@@ -93,6 +93,45 @@ INSERT INTO `brands` (`id`, `brand_name`, `brand_image`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `carousels`
+--
+
+CREATE TABLE IF NOT EXISTS `carousels` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `carousels`
+--
+
+INSERT INTO `carousels` (`id`, `name`) VALUES
+(1, 'Name1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carousel_items`
+--
+
+CREATE TABLE IF NOT EXISTS `carousel_items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `carousel_id` int(11) NOT NULL,
+  `caption` varchar(150) COLLATE latin1_general_ci NOT NULL,
+  `image` varchar(200) COLLATE latin1_general_ci NOT NULL,
+  `priority` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `carousel_items`
+--
+
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `deals`
 --
 
@@ -112,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `deals` (
 
 INSERT INTO `deals` (`id`, `category_id`, `deal_name`, `deal_content`, `image`, `updated_at`) VALUES
 (2, 1, 'asdas', 'dasdasd', '', '2015-05-08 10:07:16'),
-(3, 3, 'asdasd', 'asdasdasd asd asd', '', '2015-05-08 10:07:21'),
+(3, 3, 'asdasd', '<p>asdasdasd asd asd</p>\r\n', 'IMG_0008.JPG', '2015-05-09 08:04:21'),
 (4, 1, 'asd asd sad', 'as dasd asdsad', '', '2015-05-08 10:07:25'),
 (5, 3, 'New Deal', '<p>asd asd asd 1111</p>\r\n', '0-a-002-001-00.jpg', '2015-05-08 15:26:10');
 
@@ -326,7 +365,6 @@ CREATE TABLE IF NOT EXISTS `product_categories` (
 --
 
 INSERT INTO `product_categories` (`id`, `product_category`, `image`) VALUES
-(5, 'Yes bank', '14-a-002-001-00.jpg'),
 (4, '1111111111', ''),
 (3, 'asd asd asdas', 'a 001.jpg');
 
@@ -373,16 +411,18 @@ INSERT INTO `recipe` (`id`, `recipe_name`, `category_id`, `preparation_time`, `r
 CREATE TABLE IF NOT EXISTS `recipe_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `recipe_category` varchar(100) NOT NULL,
+  `image` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `recipe_categories`
 --
 
-INSERT INTO `recipe_categories` (`id`, `recipe_category`) VALUES
-(1, 'Chinese'),
-(2, 'Mughlai');
+INSERT INTO `recipe_categories` (`id`, `recipe_category`, `image`) VALUES
+(1, 'Chinese1', 'Wedding-card-3.jpg'),
+(2, 'Mughlai', ''),
+(3, 'Recipe Category', '1-yamuna-expr2-1.jpg');
 
 -- --------------------------------------------------------
 

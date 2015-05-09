@@ -46,6 +46,14 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 	    Route::get('/related/del/{id}', 'RecipeController@getdel');
 	    Route::get('/related-product/del/{id}', 'RecipeController@getdelpro');
 
+	    Route::get('/categories','RecipeController@getCategories');
+	    Route::get('/categories/add','RecipeController@addCategory');
+	    Route::get('/categories/delete/{id}','RecipeController@deleteCategory');
+	    Route::put('/categories/update/{id}', 'RecipeController@updateCategory');
+	    Route::get('/categories/edit/{id}','RecipeController@editCategory');
+	    Route::post('/categories/store','RecipeController@postCategory');
+
+
 	});
 
 	Route::group(['prefix' => 'homepage'], function () {
@@ -146,6 +154,19 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 		Route::get('/add','MediaController@getAdd');
 		Route::post('/store','MediaController@postAdd');
 	    Route::get('/delete/{media_id}',array('before'=>'authadmin', 'uses'=>'MediaController@getdelete'));
+
+	});
+
+	Route::group(['prefix' => 'carousels'], function () {
+		Route::get('/','CarouselController@getAll');
+		Route::get('/add','CarouselController@getAdd');
+		Route::post('/store','CarouselController@postAdd');
+		Route::get('/{id}','CarouselController@getEdit');
+		Route::put('/update/{id}','CarouselController@putUpdate');
+		Route::post('/media/{id}','CarouselController@postImage');
+
+
+	    Route::get('/delete/{media_id}',array('before'=>'authadmin', 'uses'=>'CarouselController@getdelete'));
 
 	});
 

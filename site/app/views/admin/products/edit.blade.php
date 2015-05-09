@@ -78,7 +78,7 @@
            <div class="form-group">
             <label class="col-md-2 control-label">Product Details</label>
             <div class="col-md-9">
-              {{Form::text('product_detail',$product->product_detail,array("class"=>"form-control", "placeholder"=>"Enter Product Details"))}}
+              {{Form::textarea('product_detail',$product->product_detail,array("class"=>"form-control editor1", "placeholder"=>"Enter Product Details"))}}
               <span>{{$errors->first('product_detail')}}</span>
             </div>
           </div>

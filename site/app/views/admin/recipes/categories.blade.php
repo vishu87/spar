@@ -2,11 +2,11 @@
 <div class="row">
   <div class="col-md-6">
     <h3 class="page-title">
-      Products Categories<small></small>
+      Recipe Categories<small></small>
     </h3>
   </div>
   <div class="col-md-6" style="text-align:right">
-    <a href="{{url('/admin/products/categories/add')}}" class="btn green">Add New</a>
+    <a href="{{url('/admin/recipes/categories/add')}}" class="btn green">Add New</a>
   </div>
 </div>
 <div class="page-bar">
@@ -17,7 +17,7 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      All Product Categories
+      Recipe Categories
     </li>   
   </ul>
 </div>
@@ -44,7 +44,7 @@
               #
             </th>
             <th>
-               Product Category Name
+               Recipe Category Name
             </th>
             <th></th>
         </tr>  
@@ -73,12 +73,12 @@
           <tr>
             <td>{{++$count}}</td>
             <td>
-              {{$category->product_category}}                       
+              {{$category->recipe_category}}                       
             </td>
             <td>
-              <a href="{{url('/admin/products/categories/edit/'.$category->id)}}"><span class="btn yellow">Edit </span></a>
+              <a href="{{url('/admin/recipes/categories/edit/'.$category->id)}}"><span class="btn yellow">Edit </span></a>
               @if(Auth::user()->priviledge == 1)
-              <a href="{{url('/admin/products/categories/delete/'.$category->id)}}" class="del"><span class="btn btn-danger">Delete</span></a>
+              <a href="{{url('/admin/recipes/categories/delete/'.$category->id)}}" class="del"><span class="btn btn-danger">Delete</span></a>
               @endif
             </td>
           </tr>

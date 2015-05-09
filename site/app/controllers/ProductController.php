@@ -77,7 +77,7 @@ class ProductController extends BaseController {
         $this->layout->main = View::make("admin.products.edit",array("product"=>$product,'product_categories'=>$product_categories,'brand_get'=>$brand_get,'all_products'=>$all_products,'related_products'=>$related_products));
     }
 
-     public function editCategory($id){
+    public function editCategory($id){
         $this->layout->title = 'Spar | Product';
         $this->layout->top_active = 6;
         $this->layout->sub_active = 2;
@@ -188,7 +188,7 @@ class ProductController extends BaseController {
                     Input::file('image')->move($destinationPath,$image);
                     DB::table('product_categories')->where('id',$id)->update(array('image'=>$image));
                 }
-                return Redirect::Back()->with('success', '<b>'.Input::get('product_name').'</b> has been successfully updated');
+                return Redirect::Back()->with('success', '<b>'.Input::get('product_category').'</b> has been successfully updated');
         } 
         else {
             return Redirect::Back()->withErrors($validator)->withInput();
@@ -206,7 +206,11 @@ class ProductController extends BaseController {
     }
 
     public function deleteCategory($id){
-        DB::table("product_categories")->where('id',$id)->delete();
+        $count1 = DB::table('products')->where('category_id',$id)->count();
+        $count2 = DB::table('deals')->where('category_id',$id)->count();
+
+        if(($count1+$count2) == 0) DB::table("product_categories")->where('id',$id)->delete();
+        else return Redirect::Back()->with('failure', 'This category has been assigned to one or more products/deals.');   
         return Redirect::Back()->with('success', 'Product Category has been successfully deleted');                    
     }
 

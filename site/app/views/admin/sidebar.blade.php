@@ -13,7 +13,7 @@
         <li style="height:20px"></li>
          <li @if($top_active == 8) class="active open" @endif>
           <a href="javascript:;">
-            <i class="fa fa-file-image-o"></i>
+            <i class="fa fa-home"></i>
             <span class="title">Home Page</span>
             <span class="selected"></span>
             <span class="arrow open"></span>
@@ -43,7 +43,7 @@
             </li>
             <li @if($top_active == 8 && $sub_active == 4) class="active" @endif>
               <a href="{{url('/admin/homepage/offers')}}">
-                <i class="fa fa-file-image-o"></i>
+                <i class="fa fa-thumbs-o-up"></i>
                 <span class="title">Homepage Deals</span>
                 <span class="selected"></span>
               </a>
@@ -52,7 +52,7 @@
         </li>
         <li @if($top_active == 3) class="active open" @endif>
           <a href="javascript:;">
-            <i class="fa fa-file-image-o"></i>
+            <i class="fa fa-file-powerpoint-o"></i>
             <span class="title">Inner Pages</span>
             <span class="selected"></span>
             <span class="arrow open"></span>
@@ -60,7 +60,7 @@
           <ul class="sub-menu">
             <li @if($top_active == 3 && $sub_active == 1) class="active" @endif>
               <a href="{{url('/admin/pages')}}">
-                <i class="fa fa-file-image-o"></i>
+                <i class="fa fa-database"></i>
                 <span class="title">All Pages</span>
                 <span class="selected"></span>
 
@@ -68,7 +68,7 @@
             </li>
             <li @if($top_active == 3 && $sub_active == 2) class="active" @endif>
               <a href="{{url('/admin/sidebars')}}">
-                <i class="fa fa-file-image-o"></i>
+                <i class="fa fa-bars"></i>
                 <span class="title">Sidebars</span>
                 <span class="selected"></span>
               </a>
@@ -80,14 +80,39 @@
                   <span class="selected"></span>
                 </a>
               </li>
+              <li @if($top_active == 3 && $sub_active == 4) class="active" @endif >
+                <a href="{{url('/admin/carousels')}}" >
+                  <i class="fa fa-file-image-o"></i>
+                  <span class="title">Carousels</span>
+                  <span class="selected"></span>
+                </a>
+              </li>
           </ul>
         </li>
         <li @if($top_active == 2) class="active" @endif>
-          <a href="{{url('/admin/recipes')}}">
+          <a href="javscript:;">
             <i class="fa fa-cutlery"></i>
             <span class="title">Recipes</span>
             <span class="selected"></span>
+            <span class="arrow open"></span>
           </a>
+          <ul class="sub-menu">
+            <li @if($top_active == 2 && $sub_active == 1) class="active" @endif>
+              <a href="{{url('/admin/recipes')}}">
+                <i class="fa fa-file-image-o"></i>
+                <span class="title">All Recipes</span>
+                <span class="selected"></span>
+
+              </a>
+            </li>
+            <li @if($top_active == 2 && $sub_active == 2) class="active" @endif>
+              <a href="{{url('/admin/recipes/categories')}}">
+                <i class="fa fa-file-image-o"></i>
+                <span class="title">Categories</span>
+                <span class="selected"></span>
+              </a>
+            </li>
+          </ul>
         </li>
         <li @if($top_active == 4) class="active" @endif>
           <a href="{{url('/admin/brands')}}">

@@ -54,6 +54,7 @@ protected $layout = 'admin.layout';
      public function getRecipe($recipe_id){
         $this->layout->title = 'Spar | Recipe';
         $this->layout->top_active = 2;
+        $this->layout->sub_active = 1;
         $categories = DB::table('recipe_categories')->lists('recipe_category','id');
         $categories[""]= "Select";
         ksort($categories);
@@ -84,6 +85,7 @@ protected $layout = 'admin.layout';
     public function getRecipes(){
         $this->layout->title = 'All Recipes | Spar';
         $this->layout->top_active = 2;
+        $this->layout->sub_active = 1;
         $recipes = DB::table('recipe')->join('recipe_categories','recipe.category_id','=','recipe_categories.id')->select('recipe.*','recipe_categories.recipe_category')->get();
         $this->layout->main = View::make("admin.recipes.index",array("recipes"=>$recipes));
     }
@@ -93,6 +95,7 @@ protected $layout = 'admin.layout';
     public function getadd(){
         $this->layout->title = 'Add | Recipe';
         $this->layout->top_active = 2;
+        $this->layout->sub_active = 1;
         $categories = DB::table('recipe_categories')->lists('recipe_category','id');
         $categories[""]= "Select";
         ksort($categories);
@@ -174,5 +177,96 @@ protected $layout = 'admin.layout';
     public function postAddrelatedpro($recipe_id){
         $id = DB::table("related_products")->insertGetID(array('recipe_id'=>$recipe_id,'related_product_id'=>Input::get("related_product_id")));               
         return Redirect::Back()->with('success', 'Related product has been successfully added');            
+    }
+
+     public function updateCategory($id){       
+        $cre = [
+        'recipe_category' => Input::get('recipe_category')
+        ];
+        $rules = [
+        'recipe_category' => 'required'
+        ];
+        $validator = Validator::make($cre,$rules);
+        if($validator->passes()){
+            DB::table('recipe_categories')->where('id',$id)->update(array('recipe_category'=>Input::get("recipe_category")));
+                if (Input::hasFile('image')){
+                    $destinationPath = "images/";
+                    $extension = Input::file('image')->getClientOriginalExtension();
+                    $image = str_replace(' ','-',Input::file('image')->getClientOriginalName());
+                        $count = 1;
+                        $image_ori = $image;
+                        while(File::exists($destinationPath.$image)){
+                            $image = $count.'-'.$image_ori;
+                            $count++;
+                        }
+                    Input::file('image')->move($destinationPath,$image);
+                    DB::table('recipe_categories')->where('id',$id)->update(array('image'=>$image));
+                }
+                return Redirect::Back()->with('success', '<b>'.Input::get('recipe_category').'</b> has been successfully updated');
+        } 
+        else {
+            return Redirect::Back()->withErrors($validator)->withInput();
+        }
+    }
+
+    public function editCategory($id){
+        $this->layout->title = 'Recipe Categories | Spar';
+        $this->layout->top_active = 2;
+        $this->layout->sub_active = 2;
+          
+        $category = DB::table('recipe_categories')->where('id',$id)->first();
+        $this->layout->main = View::make("admin.recipes.editCategory",array("category"=>$category));
+    }
+
+    public function getCategories(){
+        $this->layout->title = 'Recipe Categories | Spar';
+        $this->layout->top_active = 2;
+        $this->layout->sub_active = 2;
+        $categories = DB::table('recipe_categories')->get();
+        $this->layout->main = View::make("admin.recipes.categories",array("categories"=>$categories));
+    }
+
+    public function addCategory(){
+        $this->layout->title = 'Add | Product';
+        $this->layout->top_active = 2;
+        $this->layout->sub_active = 2;
+        $product_categories = DB::table('product_categories')->lists('product_category','id');
+        $this->layout->main = View::make("admin.recipes.addcategory",array('product_categories' =>$product_categories));
+    }
+
+    public function deleteCategory($id){
+        $count1 = DB::table('recipe')->where('category_id',$id)->count();
+        if($count1 == 0) DB::table("recipe_categories")->where('id',$id)->delete();
+        else return Redirect::Back()->with('failure', 'This category has been assigned to one or more recipes.');   
+        return Redirect::Back()->with('success', 'Recipe Category has been successfully deleted');                    
+    }
+
+     public function postCategory(){
+        $cre = [
+        'recipe_category' => Input::get('recipe_category'),
+        ];
+        $rules = [
+        'recipe_category' => 'required',
+        ];
+        $validator = Validator::make($cre,$rules);
+        if($validator->passes()){
+            if (Input::hasFile('image')){
+                $destinationPath = "images/";
+                $extension = Input::file('image')->getClientOriginalExtension();
+               $image = str_replace(' ','-',Input::file('image')->getClientOriginalName());
+                $count = 1;
+                $image_ori = $image;
+                while(File::exists($destinationPath.$image)){
+                    $image = $count.'-'.$image_ori;
+                    $count++;
+                }
+                Input::file('image')->move($destinationPath,$image);
+            } else $image ='';
+            
+            $id = DB::table("recipe_categories")->insertGetID(array('recipe_category'=>Input::get("recipe_category"),'image'=>$image));               
+            return Redirect::Back()->with('success', '<b>'.Input::get('recipe_category').'</b> has been successfully added');                    
+        }else {
+            return Redirect::Back()->withErrors($validator)->withInput();
+        }
     }
 }
