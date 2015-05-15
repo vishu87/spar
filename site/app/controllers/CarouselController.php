@@ -42,14 +42,12 @@ class CarouselController extends BaseController {
     public function postSave($id){
         $count = 1;
         foreach (Input::get('order') as $item) {
-            if(Input::has('textarea_'.$item)){
-                DB::table('sidebar_items')->where('id',$item)->update(array('priority'=>$count,'custom_html'=>Input::get('textarea_'.$item)));
-            } else {
-                DB::table('sidebar_items')->where('id',$item)->update(array('priority'=>$count));
-            }
+            
+                DB::table('carousel_items')->where('id',$item)->update(array('priority'=>$count));
+            
             $count++;
         }
-        return Redirect::Back()->with('success','Successfully Updated');
+        return Redirect::Back()->with('success','Order is successfully Updated');
     }
 
     public function getAll(){
@@ -65,52 +63,47 @@ class CarouselController extends BaseController {
         $this->layout->top_active = 3;
         $this->layout->sub_active = 4;
         $carousel = DB::table('carousels')->where('id',$id)->first();
-
-        $carousel_items = DB::table('carousel_items')->where('carousel_id',$id)->get();
+        $carousel_items = DB::table('carousel_items')->where('carousel_id',$id)->orderBy('priority','asc')->get();
         $this->layout->main = View::make("admin.carousels.edit",["carousel"=>$carousel,"carousel_items"=>$carousel_items]);
     }
 
      public function getdelete($id){
-        $id = DB::table("sidebars")->where('id',$id)->delete();
-        return Redirect::Back()->with('delete', '<b>Success</b> has been successfully deleted');                    
+        $id = DB::table("carousels")->where('id',$id)->delete();
+        return Redirect::Back()->with('success', 'Carousel been successfully deleted');                    
+    }
+    public function getdeleteImage($id){
+        DB::table("carousel_items")->where('id',$id)->delete();
+        return Redirect::Back();                  
     }
 
-    //AJAX
-
-    public function addLink($id){
-        $count = DB::table("sidebar_items")->where('id',$id)->count();
-        $count++;
-        $id = DB::table("sidebar_items")->insertGetID(array('page_id'=>Input::get("page_id"), 'id'=>$id, 'type' => 1, 'priority'=>$count));           
-
-        $page = DB::table('pages')->where('id',Input::get("page_id"))->first();
-        return View::make('admin.sidebars.add_link', ['page'=>$page, 'id'=>$id]);
-    }
-
-    public function addTitle($id){
-        $count = DB::table("sidebar_items")->where('id',$id)->count();
-        $count++;
-        $id = DB::table("sidebar_items")->insertGetID(array('title'=>Input::get("title"), 'id'=>$id, 'type' => 2, 'priority'=>$count));           
-        return View::make('admin.sidebars.add_title', ['title'=>Input::get("title"), 'id'=>$id]);
-    }
-
-    public function addImage($id){
-        $count = DB::table("sidebar_items")->where('id',$id)->count();
-        $count++;
-        $id = DB::table("sidebar_items")->insertGetID(array('media_id'=>Input::get("image_id"), 'id'=>$id, 'type' => 3, 'priority'=>$count));
-        $image = DB::table('media')->where('id',Input::get("image_id"))->first();    
-        return View::make('admin.sidebars.add_image', ['image'=>$image, 'id'=>$id]);
-    }
-
-    public function addHTML($id){
-        $count = DB::table("sidebar_items")->where('id',$id)->count();
-        $count++;
-        $id = DB::table("sidebar_items")->insertGetID(array('id'=>$id, 'type' => 4, 'priority'=>$count));           
-        return View::make('admin.sidebars.add_html', ['id'=>$id]);
-    }
-
-    public function removeItem($id){
-        $id = DB::table("sidebar_items")->where('id',Input::get('itemid'))->where('id',$id)->delete();
-        return Redirect::Back()->with('delete', '<b>Success</b> has been successfully deleted');                    
+   public function postImage($id){
+       $cre = [
+        'image' => Input::file('image')
+        ];
+        $rules = [
+        'image' => 'required'
+        ];
+        $validator = Validator::make($cre,$rules);
+        if($validator->passes()){
+            if(Input::hasFile('image')){
+                $destinationPath = "images/";
+                $extension = Input::file('image')->getClientOriginalExtension();
+                $image = str_replace(' ','-',Input::file('image')->getClientOriginalName());
+                $count = 1;
+                $image_ori = $image;
+                while(File::exists($destinationPath.$image)){
+                    $image = $count.'-'.$image_ori;
+                    $count++;
+                }
+                Input::file('image')->move($destinationPath,$image);
+            }
+            $count = DB::table("carousel_items")->where('carousel_id',$id)->count();
+            $count++;
+            DB::table("carousel_items")->insertGetID(array('carousel_id'=>$id,'caption'=>Input::get("caption"),'image'=>$image,'priority'=>$count));               
+            return Redirect::Back()->with('success', '<b>Carousel Image</b> has been successfully added');                    
+        }else {
+            return Redirect::Back()->withErrors($validator)->withInput();
+        }
     }
 
     public function getImages(){

@@ -22,7 +22,7 @@
   </ul>
 </div>
 
-@if(Session::has('delete'))
+@if(Session::has('success'))
 <div class="alert alert-success alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
   <strong>Success!</strong> {{Session::get('success')}} </a>

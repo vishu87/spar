@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.3
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 09, 2015 at 12:15 PM
--- Server version: 5.1.46
--- PHP Version: 5.4.36
+-- Generation Time: May 15, 2015 at 02:38 PM
+-- Server version: 5.6.12-log
+-- PHP Version: 5.4.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,6 +19,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Database: `spar`
 --
+CREATE DATABASE IF NOT EXISTS `spar` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `spar`;
 
 -- --------------------------------------------------------
 
@@ -63,8 +66,8 @@ CREATE TABLE IF NOT EXISTS `banner` (
 --
 
 INSERT INTO `banner` (`id`, `banner_name`, `banner_image`, `priority`, `updated_at`) VALUES
-(9, 'sadasd', '1-a-002-001-00.jpg', 0, '2015-05-08 15:28:26'),
-(6, 'gdfg', '980X500.png', 3, '2015-05-06 19:28:57');
+(9, 'sadasd', '1-a-002-001-00.jpg', 0, '2015-05-08 09:58:26'),
+(6, 'gdfg', '980X500.png', 3, '2015-05-06 13:58:57');
 
 -- --------------------------------------------------------
 
@@ -85,10 +88,10 @@ CREATE TABLE IF NOT EXISTS `brands` (
 --
 
 INSERT INTO `brands` (`id`, `brand_name`, `brand_image`, `updated_at`) VALUES
-(8, 'sadasd', '8-a-002-001-00.jpg', '2015-05-08 15:33:53'),
+(8, 'sadasd', '8-a-002-001-00.jpg', '2015-05-08 10:03:53'),
 (5, ' guiygilyol u', '', '0000-00-00 00:00:00'),
-(6, 'xklc hio', 'DSC_1914.jpg', '2015-03-19 22:39:46'),
-(7, 'asdasdsa', 'a 004.jpg', '2015-05-08 10:30:05');
+(6, 'xklc hio', 'DSC_1914.jpg', '2015-03-19 17:09:46'),
+(7, 'asdasdsa', 'a 004.jpg', '2015-05-08 05:00:05');
 
 -- --------------------------------------------------------
 
@@ -100,14 +103,15 @@ CREATE TABLE IF NOT EXISTS `carousels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `carousels`
 --
 
 INSERT INTO `carousels` (`id`, `name`) VALUES
-(1, 'Name1');
+(2, 'Name1'),
+(5, 'nEW CARSOUSEL');
 
 -- --------------------------------------------------------
 
@@ -122,12 +126,20 @@ CREATE TABLE IF NOT EXISTS `carousel_items` (
   `image` varchar(200) COLLATE latin1_general_ci NOT NULL,
   `priority` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `carousel_items`
 --
 
+INSERT INTO `carousel_items` (`id`, `carousel_id`, `caption`, `image`, `priority`) VALUES
+(3, 2, 'ui', '3-Chrysanthemum.jpg', 3),
+(8, 5, 'asd asd', '1-Jellyfish.jpg', 3),
+(5, 2, 'sadasd', 'Hydrangeas.jpg', 1),
+(6, 2, 'sdadsad', 'Penguins.jpg', 2),
+(7, 2, 'asdasd', 'Jellyfish.jpg', 4),
+(11, 5, 'asdsadsadasd asdsad', 'Lighthouse.jpg', 1),
+(12, 5, 'asd', '1-Koala.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -150,10 +162,10 @@ CREATE TABLE IF NOT EXISTS `deals` (
 --
 
 INSERT INTO `deals` (`id`, `category_id`, `deal_name`, `deal_content`, `image`, `updated_at`) VALUES
-(2, 1, 'asdas', 'dasdasd', '', '2015-05-08 10:07:16'),
-(3, 3, 'asdasd', '<p>asdasdasd asd asd</p>\r\n', 'IMG_0008.JPG', '2015-05-09 08:04:21'),
-(4, 1, 'asd asd sad', 'as dasd asdsad', '', '2015-05-08 10:07:25'),
-(5, 3, 'New Deal', '<p>asd asd asd 1111</p>\r\n', '0-a-002-001-00.jpg', '2015-05-08 15:26:10');
+(2, 1, 'asdas', 'dasdasd', '', '2015-05-08 04:37:16'),
+(3, 3, 'asdasd', '<p>asdasdasd asd asd</p>\r\n', 'IMG_0008.JPG', '2015-05-09 02:34:21'),
+(4, 1, 'asd asd sad', 'as dasd asdsad', '', '2015-05-08 04:37:25'),
+(5, 3, 'New Deal', '<p>asd asd asd 1111</p>\r\n', '0-a-002-001-00.jpg', '2015-05-08 09:56:10');
 
 -- --------------------------------------------------------
 
@@ -199,12 +211,12 @@ CREATE TABLE IF NOT EXISTS `kids` (
 --
 
 INSERT INTO `kids` (`id`, `title`, `content`, `kids_image`, `updated_at`) VALUES
-(8, 'asda', '<p>sdasd</p>\r\n', 'a 004.jpg', '2015-05-08 10:31:33'),
-(4, ' iudfidf fie', '<p>fdsgfiuey rfi8eprw</p>\r\n', '', '2015-05-08 10:31:39'),
-(5, 'hgu hgihir', 'jhf fdhilveof', '', '2015-03-19 17:34:52'),
-(6, 'h f;ods9', ' hvfdkirohfi sdyfoiew', 'DSC_2255.jpg', '2015-03-19 22:47:15'),
-(7, 'asdas', '<p>dasdasd</p>\r\n', '', '2015-05-07 13:23:23'),
-(9, 'asd1111', '<p>asdasdsad</p>\r\n', '10-a-002-001-00.jpg', '2015-05-08 15:35:28');
+(8, 'asda', '<p>sdasd</p>\r\n', 'a 004.jpg', '2015-05-08 05:01:33'),
+(4, ' iudfidf fie', '<p>fdsgfiuey rfi8eprw</p>\r\n', '', '2015-05-08 05:01:39'),
+(5, 'hgu hgihir', 'jhf fdhilveof', '', '2015-03-19 12:04:52'),
+(6, 'h f;ods9', ' hvfdkirohfi sdyfoiew', 'DSC_2255.jpg', '2015-03-19 17:17:15'),
+(7, 'asdas', '<p>dasdasd</p>\r\n', '', '2015-05-07 07:53:23'),
+(9, 'asd1111', '<p>asdasdsad</p>\r\n', '10-a-002-001-00.jpg', '2015-05-08 10:05:28');
 
 -- --------------------------------------------------------
 
@@ -250,11 +262,11 @@ CREATE TABLE IF NOT EXISTS `mid_banner` (
 --
 
 INSERT INTO `mid_banner` (`id`, `mid_banner_name`, `mid_banner_image`, `priority`, `updated_at`) VALUES
-(3, 'dfdsfv', 'DW3-External.jpg', 3, '2015-05-07 18:50:04'),
-(4, 'fgfdge', 'win3.jpg', 1, '2015-05-07 18:50:04'),
-(5, 'tretg4t', 'XMAS-BANNER.jpg', 4, '2015-05-07 18:50:04'),
-(6, 'kjnjkl', '_DSC5674.jpg', 2, '2015-05-07 18:50:04'),
-(8, 'sad', '3-a-002-001-00.jpg', 0, '2015-05-08 15:29:32');
+(3, 'dfdsfv', 'DW3-External.jpg', 3, '2015-05-07 13:20:04'),
+(4, 'fgfdge', 'win3.jpg', 1, '2015-05-07 13:20:04'),
+(5, 'tretg4t', 'XMAS-BANNER.jpg', 4, '2015-05-07 13:20:04'),
+(6, 'kjnjkl', '_DSC5674.jpg', 2, '2015-05-07 13:20:04'),
+(8, 'sad', '3-a-002-001-00.jpg', 0, '2015-05-08 09:59:32');
 
 -- --------------------------------------------------------
 
@@ -294,11 +306,6 @@ CREATE TABLE IF NOT EXISTS `page_sidebar_items` (
   `priority` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `page_sidebar_items`
---
-
 
 -- --------------------------------------------------------
 
@@ -344,8 +351,8 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`id`, `product_name`, `category_id`, `product_price`, `product_detail`, `product_image`, `updated_at`) VALUES
-(5, 'yahoo', 4, '2121', '123123123', '12-a-002-001-00.jpg', '2015-05-08 15:37:42'),
-(4, 'asdasdasd', 4, 'asdas', 'dasd', 'PHOTO - Copy.png', '2015-05-08 11:21:06');
+(5, 'yahoo', 4, '2121', '123123123', '12-a-002-001-00.jpg', '2015-05-08 10:07:42'),
+(4, 'asdasdasd', 4, 'asdas', 'dasd', 'PHOTO - Copy.png', '2015-05-08 05:51:06');
 
 -- --------------------------------------------------------
 
@@ -395,12 +402,12 @@ CREATE TABLE IF NOT EXISTS `recipe` (
 --
 
 INSERT INTO `recipe` (`id`, `recipe_name`, `category_id`, `preparation_time`, `recipe_image`, `description`, `ingredient`, `cook_time`, `to_serve`, `method`, `updated_at`, `created_at`) VALUES
-(13, ' bvhukfdhi', 2, '54 min', '20140305_095949.jpg', '<p>fhsdkfhowowe</p>\r\n', '<p>das vjydgasida, hdsiw</p>\r\n', '35 min', ' hudcgodwdo', '<p>cb ucgisucg is</p>\r\n', '2015-05-08 15:53:27', '0000-00-00 00:00:00'),
+(13, ' bvhukfdhi', 2, '54 min', '20140305_095949.jpg', '<p>fhsdkfhowowe</p>\r\n', '<p>das vjydgasida, hdsiw</p>\r\n', '35 min', ' hudcgodwdo', '<p>cb ucgisucg is</p>\r\n', '2015-05-08 10:23:27', '0000-00-00 00:00:00'),
 (14, 'ih jo', 3, ' hiyit', '', 'io houp0', ' juo9u 9ou', 'iojiou', 'uj 9 uioyhil', 'ioh oup9u ', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(18, 'asdasdsad', 1, 'asdasd', 'ad1.jpg', 'kjlkjlkjl', 'jlkjlkjlkj', 'llkjlkjlk', '', '', '2015-04-30 15:54:39', '0000-00-00 00:00:00'),
-(19, ' Chicken Alfresco', 1, '30 mins', 'chicken-alfresco-big.jpg', '<p>Its a grilled marinated chicken breast in Parmesan cream sauce best served with saute vegetables and meshed potatoes.</p>\r\n', '<ul>\r\n	<li>2 breast pieces&nbsp;Chicken</li>\r\n	<li>1 tbsp Oil</li>\r\n	<li>2 cloves Garlic</li>\r\n	<li>1 tsp Salt</li>\r\n	<li>1 tsp Pepper Powder</li>\r\n	<li>1 pc Lemon</li>\r\n	<li>1 tsp Butter</li>\r\n	<li>2 tbsp Parmesan Cream Sauce</li>\r\n</ul>\r\n', '25 mins', '2 people', '<p>yahooooa sd asd asd</p>\r\n', '2015-05-06 19:10:24', '0000-00-00 00:00:00'),
-(20, 'asd asd sad', 1, 'asdasd', '', '<p>asdas dasd as</p>\r\n', '<p>sdasdasd</p>\r\n', '', '', '<p>asda</p>\r\n', '2015-05-08 10:21:05', '0000-00-00 00:00:00'),
-(21, 'asdasd', 1, 'asd sad', '6-a-002-001-00.jpg', '<p>asd</p>\r\n', '<p>asd</p>\r\n', 'asd', 'asd', '<p>asdasd</p>\r\n', '2015-05-08 15:32:42', '0000-00-00 00:00:00');
+(18, 'asdasdsad', 1, 'asdasd', 'ad1.jpg', 'kjlkjlkjl', 'jlkjlkjlkj', 'llkjlkjlk', '', '', '2015-04-30 10:24:39', '0000-00-00 00:00:00'),
+(19, ' Chicken Alfresco', 1, '30 mins', 'chicken-alfresco-big.jpg', '<p>Its a grilled marinated chicken breast in Parmesan cream sauce best served with saute vegetables and meshed potatoes.</p>\r\n', '<ul>\r\n	<li>2 breast pieces&nbsp;Chicken</li>\r\n	<li>1 tbsp Oil</li>\r\n	<li>2 cloves Garlic</li>\r\n	<li>1 tsp Salt</li>\r\n	<li>1 tsp Pepper Powder</li>\r\n	<li>1 pc Lemon</li>\r\n	<li>1 tsp Butter</li>\r\n	<li>2 tbsp Parmesan Cream Sauce</li>\r\n</ul>\r\n', '25 mins', '2 people', '<p>yahooooa sd asd asd</p>\r\n', '2015-05-06 13:40:24', '0000-00-00 00:00:00'),
+(20, 'asd asd sad', 1, 'asdasd', '', '<p>asdas dasd as</p>\r\n', '<p>sdasdasd</p>\r\n', '', '', '<p>asda</p>\r\n', '2015-05-08 04:51:05', '0000-00-00 00:00:00'),
+(21, 'asdasd', 1, 'asd sad', '6-a-002-001-00.jpg', '<p>asd</p>\r\n', '<p>asd</p>\r\n', 'asd', 'asd', '<p>asdasd</p>\r\n', '2015-05-08 10:02:42', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -498,23 +505,26 @@ CREATE TABLE IF NOT EXISTS `sidebar_items` (
   `sidebar_id` int(11) NOT NULL,
   `page_id` int(11) NOT NULL,
   `media_id` int(11) NOT NULL,
+  `carousel_id` int(11) NOT NULL,
   `title` text NOT NULL,
   `custom_html` text NOT NULL,
   `priority` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `sidebar_items`
 --
 
-INSERT INTO `sidebar_items` (`id`, `type`, `sidebar_id`, `page_id`, `media_id`, `title`, `custom_html`, `priority`) VALUES
-(1, 2, 2, 0, 0, 'Hey', '', 1),
-(2, 1, 2, 5, 0, '', '', 2),
-(3, 3, 2, 0, 6, '', '', 3),
-(4, 4, 2, 0, 0, '', '<ul>\r\n	<li>asd asd asd asdasd asd asd</li>\r\n</ul>\r\n', 4),
-(5, 3, 2, 0, 9, '', '', 5),
-(6, 4, 2, 0, 0, '', '', 6);
+INSERT INTO `sidebar_items` (`id`, `type`, `sidebar_id`, `page_id`, `media_id`, `carousel_id`, `title`, `custom_html`, `priority`) VALUES
+(1, 2, 2, 0, 0, 0, 'Hey', '', 1),
+(2, 1, 2, 5, 0, 0, '', '', 2),
+(3, 3, 2, 0, 6, 0, '', '', 3),
+(11, 4, 2, 0, 0, 0, '', '', 6),
+(12, 5, 2, 0, 0, 5, '', '', 7),
+(6, 4, 2, 0, 0, 0, '', '<p>&nbsp;jfyjhvbknkjbhvgfdghjkljhgcfhjk</p>\r\n', 5),
+(13, 2, 2, 0, 0, 0, 'yuftdgh', '', 8),
+(10, 5, 2, 0, 0, 5, '', '', 4);
 
 -- --------------------------------------------------------
 
@@ -536,9 +546,9 @@ CREATE TABLE IF NOT EXISTS `side_banner` (
 --
 
 INSERT INTO `side_banner` (`id`, `side_banner_name`, `side_banner_image`, `priority`, `updated_at`) VALUES
-(1, 'grtg', 'b1.jpg', 3, '2015-04-30 15:53:26'),
-(6, 'Sad', '2-a-002-001-00.jpg', 0, '2015-05-08 15:29:04'),
-(3, 'edfwe', 'd7.jpg', 2, '2015-04-30 15:53:26');
+(1, 'grtg', 'b1.jpg', 3, '2015-04-30 10:23:26'),
+(6, 'Sad', '2-a-002-001-00.jpg', 0, '2015-05-08 09:59:04'),
+(3, 'edfwe', 'd7.jpg', 2, '2015-04-30 10:23:26');
 
 -- --------------------------------------------------------
 
@@ -565,5 +575,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `phone`, `priviledge`, `remember_token`, `created_at`, `updated_at`) VALUES
-(9, 'Editor SPAR Nigeria', 'editor@spar.com', '$2y$10$OgnriE06VWGyHAaqgoOMjekDmmUOBhVapEhIKEveVStOTn13.crE.', 'editor@spar.com', 2147483647, 0, '', '2015-05-08 11:31:03', '0000-00-00 00:00:00'),
-(6, 'Admin SPAR Nigeria', 'admin@spar.com', '$2y$10$Tc0.nU6itR.inQZhKOKmqu.L5fCOPM0IGYGuXTHxyQdv2diD.aJbe', 'admin@spar.com', 1234567891, 1, '', '2015-05-08 11:31:19', '2015-05-08 11:31:19');
+(9, 'Editor SPAR Nigeria', 'editor@spar.com', '$2y$10$OgnriE06VWGyHAaqgoOMjekDmmUOBhVapEhIKEveVStOTn13.crE.', 'editor@spar.com', 2147483647, 0, '', '2015-05-08 06:01:03', '0000-00-00 00:00:00'),
+(6, 'Admin SPAR Nigeria', 'admin@spar.com', '$2y$10$Tc0.nU6itR.inQZhKOKmqu.L5fCOPM0IGYGuXTHxyQdv2diD.aJbe', 'admin@spar.com', 1234567891, 1, '', '2015-05-08 06:01:19', '2015-05-08 06:01:19');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

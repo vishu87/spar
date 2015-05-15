@@ -6,7 +6,7 @@
     </h3>
   </div>
   <div class="col-md-6 add-new">
-    <a href="{{url('/admin/pages')}}" class="btn green">Go Back</a>
+    <a href="{{url('/admin/sidebars')}}" class="btn green">Go Back</a>
   </div>
 </div>
 <div class="page-bar">
@@ -81,6 +81,13 @@
           <div class="col-md-3"><button class="btn green pull-right" id="add_html">Add HTML <i class="fa fa-hidden fa-spinner fa-spin"></i></button></div>
 
         </div>
+         <div class="row" style="background:#EEE; margin:10px 0; padding:10px 0">
+          <div class="col-md-8">
+            {{Form::select('carousel_id',$carousels,'',["class"=>"form-control","style"=>"width: 90%;"])}}
+          </div>
+          <div class="col-md-4"><button class="btn green pull-right" id="add_carousel">Add Carousel <i class="fa fa-hidden fa-spinner fa-spin"></i></button></div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -126,6 +133,13 @@
                     <input name="order[]" checked type="checkbox" style="display:none" value="{{$sidebar_item->id}}">
                     <textarea class="editor1 form-control" name="textarea_{{$sidebar_item->id}}">{{$sidebar_item->custom_html}}
                     </textarea>
+                  </div>
+                @endif
+                 @if($sidebar_item->type == 5)
+                  <div class="prim body-div">
+                    <a href="javascript:;" class="remove pull-right" data-id="{{$sidebar_item->id}}"><i class="fa fa-remove"></i></a>
+                    <input name="order[]" checked type="checkbox" style="display:none" value="{{$sidebar_item->id}}">
+                    Carousel: {{$sidebar_item->name}}
                   </div>
                 @endif
               @endforeach

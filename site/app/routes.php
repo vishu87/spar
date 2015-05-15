@@ -164,10 +164,9 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 		Route::get('/{id}','CarouselController@getEdit');
 		Route::put('/update/{id}','CarouselController@putUpdate');
 		Route::post('/media/{id}','CarouselController@postImage');
-
-
+		Route::post('/media/order/{id}','CarouselController@postSave');
 	    Route::get('/delete/{media_id}',array('before'=>'authadmin', 'uses'=>'CarouselController@getdelete'));
-
+	    Route::get('/media/delete/{media_id}',array('before'=>'authadmin', 'uses'=>'CarouselController@getdeleteImage'));
 	});
 
 	Route::group(['prefix' => 'sidebars'], function () {
@@ -182,6 +181,7 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 	    Route::post('/add_title/{sidebar_id}','SidebarController@addTitle');
 	    Route::post('/add_image/{sidebar_id}','SidebarController@addImage');
 	    Route::post('/add_html/{sidebar_id}','SidebarController@addHTML');
+	    Route::post('/add_carousel/{sidebar_id}','SidebarController@addCarousel');
 	    Route::post('/remove/{sidebar_id}','SidebarController@removeItem');
 
 	});

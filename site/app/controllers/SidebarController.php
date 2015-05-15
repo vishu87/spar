@@ -47,11 +47,14 @@ class SidebarController extends BaseController {
         $this->layout->sub_active = 2;
         $sidebar = DB::table('sidebars')->where('id',$sidebar_id)->first();
         $pages = DB::table('pages')->lists('page_title','id');
+        $carousels = DB::table('carousels')->lists('name','id');
         $pages[""] = "Select";
         ksort($pages);
+        $carousels[""] = "Select";
+        ksort($carousels);
 
-        $sidebar_items = DB::table('sidebar_items')->leftJoin('pages','sidebar_items.page_id','=','pages.id')->leftJoin('media','sidebar_items.media_id','=','media.id')->select('sidebar_items.*','pages.page_title','media.image')->orderBy('sidebar_items.priority','asc')->where('sidebar_items.sidebar_id',$sidebar_id)->get();
-        $this->layout->main = View::make("admin.sidebars.edit",["sidebar"=>$sidebar,"pages"=>$pages,"sidebar_items"=>$sidebar_items]);
+        $sidebar_items = DB::table('sidebar_items')->leftJoin('pages','sidebar_items.page_id','=','pages.id')->leftJoin('media','sidebar_items.media_id','=','media.id')->leftJoin('carousels','sidebar_items.carousel_id','=','carousels.id')->select('sidebar_items.*','pages.page_title','media.image','carousels.name')->orderBy('sidebar_items.priority','asc')->where('sidebar_items.sidebar_id',$sidebar_id)->get();
+        $this->layout->main = View::make("admin.sidebars.edit",["sidebar"=>$sidebar,"pages"=>$pages,"sidebar_items"=>$sidebar_items,"carousels"=>$carousels]);
     }
 
      public function getdelete($sidebar_id){
@@ -81,7 +84,7 @@ class SidebarController extends BaseController {
         $count = DB::table("sidebar_items")->where('sidebar_id',$sidebar_id)->count();
         $count++;
         $id = DB::table("sidebar_items")->insertGetID(array('media_id'=>Input::get("image_id"), 'sidebar_id'=>$sidebar_id, 'type' => 3, 'priority'=>$count));
-        $image = DB::table('media')->where('id',Input::get("image_id"))->first();    
+        $image = DB::table('media')->where('id',Input::get("image_id"))->first();  
         return View::make('admin.sidebars.add_image', ['image'=>$image, 'id'=>$id]);
     }
 
@@ -90,6 +93,14 @@ class SidebarController extends BaseController {
         $count++;
         $id = DB::table("sidebar_items")->insertGetID(array('sidebar_id'=>$sidebar_id, 'type' => 4, 'priority'=>$count));           
         return View::make('admin.sidebars.add_html', ['id'=>$id]);
+    }
+
+     public function addCarousel($sidebar_id){
+        $count = DB::table("sidebar_items")->where('sidebar_id',$sidebar_id)->count();
+        $count++;
+        $id = DB::table("sidebar_items")->insertGetID(array('sidebar_id'=>$sidebar_id, 'carousel_id'=>Input::get("carousel_id"), 'type' => 5, 'priority'=>$count));
+        $carousel = DB::table('carousels')->where('id',Input::get("carousel_id"))->first();
+        return View::make('admin.sidebars.add_carousel', ['id'=>$id,'carousel'=>$carousel]);
     }
 
     public function removeItem($sidebar_id){

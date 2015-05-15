@@ -61,6 +61,22 @@ $(document).ready(function(){
         });
 	});
 
+	$("#add_carousel").click(function(){
+		var item = $(this);
+		item.find('i').show();
+		if($("select[name=carousel_id]").val() != ''){
+			$.post(base_url+'/admin/sidebars/add_carousel/'+sidebar_id,{carousel_id:$("select[name=carousel_id]").val()},function(data){
+	            $("#sidebar-body").append(data);
+				item.find('i').hide();
+       			$("select[name=carousel_id]").val('');
+	        });
+		} else {
+			alert('Please select a carousel');
+			item.find('i').hide();
+		}
+		
+	});
+
 	$("#select_image").click(function(){
 		$('.modal-title').html('All Images');
 		$('.modal-body').html('Loading Images... Please wait');
