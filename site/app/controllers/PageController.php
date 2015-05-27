@@ -5,14 +5,16 @@ class PageController extends BaseController {
 
     public function postAdd(){
         $cre = [
-        'page_title' => Input::get('page_title')
+        'page_title' => Input::get('page_title'),
+        'page_slug' => Input::get('page_slug')
         ];
         $rules = [
-        'page_title' => 'required'
+        'page_title' => 'required',
+        'page_slug' => 'required'
         ];
         $validator = Validator::make($cre,$rules);
         if($validator->passes()){
-            $id = DB::table("pages")->insertGetID(array('page_title'=>Input::get("page_title")));
+            $id = DB::table("pages")->insertGetID(array('page_title'=>Input::get("page_title"),'page_slug'=>Input::get("page_slug")));
             return Redirect::to('admin/pages/edit/'.$id)->with('success', '<b>'.Input::get('page_title').'</b> has been successfully added');                    
         }else {
             return Redirect::Back()->withErrors($validator)->withInput();
@@ -55,10 +57,12 @@ class PageController extends BaseController {
     public function putupdate($page_id){       
         $cre = [
         'page_title' => Input::get('page_title'),
+        'page_slug' => Input::get('page_slug'),
         'page_content' => Input::get('page_content')
         ];
         $rules = [
         'page_title' => 'required',
+        'page_slug' => 'required',
         'page_content' => 'required'
         ];
         $validator = Validator::make($cre,$rules);
@@ -67,6 +71,7 @@ class PageController extends BaseController {
             $page = Page::find($page_id);
             if($page->exists){
                 $page->page_title = Input::get('page_title');
+                $page->page_slug = Input::get('page_slug');
                 $page->page_content = Input::get('page_content');
                 $page->left_sidebar = Input::get('left_sidebar');
                 $page->right_sidebar = Input::get('right_sidebar');

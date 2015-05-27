@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 15, 2015 at 02:38 PM
--- Server version: 5.6.12-log
--- PHP Version: 5.4.12
+-- Host: 127.0.0.1
+-- Generation Time: May 27, 2015 at 06:56 PM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `spar`
 --
-CREATE DATABASE IF NOT EXISTS `spar` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `spar`;
 
 -- --------------------------------------------------------
 
@@ -66,7 +64,6 @@ CREATE TABLE IF NOT EXISTS `banner` (
 --
 
 INSERT INTO `banner` (`id`, `banner_name`, `banner_image`, `priority`, `updated_at`) VALUES
-(9, 'sadasd', '1-a-002-001-00.jpg', 0, '2015-05-08 09:58:26'),
 (6, 'gdfg', '980X500.png', 3, '2015-05-06 13:58:57');
 
 -- --------------------------------------------------------
@@ -277,20 +274,13 @@ INSERT INTO `mid_banner` (`id`, `mid_banner_name`, `mid_banner_image`, `priority
 CREATE TABLE IF NOT EXISTS `pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `page_title` varchar(200) NOT NULL,
+  `page_slug` varchar(200) NOT NULL,
   `page_content` text NOT NULL,
   `left_sidebar` int(11) NOT NULL,
   `right_sidebar` int(11) NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
-
---
--- Dumping data for table `pages`
---
-
-INSERT INTO `pages` (`id`, `page_title`, `page_content`, `left_sidebar`, `right_sidebar`, `updated_at`) VALUES
-(7, 'vdsf', '', 0, 0, '0000-00-00 00:00:00'),
-(8, 'sada sd asd', '', 0, 0, '0000-00-00 00:00:00');
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 -- --------------------------------------------------------
 
@@ -510,7 +500,7 @@ CREATE TABLE IF NOT EXISTS `sidebar_items` (
   `custom_html` text NOT NULL,
   `priority` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `sidebar_items`
@@ -524,7 +514,8 @@ INSERT INTO `sidebar_items` (`id`, `type`, `sidebar_id`, `page_id`, `media_id`, 
 (12, 5, 2, 0, 0, 5, '', '', 7),
 (6, 4, 2, 0, 0, 0, '', '<p>&nbsp;jfyjhvbknkjbhvgfdghjkljhgcfhjk</p>\r\n', 5),
 (13, 2, 2, 0, 0, 0, 'yuftdgh', '', 8),
-(10, 5, 2, 0, 0, 5, '', '', 4);
+(10, 5, 2, 0, 0, 5, '', '', 4),
+(14, 1, 5, 7, 0, 0, '', '', 1);
 
 -- --------------------------------------------------------
 

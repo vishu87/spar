@@ -60,7 +60,14 @@
               {{Form::text('page_title',$page->page_title,array("class"=>"form-control", "placeholder"=>"Enter Page Title"))}}
               <span>{{$errors->first('page_title')}}</span>
             </div>
-          </div>             
+          </div>  
+          <div class="form-group">
+            <label class="col-md-2 control-label">Page Slug</label>
+            <div class="col-md-9">
+              {{Form::text('page_slug',$page->page_slug,array("class"=>"form-control", "placeholder"=>"Enter Page slug"))}}
+              <span>{{$errors->first('page_slug')}}</span>
+            </div>
+          </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Page Content</label>
             <div class="col-md-9">

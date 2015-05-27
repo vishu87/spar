@@ -50,15 +50,22 @@
                   <div class="form-group">
                     <label class="col-md-2 control-label">Page Title</label>
                     <div class="col-md-9">
-                      {{Form::text('page_title','',array("class"=>"form-control", "placeholder"=>"Enter Page Title"))}}
+                      {{Form::text('page_title','',array("class"=>"form-control", "placeholder"=>"Enter Page Title","id"=>"page_title","onkeyup"=>"slug_make()"))}}
                         <span>{{$errors->first('page_title')}}</span>
                     </div>
-                  </div>                  
+                  </div>   
+                   <div class="form-group">
+                    <label class="col-md-2 control-label">Page Slug (- separated)</label>
+                    <div class="col-md-9">
+                      {{Form::text('page_slug','',array("class"=>"form-control", "placeholder"=>"Enter Page Slug","id"=>"page_slug"))}}
+                        <span>{{$errors->first('page_slug')}}</span>
+                    </div>
+                  </div>               
                   <div class="form-actions sub-center">
                     <button type="submit" class="btn btn-success">Proceed</button>
                   </div>   
-                {{Form::close()}}
-            </div>
+                </div>
+              {{Form::close()}}
           </div>
     <!-- END SAMPLE FORM PORTLET-->
   </div>

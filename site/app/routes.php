@@ -1,4 +1,6 @@
 <?php
+	
+	 //Front-end starts
 
     Route::get('/', 'FrontendController@index');
 
@@ -8,28 +10,32 @@
     Route::get('/deals', 'FrontendController@deal');
 
 
-   Route::group(['prefix' => 'recipes'], function () {
-   	Route::get('/','FrontendController@getRecipesdetail');
-   	Route::get('/add','FrontendController@getAddRecipesdetail');
-   	Route::get('/{id}','FrontendController@getRecipesdetail');	
-   	Route::post('/store','FrontendController@postAdd'); 
-}); 
+   	Route::group(['prefix' => 'recipes'], function () {
+	   	Route::get('/','FrontendController@getRecipesdetail');
+	   	Route::get('/add','FrontendController@getAddRecipesdetail');
+	   	Route::get('/{id}','FrontendController@getRecipesdetail');	
+	   	Route::post('/store','FrontendController@postAdd'); 
+	}); 
 
- Route::group(['prefix' => 'pages'], function () {
-   	Route::get('/aboutus/{id}','FrontendController@getAbout');
-   	Route::get('/product-range','FrontendController@aboutproduct');
-   	Route::get('/trivia','FrontendController@abouttrivia');
-   	Route::get('/customer-reviews','FrontendController@aboutCustomer_review');
-   	Route::get('/customer-service','FrontendController@aboutCustomer_service');
-   	Route::get('/reward-card','FrontendController@aboutReward_card');
-   	Route::get('/gift-card','FrontendController@aboutGift_card');
-}); 
+	Route::group(['prefix' => 'pages'], function () {
+	   	Route::get('/aboutus/{id}','FrontendController@getAbout');
+	   	Route::get('/product-range','FrontendController@aboutproduct');
+	   	Route::get('/trivia','FrontendController@abouttrivia');
+	   	Route::get('/customer-reviews','FrontendController@aboutCustomer_review');
+	   	Route::get('/customer-service','FrontendController@aboutCustomer_service');
+	   	Route::get('/reward-card','FrontendController@aboutReward_card');
+	   	Route::get('/gift-card','FrontendController@aboutGift_card');
+	});
 
-Route::get('/login','UserController@getMain');
-Route::post('/login', 'UserController@postLogin');
+
+	 //Front-end ends
+
+	Route::get('/login','UserController@getMain');
+	Route::post('/login', 'UserController@postLogin');
 
     
 Route::group(['prefix' => 'admin','before' => 'auth'], function () {
+
 	Route::get('/dashboard','BannerController@getbanners');
 	Route::get('/','BannerController@getbanners');
 	Route::post('/get_images','SidebarController@getImages');
@@ -52,8 +58,6 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 	    Route::put('/categories/update/{id}', 'RecipeController@updateCategory');
 	    Route::get('/categories/edit/{id}','RecipeController@editCategory');
 	    Route::post('/categories/store','RecipeController@postCategory');
-
-
 	});
 
 	Route::group(['prefix' => 'homepage'], function () {
@@ -196,12 +200,14 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 
 	});
 
-	    Route::get('/logout', function(){
-	Auth::logout();
-	return Redirect::to('/');
-});
+    Route::get('/logout', function(){
+		Auth::logout();
+		return Redirect::to('/');
+	});
 
     
 });
+
+Route::get('/{page_slug}', 'FrontendController@pages');
 
    

@@ -163,3 +163,11 @@ $(document).ready(function(){
 function initialize(){
     $('textarea.editor1').ckeditor();
 }
+
+function slug_make(){
+
+  var str =  $("#page_title").val();
+  str = str.replace(/ /g, '-');
+  str = str.replace(/[^A-Za-z0-9-]*/g, '');
+  $("#page_slug").val(str);
+}
