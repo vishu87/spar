@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.2.10
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: May 27, 2015 at 06:56 PM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Host: localhost:8889
+-- Generation Time: May 27, 2015 at 08:30 PM
+-- Server version: 5.5.38
+-- PHP Version: 5.6.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,15 +26,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `addfront_recipes`
 --
 
-CREATE TABLE IF NOT EXISTS `addfront_recipes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `addfront_recipes` (
+`id` int(11) NOT NULL,
   `recipe_name` varchar(200) NOT NULL,
   `ingred` text NOT NULL,
   `cook_time` varchar(100) NOT NULL,
   `method` text NOT NULL,
-  `recipe_image` varchar(200) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `recipe_image` varchar(200) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `addfront_recipes`
@@ -50,14 +49,13 @@ INSERT INTO `addfront_recipes` (`id`, `recipe_name`, `ingred`, `cook_time`, `met
 -- Table structure for table `banner`
 --
 
-CREATE TABLE IF NOT EXISTS `banner` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `banner` (
+`id` int(11) NOT NULL,
   `banner_name` varchar(200) NOT NULL,
   `banner_image` varchar(200) NOT NULL,
   `priority` int(11) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `banner`
@@ -72,13 +70,12 @@ INSERT INTO `banner` (`id`, `banner_name`, `banner_image`, `priority`, `updated_
 -- Table structure for table `brands`
 --
 
-CREATE TABLE IF NOT EXISTS `brands` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `brands` (
+`id` int(11) NOT NULL,
   `brand_name` varchar(200) NOT NULL,
   `brand_image` varchar(200) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `brands`
@@ -96,11 +93,10 @@ INSERT INTO `brands` (`id`, `brand_name`, `brand_image`, `updated_at`) VALUES
 -- Table structure for table `carousels`
 --
 
-CREATE TABLE IF NOT EXISTS `carousels` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=6 ;
+CREATE TABLE `carousels` (
+`id` int(11) NOT NULL,
+  `name` varchar(100) COLLATE latin1_general_ci NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Dumping data for table `carousels`
@@ -116,14 +112,13 @@ INSERT INTO `carousels` (`id`, `name`) VALUES
 -- Table structure for table `carousel_items`
 --
 
-CREATE TABLE IF NOT EXISTS `carousel_items` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `carousel_items` (
+`id` int(11) NOT NULL,
   `carousel_id` int(11) NOT NULL,
   `caption` varchar(150) COLLATE latin1_general_ci NOT NULL,
   `image` varchar(200) COLLATE latin1_general_ci NOT NULL,
-  `priority` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=13 ;
+  `priority` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Dumping data for table `carousel_items`
@@ -144,15 +139,14 @@ INSERT INTO `carousel_items` (`id`, `carousel_id`, `caption`, `image`, `priority
 -- Table structure for table `deals`
 --
 
-CREATE TABLE IF NOT EXISTS `deals` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `deals` (
+`id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   `deal_name` varchar(200) NOT NULL,
   `deal_content` text NOT NULL,
   `image` varchar(200) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `deals`
@@ -170,12 +164,11 @@ INSERT INTO `deals` (`id`, `category_id`, `deal_name`, `deal_content`, `image`, 
 -- Table structure for table `homepage_deals`
 --
 
-CREATE TABLE IF NOT EXISTS `homepage_deals` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `homepage_deals` (
+`id` int(11) NOT NULL,
   `deal_id` int(11) NOT NULL,
-  `priority` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=8 ;
+  `priority` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Dumping data for table `homepage_deals`
@@ -194,14 +187,13 @@ INSERT INTO `homepage_deals` (`id`, `deal_id`, `priority`) VALUES
 -- Table structure for table `kids`
 --
 
-CREATE TABLE IF NOT EXISTS `kids` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `kids` (
+`id` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
   `content` text NOT NULL,
   `kids_image` varchar(200) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kids`
@@ -221,12 +213,11 @@ INSERT INTO `kids` (`id`, `title`, `content`, `kids_image`, `updated_at`) VALUES
 -- Table structure for table `media`
 --
 
-CREATE TABLE IF NOT EXISTS `media` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `media` (
+`id` int(11) NOT NULL,
   `image` varchar(500) COLLATE latin1_general_ci NOT NULL,
-  `caption` varchar(500) COLLATE latin1_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=11 ;
+  `caption` varchar(500) COLLATE latin1_general_ci NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Dumping data for table `media`
@@ -245,14 +236,13 @@ INSERT INTO `media` (`id`, `image`, `caption`) VALUES
 -- Table structure for table `mid_banner`
 --
 
-CREATE TABLE IF NOT EXISTS `mid_banner` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `mid_banner` (
+`id` int(11) NOT NULL,
   `mid_banner_name` varchar(200) NOT NULL,
   `mid_banner_image` varchar(200) NOT NULL,
   `priority` int(11) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mid_banner`
@@ -271,16 +261,22 @@ INSERT INTO `mid_banner` (`id`, `mid_banner_name`, `mid_banner_image`, `priority
 -- Table structure for table `pages`
 --
 
-CREATE TABLE IF NOT EXISTS `pages` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `pages` (
+`id` int(11) NOT NULL,
   `page_title` varchar(200) NOT NULL,
   `page_slug` varchar(200) NOT NULL,
   `page_content` text NOT NULL,
   `left_sidebar` int(11) NOT NULL,
   `right_sidebar` int(11) NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+  `updated_at` datetime NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pages`
+--
+
+INSERT INTO `pages` (`id`, `page_title`, `page_slug`, `page_content`, `left_sidebar`, `right_sidebar`, `updated_at`) VALUES
+(12, 'About Us', 'About-Us', '<p>&nbsp;asdas dasd a ajs dgasgduasd</p>\r\n', 2, 0, '2015-05-27 23:46:30');
 
 -- --------------------------------------------------------
 
@@ -288,14 +284,13 @@ CREATE TABLE IF NOT EXISTS `pages` (
 -- Table structure for table `page_sidebar_items`
 --
 
-CREATE TABLE IF NOT EXISTS `page_sidebar_items` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `page_sidebar_items` (
+`id` int(11) NOT NULL,
   `page_id` int(11) NOT NULL,
   `link_id` int(11) NOT NULL,
   `image_id` int(11) NOT NULL,
-  `priority` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `priority` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -303,13 +298,12 @@ CREATE TABLE IF NOT EXISTS `page_sidebar_items` (
 -- Table structure for table `page_side_banner`
 --
 
-CREATE TABLE IF NOT EXISTS `page_side_banner` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `page_side_banner` (
+`id` int(11) NOT NULL,
   `side_banner_name` varchar(200) NOT NULL,
   `side_banner_image` varchar(200) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `page_side_banner`
@@ -325,16 +319,15 @@ INSERT INTO `page_side_banner` (`id`, `side_banner_name`, `side_banner_image`, `
 -- Table structure for table `products`
 --
 
-CREATE TABLE IF NOT EXISTS `products` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `products` (
+`id` int(11) NOT NULL,
   `product_name` varchar(200) NOT NULL,
   `category_id` int(11) NOT NULL,
   `product_price` varchar(100) NOT NULL,
   `product_detail` text NOT NULL,
   `product_image` varchar(200) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
@@ -350,12 +343,11 @@ INSERT INTO `products` (`id`, `product_name`, `category_id`, `product_price`, `p
 -- Table structure for table `product_categories`
 --
 
-CREATE TABLE IF NOT EXISTS `product_categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `product_categories` (
+`id` int(11) NOT NULL,
   `product_category` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `image` varchar(200) COLLATE latin1_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=6 ;
+  `image` varchar(200) COLLATE latin1_general_ci NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Dumping data for table `product_categories`
@@ -371,8 +363,8 @@ INSERT INTO `product_categories` (`id`, `product_category`, `image`) VALUES
 -- Table structure for table `recipe`
 --
 
-CREATE TABLE IF NOT EXISTS `recipe` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `recipe` (
+`id` int(11) NOT NULL,
   `recipe_name` varchar(200) NOT NULL,
   `category_id` int(11) NOT NULL,
   `preparation_time` varchar(100) NOT NULL,
@@ -383,9 +375,8 @@ CREATE TABLE IF NOT EXISTS `recipe` (
   `to_serve` varchar(200) NOT NULL,
   `method` text NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `recipe`
@@ -405,12 +396,11 @@ INSERT INTO `recipe` (`id`, `recipe_name`, `category_id`, `preparation_time`, `r
 -- Table structure for table `recipe_categories`
 --
 
-CREATE TABLE IF NOT EXISTS `recipe_categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `recipe_categories` (
+`id` int(11) NOT NULL,
   `recipe_category` varchar(100) NOT NULL,
-  `image` varchar(200) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `image` varchar(200) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `recipe_categories`
@@ -427,12 +417,11 @@ INSERT INTO `recipe_categories` (`id`, `recipe_category`, `image`) VALUES
 -- Table structure for table `related_products`
 --
 
-CREATE TABLE IF NOT EXISTS `related_products` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `related_products` (
+`id` int(11) NOT NULL,
   `recipe_id` int(11) NOT NULL,
-  `related_product_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+  `related_product_id` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `related_products`
@@ -447,12 +436,11 @@ INSERT INTO `related_products` (`id`, `recipe_id`, `related_product_id`) VALUES
 -- Table structure for table `related_recipes`
 --
 
-CREATE TABLE IF NOT EXISTS `related_recipes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `related_recipes` (
+`id` int(11) NOT NULL,
   `recipe_id` int(11) NOT NULL,
-  `related_recipe_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `related_recipe_id` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `related_recipes`
@@ -467,11 +455,10 @@ INSERT INTO `related_recipes` (`id`, `recipe_id`, `related_recipe_id`) VALUES
 -- Table structure for table `sidebars`
 --
 
-CREATE TABLE IF NOT EXISTS `sidebars` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `sidebar` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=6 ;
+CREATE TABLE `sidebars` (
+`id` int(11) NOT NULL,
+  `sidebar` varchar(50) COLLATE latin1_general_ci NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Dumping data for table `sidebars`
@@ -489,8 +476,8 @@ INSERT INTO `sidebars` (`id`, `sidebar`) VALUES
 -- Table structure for table `sidebar_items`
 --
 
-CREATE TABLE IF NOT EXISTS `sidebar_items` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sidebar_items` (
+`id` int(11) NOT NULL,
   `type` int(1) NOT NULL,
   `sidebar_id` int(11) NOT NULL,
   `page_id` int(11) NOT NULL,
@@ -498,9 +485,8 @@ CREATE TABLE IF NOT EXISTS `sidebar_items` (
   `carousel_id` int(11) NOT NULL,
   `title` text NOT NULL,
   `custom_html` text NOT NULL,
-  `priority` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+  `priority` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sidebar_items`
@@ -508,8 +494,7 @@ CREATE TABLE IF NOT EXISTS `sidebar_items` (
 
 INSERT INTO `sidebar_items` (`id`, `type`, `sidebar_id`, `page_id`, `media_id`, `carousel_id`, `title`, `custom_html`, `priority`) VALUES
 (1, 2, 2, 0, 0, 0, 'Hey', '', 1),
-(2, 1, 2, 5, 0, 0, '', '', 2),
-(3, 3, 2, 0, 6, 0, '', '', 3),
+(15, 1, 2, 12, 0, 0, '', '', 7),
 (11, 4, 2, 0, 0, 0, '', '', 6),
 (12, 5, 2, 0, 0, 5, '', '', 7),
 (6, 4, 2, 0, 0, 0, '', '<p>&nbsp;jfyjhvbknkjbhvgfdghjkljhgcfhjk</p>\r\n', 5),
@@ -523,14 +508,13 @@ INSERT INTO `sidebar_items` (`id`, `type`, `sidebar_id`, `page_id`, `media_id`, 
 -- Table structure for table `side_banner`
 --
 
-CREATE TABLE IF NOT EXISTS `side_banner` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `side_banner` (
+`id` int(11) NOT NULL,
   `side_banner_name` varchar(200) NOT NULL,
   `side_banner_image` varchar(200) NOT NULL,
   `priority` int(11) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `side_banner`
@@ -547,8 +531,8 @@ INSERT INTO `side_banner` (`id`, `side_banner_name`, `side_banner_image`, `prior
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+`id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
@@ -557,9 +541,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `priviledge` int(1) NOT NULL,
   `remember_token` varchar(200) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -569,6 +552,267 @@ INSERT INTO `users` (`id`, `name`, `username`, `password`, `email`, `phone`, `pr
 (9, 'Editor SPAR Nigeria', 'editor@spar.com', '$2y$10$OgnriE06VWGyHAaqgoOMjekDmmUOBhVapEhIKEveVStOTn13.crE.', 'editor@spar.com', 2147483647, 0, '', '2015-05-08 06:01:03', '0000-00-00 00:00:00'),
 (6, 'Admin SPAR Nigeria', 'admin@spar.com', '$2y$10$Tc0.nU6itR.inQZhKOKmqu.L5fCOPM0IGYGuXTHxyQdv2diD.aJbe', 'admin@spar.com', 1234567891, 1, '', '2015-05-08 06:01:19', '2015-05-08 06:01:19');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `addfront_recipes`
+--
+ALTER TABLE `addfront_recipes`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `banner`
+--
+ALTER TABLE `banner`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `brands`
+--
+ALTER TABLE `brands`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `carousels`
+--
+ALTER TABLE `carousels`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `carousel_items`
+--
+ALTER TABLE `carousel_items`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `deals`
+--
+ALTER TABLE `deals`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `homepage_deals`
+--
+ALTER TABLE `homepage_deals`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kids`
+--
+ALTER TABLE `kids`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `media`
+--
+ALTER TABLE `media`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mid_banner`
+--
+ALTER TABLE `mid_banner`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `page_sidebar_items`
+--
+ALTER TABLE `page_sidebar_items`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `page_side_banner`
+--
+ALTER TABLE `page_side_banner`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_categories`
+--
+ALTER TABLE `product_categories`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `recipe`
+--
+ALTER TABLE `recipe`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `recipe_categories`
+--
+ALTER TABLE `recipe_categories`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `related_products`
+--
+ALTER TABLE `related_products`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `related_recipes`
+--
+ALTER TABLE `related_recipes`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sidebars`
+--
+ALTER TABLE `sidebars`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sidebar_items`
+--
+ALTER TABLE `sidebar_items`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `side_banner`
+--
+ALTER TABLE `side_banner`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `addfront_recipes`
+--
+ALTER TABLE `addfront_recipes`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `banner`
+--
+ALTER TABLE `banner`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `brands`
+--
+ALTER TABLE `brands`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `carousels`
+--
+ALTER TABLE `carousels`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `carousel_items`
+--
+ALTER TABLE `carousel_items`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `deals`
+--
+ALTER TABLE `deals`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `homepage_deals`
+--
+ALTER TABLE `homepage_deals`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `kids`
+--
+ALTER TABLE `kids`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `media`
+--
+ALTER TABLE `media`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `mid_banner`
+--
+ALTER TABLE `mid_banner`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `page_sidebar_items`
+--
+ALTER TABLE `page_sidebar_items`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `page_side_banner`
+--
+ALTER TABLE `page_side_banner`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `product_categories`
+--
+ALTER TABLE `product_categories`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `recipe`
+--
+ALTER TABLE `recipe`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `recipe_categories`
+--
+ALTER TABLE `recipe_categories`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `related_products`
+--
+ALTER TABLE `related_products`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `related_recipes`
+--
+ALTER TABLE `related_recipes`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `sidebars`
+--
+ALTER TABLE `sidebars`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `sidebar_items`
+--
+ALTER TABLE `sidebar_items`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `side_banner`
+--
+ALTER TABLE `side_banner`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

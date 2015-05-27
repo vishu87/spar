@@ -15,10 +15,31 @@ class FrontendController extends BaseController {
   }
 
   public function pages($page_slug){
-      $page = Page::where('page_slug',$page_slug);
+      $page = Page::where('page_slug',$page_slug)->first();
       if($page->exists()){
-        $this->layout->title = 'Brand | SPAR Nigeria';
-        $this->layout->main = '';
+        if($page->left_sidebar == 0 && $page->right_sidebar == 0){
+          $middle_span =  12;
+        } else if($page->left_sidebar != 0 && $page->right_sidebar != 0 ) {
+          $middle_span = 6;
+        } else {
+          $middle_span = 9;
+        }
+        if($page->left_sidebar != 0){
+          $sidebar = DB::table('sidebar_items')->select('sidebar_items.*','pages.page_title','pages.page_slug')->leftJoin('pages','sidebar_items.page_id','=','pages.id')->where('sidebar_items.sidebar_id',$page->left_sidebar)->orderBy('sidebar_items.priority','asc')->get();
+          $left_sidebar = View::make('frontend.sidebar',['sidebar'=>$sidebar,"page"=>$page]);
+        } else {
+          $left_sidebar = '';
+        }
+
+        if($page->right_sidebar != 0){
+          $sidebar = DB::table('sidebar_items')->where('sidebar_id',$page->right_sidebar)->orderBy('priority','asc')->get();
+          $right_sidebar = View::make('frontend.sidebar',['sidebar'=>$sidebar,"page"=>$page]);
+        } else {
+          $right_sidebar = '';
+        }
+
+        $this->layout->title = $page->page_title. ' | SPAR Nigeria';
+        $this->layout->main = View::make('frontend.page',["page"=>$page,"left_sidebar"=>$left_sidebar,"right_sidebar"=>$right_sidebar,"middle_span"=>$middle_span]);
       } else {
         return 'No Page found';
       }  
