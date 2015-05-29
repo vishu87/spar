@@ -122,3 +122,28 @@
   font-size: 12px;
 
   }
+
+  .page-sidebar-left{
+    padding-right: 30px;
+  }
+
+  .page-sidebar-right{
+    padding-left: 30px;
+  }
+  .sidebar-title{
+    background: #0F0;
+    color: #FFF;
+    padding: 5px 10px;
+    margin: 10px 0;
+  }
+  .sidebar-image{
+    margin: 10px 0;
+  }
+  .sidebar-image img{
+    width: 100%;
+  }
+  .page-title-top{
+    font-weight: 300;
+    margin: 10px 0 15px 0;
+    font-size: 30px;
+  }

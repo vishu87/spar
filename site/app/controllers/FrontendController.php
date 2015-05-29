@@ -25,15 +25,15 @@ class FrontendController extends BaseController {
           $middle_span = 9;
         }
         if($page->left_sidebar != 0){
-          $sidebar = DB::table('sidebar_items')->select('sidebar_items.*','pages.page_title','pages.page_slug')->leftJoin('pages','sidebar_items.page_id','=','pages.id')->where('sidebar_items.sidebar_id',$page->left_sidebar)->orderBy('sidebar_items.priority','asc')->get();
-          $left_sidebar = View::make('frontend.sidebar',['sidebar'=>$sidebar,"page"=>$page]);
+          $sidebar_left = DB::table('sidebar_items')->select('sidebar_items.*','pages.page_title','pages.page_slug','media.image','media.caption')->leftJoin('pages','sidebar_items.page_id','=','pages.id')->leftJoin('media','sidebar_items.media_id','=','media.id')->where('sidebar_items.sidebar_id',$page->left_sidebar)->orderBy('sidebar_items.priority','asc')->get();
+          $left_sidebar = View::make('frontend.sidebar',['sidebar'=>$sidebar_left,"page"=>$page,"type"=>1]);
         } else {
           $left_sidebar = '';
         }
 
         if($page->right_sidebar != 0){
-          $sidebar = DB::table('sidebar_items')->where('sidebar_id',$page->right_sidebar)->orderBy('priority','asc')->get();
-          $right_sidebar = View::make('frontend.sidebar',['sidebar'=>$sidebar,"page"=>$page]);
+          $sidebar_right = DB::table('sidebar_items')->select('sidebar_items.*','pages.page_title','pages.page_slug','media.image','media.caption')->leftJoin('pages','sidebar_items.page_id','=','pages.id')->leftJoin('media','sidebar_items.media_id','=','media.id')->where('sidebar_items.sidebar_id',$page->right_sidebar)->orderBy('sidebar_items.priority','asc')->get();
+          $right_sidebar = View::make('frontend.sidebar',['sidebar'=>$sidebar_right,"page"=>$page,"type"=>2]);
         } else {
           $right_sidebar = '';
         }

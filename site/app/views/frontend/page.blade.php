@@ -15,6 +15,8 @@
 			</div>
 		</div>
 
+		<h1 class="page-title-top">{{$page->page_title}}</h1>
+
 		<div class="row">
 			{{$left_sidebar}}
 			<div class="col-md-{{$middle_span}}">
