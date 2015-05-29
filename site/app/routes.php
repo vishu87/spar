@@ -24,6 +24,7 @@
 	   	Route::get('/customer-reviews','FrontendController@aboutCustomer_review');
 	   	Route::get('/customer-service','FrontendController@aboutCustomer_service');
 	   	Route::get('/reward-card','FrontendController@aboutReward_card');
+	   	Route::get('/reward-card/definition','FrontendController@getDefinition');
 	   	Route::get('/gift-card','FrontendController@aboutGift_card');
 	});
 

@@ -47,11 +47,10 @@
                 <li><a class="active" href="#"><i class="fa fa-home"></i></a></li>
                 <li><a class="" href="{{url('/pages/aboutus/5')}}">About SPAR</a></li>
                 <li><a class="" href="{{url('/')}}">Store Locator</a></li>
-                <li><a class="" href="{{url('/')}}">Loyalty Program</a></li>
+                <li><a class="" href="{{url('/pages/reward-card')}}">Loyalty Program</a></li>
                 <li><a class="" href="{{url('/pages/gift-card')}}">Gift Card</a></li>
-                <li><a class="" href="{{url('/')}}">Careers</a></li>
                 <li><a class="" href="{{url('/deals')}}">Deals</a></li>
-                <li><a class="" href="{{url('/')}}">Credit Cards</a></li>
+                <li><a class="" href="{{url('/')}}">Contact Us</a></li>
               </ul>
               
             </div>

@@ -108,6 +108,11 @@ class FrontendController extends BaseController {
       ));        
   }  
 
+  public function getDefinition(){
+      $this->layout->title = 'Definitions  | Spar Nigeria';
+      $this->layout->main = View::make('frontend.pages.definition');        
+  }  
+
   public function aboutproduct(){
         $this->layout->title = 'About Product Range | SPAR Nigeria';
         $this->layout->main = View::make('frontend.pages.about_product');
