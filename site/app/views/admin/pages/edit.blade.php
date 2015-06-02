@@ -64,17 +64,51 @@
           <div class="form-group">
             <label class="col-md-2 control-label">Page Slug</label>
             <div class="col-md-9">
-              {{Form::text('page_slug',$page->page_slug,array("class"=>"form-control", "placeholder"=>"Enter Page slug"))}}
+              @if($page->page_content != -1)
+                {{Form::text('page_slug',$page->page_slug,array("class"=>"form-control", "placeholder"=>"Enter Page slug"))}}
+              @else
+                {{Form::text('page_slug',$page->page_slug,array("class"=>"form-control", "placeholder"=>"Enter Page slug","readonly"=>"readonly"))}}
+              @endif
               <span>{{$errors->first('page_slug')}}</span>
             </div>
           </div>
+          @if($page->page_content != -1)
           <div class="form-group">
             <label class="col-md-2 control-label">Page Content</label>
             <div class="col-md-9">
              {{Form::textarea('page_content',$page->page_content,array("class"=>"ckeditor form-control", "placeholder"=>"Page Content"))}}  
              <span>{{$errors->first('page_content')}}</span>          
            </div>
-         </div>          
+         </div>
+         @endif
+         <div class="form-group">
+            <label class="col-md-2 control-label">Top Parent</label>
+            <div class="col-md-9">
+              {{Form::select('top_active',$page_list,$page->top_active,array("class"=>"form-control", "placeholder"=>"Enter Page slug"))}}
+              <span>{{$errors->first('meta_title')}}</span>
+            </div>
+          </div>
+         <div class="form-group">
+            <label class="col-md-2 control-label">Meta Title</label>
+            <div class="col-md-9">
+              {{Form::text('meta_title',$page->meta_title,array("class"=>"form-control", "placeholder"=>"Enter Page slug"))}}
+              <span>{{$errors->first('meta_title')}}</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Meta Keywords</label>
+            <div class="col-md-9">
+              {{Form::text('meta_keywords',$page->meta_keywords,array("class"=>"form-control", "placeholder"=>"Enter Page slug"))}}
+              <span>{{$errors->first('meta_keywords')}}</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Meta Description</label>
+            <div class="col-md-9">
+              {{Form::text('meta_description',$page->meta_description,array("class"=>"form-control", "placeholder"=>"Enter Page slug"))}}
+              <span>{{$errors->first('meta_description')}}</span>
+            </div>
+          </div>        
        <div class="sub-center">
         <button type="submit" class="btn btn-success">Update</button>
       </div>   

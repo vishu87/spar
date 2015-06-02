@@ -7,7 +7,7 @@
     Route::get('/brands', 'FrontendController@brand');
     Route::get('/brands-groceries', 'FrontendController@brandgroceries');
     Route::get('/kids-corner', 'FrontendController@kids');
-    Route::get('/deals', 'FrontendController@deal');
+    // Route::get('/deals', 'FrontendController@deal');
 
 
    	Route::group(['prefix' => 'recipes'], function () {

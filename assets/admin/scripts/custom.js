@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 	var sidebar_id = $("#sidebar_id").val();
 
@@ -137,6 +138,7 @@ $(function() {
 });
 
 $(document).ready(function(){
+	CKEDITOR.config.allowedContent = true;
 	$("#sortable1").sortable();
     $("#sortable1").disableSelection();
 
@@ -169,5 +171,6 @@ function slug_make(){
   var str =  $("#page_title").val();
   str = str.replace(/ /g, '-');
   str = str.replace(/[^A-Za-z0-9-]*/g, '');
+  str = str.toLowerCase();
   $("#page_slug").val(str);
 }

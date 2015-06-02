@@ -15,7 +15,8 @@ class FrontendController extends BaseController {
   }
 
   public function pages($page_slug){
-      $page = Page::where('page_slug',$page_slug)->first();
+
+      $page = Page::where('pages.page_slug',$page_slug)->select('pages.*','top_active_page.page_slug as top_active_page_slug','top_active_page.page_title as top_active_page_title')->leftJoin('pages as top_active_page','pages.top_active','=','top_active_page.id')->first();
       if($page->exists()){
         if($page->left_sidebar == 0 && $page->right_sidebar == 0){
           $middle_span =  12;
@@ -25,20 +26,27 @@ class FrontendController extends BaseController {
           $middle_span = 9;
         }
         if($page->left_sidebar != 0){
-          $sidebar_left = DB::table('sidebar_items')->select('sidebar_items.*','pages.page_title','pages.page_slug','media.image','media.caption')->leftJoin('pages','sidebar_items.page_id','=','pages.id')->leftJoin('media','sidebar_items.media_id','=','media.id')->where('sidebar_items.sidebar_id',$page->left_sidebar)->orderBy('sidebar_items.priority','asc')->get();
+          $sidebar_left = DB::table('sidebar_items')->select('sidebar_items.*','pages.id as page_id','pages.page_title','pages.page_slug','media.image','media.caption')->leftJoin('pages','sidebar_items.page_id','=','pages.id')->leftJoin('media','sidebar_items.media_id','=','media.id')->where('sidebar_items.sidebar_id',$page->left_sidebar)->orderBy('sidebar_items.priority','asc')->get();
           $left_sidebar = View::make('frontend.sidebar',['sidebar'=>$sidebar_left,"page"=>$page,"type"=>1]);
         } else {
           $left_sidebar = '';
         }
 
         if($page->right_sidebar != 0){
-          $sidebar_right = DB::table('sidebar_items')->select('sidebar_items.*','pages.page_title','pages.page_slug','media.image','media.caption')->leftJoin('pages','sidebar_items.page_id','=','pages.id')->leftJoin('media','sidebar_items.media_id','=','media.id')->where('sidebar_items.sidebar_id',$page->right_sidebar)->orderBy('sidebar_items.priority','asc')->get();
+          $sidebar_right = DB::table('sidebar_items')->select('sidebar_items.*','pages.id as page_id','pages.page_title','pages.page_slug','media.image','media.caption')->leftJoin('pages','sidebar_items.page_id','=','pages.id')->leftJoin('media','sidebar_items.media_id','=','media.id')->where('sidebar_items.sidebar_id',$page->right_sidebar)->orderBy('sidebar_items.priority','asc')->get();
           $right_sidebar = View::make('frontend.sidebar',['sidebar'=>$sidebar_right,"page"=>$page,"type"=>2]);
         } else {
           $right_sidebar = '';
         }
-
+        $this->layout->page = $page;
         $this->layout->title = $page->page_title. ' | SPAR Nigeria';
+
+        if($page->page_content == -1){
+          if($page->slug == 'deals'){
+            $page->page_content = View::make('frontend.deal');
+          }
+        }
+
         $this->layout->main = View::make('frontend.page',["page"=>$page,"left_sidebar"=>$left_sidebar,"right_sidebar"=>$right_sidebar,"middle_span"=>$middle_span]);
       } else {
         return 'No Page found';
@@ -95,7 +103,7 @@ class FrontendController extends BaseController {
           $id = DB::table("addfront_recipes")->insertGetID(array('recipe_name'=>Input::get("recipe_name"),'recipe_image'=>$image,
               'ingred'=>Input::get("ingred"),'cook_time'=>Input::get("cook_time"),'method'=>Input::get("method")));               
           return Redirect::Back()->with('success', '<b>'.Input::get('recipe_name').'</b> has been successfully added');                    
-      }else {
+      } else {
           return Redirect::Back()->withErrors($validator)->withInput();
       }
   }

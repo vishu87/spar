@@ -42,13 +42,12 @@
               <a class="navbar-brand" href="index.php">{{ HTML::image('frontend/images/logo.png') }}</a>
             </div>
             <div class="navbar-collapse collapse">
-              
               <ul class="nav navbar-nav navbar-right">
-                <li><a class="active" href="#"><i class="fa fa-home"></i></a></li>
-                <li><a class="" href="{{url('/pages/aboutus/5')}}">About SPAR</a></li>
+                <li><a class="@if(Request::is('/')) active @endif" href="{{url('/')}}"><i class="fa fa-home"></i></a></li>
+                <li><a class="@if(isset($page->top_active)) @if($page->top_active == 1 || $page->id == 1) active @endif @endif" href="{{url('/about-spar')}}">About SPAR</a></li>
                 <li><a class="" href="{{url('/')}}">Store Locator</a></li>
-                <li><a class="" href="{{url('/pages/reward-card')}}">Loyalty Program</a></li>
-                <li><a class="" href="{{url('/pages/gift-card')}}">Gift Card</a></li>
+                <li><a class="" href="{{url('/reward-card')}}">Loyalty Program</a></li>
+                <li><a class="" href="{{url('/gift-card')}}">Gift Cards</a></li>
                 <li><a class="" href="{{url('/deals')}}">Deals</a></li>
                 <li><a class="" href="{{url('/')}}">Contact Us</a></li>
               </ul>

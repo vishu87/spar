@@ -26,11 +26,14 @@ class PageController extends BaseController {
         $this->layout->top_active = 3;
         $this->layout->sub_active = 1;
         $page = DB::table('pages')->where('id',$page_id)->first();
+        $page_list = DB::table('pages')->lists('page_title','id');
+        $page_list[0] = 'None';
+        ksort($page_list);
         $sidebars = DB::table('sidebars')->lists('sidebar','id');
         $sidebars[0] = "None";
         ksort($sidebars);
 
-        $this->layout->main = View::make("admin.pages.edit",array("page"=>$page, "sidebars"=>$sidebars));
+        $this->layout->main = View::make("admin.pages.edit",array("page"=>$page, "sidebars"=>$sidebars,"page_list"=>$page_list));
     }
 
     public function getPages(){
@@ -75,6 +78,10 @@ class PageController extends BaseController {
                 $page->page_content = Input::get('page_content');
                 $page->left_sidebar = Input::get('left_sidebar');
                 $page->right_sidebar = Input::get('right_sidebar');
+                $page->meta_title = Input::get('meta_title');
+                $page->meta_keywords = Input::get('meta_keywords');
+                $page->meta_description = Input::get('meta_description');
+                $page->top_active = Input::get('top_active');
                 $page->save();
                 return Redirect::Back()->with('success', '<b>'.Input::get('page_title').'</b> has been successfully updated');                    
             }
