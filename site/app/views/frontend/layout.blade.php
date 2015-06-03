@@ -14,11 +14,11 @@
     <meta name="author" content="Naija Go Social">
     {{HTML::style("frontend/css/bootstrap.css")}}
     {{HTML::style("frontend/css/font-awesome.min.css")}}
-    {{HTML::style("frontend/css/style.css")}}
-    {{HTML::style("frontend/css/responsive.css")}}
-    {{HTML::style("frontend/css/animate.css")}}
-    {{HTML::style("frontend/css/colors.css")}}
-    {{HTML::style("frontend/css/custom.css")}}
+    {{HTML::style("frontend/css/style.css?v=1.0.0")}}
+    {{HTML::style("frontend/css/responsive.css?v=1.0.0")}}
+    {{HTML::style("frontend/css/animate.css?v=1.0.0")}}
+    {{HTML::style("frontend/css/colors.css?v=1.0.0")}}
+    {{HTML::style("frontend/css/custom.css?v=1.0.0")}}
     
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
