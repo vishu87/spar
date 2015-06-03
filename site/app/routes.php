@@ -3,10 +3,7 @@
 	 //Front-end starts
 
     Route::get('/', 'FrontendController@index');
-
-    Route::get('/brands', 'FrontendController@brand');
     Route::get('/brands-groceries', 'FrontendController@brandgroceries');
-    Route::get('/kids-corner', 'FrontendController@kids');
     // Route::get('/deals', 'FrontendController@deal');
 
 
@@ -124,6 +121,17 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 	    Route::get('/delete/{deal_id}',array('before'=>'authadmin', 'uses'=>'DealController@getdelete'));
 
 	});
+
+	  Route::group(['prefix' => 'stores'], function () {
+		Route::get('/','StoreController@getStores');
+		Route::get('/add','StoreController@getAdd');
+		Route::post('/store','StoreController@postAdd');
+		Route::get('/edit/{store_id}','StoreController@getStore');
+	    Route::put('/update/{store_id}', 'StoreController@putupdate');
+	    Route::get('/delete/{store_id}',array('before'=>'authadmin', 'uses'=>'StoreController@getdelete'));
+
+	});
+
 
 	    Route::group(['prefix' => 'banners'], function () {
 		Route::get('/','BannerController@getbanners');

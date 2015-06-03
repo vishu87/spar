@@ -21,22 +21,13 @@
 
 				                
 				                <div class="carousel-inner">
-				                    <div class="item active">
-				                        <img class="img-responsive" src="frontend/images/banner1.jpg" alt="slider">
-				                        <div class="slider-content">
-				                            <div class="col-md-12 text-center">
-				                                
-				                            </div>
-				                        </div>
+				                	<?php $count = 0; ?>
+				                	@foreach($main_banners as $main_banner)
+				                    <div class="item @if($count == 0) active @endif">
+				                        <img class="img-responsive" src="{{url('images/'.$main_banner->banner_image)}}" alt="{{$main_banner->banner_name}}">
 				                    </div>
-
-				                    <div class="item">
-				                        <img class="img-responsive" src="frontend/images/banner2.jpg" alt="slider">
-				                        <div class="slider-content">
-				                           
-				                        </div>
-				                    </div>
-				                    
+				                    <?php $count++; ?>
+				                    @endforeach
 				                </div>
 				            
 				                <a class="left carousel-control" href="#main-slide" data-slide="prev">
@@ -54,37 +45,25 @@
 				
 				
 				<div class="col-md-3 hidden-xs hidden-sm" style="text-align:center">
-					<div style="max-height:156px; overflow:hidden; text-align:center" align="center">
-						<img src="frontend/images/banner_home01.jpg">
+        			<?php $count = 0; ?>
+				    @foreach($side_banners as $side_banner)
+					<div style="overflow:hidden; text-align:center" align="center">
+						<img src="{{url('images/'.$side_banner->side_banner_image)}}" alt="{{$side_banner->side_banner_name}}">
 					</div>
-					<div style="max-height:156px; overflow:hidden; text-align:center">
-						<img src="frontend/images/glasses5.jpg">
-					</div>
-					<div style="max-height:158px; overflow:hidden; text-align:center">
-						<img src="frontend/images/glasses6.jpg">
-					</div>
+					@endforeach
 				</div>
 				
 
 				<div class="col-md-3 hidden-md hidden-lg">
 					<div style="padding:10px">
 						<div class="projects-carousel touch-carousel">
-							
+							 @foreach($side_banners as $side_banner)
 							<div class="portfolio-item item">
 								<div class="portfolio-border">
-									<img src="frontend/images/banner_home01.jpg">
+									<img src="{{url('images/'.$side_banner->side_banner_image)}}" alt="{{$side_banner->side_banner_name}}">
 								</div>
 							</div>
-							<div class="portfolio-item item">
-								<div class="portfolio-border">
-									<img src="frontend/images/glasses5.jpg">
-								</div>
-							</div>
-							<div class="portfolio-item item">
-								<div class="portfolio-border">
-									<img src="frontend/images/glasses6.jpg">
-								</div>
-							</div>
+							@endforeach
 						</div>
 					</div>
 				</div>
@@ -99,15 +78,19 @@
 
 		<div class="row">
 			<div class="col-md-4" style="">
-				<div style="padding:30px 20px;  font-size:30px; text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home04.jpg')">
-					SPAR NIGERIA BRANDS
-				</div>
-				<div style="padding:30px 20px; margin-top:22px; font-size:30px; text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home06.jpg')">
-					RECIPES
-				</div>
-				<div style="padding:30px 20px; margin-top:23px; font-size:30px; text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home05.jpg')">
-					KIDS ZONE
-				</div>
+				<a href="{{url('/brands')}}">
+					<div style="padding:30px 20px;  font-size:30px; text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home04.jpg')">
+						SPAR NIGERIA BRANDS
+					</div>
+				</a>
+					<div style="padding:30px 20px; margin-top:22px; font-size:30px; text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home06.jpg')">
+						RECIPES
+					</div>
+				<a href="{{url('/kids-corner')}}">
+					<div style="padding:30px 20px; margin-top:23px; font-size:30px; text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home05.jpg')">
+						KIDS CORNER
+					</div>
+				</a>
 			</div>
 
 			<div class="col-md-4">
@@ -158,73 +141,11 @@
 			
 			<div class="offer-carousel custom-carousel touch-carousel" data-appeared-items="5">
 				
-				
+				@foreach($homepage_deals as $deal)
 				<div class="offer-item item">
-					<div style="text-align:center">
-						<h3>iMac OSX</h3>
-						<h4>&#8358; 400,000</h4>
-					</div>
-					<a href="#"><img src="frontend/images/offer.jpg" alt="" /></a>
+					<a href="#"><img src="{{url('images/'.$deal->image)}}" alt="{{$deal->deal_name}}" /></a>
 				</div>
-				
-				
-				<div class="offer-item item">
-					<div style="text-align:center">
-						<h3>Sony Xpreia Z</h3>
-						<h4>&#8358; 40,000</h4>
-					</div>
-					<a href="#"><img src="frontend/images/offer2.jpg" alt="" /></a>
-				</div>
-
-				<div class="offer-item item">
-					<div style="text-align:center">
-						<h3>iMac OSX</h3>
-						<h4>&#8358; 400,000</h4>
-					</div>
-					<a href="#"><img src="frontend/images/offer.jpg" alt="" /></a>
-				</div>
-				
-				
-				<div class="offer-item item">
-					<div style="text-align:center">
-						<h3>Sony Xpreia Z</h3>
-						<h4>&#8358; 40,000</h4>
-					</div>
-					<a href="#"><img src="frontend/images/offer2.jpg" alt="" /></a>
-				</div>
-				<div class="offer-item item">
-					<div style="text-align:center">
-						<h3>iMac OSX</h3>
-						<h4>&#8358; 400,000</h4>
-					</div>
-					<a href="#"><img src="frontend/images/offer.jpg" alt="" /></a>
-				</div>
-				
-				
-				<div class="offer-item item">
-					<div style="text-align:center">
-						<h3>Sony Xpreia Z</h3>
-						<h4>&#8358; 40,000</h4>
-					</div>
-					<a href="#"><img src="frontend/images/offer2.jpg" alt="" /></a>
-				</div>
-				<div class="offer-item item">
-					<div style="text-align:center">
-						<h3>iMac OSX</h3>
-						<h4>&#8358; 400,000</h4>
-					</div>
-					<a href="#"><img src="frontend/images/offer.jpg" alt="" /></a>
-				</div>
-				
-				
-				<div class="offer-item item">
-					<div style="text-align:center">
-						<h3>Sony Xpreia Z</h3>
-						<h4>&#8358; 40,000</h4>
-					</div>
-					<a href="#"><img src="frontend/images/offer2.jpg" alt="" /></a>
-				</div>
-				
+				@endforeach
 			</div>
 		</div>
 		

@@ -160,6 +160,13 @@
             <span class="selected"></span>
           </a>
         </li>
+        <li @if($top_active == 11) class="active" @endif>
+          <a href="{{url('/admin/stores')}}">
+            <i class="fa fa-thumbs-o-up"></i>
+            <span class="title">Stores</span>
+            <span class="selected"></span>
+          </a>
+        </li>
         @if(Auth::user()->priviledge == 1)
         <li @if($top_active == 10) class="active" @endif>
           <a href="{{url('/admin/members')}}">

@@ -60,13 +60,11 @@ class PageController extends BaseController {
     public function putupdate($page_id){       
         $cre = [
         'page_title' => Input::get('page_title'),
-        'page_slug' => Input::get('page_slug'),
-        'page_content' => Input::get('page_content')
+        'page_slug' => Input::get('page_slug')
         ];
         $rules = [
         'page_title' => 'required',
-        'page_slug' => 'required',
-        'page_content' => 'required'
+        'page_slug' => 'required'
         ];
         $validator = Validator::make($cre,$rules);
         if($validator->passes()){
@@ -75,6 +73,7 @@ class PageController extends BaseController {
             if($page->exists){
                 $page->page_title = Input::get('page_title');
                 $page->page_slug = Input::get('page_slug');
+                if($page->page_content != -1)
                 $page->page_content = Input::get('page_content');
                 $page->left_sidebar = Input::get('left_sidebar');
                 $page->right_sidebar = Input::get('right_sidebar');
@@ -85,7 +84,7 @@ class PageController extends BaseController {
                 $page->save();
                 return Redirect::Back()->with('success', '<b>'.Input::get('page_title').'</b> has been successfully updated');                    
             }
-            return Redirect::Back()->with('failure', '<b>Page not found');
+            return Redirect::Back()->with('failure', 'Page not found');
         } 
         else {
             return Redirect::Back()->withErrors($validator)->withInput();

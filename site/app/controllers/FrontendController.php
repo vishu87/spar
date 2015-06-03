@@ -5,8 +5,17 @@ class FrontendController extends BaseController {
   protected $layout = 'frontend.layout';
 
   public function index(){
-        $this->layout->title = 'Home Page | SPAR Nigeria';
-        $this->layout->main = View::make('frontend.home');
+    $this->layout->title = 'Home Page | SPAR Nigeria';
+    $main_banners = DB::table('banner')->orderBy('priority','asc')->get();
+    $side_banners = DB::table('side_banner')->orderBy('priority','asc')->get();
+    $mid_banners = DB::table('mid_banner')->orderBy('priority','asc')->get();
+    $homepage_deals = DB::table('homepage_deals')->select('deals.deal_name','deals.image')->join('deals','homepage_deals.deal_id','=','deals.id')->orderBy('priority','asc')->get();
+    $this->layout->main = View::make('frontend.home',array(
+      "main_banners" => $main_banners,
+      "side_banners" => $side_banners,
+      "mid_banners" => $mid_banners,
+      "homepage_deals" => $homepage_deals
+    ));
   }
 
   public function brand(){
@@ -40,14 +49,34 @@ class FrontendController extends BaseController {
         }
         $this->layout->page = $page;
         $this->layout->title = $page->page_title. ' | SPAR Nigeria';
-
+        //dummy
+        $stores = array();
         if($page->page_content == -1){
-          if($page->slug == 'deals'){
-            $page->page_content = View::make('frontend.deal');
+          if($page->page_slug == 'deals'){
+            $deals = DB::table('deals')->select('deals.*','product_categories.product_category')->join('product_categories','deals.category_id','=','product_categories.id')->orderBy('product_categories.product_category','asc')->get();
+            $page->page_content = View::make('frontend.deal', array(
+              "deals" => $deals
+              ));
           }
+
+          if($page->page_slug == 'store-locator'){
+            $stores = DB::table('stores')->select('stores.*','cities.city')->join('cities','stores.city_id','=','cities.id')->orderBy('cities.city','asc')->get();
+            $page->page_content = View::make('frontend.stores', array("stores"=>$stores));
+          }
+
+          if($page->page_slug == 'brands'){
+            $brands = DB::table('brands')->get();
+            $page->page_content = View::make('frontend.brands', array("brands"=>$brands));
+          }
+
+          if($page->page_slug == 'kids-corner'){
+            $kids = DB::table('kids')->get();
+            $page->page_content = View::make('frontend.kids', array("kids"=>$kids));
+          }
+
         }
 
-        $this->layout->main = View::make('frontend.page',["page"=>$page,"left_sidebar"=>$left_sidebar,"right_sidebar"=>$right_sidebar,"middle_span"=>$middle_span]);
+        $this->layout->main = View::make('frontend.page',["page"=>$page,"left_sidebar"=>$left_sidebar,"right_sidebar"=>$right_sidebar,"middle_span"=>$middle_span,"stores"=>$stores]);
       } else {
         return 'No Page found';
       }  

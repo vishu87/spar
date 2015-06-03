@@ -6,7 +6,7 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 13px;
     line-height: 21px;
-	font-weight: 300;
+	font-weight: 400;
 	color: #666;
 	background: url(../images/patterns/1.png) fixed repeat;
 }
@@ -2013,6 +2013,22 @@ ul.footer-nav li a:hover {
 .service-content{
 	padding: 10px;
 }
+.deal-box-contain{
+	padding: 5px;
+}
+.deal-box{
+	border: 1px solid #EEE;
+}
+.deal-box:hover{
+	box-shadow: 0 0 3px #CCC;
+}
+.deal-category{
+	font-size: 30px;
+	text-align: center;
+	margin: 20px 0;
+	font-weight: 300;
+	color:#157946;
+}
 @media (max-width : 479px) {
     
     .slider{
@@ -2062,4 +2078,7 @@ ul.footer-nav li a:hover {
 	border:1px solid #EEE;
 	margin: 5px;
 	padding: 10px;
+}
+.store-category{
+	margin: 0 !important;
 }

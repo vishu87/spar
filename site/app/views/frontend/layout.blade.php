@@ -20,7 +20,7 @@
     {{HTML::style("frontend/css/colors.css")}}
     {{HTML::style("frontend/css/custom.css")}}
     
-
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
     <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     
@@ -45,13 +45,12 @@
               <ul class="nav navbar-nav navbar-right">
                 <li><a class="@if(Request::is('/')) active @endif" href="{{url('/')}}"><i class="fa fa-home"></i></a></li>
                 <li><a class="@if(isset($page->top_active)) @if($page->top_active == 1 || $page->id == 1) active @endif @endif" href="{{url('/about-spar')}}">About SPAR</a></li>
-                <li><a class="" href="{{url('/')}}">Store Locator</a></li>
-                <li><a class="" href="{{url('/reward-card')}}">Loyalty Program</a></li>
-                <li><a class="" href="{{url('/gift-card')}}">Gift Cards</a></li>
-                <li><a class="" href="{{url('/deals')}}">Deals</a></li>
-                <li><a class="" href="{{url('/')}}">Contact Us</a></li>
+                <li><a class="@if(isset($page->top_active)) @if($page->top_active == 19 || $page->id == 19) active @endif @endif" href="{{url('/store-locator')}}">Store Locator</a></li>
+                <li><a class="@if(isset($page->top_active)) @if($page->top_active == 2 || $page->id == 2) active @endif @endif" href="{{url('/reward-card')}}">Loyalty Program</a></li>
+                <li><a class="@if(isset($page->top_active)) @if($page->top_active == 16 || $page->id == 16) active @endif @endif" href="{{url('/gift-card')}}">Gift Cards</a></li>
+                <li><a class="@if(isset($page->top_active)) @if($page->top_active == 18 || $page->id == 18) active @endif @endif" href="{{url('/deals')}}">Deals</a></li>
+                <li><a class="@if(isset($page->top_active)) @if($page->top_active == 17 || $page->id == 17) active @endif @endif" href="{{url('/contact-us')}}">Contact Us</a></li>
               </ul>
-              
             </div>
           </div>
         </div>     
