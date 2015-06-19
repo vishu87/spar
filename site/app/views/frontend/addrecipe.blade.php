@@ -1,24 +1,4 @@
-
-		<div class="container margin">
-			<div id="content">
-				<div class="row">
-					<div class="page-bar">
-					  <ul class="page-breadcrumb">
-					    <li>
-					      <i class="fa fa-home"></i>
-					      <a href="{{url('/admin')}}">Home</a>
-					      <i class="fa fa-angle-right"></i>
-					    </li>
-					    <li>
-					      <a href="{{url('/admin')}}">About SPAR</a>
-					      <i class="fa fa-angle-right"></i>
-					    </li> 
-					    <li>
-					      Recipes
-					    </li>   
-					  </ul>
-					</div>
-				</div>
+	
 				<div class="row">
 					<h3 class="summer-recipe">Submit Your Recipes</h3>
 				</div>
@@ -27,14 +7,14 @@
 					<div class="col-md-8">
 						<div class="row recipe-time">
 							<div class="col-md-4">
-								{{ HTML::image('frontend/images/banner8.jpg') }}
+								{{ HTML::image('frontend/images/addrecipe.jpg','',array("class"=>"recipe-img")) }}
 							</div>
 							<div class="col-md-8 recipe-info">
                                 <p class="Ingredients">
                                 	Do you have a special or secret recipe? Want to share that special recipes or cooking tips with us? Use the form below to  share
                                 </p> 
                                    <div class="portlet-body form recipe-info top-margin">
-					              {{Form::open(array("url"=>"/recipes/store","method" => "POST","role"=>"form","class" => "form-horizontal","files"=>"true"))}}
+					              {{Form::open(array("url"=>"/add-recipe","method" => "POST","role"=>"form","class" => "form-horizontal","files"=>"true"))}}
 					                <div class="form-body">
 					                  <div class="form-group">
 					                    <label class="col-md-3">Name</label>
@@ -78,9 +58,5 @@
 						</div>				
 					</div>
 					<div class="col-md-4">
-						@include('frontend.sidebar')
 					</div>
 				</div>
-		    </div>
-		</div>
-

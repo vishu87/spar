@@ -73,6 +73,17 @@ class FrontendController extends BaseController {
             $kids = DB::table('kids')->get();
             $page->page_content = View::make('frontend.kids', array("kids"=>$kids));
           }
+          if($page->page_slug == 'recipes'){
+            $recipe = DB::table('recipe')->get();
+            $page->page_content = View::make('frontend.recipe', array("recipes"=>$recipe));
+          }
+           //if($page->page_slug == 'recipe-details'){
+           // $recipe = DB::table('recipe')->get();
+            //$page->page_content = View::make('frontend.recipe_detail', array("recipe"=>$recipe));
+         // }
+            if($page->page_slug == 'add-recipe'){
+            $page->page_content = View::make('frontend.addrecipe');
+          }
 
         }
 
@@ -82,9 +93,10 @@ class FrontendController extends BaseController {
       }  
   }
 
-  public function kids(){
+  public function getkids($id){
         $this->layout->title = 'Kids Corner | SPAR Nigeria';
-        $this->layout->main = View::make('frontend.kids');
+        $kids = Kids::select('kids.*')->where('kids.id',$id)->first();
+        $this->layout->main = View::make('frontend.kids_corner',array("kids" => $kids));
   }
 
   public function deal(){
@@ -100,7 +112,8 @@ class FrontendController extends BaseController {
   public function getRecipesdetail($id){
         $this->layout->title = 'All Recipes | Spar';
         $recipes = Recipe::select('recipe.*')->where('recipe.id',$id)->first();
-        $this->layout->main = View::make('frontend.recipe',array(
+            $brands = DB::table('brands')->get();
+        $this->layout->main = View::make('frontend.recipe_detail',array(
             "recipes" => $recipes
         ));          
   }  
@@ -110,7 +123,7 @@ class FrontendController extends BaseController {
         $this->layout->main = View::make('frontend.addrecipe');
   }
 
-  public function postAdd(){
+  public function postaddRecipe(){
       $cre = [
       'recipe_name' => Input::get('recipe_name'),
       'ingred' => Input::get('ingred')     

@@ -5,13 +5,16 @@
     Route::get('/', 'FrontendController@index');
     Route::get('/brands-groceries', 'FrontendController@brandgroceries');
     // Route::get('/deals', 'FrontendController@deal');
-
+ 
+     Route::get('/recipes/{id}','FrontendController@getRecipesdetail');
+     Route::post('/add-recipe','FrontendController@postaddRecipe');
+     Route::get('/kids-corner/{id}','FrontendController@getkids');
 
    	Route::group(['prefix' => 'recipes'], function () {
-	   	Route::get('/','FrontendController@getRecipesdetail');
+	   	//Route::get('/','FrontendController@getRecipesdetail');
 	   	Route::get('/add','FrontendController@getAddRecipesdetail');
 	   	Route::get('/{id}','FrontendController@getRecipesdetail');	
-	   	Route::post('/store','FrontendController@postAdd'); 
+	   //Route::post('/store','FrontendController@postAdd'); 
 	}); 
 
 	Route::group(['prefix' => 'pages'], function () {
