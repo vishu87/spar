@@ -24,3 +24,22 @@
 .form-group span.error{
   color: #f00;
 }
+.padding-5{
+  padding: 5px;
+}
+.padding-10{
+  padding: 10px;
+}
+.recipe-text{
+  text-align: right;
+}
+.margin-0{
+  margin: 0px;
+}
+.recipe-border{
+  border: 2px solid #eee;
+}
+.recipe-img{
+  width: 100%;
+  height: auto;
+}

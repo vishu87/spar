@@ -160,6 +160,20 @@
             <span class="selected"></span>
           </a>
         </li>
+        <li @if($top_active == 9) class="active" @endif>
+          <a href="{{url('/admin/users_recipe')}}">
+            <i class="fa fa-cutlery"></i>
+            <span class="title">Users Recipe</span>
+            <span class="selected"></span>
+          </a>
+        </li>
+        <li @if($top_active == 12) class="active" @endif>
+          <a href="{{url('/admin/customer-reviews')}}">
+            <i class="fa fa-comment-o"></i>
+            <span class="title">Customer Review</span>
+            <span class="selected"></span>
+          </a>
+        </li>
         <li @if($top_active == 11) class="active" @endif>
           <a href="{{url('/admin/stores')}}">
             <i class="fa fa-thumbs-o-up"></i>

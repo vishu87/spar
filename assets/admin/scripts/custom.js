@@ -174,3 +174,80 @@ function slug_make(){
   str = str.toLowerCase();
   $("#page_slug").val(str);
 }
+$(document).ready(function(){
+  		$(".allowbtn").click(function(){
+  			var item = $(this);
+  			var id = item.attr("data-id");
+  			var initial_html = item.html();
+  			item.html('Processing...');
+  			$.post(base_url+'/admin/users_recipe/allow_recipe',{recipe_id:id}, function(data){
+  				data = JSON.parse(data);
+  				if(data.success){
+  					if(data.active == 'Allow'){
+  						item.html('Disallow').removeClass('green').addClass('red');
+  						$(".status_"+id).html('Allow');
+  					} else {
+  						item.html('Allow').removeClass('red').addClass('green');
+  						$(".status_"+id).html('Disallow');
+  					}
+  						
+  				} else {
+  					item.html(initial_html);
+  				}
+  			});
+  		});
+
+  		$(".reciperemove").click(function(){
+  			var item = $(this);
+  			var id = item.attr("data-id");
+  			var parent_tr = item.parent().parent();
+  			$.get(base_url+'/admin/users_recipe/delete/'+id, function(data){
+  				data = JSON.parse(data);
+  				if(data.success){
+  					parent_tr.hide("slow", function(){
+  						parent_tr.remove();
+  					});
+  				} else {
+  					alert('Can not be deleted');
+  				}
+  			});
+  		});
+
+         $(".allowreviewbtn").click(function(){
+  			var item = $(this);
+  			var id = item.attr("data-id");
+  			var initial_html = item.html();
+  			item.html('Processing...');
+  			$.post(base_url+'/admin/customer-reviews/allow_review',{review_id:id}, function(data){
+  				data = JSON.parse(data);
+  				if(data.success){
+  					if(data.allow == 1){
+  						item.html('Disallow').removeClass('green').addClass('red');
+  						$(".status_"+id).html('Allow');
+  					} else {
+  						item.html('Allow').removeClass('red').addClass('green');
+  						$(".status_"+id).html('Disallow');
+  					}
+  						
+  				} else {
+  					item.html(initial_html);
+  				}
+  			});
+  		});
+
+  		$(".reviewremove").click(function(){
+  			var item = $(this);
+  			var id = item.attr("data-id");
+  			var parent_tr = item.parent().parent();
+  			$.get(base_url+'/admin/customer-reviews/delete/'+id, function(data){
+  				data = JSON.parse(data);
+  				if(data.success){
+  					parent_tr.hide("slow", function(){
+  						parent_tr.remove();
+  					});
+  				} else {
+  					alert('Can not be deleted');
+  				}
+  			});
+  		});
+  	});

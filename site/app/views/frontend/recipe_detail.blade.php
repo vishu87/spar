@@ -2,16 +2,20 @@
 
 		<div class="container margin">
 			<div id="content">
-				<div class="row">
-					<div class="page-bar">
+                <div class="row">
+					<div class="col-md-6">
+						
+					</div>
+					<div class="col-md-6">
+		             <div class="page-bar pull-right" style="background:#fff;">
 					  <ul class="page-breadcrumb">
 					    <li>
 					      <i class="fa fa-home"></i>
-					      <a href="{{url('/admin')}}">Home</a>
+					      <a href="{{url('/')}}">Home</a>
 					      <i class="fa fa-angle-right"></i>
 					    </li>
 					    <li>
-					      <a href="{{url('/admin')}}">About SPAR</a>
+					      <a href="{{url('/about-spar')}}">About SPAR</a>
 					      <i class="fa fa-angle-right"></i>
 					    </li> 
 					    <li>
@@ -19,9 +23,10 @@
 					    </li>   
 					  </ul>
 					</div>
+					</div>			
 				</div>
 				<div class="row">
-					<h3 class="summer-recipe">Recipe for {{$recipes->recipe_name}}</h3>
+					<h2 class="summer-recipe">Recipe for {{$recipes->recipe_name}}</h2>
 				</div>
 
 				<div class="row">
@@ -58,11 +63,61 @@
 
 						</div>
 					</div>
-					<div class="col-md-4">
-						 
+					<div class="col-md-4">						
+						<div class="row side-bar">
+							<div class="other-recipe btn green related-recipe">Related Recipes</div>
+						</div>
+						@if(!empty($recipes))
+                         @foreach($relat_recipe as $recipe)
+                         <a href="{{url('/recipes/'.$recipe->id)}}">
+							<div class="row side-bar top-margin">
+								<div class="col-md-6">
+									{{ HTML::image('images/'.$recipe->recipe_image,'',array("class"=>"other-img")) }}
+								</div>
+								<div class="col-md-6 other-name">
+									{{$recipe->recipe_name}}
+								</div>							
+							</div>
+						</a>
+						@endforeach
+					  @endif		  
+						<div class="row side-bar recipe-time">
+							<div class="other-recipe btn green related-recipe">Related Products</div>
+						</div>
+						<div class="row side-bar">
+						<div class="col-md-12 border-1 padding-5">	
+                       @if(!empty($recipes))
+                         @foreach($relat_product as $product)                         
+							<div class="row top-margin">								
+								<div class="col-md-4">
+									{{ HTML::image('images/'.$product->product_image,'',array("class"=>"other-pro")) }}
+								</div>
+								<div class="col-md-8 other-name-pro">
+									{{$product->product_name}}
+									<br>₦{{$product->product_price}}
+								</div> 
+						    </div>						
+					    @endforeach
+                        @endif
+					    <div class="btn-align top-margin">
+						    <a href="{{url('/add-recipe')}}" class="btn btn-sm red submit-btn width-100">
+							 Submit Your Recipe
+							</a>
+						</div>
+						<hr>
+						<div>
+							<a href="{{url('/gift-card')}}">
+								{{ HTML::image('frontend/images/gift-card.jpg','',array("class"=>"other-pro")) }}
+							</a>
+						</div>
+						<div class="promo">
+							<p>Randomized advert on Promos, Gift Cards, Loyalty Cards etc.</p>
+						</div>
 					</div>
 				</div>
-		    </div>
-		</div>
+			</div>
+	    </div>
+	</div>
+</div>
 
 

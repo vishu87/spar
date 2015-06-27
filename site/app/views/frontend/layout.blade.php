@@ -14,6 +14,8 @@
     <meta name="author" content="Naija Go Social">
     {{HTML::style("frontend/css/bootstrap.css")}}
     {{HTML::style("frontend/css/font-awesome.min.css")}}
+    {{HTML::style("frontend/css/components-rounded.css")}}
+    {{HTML::style("frontend/css/datepicker3.css")}}
     {{HTML::style("frontend/css/style.css?v=1.0.0")}}
     {{HTML::style("frontend/css/responsive.css?v=1.0.0")}}
     {{HTML::style("frontend/css/animate.css?v=1.0.0")}}
@@ -136,7 +138,10 @@
       <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
         {{HTML::script("frontend/js/jquery-2.1.1.min.js")}}
         {{HTML::script("frontend/js/jquery.migrate.js")}}
+        {{HTML::script("assets/global/plugins/ckeditor/ckeditor.js")}}
+        {{HTML::script("assets/global/plugins/ckeditor/adapters/jquery.js")}}
         {{HTML::script("frontend/js/bootstrap.min.js")}}
+        {{HTML::script("frontend/js/bootstrap-datepicker.js")}}
         {{HTML::script("frontend/js/owl.carousel.min.js")}}
         {{HTML::script("frontend/js/script.js")}}
   </body>

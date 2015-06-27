@@ -1,25 +1,14 @@
 <div id="content">
 	<div  class="slider-main">
 		<div class="container slider">
-		
-			
-			<div class="row">
-				
-				
-				<div class="col-md-9 slider">
-					
-				        <section id="home">
-				            
-				            <div id="main-slide" class="carousel slide" data-ride="carousel">
-
-				                
+		<div class="row">
+				<div class="col-md-9 slider">					
+				        <section id="home">				            
+				            <div id="main-slide" class="carousel slide" data-ride="carousel">				                
 				                <ol class="carousel-indicators">
 				                    <li data-target="#main-slide" data-slide-to="0" class="active"></li>
 				                    <li data-target="#main-slide" data-slide-to="1"></li>
-				                </ol>
-				                
-
-				                
+				                </ol>              
 				                <div class="carousel-inner">
 				                	<?php $count = 0; ?>
 				                	@foreach($main_banners as $main_banner)
@@ -36,14 +25,9 @@
 				                <a class="right carousel-control" href="#main-slide" data-slide="next">
 				                    <span><i class="fa fa-angle-right"></i></span>
 				                </a>
-				            </div>
-				            
-				        </section>
-	        		
-				</div>
-				
-				
-				
+				            </div>				            
+				        </section>	        		
+				</div>	
 				<div class="col-md-3 hidden-xs hidden-sm" style="text-align:center">
         			<?php $count = 0; ?>
 				    @foreach($side_banners as $side_banner)
@@ -52,8 +36,6 @@
 					</div>
 					@endforeach
 				</div>
-				
-
 				<div class="col-md-3 hidden-md hidden-lg">
 					<div style="padding:10px">
 						<div class="projects-carousel touch-carousel">

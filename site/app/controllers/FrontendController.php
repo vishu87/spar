@@ -77,16 +77,28 @@ class FrontendController extends BaseController {
             $recipe = DB::table('recipe')->get();
             $page->page_content = View::make('frontend.recipe', array("recipes"=>$recipe));
           }
-           //if($page->page_slug == 'recipe-details'){
-           // $recipe = DB::table('recipe')->get();
-            //$page->page_content = View::make('frontend.recipe_detail', array("recipe"=>$recipe));
-         // }
+           if($page->page_slug == 'product-range'){
+            $products = DB::table('product_categories')->get();
+            $page->page_content = View::make('frontend.pages/about_product', array("products"=>$products));
+          }
             if($page->page_slug == 'add-recipe'){
-            $page->page_content = View::make('frontend.addrecipe');
+            $recipes = Recipe::select('recipe.*')->get();
+            $product = Product::select('products.*')->get();
+            $page->page_content = View::make('frontend.addrecipe',array('recipes' => $recipes,'product' => $product));
+          }
+            if($page->page_slug == 'submit-your-reviews'){
+              $stores = DB::table('stores')->lists('name','id');
+            $page->page_content = View::make('frontend.customer_review',array('stores' => $stores));
           }
 
         }
 
+          if($page->page_slug == 'customer-review'){
+             $review = DB::table('customer_review')->select('customer_review.*','stores.name')->join('stores','customer_review.store_id','=','stores.id')->orderBy('customer_review.id','desc')->get();
+             $comment = DB::table('comments')->lists('review_id','id');
+                                    
+            $page->page_content = View::make('frontend.pages.customer_review',array('review' => $review));
+          }
         $this->layout->main = View::make('frontend.page',["page"=>$page,"left_sidebar"=>$left_sidebar,"right_sidebar"=>$right_sidebar,"middle_span"=>$middle_span,"stores"=>$stores]);
       } else {
         return 'No Page found';
@@ -104,22 +116,26 @@ class FrontendController extends BaseController {
         $this->layout->main = View::make('frontend.deal');
   }
   
-  public function brandgroceries(){
-        $this->layout->title = 'Brand Groceries | SPAR Nigeria';
-        $this->layout->main = View::make('frontend.brand_grocery');
+  public function products($id){
+        $this->layout->title = 'Products | SPAR Nigeria';
+        $products = DB::table('products')->select('products.*','product_categories.product_category')->join('product_categories','products.category_id','=','product_categories.id')->where('products.category_id',$id)->get();         
+        $this->layout->main = View::make('frontend.brand_detail', array("products"=>$products));
   }
    
   public function getRecipesdetail($id){
         $this->layout->title = 'All Recipes | Spar';
         $recipes = Recipe::select('recipe.*')->where('recipe.id',$id)->first();
-            $brands = DB::table('brands')->get();
+        $relat_recipe = DB::table('related_recipes')->join('recipe','related_recipes.related_recipe_id','=','recipe.id')->select('related_recipes.*','recipe.recipe_name','recipe.recipe_image')->where('recipe_id',$id)->get();
+        $relat_product = DB::table('related_products')->join('products','related_products.related_product_id','=','products.id')->select('related_products.*','products.*')->where('recipe_id',$id)->get();
         $this->layout->main = View::make('frontend.recipe_detail',array(
-            "recipes" => $recipes
+            "recipes" => $recipes,
+            "relat_recipe" => $relat_recipe,
+            "relat_product" => $relat_product
         ));          
   }  
   
   public function getAddRecipesdetail(){
-        $this->layout->title = 'Add Recipe | SPAR Nigeria';
+        $this->layout->title = 'Add Your Recipe | SPAR Nigeria';
         $this->layout->main = View::make('frontend.addrecipe');
   }
 
@@ -162,11 +178,6 @@ class FrontendController extends BaseController {
       $this->layout->title = 'Definitions  | Spar Nigeria';
       $this->layout->main = View::make('frontend.pages.definition');        
   }  
-
-  public function aboutproduct(){
-        $this->layout->title = 'About Product Range | SPAR Nigeria';
-        $this->layout->main = View::make('frontend.pages.about_product');
-  }
   
   public function abouttrivia(){
         $this->layout->title = 'About Product Range | SPAR Nigeria';
@@ -180,7 +191,8 @@ class FrontendController extends BaseController {
 
   public function aboutCustomer_service(){
         $this->layout->title = 'About Customer Service | SPAR Nigeria';
-        $this->layout->main = View::make('frontend.pages.customer_service');
+        $stores = DB::table('stores')->lists('name','id');
+        $this->layout->main = View::make('frontend.pages.customer_service',array('stores' => $stores));
   }   
 
   public function aboutReward_card(){
@@ -192,4 +204,53 @@ class FrontendController extends BaseController {
         $this->layout->title = 'About Gift Card | SPAR Nigeria';
         $this->layout->main = View::make('frontend.pages.gift_card');
   }
+
+     public function comments($id){
+      $this->layout->title = 'Comments | SPAR Nigeria';  
+      $review = DB::table('customer_review')->where('id',$id)->first();
+      $comment = DB::table('comments')->where('review_id',$id)->get();
+      $this->layout->main = View::make('frontend.comment',array('review' => $review,'comment' => $comment));
+     }
+  
+      public function postaddReview(){
+      $cre = [
+      'username' => Input::get('username'),
+      'phone' => Input::get('phone'),
+      'email' => Input::get('email')     
+      ];
+      $rules = [
+      'username' => 'required',
+      'phone' => 'required',
+      'email' => 'required'
+
+      ];
+      $validator = Validator::make($cre,$rules);
+      if($validator->passes()){ 
+          $id = DB::table("customer_review")->insertGetID(array('username'=>Input::get("username"),
+              'email'=>Input::get("email"),'phone'=>Input::get("phone"),'date_visited'=>Input::get("date_visited"),'review'=>Input::get("review"),'store_id'=>Input::get("store_id")));               
+          return Redirect::Back()->with('success', '<b>'.Input::get('username').'</b> has been successfully added');                    
+      } else {
+          return Redirect::Back()->withErrors($validator)->withInput();
+      }
+  }
+
+  public function postaddComment($review_id){
+      $cre = [
+      'name' => Input::get('name'),
+      'comment' => Input::get('comment')
+      ];
+      $rules = [
+      'name' => 'required',
+      'comment' => 'required'
+
+      ];
+      $validator = Validator::make($cre,$rules);
+      if($validator->passes()){ 
+          $id = DB::table("comments")->insertGetID(array('review_id'=>$review_id,'name'=>Input::get("name"),'comment'=>Input::get("comment")));               
+          return Redirect::Back()->with('success', '<b>'.Input::get('name').'</b> has been successfully added');                    
+      } else {
+          return Redirect::Back()->withErrors($validator)->withInput();
+      }
+  }
+
 }

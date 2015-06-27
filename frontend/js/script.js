@@ -266,3 +266,10 @@ $(document).ready(function ($) {
 		
 	})();
 });
+$(document).ready(function(){
+    $(".datepicker").datepicker({'format':'dd-mm-yyyy'});
+      CKEDITOR.config.allowedContent = true;
+});
+function initialize(){
+    $('textarea.editor1').ckeditor();
+}

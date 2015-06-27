@@ -37,7 +37,8 @@ class BrandController extends BaseController {
         $this->layout->title = 'Spar | Brand';
         $this->layout->top_active = 4;
         $brand = DB::table('brands')->where('id',$brand_id)->first();
-        $this->layout->main = View::make("admin.brands.edit",array("brand"=>$brand));
+         $categories = DB::table('product_categories')->lists('product_category','id');  
+        $this->layout->main = View::make("admin.brands.edit",array("brand"=>$brand,"categories"=>$categories));
     }
 
     public function getbrands(){
@@ -50,7 +51,8 @@ class BrandController extends BaseController {
     public function getadd(){
         $this->layout->title = 'Add | Brand';
         $this->layout->top_active = 4;
-        $this->layout->main = View::make("admin.brands.add");
+        $categories = DB::table('product_categories')->lists('product_category','id');  
+        $this->layout->main = View::make("admin.brands.add",array('categories' =>$categories));
     }
 
      public function getdelete($brand_id){
