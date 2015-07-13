@@ -3,7 +3,7 @@
 	<div class="col-md-8">
 	    <div class="portlet-body form">
 	      {{Form::open(array("url"=>"/submit-your-reviews/add-review","method" => "POST","role"=>"form","class" => "form-horizontal","files"=>"true"))}}
-	            <div class="form-body">
+	            <div class="form-body padding-top-0">
 	              <div class="form-group margin-0">
 	                <label>Full Name</label>
 	                <div>

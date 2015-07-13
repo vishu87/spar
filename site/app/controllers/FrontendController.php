@@ -75,15 +75,16 @@ class FrontendController extends BaseController {
           }
           if($page->page_slug == 'recipes'){
             $recipe = DB::table('recipe')->get();
-            $page->page_content = View::make('frontend.recipe', array("recipes"=>$recipe));
+            $user_recipe = DB::table('addfront_recipes')->get();
+            $page->page_content = View::make('frontend.recipe', array("recipes"=>$recipe,"user_recipes"=>$user_recipe));
           }
            if($page->page_slug == 'product-range'){
             $products = DB::table('product_categories')->get();
-            $page->page_content = View::make('frontend.pages/about_product', array("products"=>$products));
+            $page->page_content = View::make('frontend.pages.about_product', array("products"=>$products));
           }
             if($page->page_slug == 'add-recipe'){
-            $recipes = Recipe::select('recipe.*')->get();
-            $product = Product::select('products.*')->get();
+            $recipes = Recipe::select('recipe.*')->limit(3)->get();
+            $product = DB::table('related_products')->join('products','related_products.related_product_id','=','products.id')->select('related_products.*','products.product_name','products.product_image','products.product_price')->limit(2)->get();
             $page->page_content = View::make('frontend.addrecipe',array('recipes' => $recipes,'product' => $product));
           }
             if($page->page_slug == 'submit-your-reviews'){
@@ -124,6 +125,7 @@ class FrontendController extends BaseController {
    
   public function getRecipesdetail($id){
         $this->layout->title = 'All Recipes | Spar';
+        $this->layout->top_active = 1;
         $recipes = Recipe::select('recipe.*')->where('recipe.id',$id)->first();
         $relat_recipe = DB::table('related_recipes')->join('recipe','related_recipes.related_recipe_id','=','recipe.id')->select('related_recipes.*','recipe.recipe_name','recipe.recipe_image')->where('recipe_id',$id)->get();
         $relat_product = DB::table('related_products')->join('products','related_products.related_product_id','=','products.id')->select('related_products.*','products.*')->where('recipe_id',$id)->get();

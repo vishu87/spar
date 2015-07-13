@@ -29,18 +29,20 @@
 			    </div>
 			</div>			
 		</div>
+		@if(!empty($products))
 		<div class="row">
 			<h2 class="summer-recipe">{{$products[0]->product_category}}</h2>
 		</div>
+		@endif
 		<div class="row">
-			<div class="col-md-8">	
+			<div class="col-md-9">	
 				<div class="row">			
 				    @if(!empty($products))									
 						@foreach($products as $product)
 							<div class="col-md-4 deal-box-contain">
-								<div class="deal-box" style="position:relative">		
-								    {{ HTML::image('images/'.$product->product_image,'',array("class"=>"recipe-img-width")) }}
-								     <div class="brand-name" align="center">
+								<div style="position:relative">		
+								    {{ HTML::image('images/'.$product->product_image,'',array("class"=>"recipe-img-width border-radius-60")) }}
+								     <div class="brand-name border-radius-50" align="center">
 										{{$product->product_name}}
 									</div>
 								</div>
@@ -50,11 +52,11 @@
 				</div>
 			</div>
 
-			<div class="col-md-4">
-				<div class="row side-bar">
-					<div class="other-recipe btn green">Special Promotions</div>
+			<div class="col-md-3">
+				<div class="row">
+					<div class="width-100 btn green">Special Promotions</div>
 				</div>
-				<div class="row side-bar">
+				<div class="row">
 				 	<div class="col-md-12 border-1 padding-5">		
 					   
 					    <hr>				    

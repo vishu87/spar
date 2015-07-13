@@ -17,6 +17,7 @@
 .summer-recipe{
 	font-weight: 600;
   color: #00B050;
+  font-family: serif;
 }
 .recipe-time{
 	margin-top: 20px;
@@ -29,9 +30,14 @@
 	margin-bottom: 10px;
 	border-top: 2px solid #eee;
 }
+.font-size-15{
+  font-size: 15px;
+    letter-spacing: 0.5px;
+}
 .Ingredients{
 	font-weight: 600;
   color: #00B050;
+  font-family: serif;
 }
 .margin{
  margin-top: 30px;
@@ -55,10 +61,13 @@
 }
 .other-name{
    height: 80px;
-  padding-top: 20px;
-  background: #DA3632;
+  padding: 20px 5px 5px;
+  background: #EC1A23;
   color: #fff;
   text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: serif;
 }
 .other-img{
 	height: 80px;
@@ -73,10 +82,13 @@
 }
 .other-name-pro{
    min-height: 150px;
-  background: #DA3632;
+  background: #2B75F0;
   text-align: center;
   color: #fff;
-  padding-top: 34px;
+  padding: 34px 5px 5px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: serif;
 }
 .add-button{
 	float: right; 
@@ -179,7 +191,7 @@
     padding: 0 5px;
   }
   .brand-name{
-    background:rgba(21,121,70,0.8);
+    background:rgba(21, 121, 70, 0.55);
     color:#FFF;
     padding:10px;
     font-size:20px;
@@ -187,7 +199,8 @@
     position:absolute;
     z-index:100;
     width:100%;
-    height:40px
+    height:40px;
+    font-family: serif;
   }
   .recipe-img{
   width: 100%;
@@ -212,7 +225,7 @@
  border-radius: 2px;
 }
 .border-radius-2{
-  border-radius: 2px;
+  border-radius: 5px;
 }
 .margin-0{
   margin-left: 0px !important;
@@ -265,4 +278,66 @@
   color:#fff; 
   width: auto; 
   background-color: rgba(0, 0, 0, 0.14);
+}
+.btn.red-stripe {
+  border-right: 3px solid #D84A38;
+  border-left: 3px solid #D84A38;
+  border-top: 1px solid #857F7F;
+  border-bottom: 1px solid #857F7F;
+  color: #F70707;
+  font-size: 15px;
+}
+.border-radius-50{
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+.border-radius-60{
+  border-radius: 40px;
+}
+.padding-top-0{
+  padding-top: 0px !important;
+}
+.masonryItem {
+  border: .07692rem solid #fff;
+  margin-bottom: 1.23077rem;
+  float: left;
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+  width: 100%;
+}
+.masonryItem .topSection {
+  width: 100%;
+  padding: .76923rem;
+}
+.masonryItem.recipe .shareOptions {
+  padding: 5.38462rem 3.69231rem;
+}
+.masonryItem .shareOptions {
+  cursor: pointer;
+  display: none;
+  width: 21.69231rem!important;
+  min-height: 17.92308rem;
+  position: absolute;
+  padding: 7.38462rem 3.69231rem;
+  background: rgba(248,246,243,.5);
+  z-index: 1;
+}
+.masonryItem .photo {
+  display: block;
+  min-height: 17.92308rem;
+  width: 21.53846rem;
+  background: #f8f6f3;
+  position: relative;
+}
+.masonryItem .photo.loaded {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.recipeInfo{
+  padding: 0px 10px 10px 10px;
+}
+.topSection .page-content p {
+  margin-bottom: 0px;
 }

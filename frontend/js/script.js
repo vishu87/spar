@@ -15,12 +15,13 @@ $(document).ready(function ($) {
             $('.back-to-top').fadeOut(400);
         }
     });
+
     $('.back-to-top').click(function(event) {
         event.preventDefault();
         $('html, body').animate({scrollTop: 0}, 600);
         return false;
     })
-	
+    	
 	var time = 4.4,
 		$progressBar,
 		$bar,
@@ -262,14 +263,12 @@ $(document).ready(function ($) {
 		
 		init();
 		
-		
-		
 	})();
+
 });
+
 $(document).ready(function(){
     $(".datepicker").datepicker({'format':'dd-mm-yyyy'});
       CKEDITOR.config.allowedContent = true;
-});
-function initialize(){
-    $('textarea.editor1').ckeditor();
-}
+      $('textarea.editor1').ckeditor();
+  });
