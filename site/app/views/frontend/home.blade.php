@@ -1,32 +1,32 @@
 <div id="content">
 	<div  class="slider-main">
-		<div class="container slider">
+		<div class="slider">
 		<div class="row">
-				<div class="col-md-9 slider">					
-				        <section id="home">				            
-				            <div id="main-slide" class="carousel slide" data-ride="carousel">				                
-				                <ol class="carousel-indicators">
-				                    <li data-target="#main-slide" data-slide-to="0" class="active"></li>
-				                    <li data-target="#main-slide" data-slide-to="1"></li>
-				                </ol>              
-				                <div class="carousel-inner">
-				                	<?php $count = 0; ?>
-				                	@foreach($main_banners as $main_banner)
-				                    <div class="item @if($count == 0) active @endif">
-				                        <img class="img-responsive" src="{{url('images/'.$main_banner->banner_image)}}" alt="{{$main_banner->banner_name}}">
-				                    </div>
-				                    <?php $count++; ?>
-				                    @endforeach
-				                </div>
-				            
-				                <a class="left carousel-control" href="#main-slide" data-slide="prev">
-				                    <span><i class="fa fa-angle-left"></i></span>
-				                </a>
-				                <a class="right carousel-control" href="#main-slide" data-slide="next">
-				                    <span><i class="fa fa-angle-right"></i></span>
-				                </a>
-				            </div>				            
-				        </section>	        		
+				<div class="col-md-9 slider" style="padding-right:5px;">					
+     <section id="home">				            
+         <div id="main-slide" class="carousel slide" data-ride="carousel">				                
+             <ol class="carousel-indicators">
+                 <li data-target="#main-slide" data-slide-to="0" class="active"></li>
+                 <li data-target="#main-slide" data-slide-to="1"></li>
+             </ol>              
+             <div class="carousel-inner">
+             	<?php $count = 0; ?>
+             	@foreach($main_banners as $main_banner)
+                 <div class="item @if($count == 0) active @endif">
+                     <img class="img-responsive" src="{{url('images/'.$main_banner->banner_image)}}" alt="{{$main_banner->banner_name}}">
+                 </div>
+                 <?php $count++; ?>
+                 @endforeach
+             </div>
+         
+             <a class="left carousel-control" href="#main-slide" data-slide="prev">
+              <img src="{{url('/frontend/images/pre.png')}}">
+             </a>
+             <a class="right carousel-control" href="#main-slide" data-slide="next">
+               <img src="{{url('/frontend/images/next.png')}}">
+             </a>
+         </div>
+     </section>	        		
 				</div>	
 				<div class="col-md-3 hidden-xs hidden-sm" style="text-align:center">
         			<?php $count = 0; ?>
@@ -147,11 +147,11 @@
 
 		<div class="row">
 
-			<h4 class="classic-title"><span>SPAR Nigeria Services</span></h4>
+			<h4 class="classic-title"><span>SPAR Services</span></h4>
 
             
-            <div class="col-md-4 col-sm-4 service-box service-icon-left-more">
-                <div class="service-icon">
+            <div class="col-md-3 col-sm-6 service-box service-icon-left-more">
+                <div class="service-icon" style="float:none">
                     <img src="frontend/images/Home-icon.png">
                 </div>
                 <div class="service-content">
@@ -160,21 +160,7 @@
                 </div>
             </div>
             
-
-              
-              <div class="col-md-4 col-sm-4 service-box service-icon-left-more">
-               <div class="service-icon">
-                    <img src="frontend/images/money-icon.png">
-               </div>
-               <div class="service-content">
-                <h4>Cash on Delivery</h4>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-              </div>
-            </div>
-            
-
-            
-            <div class="col-md-4 col-sm-4 service-box service-icon-left-more">
+            <div class="col-md-3 col-sm-6 service-box service-icon-left-more">
                 <div class="service-icon">
                  <img src="frontend/images/furniture.jpg">
                     
@@ -186,7 +172,7 @@
             </div>
             
            
-            <div class="col-md-4 col-sm-4 service-box service-icon-left-more">
+            <div class="col-md-3 col-sm-6 service-box service-icon-left-more">
                 <div class="service-icon">
                     <img src="frontend/images/Piece-of-cake-icon.png">
                 </div>
@@ -198,7 +184,7 @@
             
 
               
-              <div class="col-md-4 col-sm-4 service-box service-icon-left-more">
+              <div class="col-md-3 col-sm-6 service-box service-icon-left-more">
                <div class="service-icon">
                  <img src="frontend/images/catering-icon.png">
                </div>

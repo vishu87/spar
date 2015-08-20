@@ -28,12 +28,9 @@
     
   </head>
   <body>
-
-  
-    <div id="container">
-    
+    <div class="container">
       <header class="clearfix">      
-        <div class="navbar navbar-default navbar-top">
+        <div class="">
           <div class="container">
             <div class="navbar-header">
               
@@ -43,21 +40,26 @@
               
               <a class="navbar-brand" href="index.php">{{ HTML::image('frontend/images/logo.png') }}</a>
             </div>
-            <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav navbar-right">
-                <li><a class="@if(Request::is('/')) active @endif" href="{{url('/')}}"><i class="fa fa-home"></i></a></li>
-                <li><a class="@if(isset($page->top_active)) @if($page->top_active == 1 || $page->id == 1) active @endif @endif" href="{{url('/about-spar')}}">About SPAR</a></li>
-                <li><a class="@if(isset($page->top_active)) @if($page->top_active == 19 || $page->id == 19) active @endif @endif" href="{{url('/store-locator')}}">Store Locator</a></li>
-                <li><a class="@if(isset($page->top_active)) @if($page->top_active == 2 || $page->id == 2) active @endif @endif" href="{{url('/reward-card')}}">Loyalty Program</a></li>
-                <li><a class="@if(isset($page->top_active)) @if($page->top_active == 16 || $page->id == 16) active @endif @endif" href="{{url('/gift-card')}}">Gift Cards</a></li>
-                <li><a class="@if(isset($page->top_active)) @if($page->top_active == 18 || $page->id == 18) active @endif @endif" href="{{url('/deals')}}">Deals</a></li>
-                <li><a class="@if(isset($page->top_active)) @if($page->top_active == 17 || $page->id == 17) active @endif @endif" href="{{url('/contact-us')}}">Contact Us</a></li>
-              </ul>
-            </div>
           </div>
         </div>     
       </header>
-    
+    </div>
+      <nav style="background:#9E9E9E">
+        <div class="container">
+          <div class="navbar-default navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a class="@if(Request::is('/')) active @endif" href="{{url('/')}}"><i class="fa fa-home"></i></a></li>
+              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 1 || $page->id == 1) active @endif @endif" href="{{url('/about-spar')}}">About SPAR</a></li>
+              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 19 || $page->id == 19) active @endif @endif" href="{{url('/store-locator')}}">Store Locator</a></li>
+              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 2 || $page->id == 2) active @endif @endif" href="{{url('/reward-card')}}">Loyalty Program</a></li>
+              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 16 || $page->id == 16) active @endif @endif" href="{{url('/gift-card')}}">Gift Cards</a></li>
+              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 18 || $page->id == 18) active @endif @endif" href="{{url('/deals')}}">Deals</a></li>
+              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 17 || $page->id == 17) active @endif @endif" href="{{url('/contact-us')}}">Contact Us</a></li>
+            </ul>
+          </div>
+       </div>
+      </nav>
+    <div id="container">
     {{$main}}
   
   <!-- END CONTENT -->
@@ -108,7 +110,6 @@
               </div>               
               <div class="col-md-3">
                   <div class="footer-widget contact-widget">
-                      <h4>{{HTML::image('frontend/images/footer-logo.png','Footer Logo',array("class"=>"img-responsive"))}}</h4>
                       <p>Artee Group is one of Nigeria's leading business houses with multiple businesses spanning across the consumption space. While retail forms the core business activity of Artee Group, group subsidiaries are present in manufacturing, real estate, exports among many others.</p>
                       <ul>
                           <li><span>Phone Number:</span> +234 (0) 805 749 5210 </li>

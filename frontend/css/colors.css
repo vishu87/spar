@@ -40,7 +40,7 @@ a.main-button, input[type="submit"] {
 }
 
 .navbar-default .navbar-nav > li > a:after {
-	background-color: #157946;
+	/*background-color: #157946;*/
 }
 
 .navbar-default .navbar-nav > li > a.active, .navbar-default .navbar-nav > li:hover > a {
