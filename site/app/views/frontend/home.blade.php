@@ -99,15 +99,8 @@
 			</div>
 
 			<div class="col-md-4">
-				<div style="border:5px solid #EEE; min-height:288px; padding:20px; background:#f7f7f7">
-					<div class="mail-subscribe-widget">
-                            <h4 style="font-size:24px;">Newsletter<span class="head-line"></span></h4>
-                            <p style="margin-top:10px">Join our mailing list to stay up to date and get notices about our new releases!</p>
-                            <form class="subscribe">
-                                <input type="text" placeholder="mail@example.com">
-                                <input type="submit" class="btn-system" value="Send">
-                            </form>
-                        </div>
+				<div class="videoWrapper">
+					<iframe src="https://www.youtube.com/embed/O-YiOvZuzAg" frameborder="0" allowfullscreen></iframe>
 				</div>
 			</div>
 
@@ -119,7 +112,10 @@
 		<div class="our-offer">
 			
 			
-			<h4 class="classic-title"><span>Latest Offers</span></h4>
+			<h4 class="classic-title">
+				<span><b>Latest</b> Offers</span>
+				<hr>
+			</h4>
 			
 			<div class="offer-carousel custom-carousel touch-carousel" data-appeared-items="5">
 				
@@ -147,7 +143,7 @@
 
 		<div class="row">
 
-			<h4 class="classic-title"><span>SPAR Services</span></h4>
+			<h4 class="classic-title"><span><b>SPAR</b> Services</span><hr></h4>
 
             
             <div class="col-md-3 col-sm-6 service-box service-icon-left-more">

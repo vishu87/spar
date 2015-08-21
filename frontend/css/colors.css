@@ -305,7 +305,7 @@ ul.post-meta li a:hover {
 }
 
 .touch-carousel .owl-controls.clickable .owl-buttons div:hover {
-	background-color: #157946;
+	/*background-color: #157946;*/
 }
 
 .testimonials-carousel .owl-controls.clickable .owl-buttons div {

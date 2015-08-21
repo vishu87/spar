@@ -28,17 +28,49 @@
     
   </head>
   <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1616910621872702";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <div class="container">
       <header class="clearfix">      
         <div class="">
           <div class="container">
-            <div class="navbar-header">
-              
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <i class="fa fa-bars"></i>
-              </button>
-              
-              <a class="navbar-brand" href="index.php">{{ HTML::image('frontend/images/logo.png') }}</a>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                  </button>
+                  
+                  <a class="navbar-brand" href="index.php">{{ HTML::image('frontend/images/logo.png') }}</a>
+                </div>
+              </div>
+              <div class="col-md-6 pull-right">
+                <ul class="top-icons">
+                    <li>
+                        <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a class="google" href="#"><i class="fa fa-google-plus"></i></a>
+                    </li>
+                    <li>
+                        <a class="flickr" href="#"><i class="fa fa-flickr"></i></a>
+                    </li>
+                  </ul>
+                  <div style="clear:both"></div>
+                  <div>
+                    Join our mailing list to stay up to date and get notices about our new releases!
+
+                  </div>
+              </div>
             </div>
           </div>
         </div>     
@@ -68,47 +100,32 @@
 
       <footer>
         <div class="container">
-          <div class="row footer-widgets">    
-            <div class="col-md-3">
-              <div class="footer-widget social-widget">
-                <h4>Follow Us<span class="head-line"></span></h4>
-                  <ul class="social-icons">
-                    <li>
-                        <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li>
-                        <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a class="google" href="#"><i class="fa fa-google-plus"></i></a>
-                    </li>
-                 
-                    <li>
-                        <a class="linkdin" href="#"><i class="fa fa-linkedin"></i></a>
-                    </li>
-                    <li>
-                        <a class="flickr" href="#"><i class="fa fa-flickr"></i></a>
-                    </li>
-                    <li>
-                        <a class="vimeo" href="#"><i class="fa fa-vimeo-square"></i></a>
-                    </li>
-                    <li>
-                        <a class="skype" href="#"><i class="fa fa-skype"></i></a>
-                    </li>
-                  </ul>
-                </div>
-              </div>                 
-              <div class="col-md-3">
+          <div class="row footer-widgets">                   
+              <div class="col-md-4">
                   <div class="footer-widget twitter-widget">
-                      <h4>Twitter Feed<span class="head-line"></span></h4>           
+                      <h4><i class="fa fa-twitter"></i> Twitter Feed<span class="head-line"></span></h4>
+                      <div style="padding-right:20px">
+                        <?php
+                          include(app_path().'/tweet/TweetPHP.php');
+                          $TweetPHP = new TweetPHP(array(
+                            'consumer_key'              => 'S5MdIUJXCne6ybLa29K9h3Iqf',
+                            'consumer_secret'           => 'iPsT3OKLfvsyNutH0YkVy9Rh1j2k9ePilhx9vOJaps8jFr4ztr',
+                            'access_token'              => '2540278561-rKu6wUzFOeuaPCcYOnZHDvX7vDpXWkftyLzkrFA',
+                            'access_token_secret'       => 'oL1DVxj9k4voG6QMiQqDgst0rk9x0cFNuKjkakIyyZR3g',
+                            'twitter_screen_name'       => 'corperlife'
+                            ));
+                          echo $TweetPHP->get_tweet_list();
+                          ?>
+                      </div>         
                   </div>
               </div>              
-              <div class="col-md-3">
+              <div class="col-md-4">
                   <div class="footer-widget flickr-widget">
                       <h4>Facebook Feed<span class="head-line"></span></h4>
+                      <div class="fb-page" data-href="https://www.facebook.com/spar.ng" data-height="250" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/spar.ng"><a href="https://www.facebook.com/spar.ng">SPAR Nigeria</a></blockquote></div></div>
                   </div>
               </div>               
-              <div class="col-md-3">
+              <div class="col-md-4">
                   <div class="footer-widget contact-widget">
                       <p>Artee Group is one of Nigeria's leading business houses with multiple businesses spanning across the consumption space. While retail forms the core business activity of Artee Group, group subsidiaries are present in manufacturing, real estate, exports among many others.</p>
                       <ul>
@@ -117,9 +134,12 @@
                           <li><span>Address: </span> Artee Industries Ltd, 58 Town Planning Way, Ilupeju, Lagos </li>
                       </ul>
                   </div>
+                  <div>
+                    &copy; 2015 SPAR Nigeria -  All Rights Reserved
+                  </div>
               </div>
             </div>   
-            <div class="copyright-section">
+            <!-- <div class="copyright-section">
               <div class="row">
                 <div class="col-md-6">
                   <p>&copy; 2014 SPAR Nigeria -  All Rights Reserved</p>
@@ -132,7 +152,7 @@
                   </ul>
                 </div>            
               </div>
-            </div>
+            </div> -->
           </div>
         </footer>
       </div>
