@@ -2,31 +2,31 @@
 	<div  class="slider-main">
 		<div class="slider">
 		<div class="row">
-				<div class="col-md-9 slider" style="padding-right:5px;">					
-     <section id="home">				            
-         <div id="main-slide" class="carousel slide" data-ride="carousel">				                
-             <ol class="carousel-indicators">
-                 <li data-target="#main-slide" data-slide-to="0" class="active"></li>
-                 <li data-target="#main-slide" data-slide-to="1"></li>
-             </ol>              
-             <div class="carousel-inner">
-             	<?php $count = 0; ?>
-             	@foreach($main_banners as $main_banner)
-                 <div class="item @if($count == 0) active @endif">
-                     <img class="img-responsive" src="{{url('images/'.$main_banner->banner_image)}}" alt="{{$main_banner->banner_name}}">
-                 </div>
-                 <?php $count++; ?>
-                 @endforeach
-             </div>
-         
-             <a class="left carousel-control" href="#main-slide" data-slide="prev">
-              <img src="{{url('/frontend/images/pre.png')}}">
-             </a>
-             <a class="right carousel-control" href="#main-slide" data-slide="next">
-               <img src="{{url('/frontend/images/next.png')}}">
-             </a>
-         </div>
-     </section>	        		
+				<div class="col-md-9 slider">					
+				     <section id="home">				            
+				         <div id="main-slide" class="carousel slide" data-ride="carousel">				                
+				             <ol class="carousel-indicators">
+				                 <li data-target="#main-slide" data-slide-to="0" class="active"></li>
+				                 <li data-target="#main-slide" data-slide-to="1"></li>
+				             </ol>              
+				             <div class="carousel-inner">
+				             	<?php $count = 0; ?>
+				             	@foreach($main_banners as $main_banner)
+				                 <div class="item @if($count == 0) active @endif">
+				                     <img class="img-responsive" src="{{url('images/'.$main_banner->banner_image)}}" alt="{{$main_banner->banner_name}}">
+				                 </div>
+				                 <?php $count++; ?>
+				                 @endforeach
+				             </div>
+				         
+				             <a class="left carousel-control" href="#main-slide" data-slide="prev">
+				              <img src="{{url('/frontend/images/pre.png')}}">
+				             </a>
+				             <a class="right carousel-control" href="#main-slide" data-slide="next">
+				               <img src="{{url('/frontend/images/next.png')}}">
+				             </a>
+				         </div>
+				     </section>	        		
 				</div>	
 				<div class="col-md-3 hidden-xs hidden-sm" style="text-align:center">
         			<?php $count = 0; ?>
@@ -61,15 +61,15 @@
 		<div class="row">
 			<div class="col-md-4" style="">
 				<a href="{{url('/brands')}}">
-					<div style="padding:30px 20px;  font-size:30px; text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home04.jpg')">
+					<div class="small-align-center" style="padding:30px 20px;  font-size:30px;text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home04.jpg')">
 						SPAR NIGERIA BRANDS
 					</div>
 				</a>
-					<div style="padding:30px 20px; margin-top:22px; font-size:30px; text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home06.jpg')">
+					<div class="small-align-center" style="padding:30px 20px; margin-top:22px; font-size:30px;text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home06.jpg')">
 						RECIPES
 					</div>
 				<a href="{{url('/kids-corner')}}">
-					<div style="padding:30px 20px; margin-top:23px; font-size:30px; text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home05.jpg')">
+					<div class="small-align-center" style="padding:30px 20px; margin-top:23px; font-size:30px;text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home05.jpg')">
 						KIDS CORNER
 					</div>
 				</a>

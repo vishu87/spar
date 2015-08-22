@@ -17,6 +17,7 @@
     {{HTML::style("frontend/css/components-rounded.css")}}
     {{HTML::style("frontend/css/datepicker3.css")}}
     {{HTML::style("frontend/css/style.css?v=1.0.0")}}
+    {{HTML::style("frontend/css/style_responsive.css?v=1.0.0")}}
     {{HTML::style("frontend/css/responsive.css?v=1.0.0")}}
     {{HTML::style("frontend/css/animate.css?v=1.0.0")}}
     {{HTML::style("frontend/css/colors.css?v=1.0.0")}}
@@ -50,25 +51,22 @@
                   <a class="navbar-brand" href="index.php">{{ HTML::image('frontend/images/logo.png') }}</a>
                 </div>
               </div>
-              <div class="col-md-6 pull-right">
+              <div class="col-md-6 pull-right header-right hidden-xs">
                 <ul class="top-icons">
                     <li>
-                        <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><img src="{{url('frontend/images/facebook.jpg')}}"></a>
                     </li>
                     <li>
-                        <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><img src="{{url('frontend/images/twitter.jpg')}}"></a>
                     </li>
                     <li>
-                        <a class="google" href="#"><i class="fa fa-google-plus"></i></a>
-                    </li>
-                    <li>
-                        <a class="flickr" href="#"><i class="fa fa-flickr"></i></a>
+                        <a href="#"><img src="{{url('frontend/images/youtube.jpg')}}"></a>
                     </li>
                   </ul>
-                  <div style="clear:both"></div>
                   <div>
-                    Join our mailing list to stay up to date and get notices about our new releases!
-
+                    <div class="newsletter">
+                     <a href=""><i class="fa fa-envelope"></i> Sign up for Newsletter and Offers today <i class="fa fa-angle-double-right"></i></a>
+                    </div>
                   </div>
               </div>
             </div>
@@ -81,12 +79,12 @@
           <div class="navbar-default navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li><a class="@if(Request::is('/')) active @endif" href="{{url('/')}}"><i class="fa fa-home"></i></a></li>
-              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 1 || $page->id == 1) active @endif @endif" href="{{url('/about-spar')}}">About SPAR</a></li>
+              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 19 || $page->id == 19) active @endif @endif" href="{{url('/store-locator')}}">Product Range</a></li>
               <li><a class="@if(isset($page->top_active)) @if($page->top_active == 19 || $page->id == 19) active @endif @endif" href="{{url('/store-locator')}}">Store Locator</a></li>
+              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 18 || $page->id == 18) active @endif @endif" href="{{url('/deals')}}">Deals</a></li>
               <li><a class="@if(isset($page->top_active)) @if($page->top_active == 2 || $page->id == 2) active @endif @endif" href="{{url('/reward-card')}}">Loyalty Program</a></li>
               <li><a class="@if(isset($page->top_active)) @if($page->top_active == 16 || $page->id == 16) active @endif @endif" href="{{url('/gift-card')}}">Gift Cards</a></li>
-              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 18 || $page->id == 18) active @endif @endif" href="{{url('/deals')}}">Deals</a></li>
-              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 17 || $page->id == 17) active @endif @endif" href="{{url('/contact-us')}}">Contact Us</a></li>
+              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 1 || $page->id == 1) active @endif @endif" href="{{url('/about-spar')}}">About SPAR</a></li>
             </ul>
           </div>
        </div>
@@ -100,7 +98,7 @@
 
       <footer>
         <div class="container">
-          <div class="row footer-widgets">                   
+          <div class="row footer-widgets small-align-center">                   
               <div class="col-md-4">
                   <div class="footer-widget twitter-widget">
                       <h4><i class="fa fa-twitter"></i> Twitter Feed<span class="head-line"></span></h4>

@@ -1,0 +1,119 @@
+@media (max-width : 479px) {
+  .classic-title{
+      font-size: 20px;
+  }
+  .footer-widget h4 .head-line{
+    width: 100%;
+    height: 1px;
+  }
+    .slider{
+		padding: 0 !important;
+	}
+	.slider-main{
+		padding: 0;
+		background: none;
+	}
+    .container{
+    	padding-left: 10px;
+    	padding-right: 10px;
+    }
+    .margin-top{
+    	margin-top: 10px;
+    }
+    .arrival-main{
+		padding:0;
+		margin: 20px 0;
+	}
+	#main-slide .carousel-control{
+		width: 50px;
+	}
+	#main-slide .carousel-control img{
+		width: 32px;
+	}
+    .small-align-center{
+        text-align: center;
+        line-height: 1.2;
+    }
+}
+@media (max-width : 745px) {
+    
+    #content{
+    	padding: 0;
+    }
+}
+@media (max-width : 370px) {
+    
+    .navbar-brand img{
+    	max-width: 180px;
+    	margin-top: 8px;
+    }
+    
+}
+@media (min-width: 992px) {
+  #portfolio-list li .header {
+      display: block;
+  }
+}
+#portfolio-list li .body {
+    display: none;
+    font-size: 1em;
+    color:#fff;
+}
+@media (min-width: 992px) {
+  #portfolio-list li .body {
+      display: block;
+  }
+}
+
+@media only screen and (max-width : 550px) {
+    
+     #portfolio-list li {
+      width: 100%;
+  }
+}
+
+@media only screen and (max-width : 767px) and (min-width : 551px){
+    
+     #portfolio-list li {
+      width: 49.9%;
+  }
+}
+
+@media (min-width: 768px) {
+  #portfolio-list li {
+      width: 33.21%;
+  }
+}
+@media (min-width: 768px) {
+    .portfolio-4column #portfolio-list li {
+      width: 24.8%;
+  }
+}
+
+@media (min-width: 768px) {
+    .full-width-portfolio #portfolio-list li {
+      width: 24.85%;
+  }
+}
+
+@media (min-width: 768px) {
+    .portfolio-2column #portfolio-list li {
+      width: 49.9%;
+  }
+}
+
+@media (min-width: 992px) {
+  #portfolio-list li:hover .more {
+    top: 60%;
+    margin-top: 0;
+  }
+}
+
+@media (max-width : 279px) {
+    
+    .navbar-brand img{
+    	max-width: 175px;
+    	margin-top: 8px;
+    }
+    
+}

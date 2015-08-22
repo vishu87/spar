@@ -8,10 +8,10 @@
     Route::post('/comments/add-comment/{review_id}','FrontendController@postaddComment');
     // Route::get('/deals', 'FrontendController@deal');
  
-     Route::get('/recipes/{id}','FrontendController@getRecipesdetail');
-     Route::post('/add-recipe','FrontendController@postaddRecipe');
-     Route::get('/kids-corner/{id}','FrontendController@getkids');
-     Route::post('/submit-your-reviews/add-review','FrontendController@postaddReview');
+    Route::get('/recipes/{id}','FrontendController@getRecipesdetail');
+    Route::post('/add-recipe','FrontendController@postaddRecipe');
+    Route::get('/kids-corner/{id}','FrontendController@getkids');
+    Route::post('/submit-your-reviews/add-review','FrontendController@postaddReview');
    	Route::group(['prefix' => 'recipes'], function () {
 	   	//Route::get('/','FrontendController@getRecipesdetail');
 	   	Route::get('/add','FrontendController@getAddRecipesdetail');
@@ -28,16 +28,15 @@
 	   	Route::get('/reward-card','FrontendController@aboutReward_card');
 	   	Route::get('/reward-card/definition','FrontendController@getDefinition');
 	   	Route::get('/gift-card','FrontendController@aboutGift_card');
-	   	});
+	});
 	
 
 
-	 //Front-end ends
+//Front-end ends
 
-	Route::get('/login','UserController@getMain');
-	Route::post('/login', 'UserController@postLogin');
-
-    
+//Back End Starts
+Route::get('/login','UserController@getMain');
+Route::post('/login', 'UserController@postLogin');
 Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 
 	Route::get('/dashboard','BannerController@getbanners');
@@ -234,9 +233,7 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
     Route::get('/logout', function(){
 		Auth::logout();
 		return Redirect::to('/');
-	});
-
-    
+	});  
 });
 
 Route::get('/{page_slug}', 'FrontendController@pages');
