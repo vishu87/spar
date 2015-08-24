@@ -54,36 +54,3 @@
       google.maps.event.addDomListener(window, 'load', initialize);
   </script>
 @endif
-
-@if($page->id == 19)
-	<script type="text/javascript">
-      function initialize() {
-        var mapProp = {
-          center:new google.maps.LatLng(6.557002,3.358185),
-          zoom:8,
-          mapTypeId:google.maps.MapTypeId.ROADMAP
-        };
-        <?php $count = 1; ?>
-        @foreach($stores as $store)
-        var marker{{$count}} = new google.maps.Marker({
-		    position: {lat: {{$store->lat}}, lng: {{$store->lng}}},
-		    map: map
-		  });
-        <?php $count++ ?>
-        @endforeach
-        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-        <?php $count = 1; ?>
-        @foreach($stores as $store)
-        marker{{$count}}.setMap(map);
-        google.maps.event.addListener(marker{{$count}},'click',function() {
-		  map.setZoom(15);
-		  map.setCenter(marker{{$count}}.getPosition());
-		  });
-        <?php $count++ ?>
-        @endforeach
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-  </script>
-@endif
-

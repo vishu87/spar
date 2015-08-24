@@ -18,7 +18,7 @@ class StoreController extends BaseController {
         ];
         $validator = Validator::make($cre,$rules);
         if($validator->passes()){      
-            $id = DB::table("stores")->insertGetID(array('name'=>Input::get("name"),'address'=>Input::get("address"),'lat'=>Input::get("lat"), "lng"=>Input::get("lng"),"telephone"=>Input::get("telephone"), "city_id" =>Input::get("city_id") ));               
+            $id = DB::table("stores")->insertGetID(array('name'=>Input::get("name"),'address'=>Input::get("address"),'lat'=>Input::get("lat"), "lng"=>Input::get("lng"),"telephone"=>Input::get("telephone"), "city_id" =>Input::get("city_id"), "upcoming" =>Input::get("upcoming") ));               
             return Redirect::Back()->with('success', '<b>'.Input::get('name').'</b> has been successfully added');                    
         }else {
             return Redirect::Back()->withErrors($validator)->withInput();
@@ -79,6 +79,7 @@ class StoreController extends BaseController {
                 $store->lng = Input::get('lng');
                 $store->city_id = Input::get('city_id');
                 $store->telephone = Input::get('telephone');
+                $store->upcoming = Input::get('upcoming');
                 $store->save();
                 return Redirect::Back()->with('success', '<b>'.Input::get('name').'</b> has been successfully updated');                    
             }

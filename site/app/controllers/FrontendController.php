@@ -23,7 +23,7 @@ class FrontendController extends BaseController {
         $this->layout->main = View::make('frontend.brand');
   }
 
-  public function pages($page_slug){
+  public function pages($page_slug, $id = null){
 
       $page = Page::where('pages.page_slug',$page_slug)->select('pages.*','top_active_page.page_slug as top_active_page_slug','top_active_page.page_title as top_active_page_title')->leftJoin('pages as top_active_page','pages.top_active','=','top_active_page.id')->first();
       if($page->exists()){
@@ -60,8 +60,14 @@ class FrontendController extends BaseController {
           }
 
           if($page->page_slug == 'store-locator'){
-            $stores = DB::table('stores')->select('stores.*','cities.city')->join('cities','stores.city_id','=','cities.id')->orderBy('cities.city','asc')->get();
-            $page->page_content = View::make('frontend.stores', array("stores"=>$stores));
+            if(isset($id)){
+              $stores = DB::table('stores')->select('stores.*','cities.city')->join('cities','stores.city_id','=','cities.id')->where('stores.upcoming',0)->orderBy('cities.city','asc')->where('cities.id',$id)->get();
+            } else {
+              $stores = DB::table('stores')->select('stores.*','cities.city')->join('cities','stores.city_id','=','cities.id')->where('stores.upcoming',0)->orderBy('cities.city','asc')->get();
+            }
+            $upcoming_stores = DB::table('stores')->select('stores.*','cities.city')->join('cities','stores.city_id','=','cities.id')->where('stores.upcoming',1)->orderBy('cities.city','asc')->get();
+            $cities = DB::table('cities')->orderBy('city','ASC')->get();
+            $page->page_content = View::make('frontend.stores', array("stores"=>$stores,"cities"=>$cities,"id"=>$id,"upcoming_stores"=>$upcoming_stores));
           }
 
           if($page->page_slug == 'brands'){
@@ -94,12 +100,12 @@ class FrontendController extends BaseController {
 
         }
 
-          if($page->page_slug == 'customer-review'){
-             $review = DB::table('customer_review')->select('customer_review.*','stores.name')->join('stores','customer_review.store_id','=','stores.id')->orderBy('customer_review.id','desc')->get();
-             $comment = DB::table('comments')->lists('review_id','id');
-                                    
-            $page->page_content = View::make('frontend.pages.customer_review',array('review' => $review));
-          }
+        if($page->page_slug == 'customer-review'){
+           $review = DB::table('customer_review')->select('customer_review.*','stores.name')->join('stores','customer_review.store_id','=','stores.id')->orderBy('customer_review.id','desc')->get();
+           $comment = DB::table('comments')->lists('review_id','id');
+                                  
+          $page->page_content = View::make('frontend.pages.customer_review',array('review' => $review));
+        }
         $this->layout->main = View::make('frontend.page',["page"=>$page,"left_sidebar"=>$left_sidebar,"right_sidebar"=>$right_sidebar,"middle_span"=>$middle_span,"stores"=>$stores]);
       } else {
         return 'No Page found';

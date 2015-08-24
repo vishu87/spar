@@ -236,6 +236,4 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 	});  
 });
 
-Route::get('/{page_slug}', 'FrontendController@pages');
-
-   
+Route::get('/{page_slug}/{id?}', 'FrontendController@pages');

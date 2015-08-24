@@ -87,6 +87,12 @@
                     <div class="col-md-9">
                       {{Form::select('city_id',$cities,'',array("class"=>"form-control", "placeholder"=>"Select City"))}}                        
                     </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-2 control-label">City</label>
+                    <div class="col-md-9">
+                      {{Form::select('upcoming',["0"=>"Running","1"=>"Upcoming"],'',array("class"=>"form-control", "placeholder"=>"Select City"))}}                        
+                    </div>
                   </div>          
                   <div class="form-actions sub-center">
                     <button type="submit" class="btn btn-success">Submit</button>
