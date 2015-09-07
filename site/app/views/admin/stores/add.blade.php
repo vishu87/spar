@@ -89,7 +89,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-md-2 control-label">City</label>
+                    <label class="col-md-2 control-label">Status</label>
                     <div class="col-md-9">
                       {{Form::select('upcoming',["0"=>"Running","1"=>"Upcoming"],'',array("class"=>"form-control", "placeholder"=>"Select City"))}}                        
                     </div>
