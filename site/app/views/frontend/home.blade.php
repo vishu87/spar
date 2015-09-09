@@ -1,5 +1,5 @@
 <div id="content">
-	<div  class="slider-main">
+	<div  class="slider-main container">
 		<div class="slider">
 		<div class="row">
 				<div class="col-md-9 slider">					
@@ -28,7 +28,7 @@
 				         </div>
 				     </section>	        		
 				</div>	
-				<div class="col-md-3 hidden-xs hidden-sm" style="text-align:center">
+				<div class="col-md-3 " style="text-align:center">
         			<?php $count = 0; ?>
 				    @foreach($side_banners as $side_banner)
 					<div style="overflow:hidden; text-align:center" align="center">
@@ -36,7 +36,7 @@
 					</div>
 					@endforeach
 				</div>
-				<div class="col-md-3 hidden-md hidden-lg">
+				<!-- <div class="col-md-3 hidden-md hidden-lg">
 					<div style="padding:10px">
 						<div class="projects-carousel touch-carousel">
 							 @foreach($side_banners as $side_banner)
@@ -48,7 +48,7 @@
 							@endforeach
 						</div>
 					</div>
-				</div>
+				</div> -->
 				
 			</div>
 			
@@ -78,22 +78,13 @@
 			<div class="col-md-4">
 				<div class="arrival-main">
 					<div class="arrival-carousel touch-carousel">
-						
+						@foreach($mid_banners as $mid_banner)
 						<div class="portfolio-item item">
 							<div class="portfolio-border">
-								<img src="frontend/images/banner8.jpg">
+								<img src="{{url('images/'.$mid_banner->mid_banner_image)}}" alt="{{$mid_banner->mid_banner_name}}">
 							</div>
 						</div>
-						<div class="portfolio-item item">
-							<div class="portfolio-border">
-								<img src="frontend/images/banner9.jpg">
-							</div>
-						</div>
-						<div class="portfolio-item item">
-							<div class="portfolio-border">
-								<img src="frontend/images/banner8.jpg">
-							</div>
-						</div>
+						@endforeach
 					</div>
 				</div>
 			</div>
@@ -148,7 +139,7 @@
             
             <div class="col-md-3 col-sm-6 service-box service-icon-left-more">
                 <div class="service-icon" style="float:none">
-                    <img src="frontend/images/Home-icon.png">
+                    <img src="frontend/images/Home-icon-spar.png">
                 </div>
                 <div class="service-content">
                     <h4>Home Delivery</h4>
@@ -158,7 +149,7 @@
             
             <div class="col-md-3 col-sm-6 service-box service-icon-left-more">
                 <div class="service-icon">
-                 <img src="frontend/images/furniture.jpg">
+                 <img src="frontend/images/furniture-spar.png">
                     
                 </div>
                 <div class="service-content">
@@ -170,7 +161,7 @@
            
             <div class="col-md-3 col-sm-6 service-box service-icon-left-more">
                 <div class="service-icon">
-                    <img src="frontend/images/Piece-of-cake-icon.png">
+                    <img src="frontend/images/cake-icon-spar.png">
                 </div>
                 <div class="service-content">
                     <h4>Made to Order Cake</h4>
@@ -182,7 +173,7 @@
               
               <div class="col-md-3 col-sm-6 service-box service-icon-left-more">
                <div class="service-icon">
-                 <img src="frontend/images/catering-icon.png">
+                 <img src="frontend/images/catering-icon-spar.png">
                </div>
                <div class="service-content">
                 <h4>Private Catering</h4>
