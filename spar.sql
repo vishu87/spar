@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2015 at 03:20 PM
+-- Generation Time: Sep 17, 2015 at 07:13 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -33,18 +33,16 @@ CREATE TABLE IF NOT EXISTS `addfront_recipes` (
   `cook_time` varchar(100) NOT NULL,
   `method` text NOT NULL,
   `recipe_image` varchar(200) NOT NULL,
-  `allow` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `addfront_recipes`
 --
 
-INSERT INTO `addfront_recipes` (`id`, `recipe_name`, `ingred`, `cook_time`, `method`, `recipe_image`, `allow`) VALUES
-(1, 'pizza', ' jdfuefi, dfehwfiu ey8iw, jfweugfi', '56 min', 'a jhgjugu7 ti tggf  hytfyhfrjfykt u\r\nnm hkiyhli rdtfyj', 'b1.jpg', 0),
-(2, 'new recipe', 'b erbyg, ftguetf87tw, fyusgfuigi', '60 min', 'a  gugfiefieyf ei8fye8wyf ew\r\n djgeudjg wegd\r\ne dhuweh', 'd4.jpg', 0),
-(3, 'Paneer Tikka Masala', '3 tsp vegetable oil\r\n1 small onion finely chopped\r\n2 tsp ginger-garlic paste or 2 cloves garlic minced with 1 small knob ginger\r\n1/4 large capsicum cut finely lengthwise\r\n1/2 tsp cumin seeds\r\n2 tsp tandoori masala (MDH is a good one)\r\n1/4 tsp garam masala\r\n1/2 tsp haldi and coriander powder', '65 min', 'Heat oil in a pan. Place onions, ginger-garlic paste, capsicum and cumin seeds in a pan and saute in oil till the cumin crackles.\r\nAdd the rest of the masalas, sugar and salt and saute for 3 mins\r\nAdd milk and mix well.\r\nAdd the tomato paste and if they''re not ripe and red, mix the food coloring.\r\nLet simmer for 10 mins.\r\nAdd the paneer cubes and let it simmer for 5 mins. Add red chilli powder. Adjust seasonings for taste.\r\nServe with garlic naans or rice.', 'pan.jpg', 0);
+INSERT INTO `addfront_recipes` (`id`, `recipe_name`, `ingred`, `cook_time`, `method`, `recipe_image`) VALUES
+(1, 'pizza', ' jdfuefi, dfehwfiu ey8iw, jfweugfi', '56 min', 'a jhgjugu7 ti tggf  hytfyhfrjfykt u\r\nnm hkiyhli rdtfyj', 'b1.jpg'),
+(2, 'new recipe', 'b erbyg, ftguetf87tw, fyusgfuigi', '60 min', 'a  gugfiefieyf ei8fye8wyf ew\r\n djgeudjg wegd\r\ne dhuweh', 'd4.jpg');
 
 -- --------------------------------------------------------
 
@@ -80,17 +78,14 @@ CREATE TABLE IF NOT EXISTS `brands` (
   `brand_image` varchar(200) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `brands`
 --
 
 INSERT INTO `brands` (`id`, `brand_name`, `brand_image`, `updated_at`) VALUES
-(9, 'Sony', 'sony.jpg', '2015-06-27 09:42:51'),
-(10, 'Acer', 'acc.png', '2015-06-27 09:43:40'),
-(11, 'Apple', 'app.jpg', '2015-06-27 09:47:41'),
-(12, 'Nokia', 'nok.jpg', '2015-06-27 09:50:13');
+(9, 'Computers', 'electonics.jpg', '2015-06-03 08:17:26');
 
 -- --------------------------------------------------------
 
@@ -164,66 +159,6 @@ INSERT INTO `cities` (`id`, `city`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
---
-
-CREATE TABLE IF NOT EXISTS `comments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `review_id` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL,
-  `comment` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
-
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`id`, `review_id`, `name`, `comment`, `created_at`) VALUES
-(1, 1, 'pooja', 'Pjhf g ghtrig hithgfsdhlf jwe oljewfjo jle', '2015-06-26 11:52:41'),
-(2, 1, 'ritu', 'Gb k fhli hgihtrg krhglirej gliregk,rl', '2015-06-26 11:53:13'),
-(3, 2, 'amit', 'jv jkhfvi hog rog lorjfofdjg lodo', '2015-06-26 11:53:55'),
-(4, 2, 'shivi', 'Hni kfh hgli fglfhljvnfkvh kfhkfhv fhli lf hblfihborf', '2015-06-26 12:24:10'),
-(5, 1, 'Arti', 'ffghukh gituhgh rgihrtig htro', '2015-06-26 12:37:47'),
-(6, 2, 'Neeti', 'k jgfihj gfi hjuoghjiot hougfto hjfguh9otr', '2015-06-26 12:49:15'),
-(7, 7, 'asdasd', 'sadasdsad', '2015-06-27 13:06:20');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer_review`
---
-
-CREATE TABLE IF NOT EXISTS `customer_review` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `store_id` int(11) NOT NULL,
-  `username` varchar(200) NOT NULL,
-  `email` varchar(200) NOT NULL,
-  `phone` int(11) NOT NULL,
-  `date_visited` varchar(200) NOT NULL,
-  `review` text NOT NULL,
-  `allow` int(1) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
-
---
--- Dumping data for table `customer_review`
---
-
-INSERT INTO `customer_review` (`id`, `store_id`, `username`, `email`, `phone`, `date_visited`, `review`, `allow`, `created_at`) VALUES
-(1, 4, 'admin', 'admin@gmail.com', 2147483647, '5-2-2014', ' I love the concept design at the Garrison Junction Store. Beautiful and catchy, my daughters loved it and want us to visit again this Saturday.    \n', 1, '2014-02-05 11:58:08'),
-(2, 4, 'arti', 'arti@gmail.com', 2147483647, '9-7-2015', 'I enjoy shopping at the Garrison Junction store, however i would love to have adequate parking made available to customers. It is frustrating to  spend several minutes just looking for a place to park alone. Please help.\n', 1, '2014-07-09 10:56:06'),
-(3, 4, 'ritu', 'ritu12@gmail.com', 2147483647, '8-4-2015', ' I love the concept design at the Garrison Junction Store. Beautiful and catchy, my daughters loved it and want us to visit again this Saturday. ', 0, '2015-04-07 21:52:45'),
-(4, 5, 'amit', 'amit23@gmail.com', 2147483647, '8-4-2013', ' I enjoy shopping at the Wuse II store, however i would love to have adequate parking made available to customers. It is frustrating to  spend several minutes just looking for a place to park alone. Please help.\n', 0, '2013-04-08 03:10:13'),
-(5, 4, 'pooja', 'pooja34@gmail.com', 754585254, '25-06-2015', 'All products sold on spar are brand new and 100% genuine', 0, '2015-03-25 07:51:46'),
-(6, 5, 'ankit', 'ankit54@gmail.com', 2147483647, '26-06-2015', 'I love the concept design at the Lekki Store.     \n', 0, '2015-06-26 00:13:14'),
-(7, 3, 'suman', 'suman64@yahoo.com', 2147483647, '26-06-2015', 'I love the concept design at the Lekki Store. Beautiful and catchy, my daughters loved it and want us to visit again this Saturday.    \r\n', 1, '2015-06-26 12:44:33');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `deals`
 --
 
@@ -242,12 +177,12 @@ CREATE TABLE IF NOT EXISTS `deals` (
 --
 
 INSERT INTO `deals` (`id`, `category_id`, `deal_name`, `deal_content`, `image`, `updated_at`) VALUES
-(1, 6, 'Acer-EX2508', '<p>Acer-EX2508</p>\r\n', 'images.jpg', '2015-06-23 05:02:41'),
-(2, 6, 'Acer-EX2508-2', '<p>Acer-EX2508-2</p>\r\n', 'images-(4).jpg', '2015-06-23 05:03:34'),
-(3, 6, 'ASUS-X553MA', '<p>ASUS-X553MA</p>\r\n', 'images-(6).jpg', '2015-06-23 05:05:22'),
-(4, 6, 'ASUS-X553MA2', '<p>ASUS-X553MA2</p>\r\n', 'images-(2).jpg', '2015-06-23 05:05:49'),
-(5, 6, 'HP 15', '<p>HP 15</p>\r\n', 'images-(3).jpg', '2015-06-23 05:06:14'),
-(6, 7, 'HP-Pav', '<p>HP-Pav</p>\r\n', '1-hom.jpg', '2015-06-27 10:51:22');
+(1, 6, 'Acer-EX2508', '<p>Acer-EX2508</p>\r\n', 'Acer-EX2508.png', '2015-06-03 03:07:45'),
+(2, 6, 'Acer-EX2508-2', '<p>Acer-EX2508-2</p>\r\n', 'Acer-EX2508-2.png', '2015-06-03 03:08:04'),
+(3, 6, 'ASUS-X553MA', '<p>ASUS-X553MA</p>\r\n', 'ASUS-X553MA.png', '2015-06-03 03:08:13'),
+(4, 6, 'ASUS-X553MA2', '<p>ASUS-X553MA2</p>\r\n', '1-ASUS-X553MA2.png', '2015-06-03 03:08:24'),
+(5, 6, 'HP 15', '<p>HP 15</p>\r\n', '1-HP-15.png', '2015-06-03 03:08:41'),
+(6, 6, 'HP-Pav', '<p>HP-Pav</p>\r\n', 'HP-Pav.png', '2015-06-03 03:08:53');
 
 -- --------------------------------------------------------
 
@@ -285,7 +220,6 @@ CREATE TABLE IF NOT EXISTS `kids` (
   `title` varchar(200) NOT NULL,
   `content` text NOT NULL,
   `kids_image` varchar(200) NOT NULL,
-  `allow` int(1) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
@@ -294,12 +228,13 @@ CREATE TABLE IF NOT EXISTS `kids` (
 -- Dumping data for table `kids`
 --
 
-INSERT INTO `kids` (`id`, `title`, `content`, `kids_image`, `allow`, `updated_at`) VALUES
-(8, 'MATHS IS FUN', '<p>ghrfguireiguheri &nbsp;urhtiueryt98i</p>\r\n', 'banner_home05.jpg', 0, '2015-06-19 12:39:03'),
-(4, 'How to overcome bullies\n', '<p>fdsgfiuey rfi8eprw</p>\r\n', 'banner_home04.jpg', 0, '2015-06-19 12:41:15'),
-(5, 'Who is the most powerful super hero of all time?\n', 'jhf fdhilveof', 'banner_home06.jpg', 0, '2015-06-19 12:42:01'),
-(6, 'h f;ods9', ' hvfdkirohfi sdyfoiew', 'DW3-External.jpg', 0, '2015-06-19 12:07:22'),
-(7, 'asdas', '<p>dasdasd</p>\r\n', '980-x-500-B-1.jpg', 0, '2015-06-19 12:06:30');
+INSERT INTO `kids` (`id`, `title`, `content`, `kids_image`, `updated_at`) VALUES
+(8, 'asda', '<p>sdasd</p>\r\n', 'a 004.jpg', '2015-05-08 05:01:33'),
+(4, ' iudfidf fie', '<p>fdsgfiuey rfi8eprw</p>\r\n', '', '2015-05-08 05:01:39'),
+(5, 'hgu hgihir', 'jhf fdhilveof', '', '2015-03-19 12:04:52'),
+(6, 'h f;ods9', ' hvfdkirohfi sdyfoiew', 'DSC_2255.jpg', '2015-03-19 17:17:15'),
+(7, 'asdas', '<p>dasdasd</p>\r\n', '', '2015-05-07 07:53:23'),
+(9, 'asd1111', '<p>asdasdsad</p>\r\n', '10-a-002-001-00.jpg', '2015-05-08 10:05:28');
 
 -- --------------------------------------------------------
 
@@ -338,18 +273,14 @@ CREATE TABLE IF NOT EXISTS `mid_banner` (
   `priority` int(11) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `mid_banner`
 --
 
 INSERT INTO `mid_banner` (`id`, `mid_banner_name`, `mid_banner_image`, `priority`, `updated_at`) VALUES
-(3, 'dfdsfv', 'DW3-External.jpg', 3, '2015-05-07 13:20:04'),
-(4, 'fgfdge', 'win3.jpg', 1, '2015-05-07 13:20:04'),
-(5, 'tretg4t', 'XMAS-BANNER.jpg', 4, '2015-05-07 13:20:04'),
-(6, 'kjnjkl', '_DSC5674.jpg', 2, '2015-05-07 13:20:04'),
-(8, 'sad', '3-a-002-001-00.jpg', 0, '2015-05-08 09:59:32');
+(9, 'asd sadsa', 'Middle-Banner-(Slidder)---Reward-Card-3.png', 0, '2015-09-09 17:25:24');
 
 -- --------------------------------------------------------
 
@@ -370,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `meta_keywords` varchar(500) NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `pages`
@@ -380,7 +311,7 @@ INSERT INTO `pages` (`id`, `page_title`, `page_slug`, `page_content`, `left_side
 (1, 'About Spar', 'about-spar', '<p>Artee Group is one of Nigeria&#39;s leading business houses with multiple businesses spanning across the consumption space. While retail forms the core business activity of Artee Group, group subsidiaries are present in manufacturing, real estate, exports among many others.</p>\r\n\r\n<p>The group&#39;s specialty retail formats include department store chain Park &#39;n&#39; Shop, Supermarket Chain SPAR, Home &amp; Office Decor&#39; Millennium, table water brand Cascade, premium lighting Searchlight, Quick Serve Restaurant Cakes &#39;n&#39; Bakes, amongst many others.</p>\r\n\r\n<p>At Artee Group, our statement of purpose is &#39;Adding value beyond limits&#39;. This is as true today as it was in 1988, when we started out as a wholesaler Nigeria</p>\r\n\r\n<p>Retail forms the core business activity at Artee Group and most of its businesses in the consumption space are built around retail. Artee Group&#39;s retail network touches the lives of mo millions of Nigerians. The group currently operates around several stores spread over large retail space. Present in the value and lifestyle segments, the group&#39;s retail formats cater to almost the entire consumption expenditure of a wide cross-section of Nigerian consumers. Led by Park &#39;n&#39; Shop Retail, the group&#39;s flagship retail brand, the group owns Nigeria&#39;s most popular department store chain. The cornerstone of our philosophy is listening, adapting, and delivering exceptional value to our customers, investors and shareholders. What sets us apart at Artee Group is a strong and dynamic culture of entrepreneurship.</p>\r\n', 8, 6, 1, '', '', '', '2015-06-03 08:01:00'),
 (2, 'Reward Card', 'reward-card', '<p>Frequent visits to the stores, SPAR network is not only an opportunity to buy excellent products at best prices. Our loyal customers win prizes by joining a loyalty program. How do you do? First of all, you should go to the nearest SPAR!</p>\r\n\r\n<p>Upon request, the SPAR will support you with a simple form that must be carefully filled in, not skipping the required fields. Also very please carefully read the terms of our program. &nbsp;&nbsp;&nbsp;&nbsp;</p>\r\n\r\n<p>Receive a green card Loyalty, which is activated in the SPAR system within 72 hours of submitting the form. From the moment of activation of every purchase in stores with the logo of our network will result in the increase in the number of points on your account.</p>\r\n\r\n<p>After some time, using the Charter of the number of accumulated points reach a level capable of receiving first prizes in kind. Will belong to you decide whether you will be satisfied with a more modest reward (which requires a smaller number of points on your account), or please wait for an opportunity to receive more great items from our catalog.</p>\r\n', 7, 9, 2, '', '', '', '2015-06-03 08:05:37'),
 (3, 'Did you know? ', 'did-you-know-trivia', '<p>The word Spar means &quot;to save [money]&quot; in some Germanic (among them German) and Scandinavian languages.</p>\r\n\r\n<p>SPAR was originally called <strong>DE SPAR,</strong> an acronym of the Dutch phrase Door Eendrachtig Samenwerken Profiteren Allen Regelmatig&nbsp; (English: through united co-operation everyone regularly profits). De Spar is Dutch for &quot;The spruce&quot;, hence Spar&#39;s logo. As the organisation expanded across Europe, the name was abbreviated by dropping &quot;DE&quot;.</p>\r\n\r\n<p>In Italy, the name is still Despar, though in keeping with the international branding, the &quot;Spar&quot; section of the logo is highlighted, and the larger stores are still called<strong> Eurospar </strong>and <strong>Interspar</strong>.</p>\r\n\r\n<p>In Japan some stores operate under the name <strong>Hotspar</strong>, although the store logo colouring remains unchanged.</p>\r\n', 8, 0, 1, '', '', '', '2015-06-03 08:05:08'),
-(4, 'Customer Review ', 'customer-review', '', 8, 0, 0, '', '', '', '2015-06-20 16:36:36'),
+(4, 'Customer Review ', 'customer-review', '', 0, 0, 0, '', '', '', '0000-00-00 00:00:00'),
 (5, 'Definitions', 'definitions', '<ol>\r\n	<li>ORGANISER means the entity organizing the program, which is the SPAR Poland SA with its seat in Rzesz&oacute;w at ul. Twardowski 9, registered in the District Court in Rzesz&oacute;w, XII Commercial Department of National Court Register, under number&nbsp; 509,372 , NIP 526-11-62-514, share capital: 2 141 450 zl</li>\r\n	<li>RULES OF THE PROGRAMME means this Terms Loyalty Program &quot;Loyalty Card&quot;, which defines the terms and conditions of the Participant, Partner and Organizer in particular rules for granting, issuing, subtraction, advertise and cancellation of Points and rules for the exchange Points for Prizes;</li>\r\n	<li>PROGRAM means loyalty program &quot;Loyalty Card&quot; organized by SPAR Poland SA, and led by Partner;</li>\r\n	<li>PARTNER is a party to the agreement concluded with the organizer s based on whom the license to operate a store SPAR trademark. Partner is an entity in which you can collect and exchange Points for Prizes. The organizer reserves the right to exclude some of the Partners of the program temporarily or permanently. Partner institutions in which will be conducted Loyalty program will be marked accordingly;</li>\r\n	<li>FACILITY PARTNER means a place of retail sales of Goods or Services by Partner in the Programme;</li>\r\n	<li>PRODUCTS OR SERVICES means those goods or services, whose acquisition in accordance with the Regulations shall apply a points;</li>\r\n	<li>POINTS represent accrued on the Participant&#39;s Account units (points) in connection with the acquisition by the Participant Goods or Services in accordance with the Regulations, which entitle the participant to receive the Prize. Number of points needed to exchange them for a given award is given to the currently applicable Poster that;</li>\r\n	<li>PARTICIPANT an adult person who has been registered by the Partner as such is based on the Registration Form submitted in accordance with the Regulations and joined the program;</li>\r\n	<li>ACCESSION TO THE receive the Charter by the Programme Participant based on his application, in order to accumulate points under the terms of the Regulations;</li>\r\n	<li>REGISTRATION FORM (poll) means an application to join the Programme according to the formula established by the Organizer, who after completing the personal data and consent to the processing of personal data in accordance with the Act and the deposit of the personal legible signature by a specific individual, an application for participation in the Program;</li>\r\n	<li>The Act - the Act of 29 August 1997. Personal Data Protection (Dz. U. of 2002, no. 101, pos. 926 as. d.);</li>\r\n	<li>CARD means the card provided by the Organizer Partner and the Partner&#39;s issued to the Participant pursuant to the Rules, identified by the number on the Charter (barcode), intended to collect the points accrued on the Participant&#39;s Account under the Programme;</li>\r\n	<li>ACTIVE SAFETY- card on which points the recording was made during the last twelve months from the date of the last entry;</li>\r\n	<li>Participant&#39;s account is an account established for data (your name) Participant in accordance with the Regulations. Assigned to the Participant&#39;s Account Card is issued to the Participant;</li>\r\n	<li>PER ACCOUNT means the current number of important points accrued on the Participant Participant&#39;s Account;</li>\r\n	<li>REGISTRATION - assign an identification number given to the Charter Participant&#39;s personal data;</li>\r\n	<li>AWARD is a prize in kind or vouchers specified in the currently applicable poster, this award is issued to the Participant in exchange for accumulated points;</li>\r\n	<li>POSTER - is currently applicable poster setting out a list of prizes offered in the program and the number of points that are required to collect by Participant Participant&#39;s Account in order to obtain Awards;&nbsp;</li>\r\n</ol>\r\n', 7, 9, 2, '', '', '', '2015-06-02 18:49:22'),
 (6, 'General Provisions', 'general-Provisions', '<ol>\r\n	<li>Loyalty program SPAR&nbsp;&#39;Loyalty Card&#39;&nbsp;is a program that runs on Polish territory;</li>\r\n	<li>Program Participant may be only adult natural person with full legal capacity and having a place of residence on Polish territory; Partner other than an employee;</li>\r\n	<li>In the outlet Partner Participant may have at any given time only one active Participant&#39;s Account;</li>\r\n	<li>Partner shall not be entitled either directly or by implication, to represent the Organizer or to submit on behalf of any assurances, representations or commitments, except for the granting and issuing Rewards Points and distribution of information materials on behalf of the organizer of the Programme, subject to the provisions of points 6.3 and 6.4;</li>\r\n	<li>Infringement by the Participant terms of these Regulations, in particular through the inappropriate use of Charter may lead to the withdrawal of some or all acquired because of the participation in the delegation;</li>\r\n	<li>The cost associated with the purchase of cards and prizes lies with the Partner;&nbsp;</li>\r\n</ol>\r\n', 7, 9, 2, '', '', '', '2015-05-29 22:25:39'),
 (7, 'Terms of Accession to the Program', 'terms-of-accession-to-the-program', '<ol>\r\n	<li>The condition of the SPAR program &quot;Loyalty Card&quot; is to fill in a complete, clear and truthful Registration Form and submitting it to the Partner outlet;</li>\r\n	<li>Participation in the Program and provide related to the participation of personal data is voluntary;</li>\r\n	<li>&nbsp;Providing personal data is voluntary but necessary for participation in the Program;</li>\r\n	<li>Participants may join the program at any time of its duration;</li>\r\n	<li>Prior to the Programme Participant is obliged to refer to the Rules of the available along with the registration form. Signature submitted on the registration form participant confirms acquainted with the Rules of the Programme and accepts its provisions;</li>\r\n	<li>By submitting signature on the registration form participant agrees to the storage and processing by the Organizer and partner indicated in the Registration Form, for the Program, your personal information appearing on the registration form; The participant also authorizes Partner to share their personal data to and allow them to store and process personal data for the purposes of the Programme;</li>\r\n	<li>The registration form is available at Outlets Partners and on the www.spar.pl;</li>\r\n	<li>Registration forms filled illegible or incomplete and unsigned forms or without registration Loyalty Card number will not be recorded;</li>\r\n	<li>Participant&#39;s personal data processing takes place in accordance with the Law on Personal Data Protection;</li>\r\n	<li>The participant has a right to inspect the contents of their data and request their update or delete through a written request to the Partner;</li>\r\n	<li>The participant shall immediately notify the Partner of any change of their personal data and shall bear all the consequences of the absence of such notice;&nbsp;</li>\r\n</ol>\r\n', 7, 9, 2, '', '', '', '2015-06-02 18:50:00'),
@@ -397,12 +328,7 @@ INSERT INTO `pages` (`id`, `page_title`, `page_slug`, `page_content`, `left_side
 (19, 'Store Locator', 'store-locator', '-1', 0, 0, 19, '', '', '', '2015-06-03 10:35:55'),
 (20, 'SPAR Brands', 'brands', '-1', 8, 0, 1, '', '', '', '2015-06-03 15:43:25'),
 (18, 'Deals', 'deals', '-1', 0, 0, 0, '', '', '', '2015-06-03 15:41:53'),
-(21, 'Kids Corner', 'kids-corner', '-1', 0, 0, 1, '', '', '', '2015-06-03 15:45:00'),
-(22, 'Recipes', 'recipes', '-1', 8, 0, 1, '', '', '', '2015-06-18 19:13:18'),
-(25, 'Recipe Details', 'recipe-details', '-1', 0, 0, 1, '', '', '', '2015-06-19 15:24:55'),
-(26, 'Add Recipe', 'add-recipe', '-1', 0, 0, 1, '', '', '', '2015-06-19 16:00:25'),
-(27, 'Submit Your Reviews', 'submit-your-reviews', '-1', 8, 0, 1, '', '', '', '2015-06-25 12:15:58'),
-(28, 'Product Range', 'product-range', '-1', 8, 0, 1, '', '', '', '2015-06-25 16:37:31');
+(21, 'Kids Corner', 'kids-corner', '-1', 0, 0, 1, '', '', '', '2015-06-03 15:45:00');
 
 -- --------------------------------------------------------
 
@@ -448,17 +374,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `product_image` varchar(200) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`id`, `product_name`, `category_id`, `product_price`, `product_detail`, `product_image`, `updated_at`) VALUES
-(1, 'makbook', 6, '300000', '<p>dg gfuyr78er 8</p>\r\n', '2-ipad.png', '2015-06-25 10:59:40'),
-(2, 'Mango Pickle', 9, '300', '<p>Chdvf hjuhi hfuih fuiher od uufhv fhuikehi</p>\r\n', 'm1.jpg', '2015-06-26 13:53:07'),
-(3, 'R.B. Lime Chilli Pickle', 9, '400', '<p>Rb hgihr l jo ffjfk eo rojfoerjf</p>\r\n', 'm9.jpg', '2015-06-26 13:53:26'),
-(4, 'sony tv', 6, '80000', '<p>Sony tv</p>\r\n', '1-images-(3).jpg', '2015-06-25 12:34:38');
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -471,18 +387,14 @@ CREATE TABLE IF NOT EXISTS `product_categories` (
   `product_category` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `image` varchar(200) COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `product_categories`
 --
 
 INSERT INTO `product_categories` (`id`, `product_category`, `image`) VALUES
-(6, 'Electronics', '1-images-(6).jpg'),
-(7, 'Home Appliance', 'hom.jpg'),
-(8, 'Fruits & Vegetables ', 'frut.jpg'),
-(9, 'Grocery', 'groc.jpg'),
-(10, 'Bakery', 'bak.jpg');
+(6, 'Electronics', '');
 
 -- --------------------------------------------------------
 
@@ -511,12 +423,12 @@ CREATE TABLE IF NOT EXISTS `recipe` (
 --
 
 INSERT INTO `recipe` (`id`, `recipe_name`, `category_id`, `preparation_time`, `recipe_image`, `description`, `ingredient`, `cook_time`, `to_serve`, `method`, `updated_at`, `created_at`) VALUES
-(13, ' bvhukfdhi', 2, '54 min', 'pan.jpg', '<p>fhsdkfhowowe</p>\r\n', '<p>das vjydgasida, hdsiw</p>\r\n', '35 min', ' hudcgodwdo', '<p>cb ucgisucg is</p>\r\n', '2015-06-19 10:26:54', '0000-00-00 00:00:00'),
-(14, 'ih jo', 3, ' hiyit', 'sp1.jpg', '<p>io houp0</p>\r\n', '<p>juo9u 9ou</p>\r\n', 'iojiou', 'uj 9 uioyhil', '<p>ioh oup9u</p>\r\n', '2015-06-27 10:56:47', '0000-00-00 00:00:00'),
+(13, ' bvhukfdhi', 2, '54 min', '20140305_095949.jpg', '<p>fhsdkfhowowe</p>\r\n', '<p>das vjydgasida, hdsiw</p>\r\n', '35 min', ' hudcgodwdo', '<p>cb ucgisucg is</p>\r\n', '2015-05-08 10:23:27', '0000-00-00 00:00:00'),
+(14, 'ih jo', 3, ' hiyit', '', 'io houp0', ' juo9u 9ou', 'iojiou', 'uj 9 uioyhil', 'ioh oup9u ', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (18, 'asdasdsad', 1, 'asdasd', 'ad1.jpg', 'kjlkjlkjl', 'jlkjlkjlkj', 'llkjlkjlk', '', '', '2015-04-30 10:24:39', '0000-00-00 00:00:00'),
 (19, ' Chicken Alfresco', 1, '30 mins', 'chicken-alfresco-big.jpg', '<p>Its a grilled marinated chicken breast in Parmesan cream sauce best served with saute vegetables and meshed potatoes.</p>\r\n', '<ul>\r\n	<li>2 breast pieces&nbsp;Chicken</li>\r\n	<li>1 tbsp Oil</li>\r\n	<li>2 cloves Garlic</li>\r\n	<li>1 tsp Salt</li>\r\n	<li>1 tsp Pepper Powder</li>\r\n	<li>1 pc Lemon</li>\r\n	<li>1 tsp Butter</li>\r\n	<li>2 tbsp Parmesan Cream Sauce</li>\r\n</ul>\r\n', '25 mins', '2 people', '<p>yahooooa sd asd asd</p>\r\n', '2015-05-06 13:40:24', '0000-00-00 00:00:00'),
-(20, 'asd asd sad', 1, 'asdasd', 'd4.jpg', '<p>asdas dasd as</p>\r\n', '<p>sdasdasd</p>\r\n', '', '', '<p>asda</p>\r\n', '2015-06-19 11:39:57', '0000-00-00 00:00:00'),
-(21, 'asdasd', 1, 'asd sad', '1-Jellyfish.jpg', '<p>asd</p>\r\n', '<p>asd</p>\r\n', 'asd', 'asd', '<p>asdasd</p>\r\n', '2015-06-19 11:47:50', '0000-00-00 00:00:00');
+(20, 'asd asd sad', 1, 'asdasd', '', '<p>asdas dasd as</p>\r\n', '<p>sdasdasd</p>\r\n', '', '', '<p>asda</p>\r\n', '2015-05-08 04:51:05', '0000-00-00 00:00:00'),
+(21, 'asdasd', 1, 'asd sad', '6-a-002-001-00.jpg', '<p>asd</p>\r\n', '<p>asd</p>\r\n', 'asd', 'asd', '<p>asdasd</p>\r\n', '2015-05-08 10:02:42', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -536,6 +448,7 @@ CREATE TABLE IF NOT EXISTS `recipe_categories` (
 --
 
 INSERT INTO `recipe_categories` (`id`, `recipe_category`, `image`) VALUES
+(1, 'Chinese1', 'Wedding-card-3.jpg'),
 (2, 'Mughlai', ''),
 (3, 'Recipe Category', '1-yamuna-expr2-1.jpg');
 
@@ -550,14 +463,14 @@ CREATE TABLE IF NOT EXISTS `related_products` (
   `recipe_id` int(11) NOT NULL,
   `related_product_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `related_products`
 --
 
 INSERT INTO `related_products` (`id`, `recipe_id`, `related_product_id`) VALUES
-(14, 13, 2);
+(13, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -570,16 +483,14 @@ CREATE TABLE IF NOT EXISTS `related_recipes` (
   `recipe_id` int(11) NOT NULL,
   `related_recipe_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `related_recipes`
 --
 
 INSERT INTO `related_recipes` (`id`, `recipe_id`, `related_recipe_id`) VALUES
-(5, 13, 14),
-(6, 13, 20),
-(7, 14, 19);
+(5, 13, 14);
 
 -- --------------------------------------------------------
 
@@ -623,7 +534,7 @@ CREATE TABLE IF NOT EXISTS `sidebar_items` (
   `custom_html` text NOT NULL,
   `priority` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `sidebar_items`
@@ -656,10 +567,7 @@ INSERT INTO `sidebar_items` (`id`, `type`, `sidebar_id`, `page_id`, `media_id`, 
 (30, 3, 10, 0, 13, 0, '', '', 1),
 (33, 4, 6, 0, 0, 0, '', '<p><strong>Upcoming SPAR outlet in Lagos</strong></p>\r\n', 2),
 (35, 3, 12, 0, 16, 0, '', '', 1),
-(36, 1, 8, 20, 0, 0, '', '', 3),
-(37, 1, 8, 22, 0, 0, '', '', 4),
-(38, 1, 8, 28, 0, 0, '', '', 5),
-(39, 1, 8, 4, 0, 0, '', '', 6);
+(36, 1, 8, 20, 0, 0, '', '', 3);
 
 -- --------------------------------------------------------
 
@@ -674,15 +582,14 @@ CREATE TABLE IF NOT EXISTS `side_banner` (
   `priority` int(11) NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `side_banner`
 --
 
 INSERT INTO `side_banner` (`id`, `side_banner_name`, `side_banner_image`, `priority`, `updated_at`) VALUES
-(7, 'Asus X553MA', 'ASUS-X553MA.jpg', 0, '2015-06-03 03:00:48'),
-(8, 'Acer EX2508', 'Acer-EX2508.jpg', 0, '2015-06-03 03:04:42');
+(9, 'Recipes', 'Product-Range---Meals-&-Snacks.jpg', 0, '2015-09-09 17:14:15');
 
 -- --------------------------------------------------------
 
