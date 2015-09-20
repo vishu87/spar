@@ -6,8 +6,9 @@
 				     <section id="home">				            
 				         <div id="main-slide" class="carousel slide" data-ride="carousel">				                
 				             <ol class="carousel-indicators">
-				                 <li data-target="#main-slide" data-slide-to="0" class="active"></li>
-				                 <li data-target="#main-slide" data-slide-to="1"></li>
+				             	@for($i=0; $i<sizeof($main_banners);$i++)
+					                 <li data-target="#main-slide" data-slide-to="{{$i}}" @if($i == 0) class="active" @endif></li>
+				                 @endfor
 				             </ol>              
 				             <div class="carousel-inner">
 				             	<?php $count = 0; ?>
