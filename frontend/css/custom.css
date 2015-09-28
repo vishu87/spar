@@ -384,4 +384,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#157946', end
   .store-locator-padding-20{
     padding-right: 0px;
   }
+  .small-float-none{
+    float: none !important;
+  }
 }
