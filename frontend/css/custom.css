@@ -387,4 +387,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#157946', end
   .small-float-none{
     float: none !important;
   }
+  .page-title-top{
+    text-align: center;
+  }
+  .page-bar{
+    display: none;
+  }
 }
