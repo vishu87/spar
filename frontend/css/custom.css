@@ -364,3 +364,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#157946', end
 .topSection .page-content p {
   margin-bottom: 0px;
 }
+.store-locator-padding-20{
+  padding-right: 20px;
+}
+@media(max-width: 480px){
+  .page-sidebar-left {
+    padding-right: 0;
+  }
+  .page-sidebar-left img{
+    width: 100%;
+    height: auto;
+  }
+  .page-sidebar-right {
+    padding-left: 0;
+  }
+  .page-content .col-md-6:first-child {
+      padding-right:0px;
+  }
+  .store-locator-padding-20{
+    padding-right: 0px;
+  }
+}

@@ -24,7 +24,7 @@
 							</div>
 						</div>
 					</div>
-					{{($count == ceil($total_store/2))?'</div><div class="col-md-6" style="padding-right:20px;">':''}}
+					{{($count == ceil($total_store/2))?'</div><div class="col-md-6 store-locator-padding-20">':''}}
 				<?php $count++; $old_store = $store->city_id ?>
 				@endforeach
 			</div>
