@@ -66,7 +66,7 @@
 						SPAR NIGERIA BRANDS
 					</div>
 				</a>
-				<a href="{{url('/recipes')}}">
+				<a href="#">
 					<div class="small-align-center" style="padding:30px 20px; margin-top:22px; font-size:30px;text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home06.jpg')">
 						RECIPES
 					</div>
