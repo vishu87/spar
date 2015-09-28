@@ -2,18 +2,14 @@
 @foreach($deals as $deal)
 	@if($old_category != $deal->category_id && $count != 0)
 	</div> 
-	<div class="row btn-align top-margin">
-		<!-- <a href="javascript:;" class="btn default green-stripe">View All Deals</a> -->
-	</div>
-	<hr>
 	@endif
 	@if($old_category != $deal->category_id)
-	<div class="row">
-		<div class="deal-category" style="background:#F00">
+	<div class="row" >
+		<div class="deal-category" style="background:#F00" data-id="{{$deal->category_id}}">
 			{{$deal->product_category}}
 		</div>
 	@endif
-	<div class="col-md-3 deal-box-contain margin-bottom-20">
+	<div class="col-md-3 deal-box-contain margin-bottom-20 @if($count!=0) deal-box-close @else deal-box-open @endif" data-id="{{$deal->category_id}}">
 		<div class="deal-box">
 			{{ HTML::image('images/'.$deal->image,'',array("class"=>"")) }}
 			<!-- <div class="row btn-align" style="font-size:24px; margin:10px"> 
@@ -23,9 +19,6 @@
 			</div>	 -->								   
 		</div>
 	</div>
-<?php $count++; $old_category = $deal->category_id ?>
+	<?php $count++; $old_category = $deal->category_id ?>
 @endforeach
-</div> 
-<div class="row btn-align top-margin">
-<!-- 	<a href="javascript:;" class="btn default green-stripe">View All Deals</a> -->
 </div>

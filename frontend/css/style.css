@@ -2008,6 +2008,14 @@ ul.footer-nav li a:hover {
 	padding: 10px 10px;
 	font-weight: 700;
 	color:#FFF;
+	cursor: pointer;
+}
+
+.deal-box-close{
+  display: none;
+}
+.deal-box-open{
+  display: block;
 }
 .offer-item{
 	box-shadow:0 0 2px #CCC;

@@ -271,4 +271,13 @@ $(document).ready(function(){
     $(".datepicker").datepicker({'format':'dd-mm-yyyy'});
       CKEDITOR.config.allowedContent = true;
       $('textarea.editor1').ckeditor();
+
+      $(".deal-category").click(function(){
+      	if($(this).parent().find(".deal-box-contain").eq(0).hasClass("deal-box-close")){
+	      	var data = $(this).attr("data-id");
+	      	$(".deal-box-contain").slideUp("slow").addClass("deal-box-close").removeClass("deal-box-open");
+	      	$(".deal-box-contain[data-id="+data+"]").slideDown().addClass("deal-box-open").removeClass("deal-box-close");
+      	}
+      });
+
   });
