@@ -5,7 +5,7 @@
 	@endif
 	@if($old_category != $deal->category_id)
 	<div class="row" >
-		<div class="deal-category" style="rgba(32, 206, 135, 0.96)" data-id="{{$deal->category_id}}">
+		<div class="deal-category" style="background:rgba(32, 206, 135, 0.96)" data-id="{{$deal->category_id}}">
 			{{$deal->product_category}}
 		</div>
 	@endif
