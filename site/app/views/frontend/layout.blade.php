@@ -77,7 +77,6 @@
       <nav class="container" style="background:#9E9E9E">
         <div >
           <div class="navbar-default navbar-collapse collapse">
-            {{$page->id}}
             <ul class="nav navbar-nav">
               <li><a class="@if(Request::is('/')) active @endif" href="{{url('/')}}"><i class="fa fa-home"></i></a></li>
               <li><a class="@if(isset($page->top_active)) @if($page->top_active == 20 || $page->id == 20) active @endif @endif" href="{{url('/brands')}}">Product Range</a></li>
