@@ -13,12 +13,12 @@
 	@endif
 	<div class="col-md-3 deal-box-contain margin-bottom-20">
 		<div class="deal-box">
-			{{ HTML::image('images/'.$deal->image,'',array("class"=>"recipe-img-width")) }}
-			<div class="row btn-align" style="font-size:24px; margin:10px"> 
+			{{ HTML::image('images/'.$deal->image,'',array("class"=>"")) }}
+			<!-- <div class="row btn-align" style="font-size:24px; margin:10px"> 
 				<a href="#" style="margin-right:10px;"><i class="fa fa-facebook-square"></i></a>
 			    <a href="#" style="margin-right:10px"><i class="fa fa-twitter"></i></a>
 			    <a href="#"><i class="fa fa-google-plus"></i></a>
-			</div>									   
+			</div>	 -->								   
 		</div>
 	</div>
 <?php $count++; $old_category = $deal->category_id ?>
