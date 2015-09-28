@@ -9,7 +9,9 @@
 	@endif
 	@if($old_category != $deal->category_id)
 	<div class="row">
-		<h6 class="deal-category">{{$deal->product_category}}</h6>
+		<div class="deal-category" style="background:#F00">
+			{{$deal->product_category}}
+		</div>
 	@endif
 	<div class="col-md-3 deal-box-contain margin-bottom-20">
 		<div class="deal-box">
@@ -27,4 +29,3 @@
 <div class="row btn-align top-margin">
 <!-- 	<a href="javascript:;" class="btn default green-stripe">View All Deals</a> -->
 </div>
-<hr>
