@@ -128,7 +128,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div >
-					<img src="{{url('frontend/images/flyer.jpg')}}">
+					<a href="{{url('/frontend/images/Eflyer.pdf')}}" target="_blank"><img src="{{url('frontend/images/flyer.jpg')}}"></a>
 				</div>
 			</div>
 		</div>
