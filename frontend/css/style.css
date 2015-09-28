@@ -1775,11 +1775,11 @@ ul.footer-nav li a:hover {
 	width: 100%;
 }
 .touch-carousel .owl-controls .owl-buttons .owl-prev {
-	left:-20px;
+	left:-10px;
 	position: absolute;
 }
 .touch-carousel .owl-controls .owl-buttons .owl-next {
-	right:-20px;
+	right:-10px;
 	position: absolute;
 }
 .touch-carousel.projects-carousel .owl-controls .owl-buttons {
