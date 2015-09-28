@@ -8,7 +8,7 @@
 			@endforeach
 		</div>
 		<div class="row" >
-			<div class="col-md-6" style="padding-right:20px;">
+			<div class="col-md-6 store-locator-padding-20">
 				<?php $old_store = 0; $count = 1; $total_store = sizeof($stores); ?>
 				@foreach($stores as $store)
 					<div class="row">
