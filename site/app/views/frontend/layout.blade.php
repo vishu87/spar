@@ -28,7 +28,7 @@
     <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     
   </head>
-  <body>
+  <body style="background:url('{{url('frontend/images/store.jpg')}}'); ">
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -37,10 +37,10 @@
       js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1616910621872702";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
-    <div class="container">
+    <div class="container" style="background:#FFF">
       <header class="clearfix">      
         <div class="">
-          <div class="container">
+          <div class="">
             <div class="row">
               <div class="col-md-3">
                 <div class="navbar-header">
@@ -74,8 +74,8 @@
         </div>     
       </header>
     </div>
-      <nav style="background:#9E9E9E">
-        <div class="container">
+      <nav class="container" style="background:#9E9E9E">
+        <div >
           <div class="navbar-default navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li><a class="@if(Request::is('/')) active @endif" href="{{url('/')}}"><i class="fa fa-home"></i></a></li>
@@ -89,9 +89,9 @@
           </div>
        </div>
       </nav>
-    <div id="container">
+    <div class="container" style="background:#FFF">
     {{$main}}
-  
+    </div>
   <!-- END CONTENT -->
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
@@ -153,7 +153,7 @@
             </div> -->
           </div>
         </footer>
-      </div>
+      
       <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
         {{HTML::script("frontend/js/jquery-2.1.1.min.js")}}
         {{HTML::script("frontend/js/jquery.migrate.js")}}

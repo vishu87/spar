@@ -1,5 +1,5 @@
 <div id="content">
-	<div  class="slider-main container">
+	<div  class="slider-main">
 		<div class="slider">
 		<div class="row">
 				<div class="col-md-9 slider">					
@@ -55,7 +55,7 @@
 			
 		</div>
 	</div>
-	<div class="container">
+	<div class="">
 		
 		<div class="hr1 margin-top"></div>
 
@@ -66,9 +66,11 @@
 						SPAR NIGERIA BRANDS
 					</div>
 				</a>
+				<a href="{{url('/recipes')}}">
 					<div class="small-align-center" style="padding:30px 20px; margin-top:22px; font-size:30px;text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home06.jpg')">
 						RECIPES
 					</div>
+				</a>
 				<a href="{{url('/kids-corner')}}">
 					<div class="small-align-center" style="padding:30px 20px; margin-top:23px; font-size:30px;text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home05.jpg')">
 						KIDS CORNER
@@ -125,8 +127,8 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<div style="border:5px solid #EEE;  padding:20px 0; text-align:center; font-weight:400; font-size:30px; background:url(frontend/images/patterns/6.png);">
-					Download e-Flyer
+				<div >
+					<img src="{{url('frontend/images/flyer.jpg')}}">
 				</div>
 			</div>
 		</div>
