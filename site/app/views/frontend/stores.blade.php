@@ -30,7 +30,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4 pull-right" style="background: #EEE; padding:0 10px;">
+	<div class="col-md-4 pull-right small-float-none" style="background: #EEE; padding:0 10px;">
 		<div style="margin-bottom:20px; line-height:24px; padding-top:10px; font-size:24px; text-align:center;">Upcoming Stores</div>
 		@foreach($upcoming_stores as $store)
 			<div class="row">
