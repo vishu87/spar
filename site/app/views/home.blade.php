@@ -483,6 +483,9 @@
 
 
 <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+	<script type="text/javascript">
+		var base_url = '{{url('/')}}';
+	</script>
     {{HTML::script("frontend/js/jquery-2.1.1.min.js")}}
     {{HTML::script("frontend/js/jquery.migrate.js")}}
     {{HTML::script("frontend/js/bootstrap.min.js")}}

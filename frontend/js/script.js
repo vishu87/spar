@@ -280,4 +280,13 @@ $(document).ready(function(){
       	}
       });
 
+    $(".store-select").change(function(e){
+    	var val = $(this).val();
+    	if(val != 0){
+    		window.location.replace(base_url+"/store-locator/"+val);
+    	} else {
+    		window.location.replace(base_url+"/store-locator");
+    	}
+    })
+
   });

@@ -1,17 +1,24 @@
 <div class="row">
-	<div class="col-md-8">
-		<div style="margin-bottom:20px;">
-			<b>Filter by City </b>
+	<div class="col-md-12">
+		<div class="store-city-list">
 			<a href="{{url('/store-locator')}}" class="btn @if(!isset($id)) green @else default @endif">View All</a>
 			@foreach($cities as $city)
 				<a class="btn @if(!isset($id)) default @else @if($id == $city->id) green @else default @endif @endif" href="{{url('/store-locator/'.$city->id)}}">{{$city->city}}</a>
 			@endforeach
 		</div>
+		<div class="store-select-div">
+			<select class="store-select">
+					<option value="0">View All</option>
+				@foreach($cities as $city)
+					<option value="{{$city->id}}" @if(isset($id)) @if($id == $city->id) selected @endif @endif>{{$city->city}}</option>
+				@endforeach
+			</select>
+		</div>
 		<div class="row" >
-			<div class="col-md-6 store-locator-padding-20">
+
 				<?php $old_store = 0; $count = 1; $total_store = sizeof($stores); ?>
 				@foreach($stores as $store)
-					<div class="row">
+					<div class="col-md-4 store-locator-padding-20">
 						<h3 class="store-category">{{$store->city}} | {{$store->name}}</h6>
 						<div class="store-box-contain" style="margin:20px 0;">
 							<div id="googleMap_{{$count}}" style="width:100%;height:200px;"></div>
@@ -24,17 +31,17 @@
 							</div>
 						</div>
 					</div>
-					{{($count == ceil($total_store/2))?'</div><div class="col-md-6 store-locator-padding-20">':''}}
 				<?php $count++; $old_store = $store->city_id ?>
 				@endforeach
-			</div>
+
 		</div>
 	</div>
-	<div class="col-md-4 pull-right small-float-none" style="background: #EEE; padding:0 10px;">
-		<div style="margin-bottom:20px; line-height:24px; padding-top:10px; font-size:24px; text-align:center;">Upcoming Stores</div>
+
+	<div class="col-md-12 small-float-none" style="">
+		<h1 class="page-title-top" style="">Upcoming Stores</h1>
 		@foreach($upcoming_stores as $store)
-			<div class="row">
-				<h3 class="store-category">{{$store->city}} | {{$store->name}}</h6>
+			<div class="col-md-4 store-locator-padding-20">
+				<h3 class="store-category">{{$store->city}} | {{$store->name}}</h3>
 				<div class="store-box-contain" style="margin:20px 0;">
 					<div id="googleMap_{{$count}}" style="width:100%;height:200px;"></div>
 					<div class="store-box" >									   
