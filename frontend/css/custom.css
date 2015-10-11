@@ -383,9 +383,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#157946', end
 }
 .product-range-p{
   font-weight: bold;
-  text-align: center;
+  text-align: center !important;
   line-height: 1.2;
-  margin: 5px 0;
+  margin: 5px 10px;
 }
 @media(max-width: 480px){
   .page-sidebar-left {
