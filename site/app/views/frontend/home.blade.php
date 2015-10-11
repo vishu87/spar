@@ -66,10 +66,8 @@
 		<div class="row">
 			<div class="col-md-4" style="">
 				@if($params[4] != '')
-					<div class="col-md-12 hidden-xs">
-						<div >
-							<a @if($params[5] != '') href="{{$params[5]}}" @else href="javascript:;" @endif target="_blank"><img src="{{url('images/'.$params[4])}}"></a>
-						</div>
+					<div class="arrival-main">
+						<a @if($params[5] != '') href="{{$params[5]}}" @else href="javascript:;" @endif target="_blank"><img src="{{url('images/'.$params[4])}}"></a>
 					</div>
 				@endif
 			</div>
@@ -91,8 +89,8 @@
 			</div>
 
 			<div class="col-md-4">
-				<div class="videoWrapper">
-					<iframe src="https://www.youtube.com/embed/O-YiOvZuzAg" frameborder="0" allowfullscreen></iframe>
+				<div class="videoWrapper arrival-main">
+					{{$params[6]}}
 				</div>
 			</div>
 

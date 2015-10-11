@@ -51,6 +51,14 @@
               </div>
             </div>
           </div>
+          <div class="row" style="margin-top:10px">
+            <div class="form-group">
+              <label class="col-md-2 control-label">Homepage Video</label>
+              <div class="col-md-6">
+                {{Form::text('homepage_video',$params[6],array("class"=>"form-control"))}}
+              </div>
+            </div>
+          </div>
 
           <div class="row" style="margin:10px">
             <button type="submit" class="btn btn-success">Update</button>

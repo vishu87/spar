@@ -116,6 +116,10 @@ class HomepageController extends BaseController {
             DB::table("homepage_parameters")->where("id",5)->update(array("value"=>Input::get('left_creative_link')));
         }
 
+        if (Input::has('homepage_video')){
+            DB::table("homepage_parameters")->where("id",6)->update(array("value"=>Input::get('homepage_video')));
+        }
+
         return Redirect::Back()->with('success', 'Successfully updated');                    
     }
 
