@@ -39,7 +39,10 @@
             </th>
             <th>
                Brand Name
-            </th>           
+            </th>
+            <th>
+               Order
+            </th>          
             <th></th>
         </tr>  
       </thead>
@@ -68,6 +71,9 @@
             <td>{{++$count}}</td>
             <td>
               {{$brand->brand_name}}                       
+            </td>
+            <td>
+              {{$brand->priority}}                       
             </td>
             <td>
               <a href="{{url('/admin/brands/edit/'.$brand->id)}}"><span class="btn yellow">Edit </span></a>

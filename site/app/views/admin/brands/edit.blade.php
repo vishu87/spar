@@ -70,11 +70,25 @@
              @if($brand->brand_image == '')
               There is no image uploaded for this brand
             @else
-              {{HTML::image('images/'.$brand->brand_image,"",["class"=>"img-brand"])}}
+              {{HTML::image('images/'.$brand->brand_image,"",["class"=>"img-brand","style"=>"width:150px"])}}
             @endif
 
            </div>
         </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Description</label>
+            <div class="col-md-9">
+              {{Form::text('description',$brand->description,array("class"=>"form-control", "placeholder"=>"Enter Description"))}}
+              <span>{{$errors->first('description')}}</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Order</label>
+            <div class="col-md-9">
+              {{Form::text('priority',$brand->priority,array("class"=>"form-control", "placeholder"=>"Enter Order"))}}
+              <span>{{$errors->first('priority')}}</span>
+            </div>
+          </div>
        <div class="sub-center">
         <button type="submit" class="btn btn-success">Update</button>
       </div>   

@@ -9,7 +9,6 @@ class BrandController extends BaseController {
         ];
         $rules = [
         'brand_name' => 'required'
-
         ];
         $validator = Validator::make($cre,$rules);
         if($validator->passes()){
@@ -86,6 +85,8 @@ class BrandController extends BaseController {
                         $brand->brand_image = $image;
                     }
                 $brand->brand_name = Input::get('brand_name');
+                $brand->description = Input::get('description');
+                $brand->priority = Input::get('priority');
                 $brand->save();
                 return Redirect::Back()->with('success', '<b>'.Input::get('brand_name').'</b> has been successfully updated');                    
             }
