@@ -9,6 +9,7 @@ class FrontendController extends BaseController {
     $main_banners = DB::table('banner')->orderBy('priority','asc')->get();
     $side_banners = DB::table('side_banner')->orderBy('priority','asc')->get();
     $mid_banners = DB::table('mid_banner')->orderBy('priority','asc')->get();
+    $services = Service::get();
     $homepage_deals = DB::table('homepage_deals')->select('deals.deal_name','deals.image')->join('deals','homepage_deals.deal_id','=','deals.id')->orderBy('priority','asc')->get();
     $params = [];
     $homepage_params = DB::table('homepage_parameters')->get();
@@ -20,7 +21,8 @@ class FrontendController extends BaseController {
       "side_banners" => $side_banners,
       "mid_banners" => $mid_banners,
       "homepage_deals" => $homepage_deals,
-      "params"  => $params
+      "params"  => $params,
+      "services" => $services
     ));
   }
 
