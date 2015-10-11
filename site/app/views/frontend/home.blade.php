@@ -36,7 +36,7 @@
 				    @foreach($side_banners as $side_banner)
 					<div style="overflow:hidden; text-align:center" align="center">
 						<a href="@if($side_banner->link != '') {{$side_banner->link}} @else javascript:; @endif" target="_blank">
-							<img src="{{url('images/'.$side_banner->side_banner_image)}}" alt="{{$side_banner->side_banner_name}}">
+							<img src="{{url('images/'.$side_banner->side_banner_image)}}" alt="{{$side_banner->side_banner_name}}" style="width:100%">
 						</a>
 					</div>
 					@endforeach
