@@ -1,4 +1,5 @@
-<div class="row">	
+<div class="row">
+	<?php $count = 0 ?>
 	@foreach($brands as $brand)
 		<div class="col-md-3 deal-box-contain">
 			<div style="position:relative">
@@ -7,7 +8,9 @@
 					{{$brand->brand_name}}
 				</div>							   
 			</div>
-			<p>{{$brand->description}}</p>
+			<p class="product-range-p">{{$brand->description}}</p>
 		</div>
+		<?php $count++ ?>
+		@if($count % 4 == 0) </div><div class="row"> @endif
 	@endforeach
 </div>
