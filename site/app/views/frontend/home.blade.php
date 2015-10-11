@@ -65,21 +65,13 @@
 
 		<div class="row">
 			<div class="col-md-4" style="">
-				<a href="{{url('/brands')}}">
-					<div class="small-align-center" style="padding:30px 20px;  font-size:30px;text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home04.jpg')">
-						SPAR NIGERIA BRANDS
+				@if($params[4] != '')
+					<div class="col-md-12 hidden-xs">
+						<div >
+							<a @if($params[5] != '') href="{{$params[5]}}" @else href="javascript:;" @endif target="_blank"><img src="{{url('images/'.$params[4])}}"></a>
+						</div>
 					</div>
-				</a>
-				<a href="#">
-					<div class="small-align-center" style="padding:30px 20px; margin-top:22px; font-size:30px;text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home06.jpg')">
-						RECIPES
-					</div>
-				</a>
-				<a href="{{url('/kids-corner')}}">
-					<div class="small-align-center" style="padding:30px 20px; margin-top:23px; font-size:30px;text-shadow:0 0 5px #FFF; color:#000; background:url('frontend/images/banner_home05.jpg')">
-						KIDS CORNER
-					</div>
-				</a>
+				@endif
 			</div>
 
 			<div class="col-md-4">

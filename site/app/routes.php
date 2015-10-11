@@ -71,6 +71,20 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 		Route::get('/flyer','HomepageController@getFlyer');
 		Route::put('/flyer','HomepageController@putFlyer');
 		Route::get('/flyer/delete/{param_id}','HomepageController@deleteFlyer');
+
+		Route::get('/left-creative','HomepageController@getLeftCreative');
+		Route::put('/left-creative','HomepageController@putLeftCreative');
+	});
+
+	 Route::group(['prefix' => 'services'], function () {
+		Route::get('/','ServiceController@getIndex');
+		Route::get('/add','ServiceController@getAdd');
+		Route::post('/store','ServiceController@postAdd');
+
+		Route::get('/edit/{banner_id}','ServiceController@getService');
+	    Route::put('/update/{banner_id}', 'ServiceController@putupdate');
+	    Route::get('/delete/{banner_id}',array('before'=>'authadmin', 'uses'=>'ServiceController@getdelete'));
+
 	});
 
     Route::group(['prefix' => 'pages'], function () {

@@ -90,4 +90,33 @@ class HomepageController extends BaseController {
         return Redirect::Back()->with('success', 'Successfully deleted');                    
     }
 
+    public function getLeftCreative(){
+        $this->layout->title = 'Homepage Creative | Admin';
+        $this->layout->top_active = 8;
+        $this->layout->sub_active = 6;
+        $pms = DB::table("homepage_parameters")->get();
+        $params = [];
+        foreach ($pms as $pm) {
+            $params[$pm->id] = $pm->value;
+        }
+        $this->layout->main = View::make("admin.homepage.creative",["params"=>$params]);
+    }
+
+    public function putLeftCreative(){
+
+        if (Input::hasFile('left_creative')){
+            $destinationPath = "images/";
+            $extension = Input::file('left_creative')->getClientOriginalExtension();
+            $image = Input::file('left_creative')->getClientOriginalName();
+            Input::file('left_creative')->move($destinationPath,$image);
+            DB::table("homepage_parameters")->where("id",4)->update(array("value"=>$image));
+        }
+
+        if (Input::has('left_creative_link')){
+            DB::table("homepage_parameters")->where("id",5)->update(array("value"=>Input::get('left_creative_link')));
+        }
+
+        return Redirect::Back()->with('success', 'Successfully updated');                    
+    }
+
 }
