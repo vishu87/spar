@@ -10,11 +10,17 @@ class FrontendController extends BaseController {
     $side_banners = DB::table('side_banner')->orderBy('priority','asc')->get();
     $mid_banners = DB::table('mid_banner')->orderBy('priority','asc')->get();
     $homepage_deals = DB::table('homepage_deals')->select('deals.deal_name','deals.image')->join('deals','homepage_deals.deal_id','=','deals.id')->orderBy('priority','asc')->get();
+    $params = [];
+    $homepage_params = DB::table('homepage_parameters')->get();
+    foreach ($homepage_params as $pms) {
+      $params[$pms->id] = $pms->value; 
+    }
     $this->layout->main = View::make('frontend.home',array(
       "main_banners" => $main_banners,
       "side_banners" => $side_banners,
       "mid_banners" => $mid_banners,
-      "homepage_deals" => $homepage_deals
+      "homepage_deals" => $homepage_deals,
+      "params"  => $params
     ));
   }
 

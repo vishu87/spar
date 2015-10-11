@@ -21,7 +21,7 @@
        <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      Add Banner
+      Edit Banner
     </li>   
   </ul>
 </div>
@@ -41,30 +41,37 @@
    <div class="portlet box blue">
             <div class="portlet-title">
               <div class="caption">
-                Add Banner
+                Edit Banner
               </div>           
             </div>
             <div class="portlet-body form">
-              {{Form::open(array("url"=>"/admin/mid-banners/store","method" => "POST","role"=>"form","class" => "form-horizontal","files"=>"true"))}}
+              {{Form::open(array("url"=>"/admin/mid-banners/update/".$banner->id,"method" => "PUT","role"=>"form","class" => "form-horizontal","files"=>"true"))}}
                 <div class="form-body">
                   <div class="form-group">
                     <label class="col-md-2 control-label">Mid Banner Name</label>
                     <div class="col-md-9">
-                      {{Form::text('mid_banner_name','',array("class"=>"form-control", "placeholder"=>"Enter Mid Banner Name"))}}
+                      {{Form::text('mid_banner_name',$banner->mid_banner_name,array("class"=>"form-control", "placeholder"=>"Enter Mid Banner Name"))}}
                         <span>{{$errors->first('mid_banner_name')}}</span>
                     </div>
                   </div>
                   <div class="form-group">
                     <label class="col-md-2 control-label">Mid Banner Link</label>
                     <div class="col-md-9">
-                      {{Form::text('link','',array("class"=>"form-control", "placeholder"=>"Enter Mid Banner Link"))}}
+                      {{Form::text('link',$banner->link,array("class"=>"form-control", "placeholder"=>"Enter Mid Banner Link"))}}
                         <span>{{$errors->first('link')}}</span>
                     </div>
                   </div>
                    <div class="form-group">
                     <label class="col-md-2 control-label">Mid Banner Image</label>
                     <div class="col-md-9">
-                     {{Form::file('mid_banner_image',array("class"=>"form-control"))}} 
+                     {{Form::file('mid_banner_image',array("class"=>"form-control"))}}
+                     <div style="margin-top:20px">
+                        @if($banner->mid_banner_image == '')
+                          There is no image uploaded for this banner
+                        @else
+                          {{HTML::image('images/'.$banner->mid_banner_image,"",["class"=>"img-brand","style"=>"width:200px"])}}
+                        @endif
+                     </div> 
                    </div>
                   </div>           
                   <div class="form-actions sub-center">

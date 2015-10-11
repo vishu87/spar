@@ -91,21 +91,21 @@
          <div class="form-group">
             <label class="col-md-2 control-label">Meta Title</label>
             <div class="col-md-9">
-              {{Form::text('meta_title',$page->meta_title,array("class"=>"form-control", "placeholder"=>"Enter Page slug"))}}
+              {{Form::text('meta_title',$page->meta_title,array("class"=>"form-control", "placeholder"=>""))}}
               <span>{{$errors->first('meta_title')}}</span>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Meta Keywords</label>
             <div class="col-md-9">
-              {{Form::text('meta_keywords',$page->meta_keywords,array("class"=>"form-control", "placeholder"=>"Enter Page slug"))}}
+              {{Form::text('meta_keywords',$page->meta_keywords,array("class"=>"form-control", "placeholder"=>""))}}
               <span>{{$errors->first('meta_keywords')}}</span>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Meta Description</label>
             <div class="col-md-9">
-              {{Form::text('meta_description',$page->meta_description,array("class"=>"form-control", "placeholder"=>"Enter Page slug"))}}
+              {{Form::text('meta_description',$page->meta_description,array("class"=>"form-control", "placeholder"=>""))}}
               <span>{{$errors->first('meta_description')}}</span>
             </div>
           </div>        

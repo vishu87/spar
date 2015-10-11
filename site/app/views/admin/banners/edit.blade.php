@@ -62,6 +62,13 @@
             </div>
           </div>
           <div class="form-group">
+            <label class="col-md-2 control-label">Banner Link</label>
+            <div class="col-md-9">
+              {{Form::text('link',$banner->link,array("class"=>"form-control", "placeholder"=>"Enter Banner Link"))}}
+                <span>{{$errors->first('link')}}</span>
+            </div>
+          </div>
+          <div class="form-group">
           <label class="col-md-2 control-label">Banner Image</label>
           <div class="col-md-5">
            {{Form::file('banner_image',array("class"=>"form-control"))}} 

@@ -54,12 +54,19 @@
                         <span>{{$errors->first('banner_name')}}</span>
                     </div>
                   </div>
-                   <div class="form-group">
+                  <div class="form-group">
                     <label class="col-md-2 control-label">Banner Image</label>
                     <div class="col-md-9">
                      {{Form::file('banner_image',array("class"=>"form-control"))}} 
                    </div>
                   </div>           
+                  <div class="form-group">
+                    <label class="col-md-2 control-label">Banner Link</label>
+                    <div class="col-md-9">
+                      {{Form::text('link','',array("class"=>"form-control", "placeholder"=>"Enter Banner Link"))}}
+                        <span>{{$errors->first('link')}}</span>
+                    </div>
+                  </div>
                   <div class="form-actions sub-center">
                     <button type="submit" class="btn btn-success">Submit</button>
                   </div>   

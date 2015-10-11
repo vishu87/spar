@@ -41,6 +41,8 @@
                 @if(Auth::user()->priviledge == 1)
                <a href="{{url('/admin/banners/delete/'.$banner->id)}}" class="banner-del btn btn-danger pull-right">
                 <i class="fa fa-remove"></i></a>
+                <a href="{{url('/admin/banners/edit/'.$banner->id)}}" class="btn btn-warning pull-right">
+                <i class="fa fa-edit"></i></a>
                 <a class="fancybox btn blue pull-right" href="{{URL("/")}}/images/{{$banner->banner_image}}">
                   <i class="fa fa-search"></i>
                 </a>

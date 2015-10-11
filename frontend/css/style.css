@@ -1990,6 +1990,11 @@ ul.footer-nav li a:hover {
 	padding: 10px;
 	text-align: justify;
 }
+.service-content p{
+	text-align: center;
+	line-height: 1.2;
+	color: #888;
+}
 .service-content h4{
 	text-align: center;
 }

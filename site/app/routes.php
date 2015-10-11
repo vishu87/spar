@@ -68,6 +68,9 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 		Route::post('/offers/add','HomepageController@addOffer');
 		Route::post('/offers/order','HomepageController@orderOffer');
 		Route::get('/offers/delete/{id}','HomepageController@getdelete');
+		Route::get('/flyer','HomepageController@getFlyer');
+		Route::put('/flyer','HomepageController@putFlyer');
+		Route::get('/flyer/delete/{param_id}','HomepageController@deleteFlyer');
 	});
 
     Route::group(['prefix' => 'pages'], function () {
@@ -154,6 +157,8 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 		Route::get('/add','SideBannerController@getAdd');
 		Route::post('/store','SideBannerController@postAdd');
 		Route::post('/saveorder','SideBannerController@postOrder');
+		Route::get('/edit/{banner_id}','SideBannerController@getbanner');
+		Route::put('/update/{banner_id}','SideBannerController@putUpdate');
 	    Route::get('/delete/{side_banner_id}',array('before'=>'authadmin', 'uses'=>'SideBannerController@getdelete'));
 
 	});
@@ -163,6 +168,8 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 		Route::get('/add','MidBannerController@getAdd');
 		Route::post('/store','MidBannerController@postAdd');
 		Route::post('/saveorder','MidBannerController@postOrder');
+		Route::get('/edit/{banner_id}','MidBannerController@getbanner');
+		Route::put('/update/{banner_id}','MidBannerController@putUpdate');
 	    Route::get('/delete/{mid_banner_id}',array('before'=>'authadmin', 'uses'=>'MidBannerController@getdelete'));
 
 	});

@@ -48,6 +48,13 @@
                 <span class="selected"></span>
               </a>
             </li>
+            <li @if($top_active == 8 && $sub_active == 5) class="active" @endif>
+              <a href="{{url('/admin/homepage/flyer')}}">
+                <i class="fa fa-file-image-o"></i>
+                <span class="title">Flyer</span>
+                <span class="selected"></span>
+              </a>
+            </li>
           </ul>
         </li>
         <li @if($top_active == 3) class="active open" @endif>

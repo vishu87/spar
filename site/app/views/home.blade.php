@@ -316,11 +316,11 @@
             
             <div class="col-md-4 col-sm-4 service-box service-icon-left-more">
                 <div class="service-icon">
-                    <img src="frontend/images/Home-icon.png">
+                    <img src="frontend/images/Delivery1.png">
                 </div>
                 <div class="service-content">
                     <h4>Home Delivery</h4>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    <p>A convenient and affordable way to get your purchases made at the store delivered to your home. It’s more than just a delivery, you can expect a professional and courteous service from our esteemed SPAR staffs. Ask store staffs for further assistance.</p>
                 </div>
             </div>
             
@@ -328,35 +328,34 @@
               
               <div class="col-md-4 col-sm-4 service-box service-icon-left-more">
                <div class="service-icon">
-                    <img src="frontend/images/money-icon.png">
+                    <img src="frontend/images/Furnitre1.png">
                </div>
                <div class="service-content">
-                <h4>Cash on Delivery</h4>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                <h4>Made to Order Furniture</h4>
+                <p>Need customized home &amp; office furniture to suit your need and taste. With our made to order furniture service, you can be the proud owner of something original and unique. Ask floor staff for assistance with made to order furniture.</p>
               </div>
             </div>
             
-
             
             <div class="col-md-4 col-sm-4 service-box service-icon-left-more">
                 <div class="service-icon">
-                 <img src="frontend/images/furniture.jpg">
+                 <img src="frontend/images/Cake1.png">
                     
                 </div>
                 <div class="service-content">
-                <h4>Made to Order Furniture</h4>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                <h4>Made to Order Cake</h4>
+                <p>At SPAR we make cakes for every occasion ~ Weddings, Birthdays, Christenings. We will be glad to make Cakes to your preference and taste. Ask staff at bakery counter for assistance.</p>
                 </div>
             </div>
             
            
             <div class="col-md-4 col-sm-4 service-box service-icon-left-more">
                 <div class="service-icon">
-                    <img src="frontend/images/Piece-of-cake-icon.png">
+                    <img src="frontend/images/Catering1.png">
                 </div>
                 <div class="service-content">
-                    <h4>Made to Order Cake</h4>
-                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    <h4>Private Catering</h4>
+                    <p>Whether you’re looking for a small, intimate dinner party or a large catered reception, SPAR private catering service is happy to assist you in creating the perfect event. Our professional staffs would be delighted to work with you on everything from the menu to the table layout. Ask staffs at ready meals counter for assistance.</p>
                 </div>
             </div>
             

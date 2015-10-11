@@ -38,7 +38,7 @@ class BannerController extends BaseController {
                 Input::file('banner_image')->move($destinationPath,$image);
             } else $image ='';
             
-            $id = DB::table("banner")->insertGetID(array('banner_name'=>Input::get("banner_name"),'banner_image'=>$image));               
+            $id = DB::table("banner")->insertGetID(array('banner_name'=>Input::get("banner_name"),'banner_image'=>$image, "link"=>Input::get("link") ));               
             return Redirect::Back()->with('success', '<b>'.Input::get('banner_name').'</b> has been successfully added');                    
         }else {
             return Redirect::Back()->withErrors($validator)->withInput();
@@ -68,7 +68,7 @@ class BannerController extends BaseController {
         $this->layout->main = View::make("admin.banners.add");
     }
 
-     public function getdelete($banner_id){
+    public function getdelete($banner_id){
         $id = DB::table("banner")->where('id',$banner_id)->delete();
         return Redirect::Back()->with('success', 'Banner been successfully deleted');                    
     }
@@ -93,6 +93,7 @@ class BannerController extends BaseController {
                     $banner->banner_image = $image;
                 }
                 $banner->banner_name = Input::get('banner_name');
+                $banner->link = Input::get('link');
                 $banner->save();
                 return Redirect::Back()->with('success', '<b>'.Input::get('banner_name').'</b> has been successfully updated');                    
             }

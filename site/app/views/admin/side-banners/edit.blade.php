@@ -2,11 +2,11 @@
 <div class="row">
   <div class="col-md-6">
     <h3 class="page-title">
-     Mid Banners <small></small>
+     Side Banners <small></small>
     </h3>
   </div>
   <div class="col-md-6 add-new">
-    <a href="{{url('/admin/mid-banners')}}" class="btn green">Go Back</a>
+    <a href="{{url('/admin/side-banners')}}" class="btn green">Go Back</a>
   </div>
 </div>
 <div class="page-bar">
@@ -17,11 +17,11 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-       <a href="{{url('/admin/mid-banners')}}">Mid Banners</a>
+       <a href="{{url('/admin/side-banners')}}">Side Banners</a>
        <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      Add Banner
+      Edit Banner
     </li>   
   </ul>
 </div>
@@ -41,30 +41,37 @@
    <div class="portlet box blue">
             <div class="portlet-title">
               <div class="caption">
-                Add Banner
+                Edit Banner
               </div>           
             </div>
             <div class="portlet-body form">
-              {{Form::open(array("url"=>"/admin/mid-banners/store","method" => "POST","role"=>"form","class" => "form-horizontal","files"=>"true"))}}
+              {{Form::open(array("url"=>"/admin/side-banners/update/".$banner->id,"method" => "PUT","role"=>"form","class" => "form-horizontal","files"=>"true"))}}
                 <div class="form-body">
                   <div class="form-group">
-                    <label class="col-md-2 control-label">Mid Banner Name</label>
+                    <label class="col-md-2 control-label">Side Banner Name</label>
                     <div class="col-md-9">
-                      {{Form::text('mid_banner_name','',array("class"=>"form-control", "placeholder"=>"Enter Mid Banner Name"))}}
-                        <span>{{$errors->first('mid_banner_name')}}</span>
+                      {{Form::text('side_banner_name',$banner->side_banner_name,array("class"=>"form-control", "placeholder"=>"Enter Side Banner Name"))}}
+                        <span>{{$errors->first('side_banner_name')}}</span>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-md-2 control-label">Mid Banner Link</label>
+                    <label class="col-md-2 control-label">Side Banner Link</label>
                     <div class="col-md-9">
-                      {{Form::text('link','',array("class"=>"form-control", "placeholder"=>"Enter Mid Banner Link"))}}
+                      {{Form::text('link',$banner->link,array("class"=>"form-control", "placeholder"=>"Enter Side Banner Link"))}}
                         <span>{{$errors->first('link')}}</span>
                     </div>
                   </div>
                    <div class="form-group">
-                    <label class="col-md-2 control-label">Mid Banner Image</label>
+                    <label class="col-md-2 control-label">Side Banner Image</label>
                     <div class="col-md-9">
-                     {{Form::file('mid_banner_image',array("class"=>"form-control"))}} 
+                     {{Form::file('side_banner_image',array("class"=>"form-control"))}}
+                     <div style="margin-top:10px">
+                     @if($banner->side_banner_image == '')
+                        There is no image uploaded for this banner
+                      @else
+                        {{HTML::image('images/'.$banner->side_banner_image,"",["class"=>"img-brand","style"=>"width:200px"])}}
+                      @endif
+                    </div>
                    </div>
                   </div>           
                   <div class="form-actions sub-center">

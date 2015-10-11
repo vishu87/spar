@@ -54,6 +54,13 @@
                         <span>{{$errors->first('side_banner_name')}}</span>
                     </div>
                   </div>
+                  <div class="form-group">
+                    <label class="col-md-2 control-label">Side Banner Link</label>
+                    <div class="col-md-9">
+                      {{Form::text('link','',array("class"=>"form-control", "placeholder"=>"Enter Side Banner Link"))}}
+                        <span>{{$errors->first('link')}}</span>
+                    </div>
+                  </div>
                    <div class="form-group">
                     <label class="col-md-2 control-label">Side Banner Image</label>
                     <div class="col-md-9">

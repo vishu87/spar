@@ -9,9 +9,9 @@
     <meta charset="utf-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
     <meta name="description" content="SPAR Nigeria">
     <meta name="author" content="Naija Go Social">
+    
     {{HTML::style("frontend/css/bootstrap.css")}}
     {{HTML::style("frontend/css/font-awesome.min.css")}}
     {{HTML::style("frontend/css/components-rounded.css")}}

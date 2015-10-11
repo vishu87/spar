@@ -48,7 +48,46 @@ class HomepageController extends BaseController {
         return Redirect::Back()->with('success', 'Successfully deleted');                    
     }
 
-   
+    public function getFlyer(){
+        $this->layout->title = 'Homepage Flyers | Admin';
+        $this->layout->top_active = 8;
+        $this->layout->sub_active = 5;
+        $params = DB::table("homepage_parameters")->get();
+        $this->layout->main = View::make("admin.homepage.flyer",["params"=>$params]);
+    }
 
+    public function putFlyer(){
+
+        if (Input::hasFile('flyer_big')){
+            $destinationPath = "images/";
+            $extension = Input::file('flyer_big')->getClientOriginalExtension();
+            $image = Input::file('flyer_big')->getClientOriginalName();
+            Input::file('flyer_big')->move($destinationPath,$image);
+            DB::table("homepage_parameters")->where("id",1)->update(array("value"=>$image));
+        }
+
+        if (Input::hasFile('flyer_mobile')){
+            $destinationPath = "images/";
+            $extension = Input::file('flyer_mobile')->getClientOriginalExtension();
+            $image = Input::file('flyer_mobile')->getClientOriginalName();
+            Input::file('flyer_mobile')->move($destinationPath,$image);
+            DB::table("homepage_parameters")->where("id",2)->update(array("value"=>$image));
+        }
+
+        if (Input::hasFile('flyer')){
+            $destinationPath = "images/";
+            $extension = Input::file('flyer')->getClientOriginalExtension();
+            $image = Input::file('flyer')->getClientOriginalName();
+            Input::file('flyer')->move($destinationPath,$image);
+            DB::table("homepage_parameters")->where("id",3)->update(array("value"=>$image));
+        }
+
+        return Redirect::Back()->with('success', 'Successfully updated');                    
+    }
+
+    public function deleteFlyer($param_id){
+        $id = DB::table("homepage_parameters")->where('id',$param_id)->update(["value"=>""]);
+        return Redirect::Back()->with('success', 'Successfully deleted');                    
+    }
 
 }

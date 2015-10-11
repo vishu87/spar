@@ -42,6 +42,8 @@
            <a href="{{url('/admin/side-banners/delete/'.$side_banner->id)}}" class="banner-del btn btn-danger pull-right">
             <i class="fa fa-remove"></i></a>
            @endif
+           <a href="{{url('/admin/side-banners/edit/'.$side_banner->id)}}" class="btn btn-warning pull-right">
+            <i class="fa fa-edit"></i></a>
            <a class="fancybox btn blue pull-right" href="{{URL("/")}}/images/{{$side_banner->side_banner_image}}">
                   <i class="fa fa-search"></i>
                 </a>

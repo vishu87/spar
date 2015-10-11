@@ -38,7 +38,7 @@ class SideBannerController extends BaseController {
                 Input::file('side_banner_image')->move($destinationPath,$image);
             } else $image ='';
             
-            $id = DB::table("side_banner")->insertGetID(array('side_banner_name'=>Input::get("side_banner_name"),'side_banner_image'=>$image));               
+            $id = DB::table("side_banner")->insertGetID(array('side_banner_name'=>Input::get("side_banner_name"),'side_banner_image'=>$image,"link"=>Input::get("link")));               
             return Redirect::Back()->with('success', '<b>'.Input::get('side_banner_name').'</b> has been successfully added');                    
         }else {
             return Redirect::Back()->withErrors($validator)->withInput();
@@ -63,5 +63,45 @@ class SideBannerController extends BaseController {
         $id = DB::table("side_banner")->where('id',$side_banner_id)->delete();
         return Redirect::Back()->with('success', 'Banner been successfully deleted');                    
     }
+
+    public function getbanner($banner_id){
+        $this->layout->title = 'Spar | Banner';
+        $this->layout->top_active = 8;
+        $this->layout->sub_active = 2;
+        $banner = DB::table('side_banner')->where('id',$banner_id)->first();
+        $this->layout->main = View::make("admin.side-banners.edit",array("banner"=>$banner));
+    }
+
+    public function putUpdate($banner_id){       
+        $cre = [
+        'side_banner_name' => Input::get('side_banner_name')
+        ];
+        $rules = [
+        'side_banner_name' => 'required'
+        ];
+        $validator = Validator::make($cre,$rules);
+        if($validator->passes()){
+
+            $banner = SideBanner::find($banner_id);
+            if($banner->exists){
+                if (Input::hasFile('side_banner_image')){
+                    $destinationPath = "images/";
+                    $extension = Input::file('side_banner_image')->getClientOriginalExtension();
+                    $image = Input::file('side_banner_image')->getClientOriginalName();
+                    Input::file('side_banner_image')->move($destinationPath,$image);
+                    $banner->side_banner_image = $image;
+                }
+                $banner->side_banner_name = Input::get('side_banner_name');
+                $banner->link = Input::get('link');
+                $banner->save();
+                return Redirect::Back()->with('success', '<b>'.Input::get('banner_name').'</b> Banner has been successfully updated');                    
+            }
+            return Redirect::Back()->with('failure', '<b>Banner not found');
+        } 
+        else {
+            return Redirect::Back()->withErrors($validator)->withInput();
+        }
+    }
+
 
 }
