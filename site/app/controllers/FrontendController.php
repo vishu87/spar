@@ -71,7 +71,7 @@ class FrontendController extends BaseController {
           }
 
           if($page->page_slug == 'brands'){
-            $brands = DB::table('brands')->get();
+            $brands = DB::table('brands')->orderBy('priority','ASC')->orderBy('id','ASC')->get();
             $page->page_content = View::make('frontend.brands', array("brands"=>$brands));
           }
 
