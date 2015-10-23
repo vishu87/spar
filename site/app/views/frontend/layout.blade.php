@@ -48,7 +48,7 @@
                     <i class="fa fa-bars"></i>
                   </button>
                   
-                  <a class="navbar-brand" href="index.php">{{ HTML::image('frontend/images/logo.png') }}</a>
+                  <a class="navbar-brand" href="{{url('/')}}">{{ HTML::image('frontend/images/logo.png') }}</a>
                 </div>
               </div>
               <div class="col-md-6 pull-right header-right hidden-xs">
