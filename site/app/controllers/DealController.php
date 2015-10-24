@@ -5,12 +5,10 @@ class DealController extends BaseController {
 
     public function postAdd(){
         $cre = [
-        'deal_name' => Input::get('deal_name'),
-        'deal_content' => Input::get('deal_content')
+        'deal_name' => Input::get('deal_name')
         ];
         $rules = [
-        'deal_name' => 'required',
-        'deal_content' => 'required'
+        'deal_name' => 'required'
         ];
         $validator = Validator::make($cre,$rules);
         if($validator->passes()){
@@ -65,12 +63,10 @@ class DealController extends BaseController {
 
     public function putupdate($deal_id){       
         $cre = [
-        'deal_name' => Input::get('deal_name'),
-        'deal_content' => Input::get('deal_content')
+        'deal_name' => Input::get('deal_name')
         ];
         $rules = [
-        'deal_name' => 'required',
-        'deal_content' => 'required'
+        'deal_name' => 'required'
         ];
         $validator = Validator::make($cre,$rules);
         if($validator->passes()){

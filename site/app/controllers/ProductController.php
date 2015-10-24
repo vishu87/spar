@@ -58,7 +58,7 @@ class ProductController extends BaseController {
                 Input::file('image')->move($destinationPath,$image);
             } else $image ='';
             
-            $id = DB::table("product_categories")->insertGetID(array('product_category'=>Input::get("product_category"),'image'=>$image));               
+            $id = DB::table("product_categories")->insertGetID(array('product_category'=>Input::get("product_category"),'color'=>Input::get("color"),'image'=>$image));               
             return Redirect::Back()->with('success', '<b>'.Input::get('product_category').'</b> has been successfully added');                    
         }else {
             return Redirect::Back()->withErrors($validator)->withInput();
@@ -79,7 +79,7 @@ class ProductController extends BaseController {
 
     public function editCategory($id){
         $this->layout->title = 'Spar | Product';
-        $this->layout->top_active = 6;
+        $this->layout->top_active = 13;
         $this->layout->sub_active = 2;
           
         $category = DB::table('product_categories')->where('id',$id)->first();
@@ -95,7 +95,7 @@ class ProductController extends BaseController {
     }
      public function getCategories(){
         $this->layout->title = 'All Products Categories | Spar';
-        $this->layout->top_active = 6;
+        $this->layout->top_active = 13;
         $this->layout->sub_active = 2;
         $categories = DB::table('product_categories')->get();
         $this->layout->main = View::make("admin.products.categories",array("categories"=>$categories));
@@ -174,7 +174,7 @@ class ProductController extends BaseController {
         ];
         $validator = Validator::make($cre,$rules);
         if($validator->passes()){
-            DB::table('product_categories')->where('id',$id)->update(array('product_category'=>Input::get("product_category")));
+            DB::table('product_categories')->where('id',$id)->update(array('product_category'=>Input::get("product_category"), 'color'=>Input::get("color")));
                 if (Input::hasFile('image')){
                     $destinationPath = "images/";
                     $extension = Input::file('image')->getClientOriginalExtension();

@@ -103,16 +103,13 @@ $(document).ready(function ($) {
 	
 	
 	////------- Projects Carousel
-	$(".projects-carousel").owlCarousel({
-		navigation : false,
+	$(".deal-carousel").owlCarousel({
+		navigation : true,
 		pagination: true,
 		slideSpeed : 400,
 		stopOnHover: true,
     	autoPlay: 3000,
-    	items : 1,
-    	itemsDesktopSmall : [900,3],
-		itemsTablet: [600,2],
-		itemsMobile : [479, 2]
+    	items : 5
 	});
 
 	////------- Projects Carousel
@@ -273,11 +270,20 @@ $(document).ready(function(){
       $('textarea.editor1').ckeditor();
 
       $(".deal-category").click(function(){
-      	if($(this).parent().find(".deal-box-contain").eq(0).hasClass("deal-box-close")){
-	      	var data = $(this).attr("data-id");
-	      	$(".deal-box-contain").slideUp("slow").addClass("deal-box-close").removeClass("deal-box-open");
-	      	$(".deal-box-contain[data-id="+data+"]").slideDown().addClass("deal-box-open").removeClass("deal-box-close");
+      	// if($(this).parent().find(".deal-box-contain").eq(0).hasClass("deal-box-close")){
+	      // 	var data = $(this).attr("data-id");
+	      // 	$(".deal-box-contain").slideUp("slow").addClass("deal-box-close").removeClass("deal-box-open");
+	      // 	$(".deal-box-contain[data-id="+data+"]").slideDown().addClass("deal-box-open").removeClass("deal-box-close");
+      	// }
+      	$(this).parent().find(".deal-box-contain").slideToggle();
+      	$(this).find('.plus-minus').toggleClass('open');
+      	if($(this).find('.plus-minus').hasClass('open')){
+      		$(this).find('.plus-minus').html('<i class="fa fa-minus"></i>');	
+      	} else {
+      		$(this).find('.plus-minus').html('<i class="fa fa-plus"></i>');
       	}
+      	
+
       });
 
     $(".store-select").change(function(e){

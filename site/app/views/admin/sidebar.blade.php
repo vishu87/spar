@@ -165,19 +165,19 @@
 
               </a>
             </li>
-            <li @if($top_active == 6 && $sub_active == 2) class="active" @endif>
-              <a href="{{url('/admin/products/categories')}}">
-                <i class="fa fa-file-image-o"></i>
-                <span class="title">Categories</span>
-                <span class="selected"></span>
-              </a>
-            </li>
           </ul>
         </li>
         <li @if($top_active == 7) class="active" @endif>
           <a href="{{url('/admin/deals')}}">
             <i class="fa fa-thumbs-o-up"></i>
             <span class="title">Deals</span>
+            <span class="selected"></span>
+          </a>
+        </li>
+        <li @if($top_active == 13) class="active" @endif>
+          <a href="{{url('/admin/products/categories')}}">
+            <i class="fa fa-file-image-o"></i>
+            <span class="title">Categories</span>
             <span class="selected"></span>
           </a>
         </li>

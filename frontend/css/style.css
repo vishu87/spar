@@ -1775,11 +1775,11 @@ ul.footer-nav li a:hover {
 	width: 100%;
 }
 .touch-carousel .owl-controls .owl-buttons .owl-prev {
-	left:-10px;
+	left:-15px;
 	position: absolute;
 }
 .touch-carousel .owl-controls .owl-buttons .owl-next {
-	right:-10px;
+	right:-15px;
 	position: absolute;
 }
 .touch-carousel.projects-carousel .owl-controls .owl-buttons {
@@ -1867,7 +1867,7 @@ ul.footer-nav li a:hover {
     -o-border-radius: 3px 0 0 3px;
 }
 .touch-carousel .owl-controls .owl-buttons div i, .testimonials-carousel .owl-controls .owl-buttons div i {
-	font-size: 50px;
+	font-size: 60px;
 	color: #AAA;
 	transition: all 0.4s ease-in-out;
     -moz-transition: all 0.4s ease-in-out;

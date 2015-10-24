@@ -239,7 +239,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#157946', end
   height: 200px;
 }
 .margin-bottom-20{
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .recipe-name{
  text-align: center;
@@ -386,6 +386,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#157946', end
   text-align: center !important;
   line-height: 1.2;
   margin: 5px 10px;
+}
+.deal-box{
+  margin: 0 5px;
+}
+.deal-box-contain .owl-pagination{
+  bottom: -35px;
+}
+.deal-box-contain .touch-carousel .owl-controls .owl-buttons .owl-prev {
+  left: -30px;
+}
+.deal-box-contain .touch-carousel .owl-controls .owl-buttons .owl-next {
+  right: -30px;
 }
 @media(max-width: 480px){
   .page-sidebar-left {

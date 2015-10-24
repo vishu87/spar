@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-6">
     <h3 class="page-title">
-      Products Categories <small></small>
+      Categories <small></small>
     </h3>
   </div>
   <div class="col-md-6 add-new">
@@ -17,11 +17,11 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      <a href="{{url('/admin/products/categories')}}">All Products Categories</a>
+      <a href="{{url('/admin/products/categories')}}">All Categories</a>
       <i class="fa fa-angle-right"></i>
     </li>  
     <li>
-      Edit Product
+      Edit Category
     </li>    
   </ul>
 </div>
@@ -59,6 +59,13 @@
             <div class="col-md-9">
               {{Form::text('product_category',$category->product_category,array("class"=>"form-control", "placeholder"=>"Enter Category Name"))}}
               <span>{{$errors->first('product_category')}}</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Category Color</label>
+            <div class="col-md-9">
+              {{Form::text('color',$category->color,array("class"=>"form-control", "placeholder"=>"Enter Color HEX Code e.g. FF0000"))}}
+              <span>{{$errors->first('color')}}</span>
             </div>
           </div>
           <div class="form-group">
