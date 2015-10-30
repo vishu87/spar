@@ -421,6 +421,7 @@
 	}
 	.brands div{
 		margin-top: 10px;
+		margin-right: 0;
 		box-sizing:border-box;
 	}
 	.brands div img {
