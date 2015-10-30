@@ -64,12 +64,16 @@
 		<div class="hr1 margin-top"></div>
 
 		<div class="row">
-			<div class="col-md-4" style="">
-				@if($params[4] != '')
-					<div class="arrival-main">
-						<a @if($params[5] != '') href="{{$params[5]}}" @else href="javascript:;" @endif target="_blank"><img src="{{url('images/'.$params[4])}}"></a>
-					</div>
-				@endif
+			<div class="col-md-4 brands" style="">
+				<div style="margin-top:0">
+					<a href="{{url('/brands')}}"><img src="{{url('/frontend/images/brands-nigeria.jpg')}}"></a>
+				</div>
+				<div>
+					<a href="{{url('/under-construction')}}"><img src="{{url('/frontend/images/recipes-front.jpg')}}"></a>
+				</div>
+				<div>
+					<a href="{{url('/under-construction')}}"><img src="{{url('/frontend/images/Kids-Corner.jpg')}}"></a>
+				</div>
 			</div>
 
 			<div class="col-md-4">
