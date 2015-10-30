@@ -28,7 +28,7 @@
     <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     
   </head>
-  <body style="background:url('{{url('frontend/images/store.jpg')}}'); ">
+  <body style="background:url('{{url('frontend/images/background.jpg')}}'); ">
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
