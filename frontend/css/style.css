@@ -1978,6 +1978,10 @@ ul.footer-nav li a:hover {
 .slider-main .slider .row{
 	box-shadow: 0 0 4px #CCC;
 }
+.slider-right{
+	text-align: center;
+	padding-left: 2px;
+}
 .arrival-main{
 	padding:0 10px 0 0;
 }

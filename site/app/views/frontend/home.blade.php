@@ -1,6 +1,6 @@
 <div id="content">
 	<div  class="slider-main">
-		<div class="slider">
+		<div>
 		<div class="row">
 				<div class="col-md-9 slider">					
 				     <section id="home">				            
@@ -31,7 +31,7 @@
 				         </div>
 				     </section>	        		
 				</div>	
-				<div class="col-md-3 " style="text-align:center">
+				<div class="col-md-3 slider-right">
         			<?php $count = 0; ?>
 				    @foreach($side_banners as $side_banner)
 					<div style="overflow:hidden; text-align:center" align="center">
