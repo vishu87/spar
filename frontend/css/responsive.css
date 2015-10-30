@@ -412,6 +412,21 @@
 	#main-slide .carousel-indicators{
 		display: none;
 	}
+	.slider-right{
+		padding-left: 0;
+		margin-top: 10px;
+	}
+	.slider-right img{
+		width: 100%;
+	}
+	.brands div{
+		margin-top: 10px;
+		box-sizing:border-box;
+	}
+	.brands div img {
+		width: 100%;
+		height: auto;
+	}
     
 }
 
