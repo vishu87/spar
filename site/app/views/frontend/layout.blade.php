@@ -137,7 +137,7 @@
                       </ul>
                   </div>
                   <div>
-                    &copy; 2015 SPAR Nigeria -  All Rights Reserved <a href="{{url(/terms-and-conditions)}}">Terms &amp; conditions</a>
+                    &copy; 2015 SPAR Nigeria -  All Rights Reserved <a href="{{url('/terms-and-conditions')}}">Terms &amp; conditions</a>
                   </div>
               </div>
             </div>   
