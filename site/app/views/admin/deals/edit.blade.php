@@ -67,6 +67,12 @@
               {{Form::select('category_id',$categories,$deal->category_id,array("class"=>"form-control", "placeholder"=>"Enter Category Name"))}}             
             </div>
           </div>
+           <div class="form-group">
+            <label class="col-md-2 control-label">Deal Type</label>
+            <div class="col-md-9">
+              {{Form::select('type',$deal_types,$deal->type,array("class"=>"form-control", "placeholder"=>"Enter Category Name"))}}             
+            </div>
+          </div>
           <div class="form-group">
             <label class="col-md-2 control-label">Deal Content</label>
             <div class="col-md-9">

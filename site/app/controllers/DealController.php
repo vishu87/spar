@@ -24,7 +24,7 @@ class DealController extends BaseController {
                 }
                 Input::file('image')->move($destinationPath,$image);
             } else $image ='';       
-            $id = DB::table("deals")->insertGetID(array('deal_name'=>Input::get("deal_name"),'category_id'=>Input::get("category_id"),'deal_content'=>Input::get("deal_content"), "image"=>$image ));               
+            $id = DB::table("deals")->insertGetID(array('deal_name'=>Input::get("deal_name"),'category_id'=>Input::get("category_id"),'deal_content'=>Input::get("deal_content"), "image"=>$image, "type"=>Input::get('type') ));               
             return Redirect::Back()->with('success', '<b>'.Input::get('deal_name').'</b> has been successfully added');                    
         }else {
             return Redirect::Back()->withErrors($validator)->withInput();
@@ -37,22 +37,26 @@ class DealController extends BaseController {
         
         $deal = DB::table('deals')->where('id',$deal_id)->first();
         $categories = DB::table('product_categories')->lists('product_category','id');  
+        $deal_types = ["0"=>"","1"=>"Daily Deals","2"=>"Reward Card Member Exclusive Offers", "3"=>"Hero Offers"];
 
-        $this->layout->main = View::make("admin.deals.edit",array("deal"=>$deal,'categories' =>$categories));
+        $this->layout->main = View::make("admin.deals.edit",array("deal"=>$deal,'categories' =>$categories, "deal_types"=>$deal_types));
     }
 
     public function getDeals(){
         $this->layout->title = 'All Deals | Spar';
         $this->layout->top_active = 7;
+        $deal_types = ["0"=>"","1"=>"Daily Deals","2"=>"Reward Card Member Exclusive Offers", "3"=>"Hero Offers"];
         $deals = DB::table('deals')->join('product_categories','deals.category_id','=','product_categories.id')->select('deals.*','product_categories.product_category')->get();
-        $this->layout->main = View::make("admin.deals.index",array("deals"=>$deals));
+        $this->layout->main = View::make("admin.deals.index",array("deals"=>$deals,"deal_types"=>$deal_types));
     }
 
     public function getadd(){
         $this->layout->title = 'Add | Deal';
         $this->layout->top_active = 7;
+        $deal_types = ["0"=>"","1"=>"Daily Deals","2"=>"Reward Card Member Exclusive Offers", "3"=>"Hero Offers"];
+
         $categories = DB::table('product_categories')->lists('product_category','id');  
-        $this->layout->main = View::make("admin.deals.add",array('categories' =>$categories));
+        $this->layout->main = View::make("admin.deals.add",array('categories' =>$categories, "deal_types"=>$deal_types));
     }
 
      public function getdelete($deal_id){
@@ -89,6 +93,7 @@ class DealController extends BaseController {
                 $deal->deal_name = Input::get('deal_name');
                 $deal->category_id = Input::get('category_id');
                 $deal->deal_content = Input::get('deal_content');
+                $deal->type = Input::get('type');
                 $deal->save();
                 return Redirect::Back()->with('success', '<b>'.Input::get('deal_name').'</b> has been successfully updated');                    
             }

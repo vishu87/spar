@@ -1,3 +1,9 @@
+<div class="deal-top">
+	<a href="{{url('/deals')}}"><img src="{{url('/frontend/images/All-Deals-Offers.png')}}"></a>
+	<a href="{{url('/deals/1')}}"><img src="{{url('/frontend/images/daily-deals.png')}}"></a>
+	<a href="{{url('/deals/2')}}"><img src="{{url('/frontend/images/reward-card-member.png')}}"></a>
+	<a href="{{url('/deals/3')}}"><img src="{{url('/frontend/images/Hero-Offers.png')}}"></a>
+</div>
 <?php $old_category = 0; $count = 0; ?>
 @foreach($deals as $deal)
 	@if($old_category != $deal->category_id && $count != 0)

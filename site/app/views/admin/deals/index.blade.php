@@ -43,6 +43,9 @@
             <th>
                Category
             </th>
+            <th>
+              Deal Type
+            </th>
            
             <th></th>
         </tr>  
@@ -75,6 +78,9 @@
             </td>
              <td>
               {{$deal->product_category}}                       
+            </td>
+            <td>
+              {{$deal_types[$deal->type]}}                       
             </td>
             <td>
               <a href="{{url('/admin/deals/edit/'.$deal->id)}}"><span class="btn yellow">Edit </span></a>

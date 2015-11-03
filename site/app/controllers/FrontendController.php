@@ -60,11 +60,18 @@ class FrontendController extends BaseController {
         //dummy
         $stores = array();
         if($page->page_content == -1){
+
           if($page->page_slug == 'deals'){
-            $deals = DB::table('deals')->select('deals.*','product_categories.product_category', 'product_categories.color')->join('product_categories','deals.category_id','=','product_categories.id')->orderBy('product_categories.product_category','asc')->get();
+            if(!$id){
+              $deals = DB::table('deals')->select('deals.*','product_categories.product_category', 'product_categories.color')->join('product_categories','deals.category_id','=','product_categories.id')->orderBy('product_categories.product_category','asc')->get();
+            } else {
+              $deals = DB::table('deals')->select('deals.*','product_categories.product_category', 'product_categories.color')->join('product_categories','deals.category_id','=','product_categories.id')->where('deals.type',$id)->orderBy('product_categories.product_category','asc')->get();
+
+            }
             $page->page_content = View::make('frontend.deal', array(
               "deals" => $deals
               ));
+          
           }
 
           if($page->page_slug == 'store-locator'){

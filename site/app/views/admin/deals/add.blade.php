@@ -61,6 +61,12 @@
                     </div>
                   </div>
                   <div class="form-group">
+            <label class="col-md-2 control-label">Deal Type</label>
+            <div class="col-md-9">
+              {{Form::select('type',$deal_types,'',array("class"=>"form-control", "placeholder"=>"Enter Category Name"))}}             
+            </div>
+          </div>
+                  <div class="form-group">
                     <label class="col-md-2 control-label">Deal Description</label>
                     <div class="col-md-9">
                      {{Form::textarea('deal_content','',array("class"=>"form-control editor1", "placeholder"=>"Deal Description"))}}  
