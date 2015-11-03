@@ -23,7 +23,7 @@ ul, ol {
 }
 
 ul {
-    padding: 0;
+    padding-left: 20px;
     margin: 0;
 }
 
@@ -2045,13 +2045,15 @@ ul.footer-nav li a:hover {
 .top-icons{
 	list-style: none;
 	float: right;
+	margin-top: -8px;
+	margin-bottom: 8px;
 }
 .top-icons li{
 	float: left;
 	padding-left: 10px;
 }
 .top-icons li a img {
-	width: 32px;
+	width: 48px;
 	height: auto;
 }
 .newsletter{
@@ -2080,3 +2082,26 @@ border-radius: 5px;
 	height: auto;
 }
 .videoWrapper{position:relative;padding-bottom:56.25%;padding-top:83px;height:0}.videoWrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+
+.cc_form label{
+	width: 100px;
+	text-align: left;
+	margin-right: 20px;
+	margin-top: 10px;
+	font-weight: 700;
+}
+.cc_form label.error{
+	color: #F00 !important;
+	text-align: left;
+	font-weight: 300;
+	width: 100%;
+}
+.cc_form input{
+	width: 50%;
+}
+
+.cc_form input[type="submit"]{
+	width: 200px;
+	margin: 20px;
+	text-align: center;
+}

@@ -293,6 +293,8 @@ $(document).ready(function(){
     	} else {
     		window.location.replace(base_url+"/store-locator");
     	}
-    })
+    });
+
+    $(".message_form").validate();
 
   });

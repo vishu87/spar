@@ -51,21 +51,21 @@
                   <a class="navbar-brand" href="{{url('/')}}">{{ HTML::image('frontend/images/logo.png') }}</a>
                 </div>
               </div>
-              <div class="col-md-6 pull-right header-right hidden-xs">
+              <div class="col-md-8 pull-right header-right hidden-xs">
                 <ul class="top-icons">
                     <li>
-                        <a href="#"><img src="{{url('frontend/images/facebook.jpg')}}"></a>
+                        <a href="https://www.facebook.com/spar.ng/" target="_blank"><img src="{{url('frontend/images/fb.png')}}"></a>
                     </li>
                     <li>
-                        <a href="#"><img src="{{url('frontend/images/twitter.jpg')}}"></a>
+                        <a href="https://twitter.com/sparnigeria" target="_blank"><img src="{{url('frontend/images/twitter.png')}}"></a>
                     </li>
                     <li>
-                        <a href="#"><img src="{{url('frontend/images/youtube.jpg')}}"></a>
+                        <a href="https://www.youtube.com/channel/UCHqHexA08mvVco8o_Kopyjg" target="_blank"><img src="{{url('frontend/images/youtube.png')}}"></a>
                     </li>
                   </ul>
                   <div>
                     <div class="newsletter">
-                     <a href=""><i class="fa fa-envelope"></i> Sign up for Newsletter and Offers today <i class="fa fa-angle-double-right"></i></a>
+                     <a href="{{url('/sign-up')}}"><i class="fa fa-envelope"></i> Sign up for Newsletter and Offers today <i class="fa fa-angle-double-right"></i></a>
                     </div>
                   </div>
               </div>
@@ -165,6 +165,7 @@
         {{HTML::script("frontend/js/bootstrap.min.js")}}
         {{HTML::script("frontend/js/bootstrap-datepicker.js")}}
         {{HTML::script("frontend/js/owl.carousel.min.js")}}
+        {{HTML::script("frontend/js/jquery.validate.js")}}
         {{HTML::script("frontend/js/script.js")}}
   </body>
 </html>
