@@ -9,8 +9,9 @@
     <meta charset="utf-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="SPAR Nigeria">
-    <meta name="author" content="Naija Go Social">
+    <meta name="description" content="{{isset($meta_description)?$meta_description:''}}">
+    <meta name="keywords" content="{{isset($meta_keywords)?$meta_keywords:''}}">
+    <meta name="author" content="SPAR Nigeria">
     
     {{HTML::style("frontend/css/bootstrap.css")}}
     {{HTML::style("frontend/css/font-awesome.min.css")}}
@@ -85,6 +86,9 @@
               <li><a class="@if(isset($page->top_active)) @if($page->top_active == 2 || $page->id == 2) active @endif @endif" href="{{url('/reward-card')}}">Loyalty Program</a></li>
               <li><a class="@if(isset($page->top_active)) @if($page->top_active == 16 || $page->id == 16) active @endif @endif" href="{{url('/gift-card')}}">Gift Cards</a></li>
               <li><a class="@if(isset($page->top_active)) @if($page->top_active == 1 || $page->id == 1) active @endif @endif" href="{{url('/about-spar')}}">About SPAR</a></li>
+              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 23 || $page->id == 23) active @endif @endif" href="{{url('/credit-card')}}">Credit Card</a></li>
+              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 24 || $page->id == 24) active @endif @endif" href="{{url('/career')}}">Career</a></li>
+              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 17 || $page->id == 17) active @endif @endif" href="{{url('/contact-us')}}">Contact Us</a></li>
             </ul>
           </div>
        </div>

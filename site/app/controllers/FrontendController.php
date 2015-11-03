@@ -56,7 +56,9 @@ class FrontendController extends BaseController {
           $right_sidebar = '';
         }
         $this->layout->page = $page;
-        $this->layout->title = $page->page_title. ' | SPAR Nigeria';
+        $this->layout->title = ($page->meta_title != '')?$page->meta_title:$page->page_title. ' | SPAR Nigeria';
+        $this->layout->meta_description = $page->meta_description;
+        $this->layout->meta_keywords = $page->meta_keywords;
         //dummy
         $stores = array();
         if($page->page_content == -1){
