@@ -109,7 +109,7 @@ $(document).ready(function ($) {
 		slideSpeed : 400,
 		stopOnHover: true,
     	autoPlay: 3000,
-    	items : 5
+    	items : 4
 	});
 
 	////------- Projects Carousel
