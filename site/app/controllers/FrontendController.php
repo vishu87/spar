@@ -87,11 +87,6 @@ class FrontendController extends BaseController {
             $page->page_content = View::make('frontend.stores', array("stores"=>$stores,"cities"=>$cities,"id"=>$id,"upcoming_stores"=>$upcoming_stores));
           }
 
-          if($page->page_slug == 'brands'){
-            $brands = DB::table('brands')->orderBy('priority','ASC')->orderBy('id','ASC')->get();
-            $page->page_content = View::make('frontend.brands', array("brands"=>$brands));
-          }
-
           if($page->page_slug == 'kids-corner'){
             $kids = DB::table('kids')->get();
             $page->page_content = View::make('frontend.kids', array("kids"=>$kids));
@@ -102,8 +97,8 @@ class FrontendController extends BaseController {
             $page->page_content = View::make('frontend.recipe', array("recipes"=>$recipe,"user_recipes"=>$user_recipe));
           }
            if($page->page_slug == 'product-range'){
-            $products = DB::table('product_categories')->get();
-            $page->page_content = View::make('frontend.pages.about_product', array("products"=>$products));
+            $brands = DB::table('brands')->orderBy('priority','ASC')->orderBy('id','ASC')->get();
+            $page->page_content = View::make('frontend.brands', array("brands"=>$brands));
           }
             if($page->page_slug == 'add-recipe'){
             $recipes = Recipe::select('recipe.*')->limit(3)->get();

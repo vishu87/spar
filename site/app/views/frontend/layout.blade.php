@@ -80,7 +80,7 @@
           <div class="navbar-default navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li><a class="@if(Request::is('/')) active @endif" href="{{url('/')}}"><i class="fa fa-home"></i></a></li>
-              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 20 || $page->id == 20) active @endif @endif" href="{{url('/brands')}}">Product Range</a></li>
+              <li><a class="@if(isset($page->top_active)) @if($page->top_active == 20 || $page->id == 20) active @endif @endif" href="{{url('/product-range')}}">Product Range</a></li>
               <li><a class="@if(isset($page->top_active)) @if($page->top_active == 19 || $page->id == 19) active @endif @endif" href="{{url('/store-locator')}}">Store Locator</a></li>
               <li><a class="@if(isset($page->top_active)) @if($page->top_active == 18 || $page->id == 18) active @endif @endif" href="{{url('/deals')}}">Deals</a></li>
               <li><a class="@if(isset($page->top_active)) @if($page->top_active == 2 || $page->id == 2) active @endif @endif" href="{{url('/reward-card')}}">Loyalty Program</a></li>
