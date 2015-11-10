@@ -66,7 +66,7 @@
 		<div class="row">
 			<div class="col-md-4 brands" style="">
 				<div style="margin-top:0">
-					<a href="{{url('/brands')}}"><img src="{{url('/frontend/images/brands-nigeria.jpg')}}"></a>
+					<a href="{{url('/under-construction')}}"><img src="{{url('/frontend/images/brands-nigeria.jpg')}}"></a>
 				</div>
 				<div>
 					<a href="{{url('/under-construction')}}"><img src="{{url('/frontend/images/recipes-front.jpg')}}"></a>

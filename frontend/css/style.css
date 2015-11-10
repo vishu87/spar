@@ -1,6 +1,14 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
 @import url(http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic);
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,700);
+/*@import url(http://fonts.googleapis.com/css?family=Raleway:400,300,700);*/
+/*@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:700);*/
+/*@import url(https://fonts.googleapis.com/css?family=Droid+Serif:700);*/
+/*@import url(https://fonts.googleapis.com/css?family=Signika:700);*/
+/*@import url(https://fonts.googleapis.com/css?family=Quicksand:700);*/
+/*@import url(https://fonts.googleapis.com/css?family=Merriweather:900,700);*/
+/*@import url(https://fonts.googleapis.com/css?family=Istok+Web:700);*/
+/*@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);*/
+/*@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:700);*/
 
 body {
 	font-family: 'Open Sans', sans-serif;
@@ -1133,12 +1141,20 @@ ul.icons-list li i {
 .classic-title {
 	margin-bottom: 16px;
 	padding-bottom: 8px;
-    font-weight: 600;
+    font-weight: 700;
 	font-size: 30px;
 	text-transform: uppercase;
 	text-align: center;
 	color: #999;
 	font-family: 'Lora';
+	/*font-family: 'Droid Serif', serif;*/
+	/*font-family: 'Signika', sans-serif;*/
+	/*font-family: 'Merriweather', serif;*/
+
+	/*font-family: 'Istok Web', sans-serif;*/
+	/*font-family: 'Montserrat', sans-serif;
+	font-family: 'Josefin Sans', sans-serif;*/
+
 }
 .classic-title span {
 	background: #FFF;
@@ -1146,6 +1162,7 @@ ul.icons-list li i {
 }
 .classic-title span b{
 color: #157946;
+font-weight: inherit;
 }
 .classic-title hr{
 	 border-color:#DDD; margin-top:-12px
