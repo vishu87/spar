@@ -138,7 +138,7 @@
         <li @if($top_active == 4) class="active" @endif>
           <a href="{{url('/admin/brands')}}">
             <i class="fa fa-apple"></i>
-            <span class="title">Brands</span>
+            <span class="title">Product Range</span>
             <span class="selected"></span>
           </a>
         </li>
@@ -181,14 +181,14 @@
             <span class="selected"></span>
           </a>
         </li>
-        <li @if($top_active == 9) class="active" @endif>
+        <li @if($top_active == 9) class="active" @endif style="display:none">
           <a href="{{url('/admin/users_recipe')}}">
             <i class="fa fa-cutlery"></i>
             <span class="title">Users Recipe</span>
             <span class="selected"></span>
           </a>
         </li>
-        <li @if($top_active == 12) class="active" @endif>
+        <li @if($top_active == 12) class="active" @endif style="display:none">
           <a href="{{url('/admin/customer-reviews')}}">
             <i class="fa fa-comment-o"></i>
             <span class="title">Customer Review</span>

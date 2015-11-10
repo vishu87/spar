@@ -31,6 +31,7 @@
 							</div>
 						</div>
 					</div>
+					@if($count % 3 == 0) </div><div class="row" > @endif
 				<?php $count++; $old_store = $store->city_id ?>
 				@endforeach
 
