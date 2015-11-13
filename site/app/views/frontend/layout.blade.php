@@ -32,7 +32,7 @@
   <?php
     $back_image = DB::table('homepage_parameters')->select('value')->where('id',7)->first();
   ?>
-  <body style="background:url('{{url('images/'.$back_image->value)}}'); ">
+  <body @if($back_image) style="background:url('{{url('images/'.$back_image->value)}}'); " @endif>
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
