@@ -82,6 +82,14 @@ class HomepageController extends BaseController {
             DB::table("homepage_parameters")->where("id",3)->update(array("value"=>$image));
         }
 
+        if (Input::hasFile('background_image')){
+            $destinationPath = "images/";
+            $extension = Input::file('background_image')->getClientOriginalExtension();
+            $image = Input::file('background_image')->getClientOriginalName();
+            Input::file('background_image')->move($destinationPath,$image);
+            DB::table("homepage_parameters")->where("id",7)->update(array("value"=>$image));
+        }
+
         return Redirect::Back()->with('success', 'Successfully updated');                    
     }
 

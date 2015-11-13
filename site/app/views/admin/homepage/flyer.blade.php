@@ -84,6 +84,25 @@
               </div>
             </div>
           </div>
+
+          <div class="row" style="margin-top:10px">
+            <div class="form-group">
+              <label class="col-md-2 control-label">Background Image</label>
+              <div class="col-md-3">
+                {{Form::file('background_image',array("class"=>"form-control"))}}
+              </div>
+              <div class="col-md-4">
+                @foreach($params as $param)
+                  @if($param->id == 7)
+                    @if($param->value != '')
+                      <a class="btn blue" href="{{url('images/'.$param->value)}}" target="_blank">View</a>
+                      <a class="btn red" href="{{url('/admin/homepage/flyer/delete/'.$param->id)}}">Delete</a>
+                    @endif
+                  @endif
+                @endforeach
+              </div>
+            </div>
+          </div>
           <div class="row" style="margin:10px">
             <button type="submit" class="btn btn-success">Update</button>
           </div>
