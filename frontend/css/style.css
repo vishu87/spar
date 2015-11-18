@@ -2024,7 +2024,7 @@ ul.footer-nav li a:hover {
 	padding: 5px;
 }
 .deal-box{
-	border: 1px solid #EEE;
+	/*border: 1px solid #EEE;*/
 }
 .deal-box:hover{
 	box-shadow: 0 0 3px #CCC;
