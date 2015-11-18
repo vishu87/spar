@@ -265,6 +265,7 @@ $(document).ready(function ($) {
 });
 
 $(document).ready(function(){
+	
     $(".datepicker").datepicker({'format':'dd-mm-yyyy'});
       CKEDITOR.config.allowedContent = true;
       $('textarea.editor1').ckeditor();
@@ -295,6 +296,32 @@ $(document).ready(function(){
     	}
     });
 
-    $(".message_form").validate();
+
+    $(document).on('click','form button[type=submit]', function(e){
+	    e.preventDefault();
+	    if($("form").valid()){
+	    	var btn = $(this);
+	    	var initial_html = btn.html();
+	    	btn.html(initial_html+' <i class="fa fa-spin fa-spinner"></i>');
+	    	var form = $(this).parents("form:first");
+			var dataString = form.serialize();
+			var formAction = form.attr('action');
+			$.ajax({
+			    type: "POST",
+			    url : formAction,
+			    data : dataString,
+			    success : function(data){
+			    	data = JSON.parse(data);
+			    	if(data.success){
+			    		$("form").append('<div class="success">'+data.message+'</div>');
+			    		$("form").find("input, textarea").val("");
+			    	} else {
+			    		alert(data.message);
+			    	}
+			    	btn.html(initial_html);
+			    }
+			},"json");
+	    }
+	});
 
   });

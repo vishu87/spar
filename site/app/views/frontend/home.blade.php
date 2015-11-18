@@ -115,7 +115,7 @@
 				
 				@foreach($homepage_deals as $deal)
 				<div class="offer-item item">
-					<a href="#"><img src="{{url('images/'.$deal->image)}}" alt="{{$deal->deal_name}}" /></a>
+					<a href="{{url('/deals')}}"><img src="{{url('images/'.$deal->image)}}" alt="{{$deal->deal_name}}" /></a>
 				</div>
 				@endforeach
 			</div>

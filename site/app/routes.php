@@ -3,32 +3,34 @@
 	 //Front-end starts
 
     Route::get('/', 'FrontendController@index');
-    Route::get('/products/{id}', 'FrontendController@products');
-    Route::get('/comments/{id}', 'FrontendController@comments');
-    Route::post('/comments/add-comment/{review_id}','FrontendController@postaddComment');
-    // Route::get('/deals', 'FrontendController@deal');
- 
-    Route::get('/recipes/{id}','FrontendController@getRecipesdetail');
-    Route::post('/add-recipe','FrontendController@postaddRecipe');
-    Route::get('/kids-corner/{id}','FrontendController@getkids');
-    Route::post('/submit-your-reviews/add-review','FrontendController@postaddReview');
-   	Route::group(['prefix' => 'recipes'], function () {
-	   	//Route::get('/','FrontendController@getRecipesdetail');
-	   	Route::get('/add','FrontendController@getAddRecipesdetail');
-	   	Route::get('/{id}','FrontendController@getRecipesdetail');	
-	   //Route::post('/store','FrontendController@postAdd'); 
-	}); 
+    Route::post('/form-submit/{id}', 'FrontendController@formSubmit');
 
-	Route::group(['prefix' => 'pages'], function () {
-	   	Route::get('/aboutus/{id}','FrontendController@getAbout');
-	   	Route::get('/product-range','FrontendController@aboutproduct');
-	   	Route::get('/trivia','FrontendController@abouttrivia');
-	   	Route::get('/customer-reviews','FrontendController@aboutCustomer_review');
-	   	Route::get('/customer-service','FrontendController@aboutCustomer_service');
-	   	Route::get('/reward-card','FrontendController@aboutReward_card');
-	   	Route::get('/reward-card/definition','FrontendController@getDefinition');
-	   	Route::get('/gift-card','FrontendController@aboutGift_card');
-	});
+    // Route::get('/products/{id}', 'FrontendController@products');
+ //    Route::get('/comments/{id}', 'FrontendController@comments');
+ //    Route::post('/comments/add-comment/{review_id}','FrontendController@postaddComment');
+ //    // Route::get('/deals', 'FrontendController@deal');
+ 
+ //    Route::get('/recipes/{id}','FrontendController@getRecipesdetail');
+ //    Route::post('/add-recipe','FrontendController@postaddRecipe');
+ //    Route::get('/kids-corner/{id}','FrontendController@getkids');
+ //    Route::post('/submit-your-reviews/add-review','FrontendController@postaddReview');
+ //   	Route::group(['prefix' => 'recipes'], function () {
+	//    	//Route::get('/','FrontendController@getRecipesdetail');
+	//    	Route::get('/add','FrontendController@getAddRecipesdetail');
+	//    	Route::get('/{id}','FrontendController@getRecipesdetail');	
+	//    //Route::post('/store','FrontendController@postAdd'); 
+	// }); 
+
+	// Route::group(['prefix' => 'pages'], function () {
+	//    	Route::get('/aboutus/{id}','FrontendController@getAbout');
+	//    	Route::get('/product-range','FrontendController@aboutproduct');
+	//    	Route::get('/trivia','FrontendController@abouttrivia');
+	//    	Route::get('/customer-reviews','FrontendController@aboutCustomer_review');
+	//    	Route::get('/customer-service','FrontendController@aboutCustomer_service');
+	//    	Route::get('/reward-card','FrontendController@aboutReward_card');
+	//    	Route::get('/reward-card/definition','FrontendController@getDefinition');
+	//    	Route::get('/gift-card','FrontendController@aboutGift_card');
+	// });
 	
 
 
