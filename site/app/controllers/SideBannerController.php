@@ -82,7 +82,7 @@ class SideBannerController extends BaseController {
         $validator = Validator::make($cre,$rules);
         if($validator->passes()){
 
-            $banner = SideBanner::find($banner_id);
+            $banner = Sidebanner::find($banner_id);
             if($banner->exists){
                 if (Input::hasFile('side_banner_image')){
                     $destinationPath = "images/";
