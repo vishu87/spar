@@ -2045,8 +2045,8 @@ ul.footer-nav li a:hover {
   display: block;
 }
 .offer-item{
-	box-shadow:0 0 2px #CCC;
-	border:1px solid #EEE;
+	/*box-shadow:0 0 2px #CCC;
+	border*/:1px solid #EEE;
 	margin: 5px;
 	padding: 10px;
 }
