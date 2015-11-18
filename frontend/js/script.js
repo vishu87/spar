@@ -268,7 +268,6 @@ $(document).ready(function(){
 	
     $(".datepicker").datepicker({'format':'dd-mm-yyyy'});
       CKEDITOR.config.allowedContent = true;
-      $('textarea.editor1').ckeditor();
 
       $(".deal-category").click(function(){
       	// if($(this).parent().find(".deal-box-contain").eq(0).hasClass("deal-box-close")){

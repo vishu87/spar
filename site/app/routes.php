@@ -45,6 +45,8 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 	Route::get('/','BannerController@getbanners');
 	Route::post('/get_images','SidebarController@getImages');
 
+	Route::get('/forms','FormDataController@index');
+
 	Route::group(['prefix' => 'recipes'], function () {
 		Route::get('/','RecipeController@getRecipes');
 		Route::get('/add','RecipeController@getAdd');
