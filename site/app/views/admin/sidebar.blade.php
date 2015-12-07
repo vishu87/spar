@@ -205,9 +205,34 @@
         <li @if($top_active == 14) class="active" @endif>
           <a href="{{url('/admin/forms')}}">
             <i class="fa fa-thumbs-o-up"></i>
-            <span class="title">Forms</span>
+            <span class="title">Forms Data</span>
             <span class="selected"></span>
           </a>
+        </li>
+        <li @if($top_active == 15) class="active" @endif>
+          <a href="javscript:;">
+            <i class="fa fa-cutlery"></i>
+            <span class="title">Careers</span>
+            <span class="selected"></span>
+            <span class="arrow open"></span>
+          </a>
+          <ul class="sub-menu">
+            <li @if($top_active == 15 && $sub_active == 1) class="active" @endif>
+              <a href="{{url('/admin/jobs')}}">
+                <i class="fa fa-file-image-o"></i>
+                <span class="title">All Careers</span>
+                <span class="selected"></span>
+
+              </a>
+            </li>
+            <li @if($top_active == 15 && $sub_active == 2) class="active" @endif>
+              <a href="{{url('/admin/jobs/categories')}}">
+                <i class="fa fa-file-image-o"></i>
+                <span class="title">Categories</span>
+                <span class="selected"></span>
+              </a>
+            </li>
+          </ul>
         </li>
         @if(Auth::user()->priviledge == 1)
         <li @if($top_active == 10) class="active" @endif>

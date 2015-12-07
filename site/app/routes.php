@@ -46,6 +46,8 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 	Route::post('/get_images','SidebarController@getImages');
 
 	Route::get('/forms','FormDataController@index');
+	Route::get('/forms/delete/{id}',array('before'=>'authadmin', 'uses'=>'FormDataController@getdelete'));
+	
 
 	Route::group(['prefix' => 'recipes'], function () {
 		Route::get('/','RecipeController@getRecipes');
