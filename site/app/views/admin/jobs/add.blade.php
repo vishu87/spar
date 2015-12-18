@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-6">
     <h3 class="page-title">
-      Recipes <small></small>
+      Jobs <small></small>
     </h3>
   </div>
   <div class="col-md-6 add-new">
@@ -17,11 +17,11 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-       <a href="{{url('/admin/recipes')}}">All Recipe</a>
+       <a href="{{url('/admin/recipes')}}">All Job</a>
        <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      Add Recipe
+      Add Job
     </li>   
   </ul>
 </div>
@@ -41,71 +41,70 @@
    <div class="portlet box blue">
             <div class="portlet-title">
               <div class="caption">
-                Add Recipe
+                Add Job
               </div>           
             </div>
             <div class="portlet-body form">
-              {{Form::open(array("url"=>"/admin/recipes/store","method" => "POST","role"=>"form","class" => "form-horizontal","files"=>"true"))}}
+              {{Form::open(array("url"=>"/admin/jobs/store","method" => "POST","role"=>"form","class" => "form-horizontal","files"=>"true"))}}
                 <div class="form-body">
                   <div class="form-group">
-                    <label class="col-md-2 control-label">Recipe Name</label>
+                    <label class="col-md-2 control-label">Job Name</label>
                     <div class="col-md-9">
-                      {{Form::text('recipe_name','',array("class"=>"form-control", "placeholder"=>"Enter Recipe Name"))}}
-                        <span class="error">{{$errors->first('recipe_name')}}</span>
+                      {{Form::text('job_name','',array("class"=>"form-control", "placeholder"=>"Enter job Name"))}}
+                        <span class="error">{{$errors->first('job_name')}}</span>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-md-2 control-label">Recipe Category</label>
+                    <label class="col-md-2 control-label">Job Id</label>
+                    <div class="col-md-9">
+                      {{Form::text('job_id','',array("class"=>"form-control", "placeholder"=>"Enter job id"))}}
+                        <span class="error">{{$errors->first('job_id')}}</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-2 control-label">Job Category</label>
                     <div class="col-md-5">
                       {{Form::select('category_id',$categories,'',array("class"=>"form-control"))}}
                         <span class="error">{{$errors->first('category_id')}}</span>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-md-2 control-label">Preparation Time</label>
+                    <label class="col-md-2 control-label">Department</label>
                     <div class="col-md-9">
-                      {{Form::text('preparation_time','',array("class"=>"form-control", "placeholder"=>"Enter Preparation Time"))}}
-                        <span class="error">{{$errors->first('preparation_time')}}</span>
+                      {{Form::textarea('job_department','',array("class"=>"form-control", "placeholder"=>"Department"))}}
+                        <span class="error">{{$errors->first('job_department')}}</span>
+                    </div>
+                  </div>  
+                  <div class="form-group">
+                    <label class="col-md-2 control-label">Specification</label>
+                    <div class="col-md-9">
+                      {{Form::textarea('specification','',array("class"=>"form-control", "placeholder"=>"Specification"))}}
+                        <span class="error">{{$errors->first('specification')}}</span>
                     </div>
                   </div>                 
                   <div class="form-group">
-                    <label class="col-md-2 control-label">Description</label>
+                    <label class="col-md-2 control-label">Qualification</label>
                     <div class="col-md-9">
-                       {{Form::textarea('description','',array("class"=>"form-control editor1", "placeholder"=>"Description ckeditor"))}}  
-                       <span class="error">{{$errors->first('description')}}</span>          
+                       {{Form::textarea('qualification','',array("class"=>"form-control ", "placeholder"=>"Qualification"))}}  
+                       <span class="error">{{$errors->first('qualification')}}</span>          
                     </div>
                   </div>        
                   <div class="form-group">
-                    <label class="col-md-2 control-label">Ingredients</label>
+                    <label class="col-md-2 control-label">Skills</label>
                     <div class="col-md-9">
-                     {{Form::textarea('ingredient','',array("class"=>"form-control editor1", "placeholder"=>"Ingredient"))}} 
-                     <span class="error">{{$errors->first('ingredient')}}</span>
+                     {{Form::textarea('skills','',array("class"=>"form-control ", "placeholder"=>"skills"))}} 
+                     <span class="error">{{$errors->first('skills')}}</span>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-md-2 control-label">Cook Time</label>
+                    <label class="col-md-2 control-label">Work Experence</label>
                     <div class="col-md-9">
-                      {{Form::text('cook_time','',array("class"=>"form-control", "placeholder"=>"Enter Cook Time"))}}
-                    </div>
-                  </div>   
-                  <div class="form-group">
-                    <label class="col-md-2 control-label">To Serve</label>
-                    <div class="col-md-9">
-                      {{Form::text('to_serve','',array("class"=>"form-control", "placeholder"=>"Enter To Serve"))}}
+                      {{Form::textarea('w_expr','',array("class"=>"form-control", "placeholder"=>"Work Experence"))}}
+                     <span class="error">{{$errors->first('w_expr')}}</span>
+
                     </div>
                   </div>   
-                  <div class="form-group">
-                    <label class="col-md-2 control-label">Method</label>
-                    <div class="col-md-9">
-                     {{Form::textarea('method','',array("class"=>"form-control editor1", "placeholder"=>"Method"))}} 
-                   </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-md-2 control-label">Recipe Image</label>
-                    <div class="col-md-9">
-                     {{Form::file('recipe_image',array("class"=>"form-control"))}} 
-                   </div>
-                  </div>
+                  
                   </div>
                   <div class="form-actions sub-center">
                     <button type="submit" class="btn btn-success">Submit</button>

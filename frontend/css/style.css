@@ -2101,7 +2101,7 @@ border-radius: 5px;
 .videoWrapper{position:relative;padding-bottom:56.25%;padding-top:83px;height:0}.videoWrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%}
 
 .cc_form label{
-	width: 20%;
+	/*width: 20%;*/
 	text-align: left;
 	margin-right: 20px;
 	margin-top: 10px;
@@ -2161,3 +2161,40 @@ background: linear-gradient(135deg,  rgba(157,213,58,1) 0%,rgba(161,213,79,1) 50
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd53a', endColorstr='#7cbc0a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
 }
+.career-heading h1{
+	text-align:center;
+	margin:20px;
+}
+.career-text {
+	text-align:center;
+	margin:0 0 30px 0;
+}
+.career-text p{
+	font-size: 16px;
+	text-align: center !important;
+}
+.career-options{
+	text-align: center;
+	font-size: 16px;
+}
+.career-options img {
+	margin-bottom: 10px;
+}
+.job-category{
+	margin: 10px 0 20px 0;
+	text-align: center;
+}
+.job-details{
+	/*background:#F7f7f7;*/
+	margin: 5px;
+	padding: 10px;
+	border-top: 1px solid #CCC;
+}
+.job-details > div{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.job-details .col-md-3{
+	font-weight: bold;
+}
+.

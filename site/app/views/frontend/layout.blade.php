@@ -117,7 +117,7 @@
                             'consumer_secret'           => 'iPsT3OKLfvsyNutH0YkVy9Rh1j2k9ePilhx9vOJaps8jFr4ztr',
                             'access_token'              => '2540278561-rKu6wUzFOeuaPCcYOnZHDvX7vDpXWkftyLzkrFA',
                             'access_token_secret'       => 'oL1DVxj9k4voG6QMiQqDgst0rk9x0cFNuKjkakIyyZR3g',
-                            'twitter_screen_name'       => 'corperlife'
+                            'twitter_screen_name'       => 'sparnigeria'
                             ));
                           echo $TweetPHP->get_tweet_list();
                           ?>

@@ -2,11 +2,11 @@
 <div class="row">
   <div class="col-md-6">
     <h3 class="page-title">
-      Recipes <small></small>
+      jobs <small></small>
     </h3>
   </div>
   <div class="col-md-6 add-new">
-    <a href="{{url('/admin/recipes/add')}}" class="btn green">Add New</a>
+    <a href="{{url('/admin/jobs/add')}}" class="btn green">Add New</a>
   </div>
 </div>
 <div class="page-bar">
@@ -17,7 +17,7 @@
       <i class="fa fa-angle-right"></i>
     </li>
     <li>
-      All Recipes
+      All Jobs
     </li>   
   </ul>
 </div>
@@ -38,16 +38,19 @@
               #
             </th>
             <th>
-               Recipe Name
+               Job Name
             </th>
             <th>
-               Recipe Category
+               Job Category
             </th>
             <th>
-               Preparation Time
+               Job Id
             </th>
             <th>
-               Cook Time
+               Qualification
+            </th>
+            <th>
+               Specification
             </th>
             <th></th>
         </tr>  
@@ -72,25 +75,27 @@
       </tfoot>
       <tbody>
         <?php $count = 0; ?>
-        @foreach($recipes as $recipe)
+        @foreach($jobs as $job)
           <tr>
             <td>{{++$count}}</td>
+            <td>{{$job->job_title}}</td>
             <td>
-              {{$recipe->recipe_name}}                       
+              {{$job->job_cat}}                       
             </td> 
             <td>
-              {{$recipe->recipe_category}}                       
+              {{$job->job_id}}
+            </td>
+            <td>
+              {{$job->qualification}}                       
             </td>            
             <td>
-              {{$recipe->preparation_time}}                       
+              {{$job->specifications}}                       
             </td>
+            
             <td>
-              {{$recipe->cook_time}}
-            </td>
-            <td>
-              <a href="{{url('/admin/recipes/edit/'.$recipe->id)}}"><span class="btn yellow">Edit </span></a>
+              <a href="{{url('/admin/jobs/edit/'.$job->id)}}"><span class="btn yellow">Edit </span></a>
              @if(Auth::user()->priviledge == 1)
-              <a href="{{url('/admin/recipes/delete/'.$recipe->id)}}" class="del"><span class="btn btn-danger">Delete </span></a>
+              <a href="{{url('/admin/jobs/delete/'.$job->id)}}" class="del"><span class="btn btn-danger">Delete </span></a>
               @endif
             </td>
           </tr>

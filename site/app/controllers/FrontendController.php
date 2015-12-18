@@ -127,6 +127,11 @@ class FrontendController extends BaseController {
           $stores = DB::table('stores')->lists('name','id');
           $page->page_content = View::make('frontend.customer_review',array('stores' => $stores));
         }
+        if($page->page_slug == 'career'){
+          $jobs = DB::table('jobs')->select('jobs.*','job_types.job_type as job_type_name')->join('job_types','jobs.job_type','=','job_types.id')->orderBy('job_type','ASC')->get();
+          $categories = DB::table('job_types')->get();
+          $page->page_content = View::make('frontend.career', array("jobs"=>$jobs));
+        }
 
       }
 

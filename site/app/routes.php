@@ -68,7 +68,25 @@ Route::group(['prefix' => 'admin','before' => 'auth'], function () {
 	    Route::get('/categories/edit/{id}','RecipeController@editCategory');
 	    Route::post('/categories/store','RecipeController@postCategory');
 	});
+	Route::group(['prefix' => 'jobs'], function () {
+		Route::get('/','JobController@getJobs');
+		Route::get('/add','JobController@getAdd');
+		Route::post('/store','JobController@postAdd');
+		Route::post('/related/save/{recipe_id}','JobController@postAddrelated');
+		Route::post('/related-product/save/{recipe_id}','JobController@postAddrelatedpro');
+		Route::get('/edit/{id}','JobController@getrecipe');
+	    Route::put('/update/{id}', 'JobController@putupdate');
+	    Route::get('/delete/{id}',array('before'=>'authadmin', 'uses'=>'JobController@getdelete'));
+	    Route::get('/related/del/{id}', 'JobController@getdel');
+	    Route::get('/related-product/del/{id}', 'JobController@getdelpro');
 
+	    Route::get('/categories','JobController@getCategories');
+	    Route::get('/categories/add','JobController@addCategory');
+	    Route::get('/categories/delete/{id}','JobController@deleteCategory');
+	    Route::put('/categories/update/{id}', 'JobController@updateCategory');
+	    Route::get('/categories/edit/{id}','JobController@editCategory');
+	    Route::post('/categories/store','JobController@postCategory');
+	});
 	Route::group(['prefix' => 'homepage'], function () {
 		Route::get('/offers','HomepageController@getOffers');
 		Route::post('/offers/add','HomepageController@addOffer');
