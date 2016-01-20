@@ -128,8 +128,6 @@ $(document).ready(function ($) {
 	
 	
 	////------- Testimonials Carousel
-
-
 	$(".testimonials-carousel").owlCarousel({
 		navigation : true,
 		pagination: false,

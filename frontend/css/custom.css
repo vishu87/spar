@@ -399,6 +399,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#157946', end
 .deal-box-contain .touch-carousel .owl-controls .owl-buttons .owl-next {
   right: -30px;
 }
+.btn.green{
+  background: #1A9241;
+  color: #fff;
+}
+.btn.default{
+  background: #C7C7C7;
+  color: #fff;
+}
 @media(max-width: 480px){
   .page-sidebar-left {
     padding-right: 0;

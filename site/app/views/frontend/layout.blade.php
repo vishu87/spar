@@ -13,10 +13,9 @@
     <meta name="keywords" content="{{isset($meta_keywords)?$meta_keywords:''}}">
     <meta name="author" content="SPAR Nigeria">
     
-    {{HTML::style("frontend/css/bootstrap.css")}}
+    {{HTML::style("frontend/css/bootstrap.min.css")}}
     {{HTML::style("frontend/css/font-awesome.min.css")}}
-    {{HTML::style("frontend/css/components-rounded.css")}}
-    {{HTML::style("frontend/css/style.css?v=1.0.0")}}
+    {{HTML::style("frontend/css/style.min.css?v=1.0.0")}}
     {{HTML::style("frontend/css/style_responsive.css?v=1.0.0")}}
     {{HTML::style("frontend/css/responsive.css?v=1.0.0")}}
     {{HTML::style("frontend/css/colors.css?v=1.0.0")}}
@@ -166,7 +165,8 @@
         {{HTML::script("frontend/js/jquery-2.1.1.min.js")}}
         {{HTML::script("frontend/js/jquery.migrate.js")}}
         {{HTML::script("frontend/js/owl.carousel.min.js")}}
-        {{HTML::script("frontend/js/jquery.validate.js")}}
-        {{HTML::script("frontend/js/script.js")}}
+        {{HTML::script("frontend/js/jquery.validate.min.js")}}
+        {{HTML::script("frontend/js/bootstrap.min.js")}}
+        {{HTML::script("frontend/js/script.min.js")}}
   </body>
 </html>
