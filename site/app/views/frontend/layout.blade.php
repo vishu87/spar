@@ -16,11 +16,9 @@
     {{HTML::style("frontend/css/bootstrap.css")}}
     {{HTML::style("frontend/css/font-awesome.min.css")}}
     {{HTML::style("frontend/css/components-rounded.css")}}
-    {{HTML::style("frontend/css/datepicker3.css")}}
     {{HTML::style("frontend/css/style.css?v=1.0.0")}}
     {{HTML::style("frontend/css/style_responsive.css?v=1.0.0")}}
     {{HTML::style("frontend/css/responsive.css?v=1.0.0")}}
-    {{HTML::style("frontend/css/animate.css?v=1.0.0")}}
     {{HTML::style("frontend/css/colors.css?v=1.0.0")}}
     {{HTML::style("frontend/css/custom.css?v=1.0.0")}}
     
@@ -108,7 +106,7 @@
           <div class="row footer-widgets small-align-center">                   
               <div class="col-md-4">
                   <div class="footer-widget twitter-widget">
-                      <h4><i class="fa fa-twitter"></i> Twitter Feed<span class="head-line"></span></h4>
+                      <h4><i class="fa fa-twitter"></i> Twitter<span class="head-line"></span></h4>
                       <div style="padding-right:20px">
                         <?php
                           include(app_path().'/tweet/TweetPHP.php');
@@ -126,7 +124,7 @@
               </div>              
               <div class="col-md-4">
                   <div class="footer-widget flickr-widget">
-                      <h4>Facebook Feed<span class="head-line"></span></h4>
+                      <h4>Facebook<span class="head-line"></span></h4>
                       <div class="fb-page" data-href="https://www.facebook.com/spar.ng" data-height="250" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/spar.ng"><a href="https://www.facebook.com/spar.ng">SPAR Nigeria</a></blockquote></div></div>
                   </div>
               </div>               
@@ -140,7 +138,7 @@
                       </ul>
                   </div>
                   <div>
-                    &copy; 2015 SPAR Nigeria -  All Rights Reserved <a href="{{url('/terms-and-conditions')}}">Terms &amp; conditions</a>
+                    &copy; 2016 SPAR Nigeria -  All Rights Reserved <a href="{{url('/terms-and-conditions')}}">Terms &amp; conditions</a>
                   </div>
               </div>
             </div>   
@@ -167,10 +165,6 @@
       </script>
         {{HTML::script("frontend/js/jquery-2.1.1.min.js")}}
         {{HTML::script("frontend/js/jquery.migrate.js")}}
-        {{HTML::script("assets/global/plugins/ckeditor/ckeditor.js")}}
-        {{HTML::script("assets/global/plugins/ckeditor/adapters/jquery.js")}}
-        {{HTML::script("frontend/js/bootstrap.min.js")}}
-        {{HTML::script("frontend/js/bootstrap-datepicker.js")}}
         {{HTML::script("frontend/js/owl.carousel.min.js")}}
         {{HTML::script("frontend/js/jquery.validate.js")}}
         {{HTML::script("frontend/js/script.js")}}

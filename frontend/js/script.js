@@ -128,6 +128,8 @@ $(document).ready(function ($) {
 	
 	
 	////------- Testimonials Carousel
+
+
 	$(".testimonials-carousel").owlCarousel({
 		navigation : true,
 		pagination: false,
@@ -266,8 +268,8 @@ $(document).ready(function ($) {
 
 $(document).ready(function(){
 	
-    $(".datepicker").datepicker({'format':'dd-mm-yyyy'});
-      CKEDITOR.config.allowedContent = true;
+    // $(".datepicker").datepicker({'format':'dd-mm-yyyy'});
+    //   CKEDITOR.config.allowedContent = true;
 
       $(".deal-category").click(function(){
       	// if($(this).parent().find(".deal-box-contain").eq(0).hasClass("deal-box-close")){

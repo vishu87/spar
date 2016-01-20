@@ -7,7 +7,7 @@ class FormDataController extends BaseController {
         $this->layout->title = 'Form Data';
         $this->layout->top_active = 14;
         $forms = DB::table('forms')->get();
-        $types = ["1"=>"Credit Card","2"=>"Newsletter"];  
+        $types = ["1"=>"Credit Card","2"=>"Newsletter", "3"=> "Career"];  
         $this->layout->main = View::make("admin.forms.index",array("forms"=>$forms,"types"=>$types));
     }
 

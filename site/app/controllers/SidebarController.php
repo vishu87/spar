@@ -13,7 +13,7 @@ class SidebarController extends BaseController {
         ];
         $validator = Validator::make($cre,$rules);
         if($validator->passes()){
-            $id = DB::table("sidebars")->insertGetID(array('sidebar'=>Input::get("sidebar")));           
+            $id = DB::table("sidebars")->insertGetId(array('sidebar'=>Input::get("sidebar")));           
             return Redirect::to('/admin/sidebars/'.$id);                    
         }else {
             return Redirect::Back()->withErrors($validator)->withInput();
@@ -67,7 +67,7 @@ class SidebarController extends BaseController {
     public function addLink($sidebar_id){
         $count = DB::table("sidebar_items")->where('sidebar_id',$sidebar_id)->count();
         $count++;
-        $id = DB::table("sidebar_items")->insertGetID(array('page_id'=>Input::get("page_id"), 'sidebar_id'=>$sidebar_id, 'type' => 1, 'priority'=>$count));           
+        $id = DB::table("sidebar_items")->insertGetId(array('page_id'=>Input::get("page_id"), 'sidebar_id'=>$sidebar_id, 'type' => 1, 'priority'=>$count));           
 
         $page = DB::table('pages')->where('id',Input::get("page_id"))->first();
         return View::make('admin.sidebars.add_link', ['page'=>$page, 'id'=>$id]);
@@ -76,14 +76,14 @@ class SidebarController extends BaseController {
     public function addTitle($sidebar_id){
         $count = DB::table("sidebar_items")->where('sidebar_id',$sidebar_id)->count();
         $count++;
-        $id = DB::table("sidebar_items")->insertGetID(array('title'=>Input::get("title"), 'sidebar_id'=>$sidebar_id, 'type' => 2, 'priority'=>$count));           
+        $id = DB::table("sidebar_items")->insertGetId(array('title'=>Input::get("title"), 'sidebar_id'=>$sidebar_id, 'type' => 2, 'priority'=>$count));           
         return View::make('admin.sidebars.add_title', ['title'=>Input::get("title"), 'id'=>$id]);
     }
 
     public function addImage($sidebar_id){
         $count = DB::table("sidebar_items")->where('sidebar_id',$sidebar_id)->count();
         $count++;
-        $id = DB::table("sidebar_items")->insertGetID(array('media_id'=>Input::get("image_id"), 'sidebar_id'=>$sidebar_id, 'type' => 3, 'priority'=>$count));
+        $id = DB::table("sidebar_items")->insertGetId(array('media_id'=>Input::get("image_id"), 'sidebar_id'=>$sidebar_id, 'type' => 3, 'priority'=>$count));
         $image = DB::table('media')->where('id',Input::get("image_id"))->first();  
         return View::make('admin.sidebars.add_image', ['image'=>$image, 'id'=>$id]);
     }
@@ -91,14 +91,14 @@ class SidebarController extends BaseController {
     public function addHTML($sidebar_id){
         $count = DB::table("sidebar_items")->where('sidebar_id',$sidebar_id)->count();
         $count++;
-        $id = DB::table("sidebar_items")->insertGetID(array('sidebar_id'=>$sidebar_id, 'type' => 4, 'priority'=>$count));           
+        $id = DB::table("sidebar_items")->insertGetId(array('sidebar_id'=>$sidebar_id, 'type' => 4, 'priority'=>$count));           
         return View::make('admin.sidebars.add_html', ['id'=>$id]);
     }
 
      public function addCarousel($sidebar_id){
         $count = DB::table("sidebar_items")->where('sidebar_id',$sidebar_id)->count();
         $count++;
-        $id = DB::table("sidebar_items")->insertGetID(array('sidebar_id'=>$sidebar_id, 'carousel_id'=>Input::get("carousel_id"), 'type' => 5, 'priority'=>$count));
+        $id = DB::table("sidebar_items")->insertGetId(array('sidebar_id'=>$sidebar_id, 'carousel_id'=>Input::get("carousel_id"), 'type' => 5, 'priority'=>$count));
         $carousel = DB::table('carousels')->where('id',Input::get("carousel_id"))->first();
         return View::make('admin.sidebars.add_carousel', ['id'=>$id,'carousel'=>$carousel]);
     }
